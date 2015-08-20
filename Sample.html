@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>Rask</title>
+    <style>
+        body {
+            margin: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <label for="elementLabel">Label:</label><input type="text" id="elementLabel" name="elementLabel" />
+        <button onclick="addSquare();">Add square</button>
+        <button onclick="addCircle();">Add circle</button>
+        <button onclick="saveImage();">Save image</button>
+        <button onclick="getGraph();">Get dependency graph</button>
+    </div>
+    <div>
+        <canvas id="raskaContent" style="border: 1px solid red" width="800" height="600"></canvas>
+    </div>
+
+    <script type="text/javascript" src="raska.js"></script>
+    <script>
+
+        /// Configures raska to a given Canvas element
+        raska.installUsing({ targetCanvasId: "raskaContent" });
+
+        /// Adds some elements so we can play with...
+        for (var i = 0; i < 10; i++) {
+
+            /// Circle
+            var circle = raska.newCircle();
+            circle.x += (100 * i);
+            var label = raska.newLabel();
+            label.text = "label for circle " + i;
+            circle.addChild(label);
+            raska.plot(circle);
+
+            /// Square
+            var square = raska.newSquare();
+            square.y += 100;
+            square.x += (100 * i);
+            var label = raska.newLabel();
+            label.text = "label for square " + i;
+            square.addChild(label);
+            raska.plot(square);
+        }
+
+        function addSquare() {
+            var square = raska.newSquare();
+            var label = raska.newLabel();
+            label.text = document.getElementById("elementLabel").value;
+            square.addChild(label);
+            raska.plot(square);
+        }
+
+        function addCircle() {
+            var circle = raska.newCircle();
+            var label = raska.newLabel();
+            label.text = document.getElementById("elementLabel").value;
+            circle.addChild(label);
+            raska.plot(circle);
+        }
+
+        function saveImage() {
+            raska.exportImage();
+        }
+
+        function getGraph() {
+            console.log(raska.getElements());
+            alert("Exported to the console");
+        }
+    </script>
+</body>
+</html>
