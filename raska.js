@@ -2,44 +2,44 @@
 
     'use strict';
     var _helpers = (function () {
-            return {
-                $log: {
-                    active: true,
-                    info: function (msg, o) {
-                        console.info(msg, o);
-                    }
-                },
-                $obj: (function () {
-                    return {
-                        is: function (obj, what) {
-                            return typeof obj === what;
-                        },
+        return {
+            $log: {
+                active: false,
+                info: function (msg, o) {
+                    console.info(msg, o);
+                }
+            },
+            $obj: (function () {
+                return {
+                    is: function (obj, what) {
+                        return typeof obj === what;
+                    },
 
-                        isUndefined: function (obj) {
-                            return this.is(obj, 'undefined');
-                        },
+                    isUndefined: function (obj) {
+                        return this.is(obj, 'undefined');
+                    },
 
-                        extend: function (baseObject, impl, addNewMembers) {
-                            var result = {}, element = null;
-                            if (this.isUndefined(impl)) {
-                                for (element in baseObject) {
-                                    result[element] = baseObject[element];
-                                }
-                            } else {
+                    extend: function (baseObject, impl, addNewMembers) {
+                        var result = {}, element = null;
+                        if (this.isUndefined(impl)) {
+                            for (element in baseObject) {
+                                result[element] = baseObject[element];
+                            }
+                        } else {
 
-                                if (addNewMembers === true) { result = impl; }
-                                for (element in baseObject) {
-                                    if (!result.hasOwnProperty(element)) {
-                                        result[element] = impl.hasOwnProperty(element) ? impl[element] : baseObject[element];
-                                    }
+                            if (addNewMembers === true) { result = impl; }
+                            for (element in baseObject) {
+                                if (!result.hasOwnProperty(element)) {
+                                    result[element] = impl.hasOwnProperty(element) ? impl[element] : baseObject[element];
                                 }
                             }
-                            return result;
                         }
-                    };
-                })()
-            };
-        })(),
+                        return result;
+                    }
+                };
+            })()
+        };
+    })(),
 
         _positionTypes = {
             relative: 0,
@@ -359,6 +359,7 @@
                 },
                 _elementBeingDraged = {
                     reference: null,
+                    holdingCTRL: false,
                     originalBorder: {},
                     dragTypes: {
                         moving: 1,
@@ -408,11 +409,18 @@
                     _helpers.$log.info("Adding element", e);
                     _elements.push(e);
                 },
+                _whenKeyUp = function (e) {
+                    _elementBeingDraged.holdingCTRL = false;
+                },
                 _whenKeyDown = function (e) {
-                    if (((e.keyCode || e.charCode) == 46)
+                    var key = e.keyCode || e.charCode;
+                    if (((key === 46) || (key === 8))
                         && (_elementBeingDraged.reference !== null)) {
                         _removeElement(_elementBeingDraged.reference.clearAllLinks());
                         _elementBeingDraged.reference = null;
+                    }
+                    else {
+                        _elementBeingDraged.holdingCTRL = (key === 17);
                     }
                 },
                 _checkClick = function (evt) {
@@ -424,13 +432,14 @@
                         }
                     }
 
+                    var dragType = _elementBeingDraged.holdingCTRL === true ? _elementBeingDraged.dragTypes.linking : evt.which;
                     if (_elementBeingDraged.reference !== null) {
                         _elementBeingDraged.originalBorder = _elementBeingDraged.reference.border;
                         _elementBeingDraged.reference.border =
-                            ((_elementBeingDraged.dragType = evt.which) === _elementBeingDraged.dragTypes.moving) ?
+                        ((_elementBeingDraged.dragType = dragType) === _elementBeingDraged.dragTypes.moving) ?
                             _elementBeingDraged.border.whenMoving :
                             _elementBeingDraged.border.whenLiking;
-                        _helpers.$log.info("Dragging element", _elementBeingDraged.reference);
+                        _helpers.$log.info("Dragging element", { r: _elementBeingDraged.reference, d: dragType });
                     }
 
                     if (evt.preventDefault) { evt.preventDefault(); }
@@ -446,6 +455,7 @@
                         w.addEventListener("mousemove", _whenMouseMove, false);
                         w.addEventListener("mouseup", _whenMouseUp, false);
                         w.addEventListener("keydown", _whenKeyDown, false);
+                        w.addEventListener("keyup", _whenKeyUp, false);
                         _canvas.addEventListener("contextmenu", function (e) { e.preventDefault(); return false; }, false);
                     }
 
@@ -494,33 +504,33 @@
             };
         })(),
 
-    _public = {
-        newLabel: function () {
-            return _helpers.$obj.extend(new _defaultConfigurations.label(), {});
-        },
-        newSquare: function () {
-            return _helpers.$obj.extend(new _defaultConfigurations.square(), {});
-        },
-        newCircle: function () {
-            return _helpers.$obj.extend(new _defaultConfigurations.circle(), {});
-        },
-        plot: function (element) {
-            _drawing.addElement(element);
-            return _public;
-        },
-        exportImage: function () {
-            var nw = window.open();
-            nw.document.write("<img src='" + _drawing.getDataUrl() + "'>");
-        },
-        getElements: function () {
-            return _drawing.getElements();
-        },
-        installUsing: function (configuration) {
-            _activeConfiguration = _helpers.$obj.extend(_defaultConfigurations.library, configuration);
-            _drawing.initializeTimedDrawing();
-            return _public;
-        }
-    };
+        _public = {
+            newLabel: function () {
+                return _helpers.$obj.extend(new _defaultConfigurations.label(), {});
+            },
+            newSquare: function () {
+                return _helpers.$obj.extend(new _defaultConfigurations.square(), {});
+            },
+            newCircle: function () {
+                return _helpers.$obj.extend(new _defaultConfigurations.circle(), {});
+            },
+            plot: function (element) {
+                _drawing.addElement(element);
+                return _public;
+            },
+            exportImage: function () {
+                var nw = window.open();
+                nw.document.write("<img src='" + _drawing.getDataUrl() + "'>");
+            },
+            getElements: function () {
+                return _drawing.getElements();
+            },
+            installUsing: function (configuration) {
+                _activeConfiguration = _helpers.$obj.extend(_defaultConfigurations.library, configuration);
+                _drawing.initializeTimedDrawing();
+                return _public;
+            }
+        };
 
     w.raska = _public;
 })(window);
