@@ -6,7 +6,9 @@
             $log: {
                 active: false,
                 info: function (msg, o) {
-                    console.info(msg, o);
+                    if (this.active === true) {
+                        console.info(msg, o);
+                    }
                 }
             },
             $obj: (function () {
