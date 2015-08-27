@@ -720,7 +720,7 @@
 
 
     /**
-     * A utility container that holds all the drawing relatade implementations
+     * An utility container that holds all the drawing related implementations
      *
      * @class _drawing
      * @module raska
