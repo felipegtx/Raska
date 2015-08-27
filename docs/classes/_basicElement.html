@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>_basicElement - Raska</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/lucid.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            Raska
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.0.1</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/label", "classes/square", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <div id="sidebar">
+	        <div id="classes">
+	            <ul id="api-classes" class="nav nav-list">
+	                    <li><a href="../classes/$log.html">$log</a></li>
+	                    <li><a href="../classes/$obj.html">$obj</a></li>
+	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
+	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
+	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
+	                    <li><a href="../classes/_public.html">_public</a></li>
+	                    <li><a href="../classes/arrow.html">arrow</a></li>
+	                    <li><a href="../classes/circle.html">circle</a></li>
+	                    <li><a href="../classes/label.html">label</a></li>
+	                    <li><a href="../classes/square.html">square</a></li>
+	            </ul>
+	        </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+                            <h1>_basicElement</h1>
+                        </div>
+                        
+                        
+                        
+                        	<div class="well well-small">
+                                    Module: <a href="../modules/_defaultConfigurations.html">_defaultConfigurations</a><br>
+                                    Parent Module: <a href="../modules/raska.html">raska</a>
+                            </div>
+                        
+                        
+                        
+                        <div class="yuidoc-class-description">
+                        <p>The basic shape of an Raska element</p>
+                        
+                        </div>
+                        
+                        <!-- table of contents -->
+                        
+                        <div id="class-toc" class="page-section">
+                        	<h2>Table of Contents</h2>
+                            <ul>
+                        		<li>
+                        			<strong>Methods</strong>
+                        			<ul>
+                        				<li><a href="#method-addChild"><span class="im">addChild</span>(<span class="ia">child</span>)</a></li>
+                        				<li><a href="#method-addLinkFrom"><span class="im">addLinkFrom</span>(<span class="ia">element</span>)</a></li>
+                        				<li><a href="#method-addLinkTo"><span class="im">addLinkTo</span>(<span class="ia">element</span>)</a></li>
+                        				<li><a href="#method-clearAllLinks"><span class="im">clearAllLinks</span>()</a></li>
+                        				<li><a href="#method-clearLinksFrom"><span class="im">clearLinksFrom</span>(<span class="ia">source</span><span class="ia">each</span>)</a></li>
+                        				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">The</span><span class="ia">tdContext</span>)</a></li>
+                        				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">x</span><span class="ia">y</span>)</a></li>
+                        				<li><a href="#method-getAdjustedCoordinates"><span class="im">getAdjustedCoordinates</span>()</a></li>
+                        				<li><a href="#method-getChildElements"><span class="im">getChildElements</span>()</a></li>
+                        				<li><a href="#method-getHeight"><span class="im">getHeight</span>()</a></li>
+                        				<li><a href="#method-getLinksFrom"><span class="im">getLinksFrom</span>()</a></li>
+                        				<li><a href="#method-getLinksTo"><span class="im">getLinksTo</span>()</a></li>
+                        				<li><a href="#method-getParent"><span class="im">getParent</span>()</a></li>
+                        				<li><a href="#method-getWidth"><span class="im">getWidth</span>()</a></li>
+                        				<li><a href="#method-removeLinkFrom"><span class="im">removeLinkFrom</span>(<span class="ia">element</span>)</a></li>
+                        				<li><a href="#method-removeLinkTo"><span class="im">removeLinkTo</span>(<span class="ia">element</span>)</a></li>
+                        				<li><a href="#method-setParent"><span class="im">setParent</span>(<span class="ia">parent</span>)</a></li>
+                        			</ul>
+                        		</li>
+                        
+                        		<li>
+                        			<strong>Properties</strong>
+                        			<ul>
+                        				<li><a href="#prop-$childElements"><span class="ip">$childElements</span></a></li>
+                        				<li><a href="#prop-$linksFrom"><span class="ip">$linksFrom</span></a></li>
+                        				<li><a href="#prop-$linksTo"><span class="ip">$linksTo</span></a></li>
+                        				<li><a href="#prop-$parent"><span class="ip">$parent</span></a></li>
+                        				<li><a href="#prop-active"><span class="ip">active</span></a></li>
+                        				<li><a href="#prop-color"><span class="ip">color</span></a></li>
+                        				<li><a href="#prop-errors"><span class="ip">errors</span></a></li>
+                        				<li><a href="#prop-library"><span class="ip">library</span></a></li>
+                        				<li><a href="#prop-name"><span class="ip">name</span></a></li>
+                        				<li><a href="#prop-position"><span class="ip">position</span></a></li>
+                        				<li><a href="#prop-width"><span class="ip">width</span></a></li>
+                        				<li><a href="#prop-x"><span class="ip">x</span></a></li>
+                        				<li><a href="#prop-y"><span class="ip">y</span></a></li>
+                        			</ul>
+                        		</li>
+                        
+                        		<li>
+                        			<strong>Attributes</strong>
+                        			<ul>
+                        				<li><a href="#attr-border"><span class="iattr">border</span></a></li>
+                        			</ul>
+                        		</li>
+                        
+                        	</ul>
+                        </div>
+                        
+                        <!-- details -->
+                        
+                        
+                            <div id="methods" class="page-section">
+                                <h2 class="off-left">Methods</h2>
+                                <div class="item-list">
+                                    <div id="method-addChild" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>addChild</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>child</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l325"><code>src\raska.js:325</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Adds a new child element to this node</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">child</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element that will be added to the child array into this element</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Updated Raska element reference</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-addLinkFrom" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>addLinkFrom</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>element</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l263"><code>src\raska.js:263</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Links this element to another Raska element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">element</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element that will be linked as a source from this element node</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Updated Raska element reference</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-addLinkTo" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>addLinkTo</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>element</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l224"><code>src\raska.js:224</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Links this element to another Raska element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">element</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element that will be linked as a destination from this element node</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Updated Raska element reference</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-clearAllLinks" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>clearAllLinks</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l302"><code>src\raska.js:302</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Removes every and each link that references this element</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Updated Raska element reference</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-clearLinksFrom" class="method item private">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>clearLinksFrom</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>source</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>each</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type">Array</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    		<span class="flag private">private</span>
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l198"><code>src\raska.js:198</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Clears all links that point to and from this Raska element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">source</code>
+                                    						<span class="type">Object</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Object that defines the source of the link removal (start node)</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">each</code>
+                                    						<span class="type">Function</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Delegates that handle the process of removing the references</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">Array</span>:
+                                    					<p>Empty array</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-existsIn" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>existsIn</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>The</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>tdContext</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l480"><code>src\raska.js:480</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>[ABSTRACT] Whether or not this element existis withing the boudaries of
+                                    the given x/y coordinates</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">The</code>
+                                    						<span class="type">HTMLElement  |  Node</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Canvas element</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">tdContext</code>
+                                    						<span class="type">Node</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Canvas' 2d context</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                    <div id="method-existsIn" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>existsIn</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>x</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>y</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type">Bool</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l465"><code>src\raska.js:465</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>[ABSTRACT] Whether or not this element existis withing the boudaries of
+                                    the given x/y coordinates</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">x</code>
+                                    						<span class="type">Number</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>X Coordinate</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">y</code>
+                                    						<span class="type">Number</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Y Coordinate</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">Bool</span>:
+                                    					<p>If this element is contained within the X/Y coordinates</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getAdjustedCoordinates" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getAdjustedCoordinates</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type">X:Number,y:Number</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l423"><code>src\raska.js:423</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Gathers adjusted x/y coordinates for the currente element taking into consideration
+                                    the type of positining set to it and wheter or not a parent node is present</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">X:Number,y:Number</span>:
+                                    					<p>Adjusted coordinates</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getChildElements" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getChildElements</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type">Array</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l315"><code>src\raska.js:315</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Gathers all child elements from this node</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">Array</span>:
+                                    					<p>All child elements</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getHeight" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getHeight</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type">Number</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l453"><code>src\raska.js:453</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>[ABSTRACT] Gets the current Height for this element</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">Number</span>:
+                                    					<p>The Height of this element</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getLinksFrom" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getLinksFrom</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type">Array</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l279"><code>src\raska.js:279</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Gathers all SOURCE linked elements</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">Array</span>:
+                                    					<p>All elements that this node references from</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getLinksTo" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getLinksTo</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type">Array</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l253"><code>src\raska.js:253</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Gathers all DESTINATION linked elements</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">Array</span>:
+                                    					<p>All elements that this node references TO</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getParent" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getParent</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l339"><code>src\raska.js:339</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Get the parent node to this element</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Reference to de parent node (null if none)</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getWidth" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getWidth</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type">Number</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l441"><code>src\raska.js:441</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>[ABSTRACT] Gets the current width for this element</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">Number</span>:
+                                    					<p>The width of this element</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-removeLinkFrom" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>removeLinkFrom</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>element</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l289"><code>src\raska.js:289</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Removes the link to this element from another Raska element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">element</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element that will have its link from this element removed</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Updated Raska element reference</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-removeLinkTo" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>removeLinkTo</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>element</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l240"><code>src\raska.js:240</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Removes the link from this element to another Raska element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">element</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element that will have its link to this element removed</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Updated Raska element reference</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-setParent" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>setParent</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>parent</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l349"><code>src\raska.js:349</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Sets the parent node to this element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">parent</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element that will be added as a parent to this element</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                    					<p>Updated Raska element reference</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div id="properties" class="page-section">
+                                <h2 class="off-left">Properties</h2>
+                        
+                                <div class="item-list">
+                                    <div id="prop-$childElements" class="property item private">
+                                        <h3 class="name"><code>$childElements</code></h3>
+                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                            <span class="flag private">private</span>
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l188"><code>src\raska.js:188</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Points to series of child Raska element (if any)</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> []</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-$linksFrom" class="property item private">
+                                        <h3 class="name"><code>$linksFrom</code></h3>
+                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                            <span class="flag private">private</span>
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l178"><code>src\raska.js:178</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Points from a Raska element [as an arrow] (if any)</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> []</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-$linksTo" class="property item private">
+                                        <h3 class="name"><code>$linksTo</code></h3>
+                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                            <span class="flag private">private</span>
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l168"><code>src\raska.js:168</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Points to a Raska element [as an arrow] (if any)</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> []</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-$parent" class="property item private">
+                                        <h3 class="name"><code>$parent</code></h3>
+                                        <span class="type">Unknown</span>
+                                    
+                                    
+                                            <span class="flag private">private</span>
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l159"><code>src\raska.js:159</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Points to a parent Raska element (if any)</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> null</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-active" class="property item">
+                                        <h3 class="name"><code>active</code></h3>
+                                        <span class="type">Bool</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l377"><code>src\raska.js:377</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Whether or not a border should be rendered</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> false</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-color" class="property item">
+                                        <h3 class="name"><code>color</code></h3>
+                                        <span class="type">String</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l368"><code>src\raska.js:368</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Element border color</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> null</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-errors" class="property item">
+                                        <h3 class="name"><code>errors</code></h3>
+                                        <span class="type">Unknown</span>
+                                    
+                                    
+                                    
+                                            <span class="flag final">const</span>
+                                    
+                                            <span class="flag static">static</span>
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l519"><code>src\raska.js:519</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Raska's exception types</p>
+                                    
+                                        </div>
+                                    
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-library" class="property item">
+                                        <h3 class="name"><code>library</code></h3>
+                                        <span class="type">Unknown</span>
+                                    
+                                    
+                                    
+                                            <span class="flag final">const</span>
+                                    
+                                            <span class="flag static">static</span>
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l506"><code>src\raska.js:506</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Raska's default configuration data</p>
+                                    
+                                        </div>
+                                    
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-name" class="property item">
+                                        <h3 class="name"><code>name</code></h3>
+                                        <span class="type">String</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l215"><code>src\raska.js:215</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>The element name</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> &quot;anonymous&quot;</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-position" class="property item">
+                                        <h3 class="name"><code>position</code></h3>
+                                        <span class="type">_positionTypes</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l396"><code>src\raska.js:396</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Element position type</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> _positionTypes.relative</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-width" class="property item">
+                                        <h3 class="name"><code>width</code></h3>
+                                        <span class="type">Number</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l386"><code>src\raska.js:386</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Border width</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> 0</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-x" class="property item">
+                                        <h3 class="name"><code>x</code></h3>
+                                        <span class="type">Number</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l405"><code>src\raska.js:405</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Element x position</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> 50</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-y" class="property item">
+                                        <h3 class="name"><code>y</code></h3>
+                                        <span class="type">Number</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l414"><code>src\raska.js:414</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Element y position</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> 50</p>
+                                    
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div id="attrs" class="page-section">
+                                <h2 class="off-left">Attributes</h2>
+                        
+                                    <div id="attr-border" class="attr item">
+                                        <a name="config_border"></a> 
+                                        <h3 class="name"><code>border</code></h3>
+                                        <span class="type"></span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l362"><code>src\raska.js:362</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Details regarding this element' border</p>
+                                    
+                                        </div>
+                                    
+                                    
+                                    
+                                    </div>
+                            </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

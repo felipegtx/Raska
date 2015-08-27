@@ -1,0 +1,1416 @@
+{
+    "project": {
+        "name": "Raska",
+        "url": "http://felipegte.com",
+        "version": "0.0.1"
+    },
+    "files": {
+        "src\\raska.js": {
+            "name": "src\\raska.js",
+            "modules": {
+                "raska": 1,
+                "_helpers": 1,
+                "_defaultConfigurations": 1
+            },
+            "classes": {
+                "$log": 1,
+                "$obj": 1,
+                "_basicElement": 1,
+                "label": 1,
+                "square": 1,
+                "arrow": 1,
+                "circle": 1,
+                "_drawing": 1,
+                "_mouse": 1,
+                "_elementBeingDraged": 1,
+                "_public": 1
+            },
+            "fors": {
+                "_drawing": 1,
+                "_mouse": 1,
+                "_elementBeingDraged": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "raska": {
+            "name": "raska",
+            "submodules": {
+                "_helpers": 1,
+                "_defaultConfigurations": 1
+            },
+            "elements": {
+                "moving": 1
+            },
+            "classes": {
+                "$log": 1,
+                "$obj": 1,
+                "_basicElement": 1,
+                "label": 1,
+                "square": 1,
+                "arrow": 1,
+                "circle": 1,
+                "_drawing": 1,
+                "_mouse": 1,
+                "_elementBeingDraged": 1,
+                "_public": 1
+            },
+            "fors": {
+                "_drawing": 1,
+                "_mouse": 1,
+                "_elementBeingDraged": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "src\\raska.js",
+            "line": 1194,
+            "description": "The basic shape of an Raska element",
+            "itemtype": "main",
+            "access": "private",
+            "tagname": "",
+            "default": "null"
+        },
+        "_helpers": {
+            "name": "_helpers",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "$log": 1,
+                "$obj": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "raska",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 54,
+            "description": "A utility that wraps the commom taks to prototype chain and output handling"
+        },
+        "_defaultConfigurations": {
+            "name": "_defaultConfigurations",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "_basicElement": 1,
+                "label": 1,
+                "square": 1,
+                "arrow": 1,
+                "circle": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "raska",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 671,
+            "description": "A utility container that holds default instance information for the Raska library",
+            "access": "private",
+            "tagname": "",
+            "readonly": ""
+        }
+    },
+    "classes": {
+        "$log": {
+            "name": "$log",
+            "shortname": "$log",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "submodule": "_helpers",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 20,
+            "description": "Outputs messages to the 'console'",
+            "static": 1
+        },
+        "$obj": {
+            "name": "$obj",
+            "shortname": "$obj",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "submodule": "_helpers",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 54,
+            "description": "Handles commom prototype element' tasks",
+            "static": 1
+        },
+        "_basicElement": {
+            "name": "_basicElement",
+            "shortname": "_basicElement",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "submodule": "_defaultConfigurations",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 150,
+            "description": "The basic shape of an Raska element",
+            "access": "private",
+            "tagname": ""
+        },
+        "label": {
+            "name": "label",
+            "shortname": "label",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "submodule": "_defaultConfigurations",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 533,
+            "description": "Creates a label",
+            "extends": "_basicElement"
+        },
+        "square": {
+            "name": "square",
+            "shortname": "square",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "submodule": "_defaultConfigurations",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 575,
+            "description": "Creates a square",
+            "extends": "_basicElement"
+        },
+        "arrow": {
+            "name": "arrow",
+            "shortname": "arrow",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "submodule": "_defaultConfigurations",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 619,
+            "description": "Creates an arrow",
+            "extends": "_basicElement"
+        },
+        "circle": {
+            "name": "circle",
+            "shortname": "circle",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "submodule": "_defaultConfigurations",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 671,
+            "description": "Creates a cricle.",
+            "extends": "_basicElement"
+        },
+        "_drawing": {
+            "name": "_drawing",
+            "shortname": "_drawing",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 721,
+            "description": "A utility container that holds all the drawing relatade implementations",
+            "readonly": "",
+            "static": 1
+        },
+        "_mouse": {
+            "name": "_mouse",
+            "shortname": "_mouse",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 831,
+            "description": "A utility that detects mouse's relative position on the canvas"
+        },
+        "_elementBeingDraged": {
+            "name": "_elementBeingDraged",
+            "shortname": "_elementBeingDraged",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 868,
+            "description": "A utility that tracks the state of the element being draged (if any)"
+        },
+        "_public": {
+            "name": "_public",
+            "shortname": "_public",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "raska",
+            "namespace": "",
+            "file": "src\\raska.js",
+            "line": 1194,
+            "description": "All public avaliable methods from the Raska library"
+        }
+    },
+    "elements": {
+        "moving": {
+            "name": "moving",
+            "attributes": [],
+            "module": "raska",
+            "file": "src\\raska.js",
+            "line": 919,
+            "description": "The element is being moved",
+            "parents": "dragTypes"
+        }
+    },
+    "classitems": [
+        {
+            "file": "src\\raska.js",
+            "line": 30,
+            "description": "Whether or not to actually log the messages (should be false in production code)",
+            "itemtype": "property",
+            "name": "active",
+            "type": "Bool",
+            "default": "false",
+            "class": "$log",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 39,
+            "description": "Prints a informational message to the console",
+            "itemtype": "method",
+            "name": "info",
+            "params": [
+                {
+                    "name": "msg",
+                    "description": "The message to be shown",
+                    "type": "String"
+                },
+                {
+                    "name": "o",
+                    "description": "Any extra message data",
+                    "type": "Any"
+                }
+            ],
+            "class": "$log",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 65,
+            "description": "Whether or not a given object type is what you expect",
+            "itemtype": "method",
+            "name": "is",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "The object we whant to know about",
+                    "type": "Object"
+                },
+                {
+                    "name": "what",
+                    "description": "The string representing the name of the type",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Whether or not the object matches the specified type",
+                "type": "Bool"
+            },
+            "class": "$obj",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 77,
+            "description": "Whether or not a given object type is undefined",
+            "itemtype": "method",
+            "name": "is",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "The object we whant to know is it's undefined",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Whether or not the object is undefined",
+                "type": "Bool"
+            },
+            "class": "$obj",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 88,
+            "description": "Extends any object using a base template object as reference",
+            "itemtype": "method",
+            "name": "extend",
+            "params": [
+                {
+                    "name": "baseObject",
+                    "description": "The object we whant to copy from",
+                    "type": "Object"
+                },
+                {
+                    "name": "impl",
+                    "description": "The object with the data we want use",
+                    "type": "Object"
+                },
+                {
+                    "name": "addNewMembers",
+                    "description": "Whether or not we allow new members on the 'impl' object to be used in the result",
+                    "type": "Bool"
+                }
+            ],
+            "return": {
+                "description": "Extended object",
+                "type": "Object"
+            },
+            "class": "$obj",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 119,
+            "description": "The valid position types for a Raskel element",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_positionTypes",
+            "static": 1,
+            "final": 1,
+            "class": "$obj",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 129,
+            "description": "Element position will be relative to its parent (if any)",
+            "itemtype": "property",
+            "name": "relative",
+            "type": "Number",
+            "default": "50",
+            "readonly": "",
+            "class": "$obj",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 139,
+            "description": "Element position will be absolute and will have no regard about its parent position whatsoever",
+            "itemtype": "property",
+            "name": "relative",
+            "type": "Number",
+            "default": "50",
+            "readonly": "",
+            "class": "$obj",
+            "module": "raska",
+            "submodule": "_helpers"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 159,
+            "description": "Points to a parent Raska element (if any)",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$parent",
+            "default": "null",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 168,
+            "description": "Points to a Raska element [as an arrow] (if any)",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$linksTo",
+            "type": "_basicElement",
+            "default": "[]",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 178,
+            "description": "Points from a Raska element [as an arrow] (if any)",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$linksFrom",
+            "type": "_basicElement",
+            "default": "[]",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 188,
+            "description": "Points to series of child Raska element (if any)",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "$childElements",
+            "type": "_basicElement",
+            "default": "[]",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 198,
+            "description": "Clears all links that point to and from this Raska element",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "clearLinksFrom",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "Object that defines the source of the link removal (start node)",
+                    "type": "Object"
+                },
+                {
+                    "name": "each",
+                    "description": "Delegates that handle the process of removing the references",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "Empty array",
+                "type": "Array"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 215,
+            "description": "The element name",
+            "itemtype": "property",
+            "name": "name",
+            "default": "\"anonymous\"",
+            "type": "String",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 224,
+            "description": "Links this element to another Raska element",
+            "itemtype": "method",
+            "name": "addLinkTo",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "Element that will be linked as a destination from this element node",
+                    "type": "_basicElement"
+                }
+            ],
+            "return": {
+                "description": "Updated Raska element reference",
+                "type": "_basicElement"
+            },
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 240,
+            "description": "Removes the link from this element to another Raska element",
+            "itemtype": "method",
+            "name": "removeLinkTo",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "Element that will have its link to this element removed",
+                    "type": "_basicElement"
+                }
+            ],
+            "return": {
+                "description": "Updated Raska element reference",
+                "type": "_basicElement"
+            },
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 253,
+            "description": "Gathers all DESTINATION linked elements",
+            "itemtype": "method",
+            "name": "getLinksTo",
+            "return": {
+                "description": "All elements that this node references TO",
+                "type": "Array"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 263,
+            "description": "Links this element to another Raska element",
+            "itemtype": "method",
+            "name": "addLinkFrom",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "Element that will be linked as a source from this element node",
+                    "type": "_basicElement"
+                }
+            ],
+            "return": {
+                "description": "Updated Raska element reference",
+                "type": "_basicElement"
+            },
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 279,
+            "description": "Gathers all SOURCE linked elements",
+            "itemtype": "method",
+            "name": "getLinksFrom",
+            "return": {
+                "description": "All elements that this node references from",
+                "type": "Array"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 289,
+            "description": "Removes the link to this element from another Raska element",
+            "itemtype": "method",
+            "name": "removeLinkFrom",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "Element that will have its link from this element removed",
+                    "type": "_basicElement"
+                }
+            ],
+            "return": {
+                "description": "Updated Raska element reference",
+                "type": "_basicElement"
+            },
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 302,
+            "description": "Removes every and each link that references this element",
+            "itemtype": "method",
+            "name": "clearAllLinks",
+            "return": {
+                "description": "Updated Raska element reference",
+                "type": "_basicElement"
+            },
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 315,
+            "description": "Gathers all child elements from this node",
+            "itemtype": "method",
+            "name": "getChildElements",
+            "return": {
+                "description": "All child elements",
+                "type": "Array"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 325,
+            "description": "Adds a new child element to this node",
+            "itemtype": "method",
+            "name": "addChild",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "Element that will be added to the child array into this element",
+                    "type": "_basicElement"
+                }
+            ],
+            "return": {
+                "description": "Updated Raska element reference",
+                "type": "_basicElement"
+            },
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 339,
+            "description": "Get the parent node to this element",
+            "itemtype": "method",
+            "name": "getParent",
+            "return": {
+                "description": "Reference to de parent node (null if none)",
+                "type": "_basicElement"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 349,
+            "description": "Sets the parent node to this element",
+            "itemtype": "method",
+            "name": "setParent",
+            "params": [
+                {
+                    "name": "parent",
+                    "description": "Element that will be added as a parent to this element",
+                    "type": "_basicElement"
+                }
+            ],
+            "return": {
+                "description": "Updated Raska element reference",
+                "type": "_basicElement"
+            },
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 362,
+            "description": "Details regarding this element' border",
+            "itemtype": "attribute",
+            "name": "border",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 368,
+            "description": "Element border color",
+            "itemtype": "property",
+            "name": "color",
+            "type": "String",
+            "default": "null",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 377,
+            "description": "Whether or not a border should be rendered",
+            "itemtype": "property",
+            "name": "active",
+            "type": "Bool",
+            "default": "false",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 386,
+            "description": "Border width",
+            "itemtype": "property",
+            "name": "width",
+            "type": "Number",
+            "default": "0",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 396,
+            "description": "Element position type",
+            "itemtype": "property",
+            "name": "position",
+            "type": "_positionTypes",
+            "default": "_positionTypes.relative",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 405,
+            "description": "Element x position",
+            "itemtype": "property",
+            "name": "x",
+            "type": "Number",
+            "default": "50",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 414,
+            "description": "Element y position",
+            "itemtype": "property",
+            "name": "y",
+            "type": "Number",
+            "default": "50",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 423,
+            "description": "Gathers adjusted x/y coordinates for the currente element taking into consideration \nthe type of positining set to it and wheter or not a parent node is present",
+            "itemtype": "method",
+            "name": "getAdjustedCoordinates",
+            "return": {
+                "description": "Adjusted coordinates",
+                "type": "X:Number,y:Number"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 441,
+            "description": "[ABSTRACT] Gets the current width for this element",
+            "itemtype": "method",
+            "name": "getWidth",
+            "return": {
+                "description": "The width of this element",
+                "type": "Number"
+            },
+            "throws": {
+                "description": "Not implemented",
+                "type": "_defaultConfigurations.errors.notImplementedException"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 453,
+            "description": "[ABSTRACT] Gets the current Height for this element",
+            "itemtype": "method",
+            "name": "getHeight",
+            "return": {
+                "description": "The Height of this element",
+                "type": "Number"
+            },
+            "throws": {
+                "description": "Not implemented",
+                "type": "_defaultConfigurations.errors.notImplementedException"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 465,
+            "description": "[ABSTRACT] Whether or not this element existis withing the boudaries of \nthe given x/y coordinates",
+            "itemtype": "method",
+            "name": "existsIn",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X Coordinate",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "Y Coordinate",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "If this element is contained within the X/Y coordinates",
+                "type": "Bool"
+            },
+            "throws": {
+                "description": "Not implemented",
+                "type": "_defaultConfigurations.errors.notImplementedException"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 480,
+            "description": "[ABSTRACT] Whether or not this element existis withing the boudaries of \nthe given x/y coordinates",
+            "itemtype": "method",
+            "name": "existsIn",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "Canvas element",
+                    "type": "HTMLElement|Node"
+                },
+                {
+                    "name": "tdContext",
+                    "description": "Canvas' 2d context",
+                    "type": "Node"
+                }
+            ],
+            "throws": {
+                "description": "Not implemented",
+                "type": "_defaultConfigurations.errors.notImplementedException"
+            },
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 506,
+            "description": "Raska's default configuration data",
+            "itemtype": "property",
+            "name": "library",
+            "static": 1,
+            "final": 1,
+            "class": "_basicElement",
+            "module": "raska",
+            "submodule": "_defaultConfigurations"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 519,
+            "description": "Raska's exception types",
+            "itemtype": "property",
+            "name": "errors",
+            "static": 1,
+            "final": 1,
+            "class": "_basicElement",
+            "module": "raska",
+            "submodule": "_defaultConfigurations"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 733,
+            "description": "Holds the elements that are to be drawn to the target canvas",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_elements",
+            "type": "Array",
+            "default": "[]",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 743,
+            "description": "Holds the reference to the timer responsible for (re)draw the elements into the canvas",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_timer",
+            "type": "timer",
+            "default": "null",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 753,
+            "description": "Whether or not we have a timer running",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_timerRunning",
+            "type": "Bool",
+            "default": "false",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 763,
+            "description": "The Canvas element we're targeting",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_canvas",
+            "type": "HTMLElement",
+            "default": "null",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 773,
+            "description": "The 2dContext from the canvas element we're targeting",
+            "access": "private",
+            "tagname": "",
+            "itemtype": "property",
+            "name": "_2dContext",
+            "type": "Object",
+            "default": "null",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 783,
+            "description": "Handles the periodic draw of the elements in this Raska instance",
+            "itemtype": "method",
+            "name": "_timedDrawing",
+            "access": "private",
+            "tagname": "",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 804,
+            "description": "Drawm the element itself and all its related nodes",
+            "itemtype": "method",
+            "name": "_drawAllIn",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "The element being drawn to the canvas",
+                    "type": "_basicElement"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 839,
+            "description": "Gets mouses's X position relative to the current canvas",
+            "itemtype": "method",
+            "name": "getX",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "Event we're bubbling in",
+                    "type": "Event"
+                }
+            ],
+            "return": {
+                "description": "X value",
+                "type": "Number"
+            },
+            "static": 1,
+            "class": "_mouse",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 853,
+            "description": "Gets mouses's Y position relative to the current canvas",
+            "itemtype": "method",
+            "name": "getY",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "Event we're bubbling in",
+                    "type": "Event"
+                }
+            ],
+            "return": {
+                "description": "Y value",
+                "type": "Number"
+            },
+            "static": 1,
+            "class": "_mouse",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 876,
+            "description": "The element being draged",
+            "itemtype": "property",
+            "name": "reference",
+            "type": "_basicElement",
+            "default": "null",
+            "static": 1,
+            "class": "_elementBeingDraged",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 887,
+            "description": "Whether or not the user is holding the CTRL key",
+            "itemtype": "property",
+            "name": "holdingCTRL",
+            "type": "Bool",
+            "default": "false",
+            "static": 1,
+            "class": "_elementBeingDraged",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 898,
+            "description": "A copy from the original border specification for the element being draged",
+            "itemtype": "property",
+            "name": "originalBorder",
+            "type": "Object",
+            "default": "{}",
+            "static": 1,
+            "class": "_elementBeingDraged",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 909,
+            "description": "The types of drag that can be handled\nIt can be either: \n     1 - moving\n     3 - linking",
+            "itemtype": "attribute",
+            "name": "dragTypes",
+            "class": "_elementBeingDraged",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 936,
+            "description": "Default drag type",
+            "itemtype": "property",
+            "name": "dragType",
+            "type": "Number",
+            "default": "0",
+            "static": 1,
+            "class": "_elementBeingDraged",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 958,
+            "description": "Handles de mouse move envent",
+            "itemtype": "method",
+            "name": "_whenMouseMove",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "Event we're bubbling in",
+                    "type": "Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 974,
+            "description": "Handles de mouse up envent",
+            "itemtype": "method",
+            "name": "_whenMouseUp",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "Event we're bubbling in",
+                    "type": "Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1000,
+            "description": "Removes a given element from the canvas",
+            "itemtype": "method",
+            "name": "_removeElement",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "Element that is to be removed",
+                    "type": "_basicElement"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "chainable": 1,
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1014,
+            "description": "Adds a given element from the canvas",
+            "itemtype": "method",
+            "name": "_addElement",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "Element that is to be added",
+                    "type": "_basicElement"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "chainable": 1,
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1028,
+            "description": "Handles de key up envent",
+            "itemtype": "method",
+            "name": "_whenKeyUp",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "Event we're bubbling in",
+                    "type": "Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "chainable": 1,
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1041,
+            "description": "Handles de key down envent",
+            "itemtype": "method",
+            "name": "_whenKeyDown",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "Event we're bubbling in",
+                    "type": "Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "chainable": 1,
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1062,
+            "description": "Handles click event for any element surface being targered",
+            "itemtype": "method",
+            "name": "_checkClick",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "Event we're bubbling in",
+                    "type": "Event"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1093,
+            "description": "Plots each and every element to the canvas, also register delegates to it in order to detect user\niteractions",
+            "itemtype": "method",
+            "name": "_draw",
+            "access": "private",
+            "tagname": "",
+            "chainable": 1,
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1121,
+            "description": "Gathers all elements being drawn in the form of a directed graph",
+            "itemtype": "method",
+            "name": "_getElements",
+            "access": "private",
+            "tagname": "",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1150,
+            "description": "Add a given element to the drawing elements array",
+            "itemtype": "method",
+            "name": "addElement",
+            "params": [
+                {
+                    "name": "element",
+                    "description": "The element to be drawn",
+                    "type": "_basicElement"
+                }
+            ],
+            "chainable": 1,
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1162,
+            "description": "Gets the canvas' dataURL",
+            "itemtype": "method",
+            "name": "getDataUrl",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1171,
+            "description": "Gathers all elements being drawn in the form of a directed graph",
+            "itemtype": "method",
+            "name": "getElements",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1180,
+            "description": "Initializes the drawing process",
+            "itemtype": "method",
+            "name": "initializeTimedDrawing",
+            "class": "_drawing",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1201,
+            "description": "Adds a new Label to the target canvas",
+            "itemtype": "method",
+            "name": "newLabel",
+            "return": {
+                "description": "Copy of '_defaultConfigurations.label' object",
+                "type": "_defaultConfigurations.label"
+            },
+            "class": "_public",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1211,
+            "description": "Adds a new Square to the target canvas",
+            "itemtype": "method",
+            "name": "newSquare",
+            "return": {
+                "description": "Copy of '_defaultConfigurations.square' object",
+                "type": "_defaultConfigurations.square"
+            },
+            "class": "_public",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1221,
+            "description": "Adds a new Circle to the target canvas",
+            "itemtype": "method",
+            "name": "newCircle",
+            "return": {
+                "description": "Copy of '_defaultConfigurations.circle' object",
+                "type": "_defaultConfigurations.circle"
+            },
+            "class": "_public",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1231,
+            "description": "Plots an element to the canvas",
+            "itemtype": "method",
+            "name": "plot",
+            "return": {
+                "description": "Reference to the '_public' pointer",
+                "type": "_public"
+            },
+            "class": "_public",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1242,
+            "description": "Exports current canvas data as an image to a new window",
+            "itemtype": "method",
+            "name": "exportImage",
+            "return": {
+                "description": "Reference to the '_public' pointer",
+                "type": "_public"
+            },
+            "class": "_public",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1254,
+            "description": "Retrieves the directed graph represented by the elements in the canvas",
+            "itemtype": "method",
+            "name": "getElements",
+            "return": {
+                "description": "The JSON object that represents the current directed graph drawn to the canvas",
+                "type": "Json"
+            },
+            "class": "_public",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1264,
+            "description": "Configures the Raska library to target a fiven canvas meeting the configuration passed\nas a parameter via an object that mimics the specs in the '_defaultConfigurations.library'\nobject",
+            "itemtype": "method",
+            "name": "installUsing",
+            "return": {
+                "description": "Reference to the '_public' pointer",
+                "type": "_public"
+            },
+            "class": "_public",
+            "module": "raska"
+        }
+    ],
+    "warnings": []
+}

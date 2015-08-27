@@ -1,101 +1,110 @@
 <html>
-    
-    <head>
-        <title>Rask</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    </head>
-    
-    <body>
-        <div class="container">
-            <nav class="navbar navbar-default">
-                <div class="container">
-                    <a class="navbar-brand" href="https://github.com/felipegtx/Raska" target="_blank">Raska!</a>
-                </div>
-            </nav>
-            <div>
-                <ul class="list-group">
-                    <li class="list-group-item">Click on a node and press
-                        <kbd>DEL</kbd> (<em>while still holding the <kbd>mouse click</kbd> down</em>) to delete it</li>
-                    <li class="list-group-item">Drag a node (using either your mouse
-                        <kbd>right click</kbd> or holding down the <kbd>control</kbd> key) and move it over another to create a link</li>
-                    <li class="list-group-item">Dependency graph outputs the JSON to browser' console</li>
-                </ul>
-            </div>
-            <div class="form-inline">
-                <div class="form-group">
-                    <label for="elementLabel">Label:</label>
-                    <input class="form-control" type="text" id="elementLabel" name="elementLabel" />
-                </div>
-                <button class="btn btn-default" onclick="addSquare();">Add square</button>
-                <button class="btn btn-default" onclick="addCircle();">Add circle</button>
-                <button class="btn btn-default" onclick="saveImage();">Save image</button>
-                <button class="btn btn-default" onclick="getGraph();">Get dependency graph</button>
-            </div>
-            <br />
-            <div class="row">
-                <table class="table">
-                    <tr>
-                        <td>
-                            <canvas id="raskaContent" style="border: 1px solid silver" width="800" height="600"></canvas>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <script type="text/javascript" src="src/raska.min.js"></script>
-        <script>
-            /// Configures raska to a given Canvas element
-            raska.installUsing({ targetCanvasId: "raskaContent" });
-    
-            /// Adds some elements so we can play with...
-            for (var i = 0; i < 10; i++) {
-    
-                /// Circle
-                var circle = raska.newCircle();
-                circle.x += (100 * i);
-                var label = raska.newLabel();
-                label.text = "label for circle " + i;
-                circle.addChild(label);
-                raska.plot(circle);
-    
-                /// Square
-                var square = raska.newSquare();
-                square.y += 100;
-                square.x += (100 * i);
-                var label = raska.newLabel();
-                label.text = "label for square " + i;
-                square.addChild(label);
-                raska.plot(square);
-            }
-    
-            function addSquare() {
-                var square = raska.newSquare();
-                var label = raska.newLabel();
-                label.text = document.getElementById("elementLabel").value;
-                square.addChild(label);
-                raska.plot(square);
-            }
-    
-            function addCircle() {
-                var circle = raska.newCircle();
-                var label = raska.newLabel();
-                label.text = document.getElementById("elementLabel").value;
-                circle.addChild(label);
-                raska.plot(circle);
-            }
-    
-            function saveImage() {
-                raska.exportImage();
-            }
-    
-            function getGraph() {
-                console.log(raska.getElements());
-                alert("Exported to the console");
-            }
-        </script>
-    </body>
 
+<head>
+    <title>Rask</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <a class="navbar-brand" href="https://github.com/felipegtx/Raska" target="_blank">Raska!</a>
+            </div>
+        </nav>
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Click on a node and press
+                    <kbd>DEL</kbd> (<em>while still holding the <kbd>mouse click</kbd> down</em>) to delete it
+                </li>
+                <li class="list-group-item">
+                    Drag a node (using either your mouse
+                    <kbd>right click</kbd> or holding down the <kbd>control</kbd> key) and move it over another to create a link
+                </li>
+                <li class="list-group-item">Dependency graph outputs the JSON to browser' console</li>
+                <li class="list-group-item">
+                    You can find the docs
+                    <a href="http://felipegtx.github.io/Raska/docs/Index.html" target="_blank">
+                        <strong>in here</strong>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="elementLabel">Label:</label>
+                <input class="form-control" type="text" id="elementLabel" name="elementLabel" />
+            </div>
+            <button class="btn btn-default" onclick="addSquare();">Add square</button>
+            <button class="btn btn-default" onclick="addCircle();">Add circle</button>
+            <button class="btn btn-default" onclick="saveImage();">Save image</button>
+            <button class="btn btn-default" onclick="getGraph();">Get dependency graph</button>
+        </div>
+        <br />
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td>
+                        <canvas id="raskaContent" style="border: 1px solid silver" width="800" height="600"></canvas>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="src/raska.min.js"></script>
+    <script>
+        /// Configures raska to a given Canvas element
+        raska.installUsing({ targetCanvasId: "raskaContent" });
+
+        /// Adds some elements so we can play with...
+        for (var i = 0; i < 10; i++) {
+
+            /// Circle
+            var circle = raska.newCircle();
+            circle.x += (100 * i);
+            var label = raska.newLabel();
+            label.text = "label for circle " + i;
+            circle.addChild(label);
+            raska.plot(circle);
+
+            /// Square
+            var square = raska.newSquare();
+            square.y += 100;
+            square.x += (100 * i);
+            var label = raska.newLabel();
+            label.text = "label for square " + i;
+            square.addChild(label);
+            raska.plot(square);
+        }
+
+        function addSquare() {
+            var square = raska.newSquare();
+            var label = raska.newLabel();
+            label.text = document.getElementById("elementLabel").value;
+            square.addChild(label);
+            raska.plot(square);
+        }
+
+        function addCircle() {
+            var circle = raska.newCircle();
+            var label = raska.newLabel();
+            label.text = document.getElementById("elementLabel").value;
+            circle.addChild(label);
+            raska.plot(circle);
+        }
+
+        function saveImage() {
+            raska.exportImage();
+        }
+
+        function getGraph() {
+            console.log(raska.getElements());
+            alert("Exported to the console");
+        }
+    </script>
+</body>
 </html>
