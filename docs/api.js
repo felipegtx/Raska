@@ -27,7 +27,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "_helpers",
             "name": "_helpers",
-            "description": "A utility that wraps the commom taks to prototype chain and output handling"
+            "description": "An utility that wraps the commom taks to avoid code repetition"
         },
         {
             "displayName": "raska",

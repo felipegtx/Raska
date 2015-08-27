@@ -9,7 +9,7 @@
     'use strict';
 
     /**
-     * A utility that wraps the commom taks to prototype chain and output handling
+     * An utility that wraps the commom taks to avoid code repetition
      *
      * @module raska
      * @submodule _helpers
@@ -28,7 +28,7 @@
             $log: {
 
                 /**
-                 * Whether or not to actually log the messages (should be false in production code)
+                 * Whether or not to actually log the messages (should be 'false' in production code)
                  *
                  * @property active
                  * @type Bool
@@ -37,7 +37,7 @@
                 active: false,
 
                 /**
-                * Prints a informational message to the console
+                * Prints an informational message to the console
                 * 
                 * @method info
                 * @param {String} msg The message to be shown
@@ -63,7 +63,7 @@
                 return {
 
                     /**
-                    * Whether or not a given object type is what you expect
+                    * Whether or not a given object type is of the type you expect
                     * 
                     * @method is
                     * @param {Object} obj The object we whant to know about
@@ -156,17 +156,18 @@
     */
     _basicElement = function () {
 
-        /**
-         * Points to a parent Raska element (if any)
-         *
-         * @private
-         * @property $parent
-         * @default null
-         */
-        var $parent = null,
+        var
+            /**
+             * Points to a parent Raska element (if any)
+             *
+             * @private
+             * @property $parent
+             * @default null
+             */
+            $parent = null,
 
             /**
-             * Points to a Raska element [as an arrow] (if any)
+             * Points to a Raska element [as an arrow] (if any) related as a dependency from this node
              *
              * @private
              * @property $linksTo
@@ -176,8 +177,8 @@
             $linksTo = [],
 
             /**
-             * Points from a Raska element [as an arrow] (if any)
-             *
+             * Points to a Raska element [as an arrow] (if any) that depends on this instance
+             * 
              * @private
              * @property $linksFrom
              * @type _basicElement
@@ -186,7 +187,7 @@
             $linksFrom = [],
 
             /**
-             * Points to series of child Raska element (if any)
+             * Points to series of child Raska element (if any) that, usually, are contained inside this node
              *
              * @private
              * @property $childElements
@@ -222,7 +223,7 @@
             name: "anonymous",
 
             /**
-            * Links this element to another Raska element
+            * Creates a link between this and another element, using the later as a dependency of this instance
             * 
             * @method addLinkTo
             * @param {_basicElement} element Element that will be linked as a destination from this element node
@@ -238,7 +239,7 @@
             },
 
             /**
-            * Removes the link from this element to another Raska element
+            * Removes the dependency from this element to another Raska element
             * 
             * @method removeLinkTo
             * @param {_basicElement} element Element that will have its link to this element removed
@@ -251,7 +252,7 @@
             },
 
             /**
-            * Gathers all DESTINATION linked elements
+            * Gathers all elements that this instance depends on
             * 
             * @method getLinksTo
             * @return {Array} All elements that this node references TO
@@ -261,7 +262,7 @@
             },
 
             /**
-             * Links this element to another Raska element
+             * Links this element to another Raska element as this instance being the target node
              * 
              * @method addLinkFrom
              * @param {_basicElement} element Element that will be linked as a source from this element node
@@ -277,7 +278,7 @@
             },
 
             /**
-            * Gathers all SOURCE linked elements
+            * Gathers all dependecies/linked elements related to this instance
             * 
             * @method getLinksFrom
             * @return {Array} All elements that this node references from
@@ -802,7 +803,7 @@
             },
 
             /**
-             * Drawm the element itself and all its related nodes
+             * Plots the element itself and all its related nodes into the canvas
              *
              * @method _drawAllIn
              * @param {_basicElement} element The element being drawn to the canvas
@@ -907,7 +908,8 @@
                 originalBorder: {},
 
                 /**
-                 * The types of drag that can be handled
+                 * The types of drag that can be applied to an element
+                 * 
                  * It can be either: 
                  *      1 - moving
                  *      3 - linking
@@ -1060,7 +1062,7 @@
             },
 
             /**
-            * Handles click event for any element surface being targered
+            * Handles the click event
             *
             * @method _checkClick
             * @param {Event} evt Event we're bubbling in
@@ -1091,8 +1093,7 @@
             },
 
             /**
-            * Plots each and every element to the canvas, also register delegates to it in order to detect user
-            * iteractions
+            * Plots each and every element to the canvas and registers all the event handlers delegates
             *
             * @method _draw
             * @private
@@ -1119,9 +1120,11 @@
             },
 
             /**
-            * Gathers all elements being drawn in the form of a directed graph
+            * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
             * @method  _getElements
+            * @param {Array} elementArray Elements that need to be checked for dependencies
+            * @param {Object} root Root element node where the Graph starts
             * @private
             */
             _getElements = function (elementArray, root) {
@@ -1169,7 +1172,7 @@
             },
 
             /**
-            * Gathers all elements being drawn in the form of a directed graph
+            * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
             * @method  getElements
             */
@@ -1203,6 +1206,7 @@
         *
         * @method newLabel
         * @return {_defaultConfigurations.label} Copy of '_defaultConfigurations.label' object
+        * @static
         */
         newLabel: function () {
             return _helpers.$obj.extend(new _defaultConfigurations.label(), {});
@@ -1213,6 +1217,7 @@
         *
         * @method newSquare
         * @return {_defaultConfigurations.square} Copy of '_defaultConfigurations.square' object
+        * @static
         */
         newSquare: function () {
             return _helpers.$obj.extend(new _defaultConfigurations.square(), {});
@@ -1223,6 +1228,7 @@
         *
         * @method newCircle
         * @return {_defaultConfigurations.circle} Copy of '_defaultConfigurations.circle' object
+        * @static
         */
         newCircle: function () {
             return _helpers.$obj.extend(new _defaultConfigurations.circle(), {});
@@ -1233,6 +1239,8 @@
         *
         * @method plot
         * @return {_public} Reference to the '_public' pointer
+        * @static
+        * @chainable
         */
         plot: function (element) {
             _drawing.addElement(element);
@@ -1244,6 +1252,8 @@
         *
         * @method exportImage
         * @return {_public} Reference to the '_public' pointer
+        * @chainable
+        * @static
         */
         exportImage: function () {
             var nw = window.open();
@@ -1256,18 +1266,22 @@
         *
         * @method getElements
         * @return {json} The JSON object that represents the current directed graph drawn to the canvas
+        * @static
+        * @chainable
         */
         getElements: function () {
             return _drawing.getElements();
         },
 
         /**
-        * Configures the Raska library to target a fiven canvas meeting the configuration passed
-        * as a parameter via an object that mimics the specs in the '_defaultConfigurations.library'
-        * object
+        * Configures the Raska library to target a given canvas using the configuration passed
+        * as a parameter
         *
         * @method installUsing
+        * @param {_defaultConfigurations.library} configuration Configuration data that should be used to configure this Raska instance
         * @return {_public} Reference to the '_public' pointer
+        * @static
+        * @chainable
         */
         installUsing: function (configuration) {
             _activeConfiguration = _helpers.$obj.extend(_defaultConfigurations.library, configuration);
