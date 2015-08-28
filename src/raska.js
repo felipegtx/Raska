@@ -528,6 +528,16 @@
             notImplementedException: {
                 message: "Not implemented",
                 code: 0
+            },
+            nullParameterException: function (parameterName) {
+
+                if ((typeof parameterName === 'undefined') || (parameterName === null)) {
+                    throw new this.nullParameterException("parameterName");
+                }
+
+                this.message = "Parameter can't be null";
+                this.parameterName = parameterName;
+                this.code = 1;
             }
         },
 
@@ -623,30 +633,37 @@
          * @class arrow
          * @extends _basicElement
          */
-        arrow: function () {
+        arrow: function (source) {
 
-            var _drawArrowhead = function (context, x, y, radians, arrowColor) {
-                context.save();
-                context.beginPath();
-                context.fillStyle = arrowColor;
-                context.strokeStyle = arrowColor;
-                context.translate(x, y);
-                context.rotate(radians);
-                context.moveTo(0, 0);
-                context.lineTo(5, 20);
-                context.lineTo(-5, 20);
-                context.closePath();
-                context.restore();
-                context.fill();
-            };
+            if (_helpers.$obj.isUndefined(source) || (source === null)) {
+                throw new _defaultConfigurations.errors.nullParameterException("source");
+            }
+
+            var _source = source,
+                _drawArrowhead = function (context, x, y, radians, sizeW, sizeH, arrowColor) {
+                    context.fillStyle = arrowColor;
+                    context.save();
+                    context.beginPath();
+                    context.translate(x, y);
+                    context.rotate(radians);
+                    context.moveTo(0, -10);
+                    context.lineTo(sizeH, sizeW);
+                    context.lineTo(sizeH * -1, sizeW);
+                    context.closePath();
+                    context.restore();
+                    context.fill();
+                };
 
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "arrow",
-                border: { color: "black", active: true, width: 1 },
-                fillColor: "green",
+                border: { color: "black", active: true, width: 2 },
+                fillColor: "black",
                 getWidth: function () { return 1; },
                 getHeight: function () { return 1; },
                 drawTo: function (canvas, context) {
+
+                    this.x = _source.x;
+                    this.y = _source.y + (_source.getHeight() / 2);
 
                     var parent = this.getParent();
                     context.beginPath();
@@ -660,10 +677,23 @@
                     context.stroke();
                     var startRadians = Math.atan((parent.y - this.y) / (parent.x - this.x));
                     startRadians += ((parent.x > this.x) ? -90 : 90) * Math.PI / 180;
-                    _drawArrowhead(context, this.x, this.y, startRadians);
+                    _drawArrowhead(context, this.x, this.y, startRadians, 23, 10, this.fillColor);
+                    _drawArrowhead(context, this.x, this.y, startRadians, 18, 6, "white");
                 },
-                existsIn: function (x, y) {
-                    return false;
+                existsIn: function (x0, y0) {
+                    /// https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line#Line_defined_by_two_points
+                    var x1 = this.x, y1 = this.y, parent = this.getParent(),
+                        x2 = parent.x, y2 = parent.y, Dx = x2 - x1, Dy = y2 - y1,
+                        padding = 2;
+                    var distance = Math.floor(
+                                Math.abs(Dy * x0 - Dx * y0 - x1 * y2 + x2 * y1) /
+                                    Math.sqrt(Math.pow(Dx, 2) + Math.pow(Dy, 2)));
+
+                    if (this.border.active === true) {
+                        padding = this.border.width;
+                    }
+
+                    return (distance <= padding);
                 }
             }, true);
         },
@@ -817,16 +847,6 @@
                 for (i = 0; i < childElements.length; i++) {
                     childElements[i].drawTo(_canvas, _2dContext);
                 }
-
-                var links = element.getLinksFrom(),
-                    arrow = null;
-                for (i = 0; i < links.length; i++) {
-                    arrow = new _defaultConfigurations.arrow();
-                    arrow.setParent(links[i]);
-                    arrow.x = element.x;
-                    arrow.y = element.y;
-                    arrow.drawTo(_canvas, _2dContext);
-                }
             },
 
             /**
@@ -863,7 +883,39 @@
                 getY: function (evt) {
                     var canvasRect = _canvas.getBoundingClientRect();
                     return (evt.clientY - canvasRect.top) * (_canvas.height / canvasRect.height);
-                }
+                },
+
+                /**
+                * Gathers the mouse coordinates without the need of an event bubble
+                *
+                * @class staticCoordinates
+                * @for _mouse
+                * @static
+                */
+                staticCoordinates: (function () {
+
+                    var _evt = { clientX: 0, clientY: 0 };
+                    document.onmousemove = function (e) {
+                        _evt.clientX = e.pageX;
+                        _evt.clientY = e.pageY;
+                    }
+
+                    return {
+                        /**
+                        * Gets mouses' X and Y positions relative to the current canvas
+                        *
+                        * @method getXY
+                        * @return {Object} X and Y values
+                        * @static
+                        */
+                        getXY: function () {
+                            return {
+                                x: _mouse.getX(_evt),
+                                y: _mouse.getY(_evt)
+                            };
+                        }
+                    };
+                })()
             },
 
              /**
@@ -945,6 +997,36 @@
                 * @static
                 */
                 dragType: 0,
+
+                temporaryLinkArrow: (function () {
+
+                    return {
+
+                        /**
+                        * Whenever possible/necessary it plots the linking arrow to the canvas
+                        *
+                        * @method tryRender
+                        * @private
+                        */
+                        tryRender: function () {
+                            if ((_elementBeingDraged.reference !== null)
+                                && (_elementBeingDraged.dragType === _elementBeingDraged.dragTypes.linking)) {
+
+                                var targetXY = _mouse.staticCoordinates.getXY(),
+                                    arrow = new _defaultConfigurations.arrow({
+                                        x: targetXY.x,
+                                        y: targetXY.y,
+                                        getHeight: function () { return 0; }
+                                    });
+                                arrow.name = "_temp";
+                                arrow.setParent(_elementBeingDraged.reference);
+                                arrow.drawTo(_canvas, _2dContext);
+                            }
+                            return this;
+                        }
+                    };
+                })(),
+
                 border: {
                     whenMoving: {
                         color: "yellow",
@@ -966,7 +1048,9 @@
             * @private
             */
             _whenMouseMove = function (evt) {
-                if (_elementBeingDraged.reference !== null) {
+                if ((_elementBeingDraged.reference !== null)
+                    && (_elementBeingDraged.dragType === _elementBeingDraged.dragTypes.moving)) {
+
                     _helpers.$log.info("Moving element", _elementBeingDraged);
                     _elementBeingDraged.reference.x = _mouse.getX(evt);
                     _elementBeingDraged.reference.y = _mouse.getY(evt);
@@ -988,6 +1072,10 @@
                             if (_elements[i] !== _elementBeingDraged.reference
                                 && _elements[i].existsIn(_mouse.getX(evt), _mouse.getY(evt))) {
                                 _elements[i].addLinkFrom(_elementBeingDraged.reference);
+
+                                _elements.push(new _defaultConfigurations
+                                    .arrow(_elements[i])
+                                    .setParent(_elementBeingDraged.reference));
                                 break;
                             }
                         }
@@ -1116,6 +1204,8 @@
                 for (var i = 0; i < _elements.length; i++) {
                     _drawAllIn(_elements[i]);
                 }
+                _elementBeingDraged.temporaryLinkArrow.tryRender();
+
                 return this;
             },
 

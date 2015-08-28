@@ -26,7 +26,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/label", "classes/square", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
         </form>
     </div>
 </div>
@@ -47,6 +47,7 @@
 	                    <li><a href="../classes/circle.html">circle</a></li>
 	                    <li><a href="../classes/label.html">label</a></li>
 	                    <li><a href="../classes/square.html">square</a></li>
+	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
 	            </ul>
 	        </div>
 	        </div>
@@ -108,6 +109,7 @@
                         			<strong>Static Methods</strong>
                         			<ul>
                         				<li><a href="#method-getX"><span class="im">_mouse.getX</span>(<span class="ia">evt</span>)</a></li>
+                        				<li><a href="#method-getXY"><span class="im">_mouse.getXY</span>()</a></li>
                         				<li><a href="#method-getY"><span class="im">_mouse.getY</span>(<span class="ia">evt</span>)</a></li>
                         			</ul>
                         		</li>
@@ -148,7 +150,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l840"><code>src\raska.js:840</code></a>
+                            	        		<a href="../files/src_raska.js.html#l860"><code>src\raska.js:860</code></a>
                             	        		</p>
                             	        
                             	        
@@ -185,6 +187,46 @@
                             	        		</div>
                             	        
                             	        </div>
+                            	        <div id="method-getXY" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_mouse.getXY</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        		<span class="returns-inline">
+                            	        			<span class="type">Object</span>
+                            	        		</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.js.html#l904"><code>src\raska.js:904</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Gets mouses' X and Y positions relative to the current canvas</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        		<div class="returns">
+                            	        			<h4>Returns:</h4>
+                            	        
+                            	        			<div class="returns-description">
+                            	        						<span class="type">Object</span>:
+                            	        					<p>X and Y values</p>
+                            	        
+                            	        			</div>
+                            	        		</div>
+                            	        
+                            	        </div>
                             	        <div id="method-getY" class="method item">
                             	        	<div class="method-signature">
                             	        	<span class="name"><code>_mouse.getY</code></span>
@@ -209,7 +251,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l854"><code>src\raska.js:854</code></a>
+                            	        		<a href="../files/src_raska.js.html#l874"><code>src\raska.js:874</code></a>
                             	        		</p>
                             	        
                             	        
