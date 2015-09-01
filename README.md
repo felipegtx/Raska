@@ -1,7 +1,7 @@
 # Raska
 HTML5 canvas visual directed graph creation tool.
 
-![](https://iguessimnotcrazy.files.wordpress.com/2015/08/raska.png)
+![](http://felipegtx.github.io/Raska/img/raska_prt.png)
 
 ## What's this - *exactly*?
 
