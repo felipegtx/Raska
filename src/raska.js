@@ -60,6 +60,13 @@
              * @static
              */
             $obj: (function () {
+
+                function s4() {
+                    return Math.floor((1 + Math.random()) * 0x10000)
+                      .toString(16)
+                      .substring(1);
+                }
+
                 return {
 
                     /**
@@ -75,9 +82,31 @@
                     },
 
                     /**
+                    * Generates a pseudo-random Id
+                    * 
+                    * @method generateId
+                    * @return {String} A pseudo-random Id
+                    */
+                    generateId: function () {
+
+                        return "__" + s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
+                    },
+
+                    /**
+                    * Whether or not a given object type is valid to be handled
+                    * 
+                    * @method isValid
+                    * @param {Object} obj The object we whant to know is it's valid to be handled
+                    * @return {Bool} Whether or not the object is valid to be handled
+                    */
+                    isValid: function (obj) {
+                        return !this.is(obj, 'undefined') && obj !== null;
+                    },
+
+                    /**
                     * Whether or not a given object type is undefined
                     * 
-                    * @method is
+                    * @method isUndefined
                     * @param {Object} obj The object we whant to know is it's undefined
                     * @return {Bool} Whether or not the object is undefined
                     */
@@ -231,7 +260,7 @@
             * @chainable
             */
             addLinkTo: function (element) {
-                if ($linksTo.indexOf(element) === -1) {
+                if (($linksTo.indexOf(element) === -1) && (element !== this)) {
                     $linksTo.push(element);
                     element.addLinkFrom(this);
                 }
@@ -270,7 +299,7 @@
              * @chainable
              */
             addLinkFrom: function (element) {
-                if ($linksFrom.indexOf(element) === -1) {
+                if (($linksFrom.indexOf(element) === -1) && (element !== this)) {
                     $linksFrom.push(element);
                     element.addLinkTo(this);
                 }
@@ -345,6 +374,21 @@
             */
             getParent: function () {
                 return $parent;
+            },
+
+            /**
+            * Retrieves the element boundaries information
+            * 
+            * @method getBoundaries
+            * @return {Object} Data regarding x, y, minX and minY from this element
+            */
+            getBoundaries: function () {
+                return {
+                    x: this.getWidth(),
+                    y: this.getHeight(),
+                    minX: 0,
+                    minY: 0
+                };
             },
 
             /**
@@ -437,6 +481,20 @@
                     };
                 }
                 return { x: this.x, y: this.y };
+            },
+
+            /**
+            * [ABSTRACT] Adjusts the position of the current element taking in consideration it's parent 
+            * positioning constraints
+            * 
+            * @method adjustPosition
+            * @param {Number} newX X position
+            * @param {Number} newY Y position
+            * @chainable
+            */
+            adjustPosition: function (newX, newY) {
+                console.error(_defaultConfigurations.errors.notImplementedException);
+                throw _defaultConfigurations.errors.notImplementedException;
             },
 
             /**
@@ -549,7 +607,7 @@
          */
         label: function () {
             return _helpers.$obj.extend(new _basicElement(), {
-                name: "label",
+                name: "label" + _helpers.$obj.generateId(),
                 text: "",
                 color: "white",
                 x: 0,
@@ -591,7 +649,7 @@
          */
         square: function () {
             return _helpers.$obj.extend(new _basicElement(), {
-                name: "square",
+                name: "square" + _helpers.$obj.generateId(),
                 border: { color: "gray", active: true, width: 4 },
                 fillColor: "silver",
                 dimensions: {
@@ -623,6 +681,23 @@
                         && (x < this.x + this.dimensions.width)
                         && (y > this.y - this.dimensions.height)
                         && (y < this.y + this.dimensions.height));
+                },
+                adjustPosition: function (newX, newY) {
+                    if ((this.position === _positionTypes.relative) && ($parent !== null)) {
+
+                        var adjustedParent = $parent.getAdjustedCoordinates();
+                        var w = $parent.getWidth() / 2;
+                        var h = $parent.getHeight() / 2;
+                        var diffX = (newX - adjustedParent.x) - w;
+                        var diffH = (newY - adjustedParent.y) - h;
+                        this.x = diffX < 0 ? Math.max(diffX, w * -1) : Math.min(diffX, w);;
+                        this.y = diffH < 0 ? Math.max(diffH, h * -1) : Math.min(diffH, h);
+
+                    } else {
+                        this.x = newX;
+                        this.y = newY;
+                    }
+                    return this;
                 }
             }, true);
         },
@@ -655,7 +730,7 @@
                 };
 
             return _helpers.$obj.extend(new _basicElement(), {
-                name: "arrow",
+                name: "arrow" + _helpers.$obj.generateId(),
                 border: { color: "black", active: true, width: 2 },
                 fillColor: "black",
                 getWidth: function () { return 1; },
@@ -698,6 +773,46 @@
             }, true);
         },
 
+        /**
+         * Wraps any HTML element as a Raska element
+         * 
+         * @class htmlElement
+         * @constructor
+         * @extends _basicElement
+         */
+        htmlElement: function (element) {
+
+            if (!_helpers.$obj.isValid(element)) {
+                var nullObj = new _defaultConfigurations.errors.nullParameterException("element");
+                console.error(nullObj.message);
+                throw nullObj;
+            }
+            var targetElement = element;
+            return _helpers.$obj.extend(new _basicElement(), {
+                name: "htmlElement" + _helpers.$obj.generateId(),
+                border: { active: false },
+                fillColor: "",
+                getWidth: function () { return 0; },
+                getHeight: function () { return 0; },
+                drawTo: function (canvas, context) { },
+                existsIn: function (x, y) { return false; },
+                handleInteractions: true,
+                onIteraction: function (iteractionType, trigger) {
+
+                    var triggerWrapper = function (evt) {
+                        trigger(evt, targetElement, iteractionType);
+                    };
+
+                    if (window.addEventListener) { // modern browsers including IE9+
+                        targetElement.addEventListener(iteractionType, triggerWrapper, false);
+                    } else if (window.attachEvent) { // IE8 and below
+                        targetElement.attachEvent('on' + iteractionType, triggerWrapper);
+                    } else {
+                        targetElement['on' + iteractionType] = triggerWrapper;
+                    }
+                }
+            }, true);
+        },
 
         /**
          * Creates a cricle.
@@ -707,7 +822,7 @@
          */
         circle: function () {
             return _helpers.$obj.extend(new _basicElement(), {
-                name: "circle",
+                name: "circle" + _helpers.$obj.generateId(),
                 border: { color: "red", active: true, width: 4 },
                 fillColor: "black",
                 radius: 20,
@@ -733,6 +848,33 @@
                     var dx = this.x - x;
                     var dy = this.y - y;
                     return (dx * dx + dy * dy < this.radius * this.radius);
+                },
+                getBoundaries: function () {
+                    var p = this.radius / 2;
+                    return {
+                        x: p,
+                        y: p,
+                        minX: p * -1,
+                        minY: p * -1
+                    };
+                },
+                adjustPosition: function (newX, newY) {
+                    var $parent = this.getParent();
+                    if ((this.position === _positionTypes.relative) && ($parent !== null)) {
+
+                        var adjustedParent = $parent.getAdjustedCoordinates();
+                        var parentBoundaries = $parent.getBoundaries();
+                        var w = parentBoundaries.x;
+                        var h = parentBoundaries.y;
+                        var diffX = (newX - adjustedParent.x) - w;
+                        var diffH = (newY - adjustedParent.y) - h;
+                        this.x = diffX < 0 ? Math.max(diffX, parentBoundaries.minX) : Math.min(diffX, w);;
+                        this.y = diffH < 0 ? Math.max(diffH, parentBoundaries.minY) : Math.min(diffH, h);
+                    } else {
+                        this.x = newX;
+                        this.y = newY;
+                    }
+                    return this;
                 }
             }, true);
         }
@@ -748,6 +890,35 @@
      */
     _activeConfiguration = null,
 
+    _elementInteractionEventData = (function () {
+
+        var interactionTypes = { "click": 0, "mousemove": 1 },
+            createTriggerUsing = function (originalTrigger) {
+                return function (evt, targetElement, interactionType) {
+                    originalTrigger({
+                        x: _drawing.mouseHelper.getX(evt),
+                        y: _drawing.mouseHelper.getY(evt),
+                        details: {
+                            interactionType: interactionType,
+                            targetElement: targetElement
+                        }
+                    });
+                };
+            };
+
+        return {
+            getInteractionTypes: interactionTypes,
+            register: function (targetElement, iteractionType, trigger) {
+
+                if ((iteractionType in interactionTypes)
+                    && _helpers.$obj.isValid(targetElement)
+                    && (targetElement.handleInteractions === true)) {
+
+                    targetElement.onIteraction(iteractionType, createTriggerUsing(trigger));
+                }
+            }
+        };
+    })(),
 
     /**
      * An utility container that holds all the drawing related implementations
@@ -802,6 +973,16 @@
             _canvas = null,
 
             /**
+            * The Canvas element (wraped by a Raska _basicElement)
+            *
+            * @private
+            * @property _canvasElement
+            * @type _basicElement
+            * @default null
+            */
+            _canvasElement = null,
+
+            /**
             * The 2dContext from the canvas element we're targeting
             *
             * @private
@@ -811,7 +992,7 @@
             */
             _2dContext = null,
 
-             /**
+            /**
              * Handles the periodic draw of the elements in this Raska instance
              *
              * @method _timedDrawing
@@ -824,8 +1005,8 @@
                 }
 
                 if (_timerRunning === true) {
+                    _draw();
                     _timer = w.setTimeout(function () {
-                        _draw();
                         _timedDrawing();
                     }, _activeConfiguration.frameRefreshRate);
                 }
@@ -843,9 +1024,9 @@
 
                 element.drawTo(_canvas, _2dContext);
 
-                var childElements = element.getChildElements(), i = 0;
-                for (i = 0; i < childElements.length; i++) {
-                    childElements[i].drawTo(_canvas, _2dContext);
+                var childElements = element.getChildElements();
+                for (var i = 0; i < childElements.length; i++) {
+                    _drawAllIn(childElements[i]);
                 }
             },
 
@@ -854,6 +1035,7 @@
              *
              * @class _mouse
              * @for _drawing
+             * @static
              */
             _mouse = {
 
@@ -918,7 +1100,7 @@
                 })()
             },
 
-             /**
+            /**
              * A utility that tracks the state of the element being draged (if any)
              *
              * @class _elementBeingDraged
@@ -1142,8 +1324,7 @@
                     && (_elementBeingDraged.reference !== null)) {
                     _removeElement(_elementBeingDraged.reference.clearAllLinks());
                     _elementBeingDraged.reference = null;
-                }
-                else {
+                } else {
                     _elementBeingDraged.holdingCTRL = (key === 17);
                 }
                 return this;
@@ -1169,14 +1350,17 @@
                 if (_elementBeingDraged.reference !== null) {
                     _elementBeingDraged.originalBorder = _elementBeingDraged.reference.border;
                     _elementBeingDraged.reference.border =
-                    ((_elementBeingDraged.dragType = dragType) === _elementBeingDraged.dragTypes.moving) ?
+                        ((_elementBeingDraged.dragType = dragType) === _elementBeingDraged.dragTypes.moving) ?
                         _elementBeingDraged.border.whenMoving :
                         _elementBeingDraged.border.whenLiking;
                     _helpers.$log.info("Dragging element", { r: _elementBeingDraged.reference, d: dragType });
                 }
 
-                if (evt.preventDefault) { evt.preventDefault(); }
-                else if (evt.returnValue) { evt.returnValue = false; }
+                if (evt.preventDefault) {
+                    evt.preventDefault();
+                } else if (evt.returnValue) {
+                    evt.returnValue = false;
+                }
                 return false;
             },
 
@@ -1197,7 +1381,11 @@
                     w.addEventListener("mouseup", _whenMouseUp, false);
                     w.addEventListener("keydown", _whenKeyDown, false);
                     w.addEventListener("keyup", _whenKeyUp, false);
-                    _canvas.addEventListener("contextmenu", function (e) { e.preventDefault(); return false; }, false);
+                    _canvas.addEventListener("contextmenu", function (e) {
+                        e.preventDefault();
+                        return false;
+                    }, false);
+                    _canvasElement = _helpers.$obj.extend(new _defaultConfigurations.htmlElement(_canvas), {});
                 }
 
                 _2dContext.clearRect(0, 0, _canvas.width, _canvas.height);
@@ -1217,28 +1405,27 @@
             * @param {Object} root Root element node where the Graph starts
             * @private
             */
-            _getElements = function (elementArray, root) {
+            _getElements = function (elementArray) {
 
-                var result = [], element;
+                var result = [],
+                    element;
 
                 for (var i = 0; i < elementArray.length; i++) {
 
                     element = elementArray[i];
-
-                    if (root === element) {
-                        continue;
-                    }
-
                     result.push({
                         name: element.name,
-                        childs: _getElements(element.getChildElements().slice(), root || element),
-                        links: _getElements(element.getLinksTo().slice(), root || element)
+                        childs: element.getChildElements(),
+                        links: element.getLinksFrom()
                     });
                 }
+
                 return result;
             };
 
         return {
+
+            mouseHelper: _mouse,
 
             /**
              * Add a given element to the drawing elements array
@@ -1268,6 +1455,15 @@
             */
             getElements: function () {
                 return _getElements(_elements);
+            },
+
+            /**
+            * Returns the corresponding Raska Canvas element
+            * 
+            * @method  getCanvasElement
+            */
+            getCanvasElement: function () {
+                return _canvasElement;
             },
 
             /**
@@ -1364,6 +1560,17 @@
         },
 
         /**
+        * Retrieves all possible position types
+        *
+        * @property positionTypes
+        * @type _positionTypes
+        * @static
+        */
+        positionTypes: (function () {
+            return _positionTypes;
+        })(),
+
+        /**
         * Configures the Raska library to target a given canvas using the configuration passed
         * as a parameter
         *
@@ -1377,6 +1584,20 @@
             _activeConfiguration = _helpers.$obj.extend(_defaultConfigurations.library, configuration);
             _drawing.initializeTimedDrawing();
             return _public;
+        },
+
+
+        /**
+        * Registers a handler to be trigered by any interaction taken place against the canvas
+        *
+        * @method onElementInteraction
+        * @param {Function} What to do whenever an element iteraction happens
+        * @static
+        * @chainable
+        */
+        onCanvasInteraction: function (iteractionType, trigger) {
+
+            _elementInteractionEventData.register(_drawing.getCanvasElement(), iteractionType, trigger);
         }
     };
 

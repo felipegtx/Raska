@@ -26,7 +26,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
         </form>
     </div>
 </div>
@@ -45,6 +45,7 @@
 	                    <li><a href="../classes/_public.html">_public</a></li>
 	                    <li><a href="../classes/arrow.html">arrow</a></li>
 	                    <li><a href="../classes/circle.html">circle</a></li>
+	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
 	                    <li><a href="../classes/label.html">label</a></li>
 	                    <li><a href="../classes/square.html">square</a></li>
 	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
@@ -103,6 +104,12 @@
                         	<h2>Table of Contents</h2>
                             <ul>
                         
+                        		<li>
+                        			<strong>Properties</strong>
+                        			<ul>
+                        				<li><a href="#prop-positionTypes"><span class="ip">positionTypes</span></a></li>
+                        			</ul>
+                        		</li>
                         
                         
                         		<li>
@@ -114,6 +121,7 @@
                         				<li><a href="#method-newCircle"><span class="im">_public.newCircle</span>()</a></li>
                         				<li><a href="#method-newLabel"><span class="im">_public.newLabel</span>()</a></li>
                         				<li><a href="#method-newSquare"><span class="im">_public.newSquare</span>()</a></li>
+                        				<li><a href="#method-onElementInteraction"><span class="im">_public.onElementInteraction</span>(<span class="ia">What</span>)</a></li>
                         				<li><a href="#method-plot"><span class="im">_public.plot</span>()</a></li>
                         			</ul>
                         		</li>
@@ -124,6 +132,38 @@
                         
                         
                         
+                            <div id="properties" class="page-section">
+                                <h2 class="off-left">Properties</h2>
+                        
+                                <div class="item-list">
+                                    <div id="prop-positionTypes" class="property item">
+                                        <h3 class="name"><code>positionTypes</code></h3>
+                                        <span class="type">_positionTypes</span>
+                                    
+                                    
+                                    
+                                    
+                                            <span class="flag static">static</span>
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l1562"><code>src\raska.js:1562</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Retrieves all possible position types</p>
+                                    
+                                        </div>
+                                    
+                                    
+                                    
+                                    </div>
+                                </div>
+                            </div>
                         
                         
                         
@@ -149,7 +189,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1340"><code>src\raska.js:1340</code></a>
+                            	        		<a href="../files/src_raska.js.html#l1536"><code>src\raska.js:1536</code></a>
                             	        		</p>
                             	        
                             	        
@@ -190,7 +230,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1354"><code>src\raska.js:1354</code></a>
+                            	        		<a href="../files/src_raska.js.html#l1550"><code>src\raska.js:1550</code></a>
                             	        		</p>
                             	        
                             	        
@@ -237,7 +277,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1366"><code>src\raska.js:1366</code></a>
+                            	        		<a href="../files/src_raska.js.html#l1573"><code>src\raska.js:1573</code></a>
                             	        		</p>
                             	        
                             	        
@@ -293,7 +333,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1316"><code>src\raska.js:1316</code></a>
+                            	        		<a href="../files/src_raska.js.html#l1512"><code>src\raska.js:1512</code></a>
                             	        		</p>
                             	        
                             	        
@@ -333,7 +373,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1294"><code>src\raska.js:1294</code></a>
+                            	        		<a href="../files/src_raska.js.html#l1490"><code>src\raska.js:1490</code></a>
                             	        		</p>
                             	        
                             	        
@@ -373,7 +413,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1305"><code>src\raska.js:1305</code></a>
+                            	        		<a href="../files/src_raska.js.html#l1501"><code>src\raska.js:1501</code></a>
                             	        		</p>
                             	        
                             	        
@@ -395,6 +435,56 @@
                             	        		</div>
                             	        
                             	        </div>
+                            	        <div id="method-onElementInteraction" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_public.onElementInteraction</code></span>
+                            	        
+                            	        		<div class="args">
+                            	        			<span class="paren">(</span><ul class="args-list inline commas">
+                            	        				<li class="arg">
+                            	        						<code>What</code>
+                            	        				</li>
+                            	        			</ul><span class="paren">)</span>
+                            	        		</div>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.js.html#l1590"><code>src\raska.js:1590</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Registers a handler to be trigered by any interaction taken place against the canvas</p>
+                            	        </div>
+                            	        
+                            	        		<div class="params">
+                            	        			<h4>Parameters:</h4>
+                            	        
+                            	        			<ul class="params-list">
+                            	        				<li class="param">
+                            	        						<code class="param-name">What</code>
+                            	        						<span class="type">Function</span>
+                            	        
+                            	        
+                            	        					<div class="param-description"><p>to do whenever an element iteraction happens</p>
+                            	        </div>
+                            	        
+                            	        				</li>
+                            	        			</ul>
+                            	        		</div>
+                            	        
+                            	        
+                            	        </div>
                             	        <div id="method-plot" class="method item">
                             	        	<div class="method-signature">
                             	        	<span class="name"><code>_public.plot</code></span>
@@ -414,7 +504,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1327"><code>src\raska.js:1327</code></a>
+                            	        		<a href="../files/src_raska.js.html#l1523"><code>src\raska.js:1523</code></a>
                             	        		</p>
                             	        
                             	        

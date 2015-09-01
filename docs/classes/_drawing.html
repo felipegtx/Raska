@@ -26,7 +26,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
         </form>
     </div>
 </div>
@@ -45,6 +45,7 @@
 	                    <li><a href="../classes/_public.html">_public</a></li>
 	                    <li><a href="../classes/arrow.html">arrow</a></li>
 	                    <li><a href="../classes/circle.html">circle</a></li>
+	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
 	                    <li><a href="../classes/label.html">label</a></li>
 	                    <li><a href="../classes/square.html">square</a></li>
 	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
@@ -117,6 +118,7 @@
                         				<li><a href="#method-_whenMouseMove"><span class="im">_whenMouseMove</span>(<span class="ia">evt</span>)</a></li>
                         				<li><a href="#method-_whenMouseUp"><span class="im">_whenMouseUp</span>(<span class="ia">evt</span>)</a></li>
                         				<li><a href="#method-addElement"><span class="im">addElement</span>(<span class="ia">element</span>)</a></li>
+                        				<li><a href="#method-getCanvasElement"><span class="im">getCanvasElement</span>()</a></li>
                         				<li><a href="#method-getDataUrl"><span class="im">getDataUrl</span>()</a></li>
                         				<li><a href="#method-getElements"><span class="im">getElements</span>()</a></li>
                         				<li><a href="#method-initializeTimedDrawing"><span class="im">initializeTimedDrawing</span>()</a></li>
@@ -128,6 +130,7 @@
                         			<ul>
                         				<li><a href="#prop-_2dContext"><span class="ip">_2dContext</span></a></li>
                         				<li><a href="#prop-_canvas"><span class="ip">_canvas</span></a></li>
+                        				<li><a href="#prop-_canvasElement"><span class="ip">_canvasElement</span></a></li>
                         				<li><a href="#prop-_elements"><span class="ip">_elements</span></a></li>
                         				<li><a href="#prop-_timer"><span class="ip">_timer</span></a></li>
                         				<li><a href="#prop-_timerRunning"><span class="ip">_timerRunning</span></a></li>
@@ -167,7 +170,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1104"><code>src\raska.js:1104</code></a>
+                                    		<a href="../files/src_raska.js.html#l1286"><code>src\raska.js:1286</code></a>
                                     		</p>
                                     
                                     
@@ -217,7 +220,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1152"><code>src\raska.js:1152</code></a>
+                                    		<a href="../files/src_raska.js.html#l1333"><code>src\raska.js:1333</code></a>
                                     		</p>
                                     
                                     
@@ -262,7 +265,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1183"><code>src\raska.js:1183</code></a>
+                                    		<a href="../files/src_raska.js.html#l1367"><code>src\raska.js:1367</code></a>
                                     		</p>
                                     
                                     
@@ -297,7 +300,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l835"><code>src\raska.js:835</code></a>
+                                    		<a href="../files/src_raska.js.html#l1016"><code>src\raska.js:1016</code></a>
                                     		</p>
                                     
                                     
@@ -350,7 +353,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1212"><code>src\raska.js:1212</code></a>
+                                    		<a href="../files/src_raska.js.html#l1400"><code>src\raska.js:1400</code></a>
                                     		</p>
                                     
                                     
@@ -410,7 +413,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1090"><code>src\raska.js:1090</code></a>
+                                    		<a href="../files/src_raska.js.html#l1272"><code>src\raska.js:1272</code></a>
                                     		</p>
                                     
                                     
@@ -454,7 +457,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l814"><code>src\raska.js:814</code></a>
+                                    		<a href="../files/src_raska.js.html#l995"><code>src\raska.js:995</code></a>
                                     		</p>
                                     
                                     
@@ -490,7 +493,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1131"><code>src\raska.js:1131</code></a>
+                                    		<a href="../files/src_raska.js.html#l1313"><code>src\raska.js:1313</code></a>
                                     		</p>
                                     
                                     
@@ -541,7 +544,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1118"><code>src\raska.js:1118</code></a>
+                                    		<a href="../files/src_raska.js.html#l1300"><code>src\raska.js:1300</code></a>
                                     		</p>
                                     
                                     
@@ -591,7 +594,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1042"><code>src\raska.js:1042</code></a>
+                                    		<a href="../files/src_raska.js.html#l1224"><code>src\raska.js:1224</code></a>
                                     		</p>
                                     
                                     
@@ -641,7 +644,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1060"><code>src\raska.js:1060</code></a>
+                                    		<a href="../files/src_raska.js.html#l1242"><code>src\raska.js:1242</code></a>
                                     		</p>
                                     
                                     
@@ -691,7 +694,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1243"><code>src\raska.js:1243</code></a>
+                                    		<a href="../files/src_raska.js.html#l1430"><code>src\raska.js:1430</code></a>
                                     		</p>
                                     
                                     
@@ -719,6 +722,34 @@
                                     
                                     
                                     </div>
+                                    <div id="method-getCanvasElement" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getCanvasElement</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l1460"><code>src\raska.js:1460</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Returns the corresponding Raska Canvas element</p>
+                                    </div>
+                                    
+                                    
+                                    
+                                    </div>
                                     <div id="method-getDataUrl" class="method item">
                                     	<div class="method-signature">
                                     	<span class="name"><code>getDataUrl</code></span>
@@ -734,7 +765,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1255"><code>src\raska.js:1255</code></a>
+                                    		<a href="../files/src_raska.js.html#l1442"><code>src\raska.js:1442</code></a>
                                     		</p>
                                     
                                     
@@ -762,7 +793,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1264"><code>src\raska.js:1264</code></a>
+                                    		<a href="../files/src_raska.js.html#l1451"><code>src\raska.js:1451</code></a>
                                     		</p>
                                     
                                     
@@ -790,7 +821,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1273"><code>src\raska.js:1273</code></a>
+                                    		<a href="../files/src_raska.js.html#l1469"><code>src\raska.js:1469</code></a>
                                     		</p>
                                     
                                     
@@ -822,7 +853,7 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l804"><code>src\raska.js:804</code></a>
+                                            <a href="../files/src_raska.js.html#l985"><code>src\raska.js:985</code></a>
                                             </p>
                                     
                                     
@@ -849,7 +880,7 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l794"><code>src\raska.js:794</code></a>
+                                            <a href="../files/src_raska.js.html#l965"><code>src\raska.js:965</code></a>
                                             </p>
                                     
                                     
@@ -857,6 +888,33 @@
                                     
                                         <div class="description">
                                             <p>The Canvas element we're targeting</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> null</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-_canvasElement" class="property item private">
+                                        <h3 class="name"><code>_canvasElement</code></h3>
+                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                            <span class="flag private">private</span>
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l975"><code>src\raska.js:975</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>The Canvas element (wraped by a Raska _basicElement)</p>
                                     
                                         </div>
                                     
@@ -876,7 +934,7 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l764"><code>src\raska.js:764</code></a>
+                                            <a href="../files/src_raska.js.html#l935"><code>src\raska.js:935</code></a>
                                             </p>
                                     
                                     
@@ -903,7 +961,7 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l774"><code>src\raska.js:774</code></a>
+                                            <a href="../files/src_raska.js.html#l945"><code>src\raska.js:945</code></a>
                                             </p>
                                     
                                     
@@ -930,7 +988,7 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l784"><code>src\raska.js:784</code></a>
+                                            <a href="../files/src_raska.js.html#l955"><code>src\raska.js:955</code></a>
                                             </p>
                                     
                                     

@@ -55,7 +55,7 @@
             </table>
         </div>
     </div>
-    <script type="text/javascript" src="src/raska.min.js"></script>
+    <script type="text/javascript" src="src/raska.js"></script>
     <script>
         /// Configures raska to a given Canvas element
         raska.installUsing({ targetCanvasId: "raskaContent" });
@@ -67,7 +67,7 @@
             var circle = raska.newCircle();
             circle.x += (100 * i);
             var label = raska.newLabel();
-            label.text = "label for circle " + i;
+            label.text = circle.name;
             circle.addChild(label);
             raska.plot(circle);
 
@@ -76,7 +76,7 @@
             square.y += 100;
             square.x += (100 * i);
             var label = raska.newLabel();
-            label.text = "label for square " + i;
+            label.text = square.name;
             square.addChild(label);
             raska.plot(square);
         }
