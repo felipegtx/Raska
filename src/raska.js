@@ -34,7 +34,7 @@
                  * @type Bool
                  * @default false
                  */
-                active: false,
+                active: true,
 
                 /**
                 * Prints an informational message to the console
@@ -146,6 +146,86 @@
     })(),
 
     /**
+    * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
+    * 
+    * @private
+    * @class  _graphNodeInfo
+    * @param {_basicElement} nodeElement Element whose dependencies we're about to transpose searching for links
+    * @param {_graphNodeInfo} parentNode The parent no to this element
+    * @param {array} links The linked data to this element
+    */
+    _graphNodeInfo = function (nodeElement, parentNode, links) {
+
+        var _parent = parentNode || null,
+            _links = [];
+
+        /**
+         * The element wraped by this node
+         *
+         * @property element
+         * @type _basicElement
+         * @final
+         */
+        this.element = nodeElement;
+
+        /**
+         * Whether or not this node has a parent element
+         *
+         * @property hasParent
+         * @type bool
+         * @final
+         */
+        this.hasParent = function (node) {
+            return ((_parent !== null)
+                && ((_parent.element === node) || (_parent.getName() === node.name) || _parent.hasParent(node)));
+        };
+
+        /**
+        * Tries to find a parent node compatible with the element passed as parameter
+        *
+        * @method getParentGraphNodeFor
+        * @param {_basicElement} bElement Element wraped by a parent node
+        * @type _graphNodeInfo
+        */
+        this.getParentGraphNodeFor = function (bElement) {
+
+            if ((this.element === bElement) || (this.getName() === bElement.name)) {
+                return this;
+            }
+
+            if (_parent !== null) {
+                return this.getParent(bElement);
+            }
+
+            return null;
+        };
+        this.getName = function () {
+            return nodeElement.name;
+        };
+        this.getParent = function () {
+            return _parent;
+        };
+        this.getLinks = function () {
+            return _links;
+        };
+
+        for (var j = 0; j < links.length; j++) {
+            if (links[j].graphNode === true) {
+
+                if (this.hasParent(links[j])) {
+
+                    /// We've reached a recursive relation. In this case, simply gathers the reference to the parent and 
+                    /// link it here for better navegability between nodes dependecies
+                    _helpers.$log.info("ingored parent node", this.getParentGraphNodeFor(links[j]));
+                } else {
+
+                    _links.push(new _graphNodeInfo(links[j], this, links[j].getLinksTo()));
+                }
+            }
+        }
+    },
+
+    /**
      * The valid position types for a Raskel element
      *
      * @private
@@ -250,6 +330,15 @@
              * @type String
              */
             name: "anonymous",
+
+            /**
+             * Wheter or not this element is part of the graph as a node
+             *
+             * @property graphNode
+             * @default true
+             * @type Bool
+             */
+            graphNode: true,
 
             /**
             * Creates a link between this and another element, using the later as a dependency of this instance
@@ -596,6 +685,16 @@
                 this.message = "Parameter can't be null";
                 this.parameterName = parameterName;
                 this.code = 1;
+            },
+            elementDoesNotHaveALink: function (elementName) {
+
+                if ((typeof elementName === 'undefined') || (elementName === null)) {
+                    throw new this.nullParameterException("elementName");
+                }
+
+                this.message = "Element '" + elementName + "' doesn't have a valid linked sibling";
+                this.elementName = elementName;
+                this.code = 1;
             }
         },
 
@@ -608,6 +707,7 @@
         label: function () {
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "label" + _helpers.$obj.generateId(),
+                graphNode: false,
                 text: "",
                 color: "white",
                 x: 0,
@@ -731,6 +831,7 @@
 
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "arrow" + _helpers.$obj.generateId(),
+                graphNode: false,
                 border: { color: "black", active: true, width: 2 },
                 fillColor: "black",
                 getWidth: function () { return 1; },
@@ -790,6 +891,7 @@
             var targetElement = element;
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "htmlElement" + _helpers.$obj.generateId(),
+                graphNode: false,
                 border: { active: false },
                 fillColor: "",
                 getWidth: function () { return 0; },
@@ -1401,23 +1503,27 @@
             * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
             * @method  _getElements
-            * @param {Array} elementArray Elements that need to be checked for dependencies
-            * @param {Object} root Root element node where the Graph starts
+            * @returns {_graphNodeInfo} Graph node information
             * @private
             */
-            _getElements = function (elementArray) {
+            _getElements = function () {
 
-                var result = [],
-                    element;
+                var result = {},
+                    element,
+                    links;
 
-                for (var i = 0; i < elementArray.length; i++) {
+                for (var i = 0; i < _elements.length; i++) {
 
-                    element = elementArray[i];
-                    result.push({
-                        name: element.name,
-                        childs: element.getChildElements(),
-                        links: element.getLinksFrom()
-                    });
+                    element = _elements[i];
+
+                    if (element.graphNode === true) {
+                        if ((((links = element.getLinksFrom()) === null) || (links.length === 0))
+                            && (((links = element.getLinksTo()) === null) || (links.length === 0))) {
+                            throw new _defaultConfigurations.errors.elementDoesNotHaveALink(element.name);
+                        }
+
+                        result[element.name] = new _graphNodeInfo(element, null, element.getLinksTo());
+                    }
                 }
 
                 return result;
@@ -1452,9 +1558,10 @@
             * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
             * @method  getElements
+            * @returns {_graphNodeInfo} Graph node information
             */
             getElements: function () {
-                return _getElements(_elements);
+                return _getElements();
             },
 
             /**

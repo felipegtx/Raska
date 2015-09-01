@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>_elementBeingDraged - Raska</title>
+    <title>_graphNodeInfo - Raska</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -84,19 +84,20 @@
                     <div id="docs-main">
                         <div class="content">
                             <div class="page-header">
-                                <h1>_elementBeingDraged</h1>
+                                <h1>_graphNodeInfo</h1>
                             </div>
                             
                             
                             
                             	<div class="well well-small">
-                                        Module: <a href="../modules/raska.html">raska</a>
+                                        Module: <a href="../modules/_helpers.html">_helpers</a><br>
+                                        Parent Module: <a href="../modules/raska.html">raska</a>
                                 </div>
                             
                             
                             
                             <div class="yuidoc-class-description">
-                            <p>A utility that tracks the state of the element being draged (if any)</p>
+                            <p>Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON</p>
                             
                             </div>
                             
@@ -108,26 +109,21 @@
                             		<li>
                             			<strong>Methods</strong>
                             			<ul>
-                            				<li><a href="#method-tryRender"><span class="im">tryRender</span>()</a></li>
+                            				<li><a href="#method-getParentGraphNodeFor"><span class="im">getParentGraphNodeFor</span>(<span class="ia">bElement</span>)</a></li>
                             			</ul>
                             		</li>
                             
                             		<li>
                             			<strong>Properties</strong>
                             			<ul>
-                            				<li><a href="#prop-dragType"><span class="ip">dragType</span></a></li>
-                            				<li><a href="#prop-holdingCTRL"><span class="ip">holdingCTRL</span></a></li>
-                            				<li><a href="#prop-originalBorder"><span class="ip">originalBorder</span></a></li>
-                            				<li><a href="#prop-reference"><span class="ip">reference</span></a></li>
+                            				<li><a href="#prop-_positionTypes"><span class="ip">_positionTypes</span></a></li>
+                            				<li><a href="#prop-element"><span class="ip">element</span></a></li>
+                            				<li><a href="#prop-hasParent"><span class="ip">hasParent</span></a></li>
+                            				<li><a href="#prop-relative"><span class="ip">relative</span></a></li>
+                            				<li><a href="#prop-relative"><span class="ip">relative</span></a></li>
                             			</ul>
                             		</li>
                             
-                            		<li>
-                            			<strong>Attributes</strong>
-                            			<ul>
-                            				<li><a href="#attr-dragTypes"><span class="iattr">dragTypes</span></a></li>
-                            			</ul>
-                            		</li>
                             
                             	</ul>
                             </div>
@@ -138,15 +134,20 @@
                                 <div id="methods" class="page-section">
                                     <h2 class="off-left">Methods</h2>
                                     <div class="item-list">
-                                        <div id="method-tryRender" class="method item private">
+                                        <div id="method-getParentGraphNodeFor" class="method item">
                                         	<div class="method-signature">
-                                        	<span class="name"><code>tryRender</code></span>
+                                        	<span class="name"><code>getParentGraphNodeFor</code></span>
                                         
-                                        		<span class="paren">()</span>
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>bElement</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
                                         	</div>
                                         
                                         
-                                        		<span class="flag private">private</span>
                                         
                                         
                                         
@@ -154,16 +155,31 @@
                                         	<div class="meta">
                                         				<p>
                                         				Defined in
-                                        		<a href="../files/src_raska.js.html#l1289"><code>src\raska.js:1289</code></a>
+                                        		<a href="../files/src_raska.js.html#l183"><code>src\raska.js:183</code></a>
                                         		</p>
                                         
                                         
                                         
                                         	</div>
                                         
-                                        	<div class="description"><p>Whenever possible/necessary it plots the linking arrow to the canvas</p>
+                                        	<div class="description"><p>Tries to find a parent node compatible with the element passed as parameter</p>
                                         </div>
                                         
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">bElement</code>
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Element wraped by a parent node</p>
+                                        </div>
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
                                         
                                         
                                         </div>
@@ -174,153 +190,141 @@
                                     <h2 class="off-left">Properties</h2>
                             
                                     <div class="item-list">
-                                        <div id="prop-dragType" class="property item">
-                                            <h3 class="name"><code>dragType</code></h3>
+                                        <div id="prop-_positionTypes" class="property item private">
+                                            <h3 class="name"><code>_positionTypes</code></h3>
+                                            <span class="type">Unknown</span>
+                                        
+                                        
+                                                <span class="flag private">private</span>
+                                        
+                                                <span class="flag final">const</span>
+                                        
+                                                <span class="flag static">static</span>
+                                        
+                                            <div class="meta">
+                                                        <p>
+                                                        Defined in
+                                                <a href="../files/src_raska.js.html#l228"><code>src\raska.js:228</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>The valid position types for a Raskel element</p>
+                                        
+                                            </div>
+                                        
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-element" class="property item">
+                                            <h3 class="name"><code>element</code></h3>
+                                            <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        
+                                                <span class="flag final">const</span>
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>
+                                                        Defined in
+                                                <a href="../files/src_raska.js.html#l162"><code>src\raska.js:162</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>The element wraped by this node</p>
+                                        
+                                            </div>
+                                        
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-hasParent" class="property item">
+                                            <h3 class="name"><code>hasParent</code></h3>
+                                            <span class="type">Bool</span>
+                                        
+                                        
+                                        
+                                                <span class="flag final">const</span>
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>
+                                                        Defined in
+                                                <a href="../files/src_raska.js.html#l171"><code>src\raska.js:171</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Whether or not this node has a parent element</p>
+                                        
+                                            </div>
+                                        
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-relative" class="property item">
+                                            <h3 class="name"><code>relative</code></h3>
                                             <span class="type">Number</span>
                                         
                                         
                                         
                                         
-                                                <span class="flag static">static</span>
                                         
                                             <div class="meta">
                                                         <p>
                                                         Defined in
-                                                <a href="../files/src_raska.js.html#l1274"><code>src\raska.js:1274</code></a>
+                                                <a href="../files/src_raska.js.html#l238"><code>src\raska.js:238</code></a>
                                                 </p>
                                         
                                         
                                             </div>
                                         
                                             <div class="description">
-                                                <p>Default drag type</p>
+                                                <p>Element position will be relative to its parent (if any)</p>
                                         
                                             </div>
                                         
-                                                <p><strong>Default:</strong> 0</p>
+                                                <p><strong>Default:</strong> 50</p>
                                         
                                         
                                         </div>
-                                        <div id="prop-holdingCTRL" class="property item">
-                                            <h3 class="name"><code>holdingCTRL</code></h3>
-                                            <span class="type">Bool</span>
+                                        <div id="prop-relative" class="property item">
+                                            <h3 class="name"><code>relative</code></h3>
+                                            <span class="type">Number</span>
                                         
                                         
                                         
                                         
-                                                <span class="flag static">static</span>
                                         
                                             <div class="meta">
                                                         <p>
                                                         Defined in
-                                                <a href="../files/src_raska.js.html#l1224"><code>src\raska.js:1224</code></a>
+                                                <a href="../files/src_raska.js.html#l248"><code>src\raska.js:248</code></a>
                                                 </p>
                                         
                                         
                                             </div>
                                         
                                             <div class="description">
-                                                <p>Whether or not the user is holding the CTRL key</p>
+                                                <p>Element position will be absolute and will have no regard about its parent position whatsoever</p>
                                         
                                             </div>
                                         
-                                                <p><strong>Default:</strong> false</p>
-                                        
-                                        
-                                        </div>
-                                        <div id="prop-originalBorder" class="property item">
-                                            <h3 class="name"><code>originalBorder</code></h3>
-                                            <span class="type">Object</span>
-                                        
-                                        
-                                        
-                                        
-                                                <span class="flag static">static</span>
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l1235"><code>src\raska.js:1235</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>A copy from the original border specification for the element being draged</p>
-                                        
-                                            </div>
-                                        
-                                                <p><strong>Default:</strong> {}</p>
-                                        
-                                        
-                                        </div>
-                                        <div id="prop-reference" class="property item">
-                                            <h3 class="name"><code>reference</code></h3>
-                                            <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                        
-                                        
-                                        
-                                        
-                                                <span class="flag static">static</span>
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l1213"><code>src\raska.js:1213</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>The element being draged</p>
-                                        
-                                            </div>
-                                        
-                                                <p><strong>Default:</strong> null</p>
+                                                <p><strong>Default:</strong> 50</p>
                                         
                                         
                                         </div>
                                     </div>
                                 </div>
                             
-                                <div id="attrs" class="page-section">
-                                    <h2 class="off-left">Attributes</h2>
-                            
-                                        <div id="attr-dragTypes" class="attr item">
-                                            <a name="config_dragTypes"></a> 
-                                            <h3 class="name"><code>dragTypes</code></h3>
-                                            <span class="type"></span>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l1246"><code>src\raska.js:1246</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>The types of drag that can be applied to an element</p>
-                                        <p>It can be either:
-                                        1 - moving
-                                        3 - linking</p>
-                                        
-                                            </div>
-                                        
-                                        
-                                        
-                                        </div>
-                                </div>
                             
                             
                         </div>

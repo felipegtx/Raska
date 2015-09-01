@@ -6,6 +6,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "_basicElement",
         "_drawing",
         "_elementBeingDraged",
+        "_graphNodeInfo",
         "_mouse",
         "_public",
         "arrow",
