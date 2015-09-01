@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,231 +12,233 @@
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="yui3-skin-sam">
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-            Raska
-        </h1>
-	<div class="nav">
-            <li class="divider-vertical"></li>
-            <li>
-                <p class="navbar-text">
-                    API Docs for Version: <b>0.0.1</b>
-                </p>
-            </li>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+                <a href="https://github.com/felipegtx/Raska" target="_blank">
+                    Raska
+                </a>
+            </h1>
+            <div class="nav">
+                <li class="divider-vertical"></li>
+                <li>
+                    <p class="navbar-text">
+                        API Docs for Version: <b>0.0.1</b>
+                    </p>
+                </li>
+            </div>
+            <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+                <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+            </form>
         </div>
-        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
-        </form>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="span3">
-	    <div>
-	        <div id="sidebar">
-	        <div id="classes">
-	            <ul id="api-classes" class="nav nav-list">
-	                    <li><a href="../classes/$log.html">$log</a></li>
-	                    <li><a href="../classes/$obj.html">$obj</a></li>
-	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
-	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
-	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
-	                    <li><a href="../classes/_public.html">_public</a></li>
-	                    <li><a href="../classes/arrow.html">arrow</a></li>
-	                    <li><a href="../classes/circle.html">circle</a></li>
-	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
-	                    <li><a href="../classes/label.html">label</a></li>
-	                    <li><a href="../classes/square.html">square</a></li>
-	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
-	            </ul>
-	        </div>
-	        </div>
-	    </div>
-        </div>
-        <div class="span9">
-                <form id="options-form" class="form-inline pull-right">
-                    Show:
-                    <label for="api-show-inherited" class="checkbox">
-                        <input type="checkbox" id="api-show-inherited" checked>
-                        Inherited
-                    </label>
-            
-                    <label for="api-show-protected" class="checkbox">
-                        <input type="checkbox" id="api-show-protected">
-                        Protected
-                    </label>
-            
-                    <label for="api-show-private" class="checkbox">
-                        <input type="checkbox" id="api-show-private">
-                        Private
-                    </label>
-                    <label for="api-show-deprecated" class="checkbox">
-                        <input type="checkbox" id="api-show-deprecated">
-                        Deprecated
-                    </label>
-            
-                </form>
-            
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <div class="page-header">
-                            <h1>$log</h1>
-                        </div>
-                        
-                        
-                        
-                        	<div class="well well-small">
-                                    Module: <a href="../modules/_helpers.html">_helpers</a><br>
-                                    Parent Module: <a href="../modules/raska.html">raska</a>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div>
+                    <div id="sidebar">
+                    <div id="classes">
+                        <ul id="api-classes" class="nav nav-list">
+                                <li><a href="../classes/$log.html">$log</a></li>
+                                <li><a href="../classes/$obj.html">$obj</a></li>
+                                <li><a href="../classes/_drawing.html">_drawing</a></li>
+                                <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
+                                <li><a href="../classes/_mouse.html">_mouse</a></li>
+                                <li><a href="../classes/_public.html">_public</a></li>
+                                <li><a href="../classes/arrow.html">arrow</a></li>
+                                <li><a href="../classes/circle.html">circle</a></li>
+                                <li><a href="../classes/htmlElement.html">htmlElement</a></li>
+                                <li><a href="../classes/label.html">label</a></li>
+                                <li><a href="../classes/square.html">square</a></li>
+                                <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span9">
+                    <form id="options-form" class="form-inline pull-right">
+                        Show:
+                        <label for="api-show-inherited" class="checkbox">
+                            <input type="checkbox" id="api-show-inherited" checked>
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected" class="checkbox">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private" class="checkbox">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated" class="checkbox">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </form>
+                
+                <div class="apidocs">
+                    <div id="docs-main">
+                        <div class="content">
+                            <div class="page-header">
+                                <h1>$log</h1>
                             </div>
-                        
-                        
-                        
-                        <div class="yuidoc-class-description">
-                        <p>Outputs messages to the 'console'</p>
-                        
-                        </div>
-                        
-                        <!-- table of contents -->
-                        
-                        <div id="class-toc" class="page-section">
-                        	<h2>Table of Contents</h2>
-                            <ul>
-                        		<li>
-                        			<strong>Methods</strong>
-                        			<ul>
-                        				<li><a href="#method-info"><span class="im">info</span>(<span class="ia">msg</span><span class="ia">o</span>)</a></li>
-                        			</ul>
-                        		</li>
-                        
-                        		<li>
-                        			<strong>Properties</strong>
-                        			<ul>
-                        				<li><a href="#prop-active"><span class="ip">active</span></a></li>
-                        			</ul>
-                        		</li>
-                        
-                        
-                        	</ul>
-                        </div>
-                        
-                        <!-- details -->
-                        
-                        
-                            <div id="methods" class="page-section">
-                                <h2 class="off-left">Methods</h2>
-                                <div class="item-list">
-                                    <div id="method-info" class="method item">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>info</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>msg</code>
-                                    				</li>
-                                    				<li class="arg">
-                                    						<code>o</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>
-                                    				Defined in
-                                    		<a href="../files/src_raska.js.html#l39"><code>src\raska.js:39</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Prints an informational message to the console</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">msg</code>
-                                    						<span class="type">String</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>The message to be shown</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    				<li class="param">
-                                    						<code class="param-name">o</code>
-                                    						<span class="type">Any</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Any extra message data</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    
+                            
+                            
+                            
+                            	<div class="well well-small">
+                                        Module: <a href="../modules/_helpers.html">_helpers</a><br>
+                                        Parent Module: <a href="../modules/raska.html">raska</a>
+                                </div>
+                            
+                            
+                            
+                            <div class="yuidoc-class-description">
+                            <p>Outputs messages to the 'console'</p>
+                            
+                            </div>
+                            
+                            <!-- table of contents -->
+                            
+                            <div id="class-toc" class="page-section">
+                            	<h2>Table of Contents</h2>
+                                <ul>
+                            		<li>
+                            			<strong>Methods</strong>
+                            			<ul>
+                            				<li><a href="#method-info"><span class="im">info</span>(<span class="ia">msg</span><span class="ia">o</span>)</a></li>
+                            			</ul>
+                            		</li>
+                            
+                            		<li>
+                            			<strong>Properties</strong>
+                            			<ul>
+                            				<li><a href="#prop-active"><span class="ip">active</span></a></li>
+                            			</ul>
+                            		</li>
+                            
+                            
+                            	</ul>
+                            </div>
+                            
+                            <!-- details -->
+                            
+                            
+                                <div id="methods" class="page-section">
+                                    <h2 class="off-left">Methods</h2>
+                                    <div class="item-list">
+                                        <div id="method-info" class="method item">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>info</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>msg</code>
+                                        				</li>
+                                        				<li class="arg">
+                                        						<code>o</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>
+                                        				Defined in
+                                        		<a href="../files/src_raska.js.html#l39"><code>src\raska.js:39</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Prints an informational message to the console</p>
+                                        </div>
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">msg</code>
+                                        						<span class="type">String</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>The message to be shown</p>
+                                        </div>
+                                        
+                                        				</li>
+                                        				<li class="param">
+                                        						<code class="param-name">o</code>
+                                        						<span class="type">Any</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Any extra message data</p>
+                                        </div>
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        
-                            <div id="properties" class="page-section">
-                                <h2 class="off-left">Properties</h2>
-                        
-                                <div class="item-list">
-                                    <div id="prop-active" class="property item">
-                                        <h3 class="name"><code>active</code></h3>
-                                        <span class="type">Bool</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>
-                                                    Defined in
-                                            <a href="../files/src_raska.js.html#l30"><code>src\raska.js:30</code></a>
-                                            </p>
-                                    
-                                    
+                            
+                                <div id="properties" class="page-section">
+                                    <h2 class="off-left">Properties</h2>
+                            
+                                    <div class="item-list">
+                                        <div id="prop-active" class="property item">
+                                            <h3 class="name"><code>active</code></h3>
+                                            <span class="type">Bool</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>
+                                                        Defined in
+                                                <a href="../files/src_raska.js.html#l30"><code>src\raska.js:30</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Whether or not to actually log the messages (should be 'false' in production code)</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> false</p>
+                                        
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Whether or not to actually log the messages (should be 'false' in production code)</p>
-                                    
-                                        </div>
-                                    
-                                            <p><strong>Default:</strong> false</p>
-                                    
-                                    
                                     </div>
                                 </div>
-                            </div>
-                        
-                        
-                        
+                            
+                            
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script src="../assets/js/yuidoc-bootstrap.js"></script>
-<script>prettyPrint();</script>
+    <script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/yuidoc-bootstrap.js"></script>
+    <script>prettyPrint();</script>
 </body>
 </html>

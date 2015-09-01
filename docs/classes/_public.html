@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,532 +12,534 @@
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="yui3-skin-sam">
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-            Raska
-        </h1>
-	<div class="nav">
-            <li class="divider-vertical"></li>
-            <li>
-                <p class="navbar-text">
-                    API Docs for Version: <b>0.0.1</b>
-                </p>
-            </li>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+                <a href="https://github.com/felipegtx/Raska" target="_blank">
+                    Raska
+                </a>
+            </h1>
+            <div class="nav">
+                <li class="divider-vertical"></li>
+                <li>
+                    <p class="navbar-text">
+                        API Docs for Version: <b>0.0.1</b>
+                    </p>
+                </li>
+            </div>
+            <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+                <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+            </form>
         </div>
-        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
-        </form>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="span3">
-	    <div>
-	        <div id="sidebar">
-	        <div id="classes">
-	            <ul id="api-classes" class="nav nav-list">
-	                    <li><a href="../classes/$log.html">$log</a></li>
-	                    <li><a href="../classes/$obj.html">$obj</a></li>
-	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
-	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
-	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
-	                    <li><a href="../classes/_public.html">_public</a></li>
-	                    <li><a href="../classes/arrow.html">arrow</a></li>
-	                    <li><a href="../classes/circle.html">circle</a></li>
-	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
-	                    <li><a href="../classes/label.html">label</a></li>
-	                    <li><a href="../classes/square.html">square</a></li>
-	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
-	            </ul>
-	        </div>
-	        </div>
-	    </div>
-        </div>
-        <div class="span9">
-                <form id="options-form" class="form-inline pull-right">
-                    Show:
-                    <label for="api-show-inherited" class="checkbox">
-                        <input type="checkbox" id="api-show-inherited" checked>
-                        Inherited
-                    </label>
-            
-                    <label for="api-show-protected" class="checkbox">
-                        <input type="checkbox" id="api-show-protected">
-                        Protected
-                    </label>
-            
-                    <label for="api-show-private" class="checkbox">
-                        <input type="checkbox" id="api-show-private">
-                        Private
-                    </label>
-                    <label for="api-show-deprecated" class="checkbox">
-                        <input type="checkbox" id="api-show-deprecated">
-                        Deprecated
-                    </label>
-            
-                </form>
-            
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <div class="page-header">
-                            <h1>_public</h1>
-                        </div>
-                        
-                        
-                        
-                        	<div class="well well-small">
-                                    Module: <a href="../modules/raska.html">raska</a>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div>
+                    <div id="sidebar">
+                    <div id="classes">
+                        <ul id="api-classes" class="nav nav-list">
+                                <li><a href="../classes/$log.html">$log</a></li>
+                                <li><a href="../classes/$obj.html">$obj</a></li>
+                                <li><a href="../classes/_drawing.html">_drawing</a></li>
+                                <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
+                                <li><a href="../classes/_mouse.html">_mouse</a></li>
+                                <li><a href="../classes/_public.html">_public</a></li>
+                                <li><a href="../classes/arrow.html">arrow</a></li>
+                                <li><a href="../classes/circle.html">circle</a></li>
+                                <li><a href="../classes/htmlElement.html">htmlElement</a></li>
+                                <li><a href="../classes/label.html">label</a></li>
+                                <li><a href="../classes/square.html">square</a></li>
+                                <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span9">
+                    <form id="options-form" class="form-inline pull-right">
+                        Show:
+                        <label for="api-show-inherited" class="checkbox">
+                            <input type="checkbox" id="api-show-inherited" checked>
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected" class="checkbox">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private" class="checkbox">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated" class="checkbox">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </form>
+                
+                <div class="apidocs">
+                    <div id="docs-main">
+                        <div class="content">
+                            <div class="page-header">
+                                <h1>_public</h1>
                             </div>
-                        
-                        
-                        
-                        <div class="yuidoc-class-description">
-                        <p>All public avaliable methods from the Raska library</p>
-                        
-                        </div>
-                        
-                        <!-- table of contents -->
-                        
-                        <div id="class-toc" class="page-section">
-                        	<h2>Table of Contents</h2>
-                            <ul>
-                        
-                        		<li>
-                        			<strong>Properties</strong>
-                        			<ul>
-                        				<li><a href="#prop-positionTypes"><span class="ip">positionTypes</span></a></li>
-                        			</ul>
-                        		</li>
-                        
-                        
-                        		<li>
-                        			<strong>Static Methods</strong>
-                        			<ul>
-                        				<li><a href="#method-exportImage"><span class="im">_public.exportImage</span>()</a></li>
-                        				<li><a href="#method-getElements"><span class="im">_public.getElements</span>()</a></li>
-                        				<li><a href="#method-installUsing"><span class="im">_public.installUsing</span>(<span class="ia">configuration</span>)</a></li>
-                        				<li><a href="#method-newCircle"><span class="im">_public.newCircle</span>()</a></li>
-                        				<li><a href="#method-newLabel"><span class="im">_public.newLabel</span>()</a></li>
-                        				<li><a href="#method-newSquare"><span class="im">_public.newSquare</span>()</a></li>
-                        				<li><a href="#method-onElementInteraction"><span class="im">_public.onElementInteraction</span>(<span class="ia">What</span>)</a></li>
-                        				<li><a href="#method-plot"><span class="im">_public.plot</span>()</a></li>
-                        			</ul>
-                        		</li>
-                        	</ul>
-                        </div>
-                        
-                        <!-- details -->
-                        
-                        
-                        
-                            <div id="properties" class="page-section">
-                                <h2 class="off-left">Properties</h2>
-                        
-                                <div class="item-list">
-                                    <div id="prop-positionTypes" class="property item">
-                                        <h3 class="name"><code>positionTypes</code></h3>
-                                        <span class="type">_positionTypes</span>
-                                    
-                                    
-                                    
-                                    
-                                            <span class="flag static">static</span>
-                                    
-                                        <div class="meta">
-                                                    <p>
-                                                    Defined in
-                                            <a href="../files/src_raska.js.html#l1562"><code>src\raska.js:1562</code></a>
-                                            </p>
-                                    
-                                    
+                            
+                            
+                            
+                            	<div class="well well-small">
+                                        Module: <a href="../modules/raska.html">raska</a>
+                                </div>
+                            
+                            
+                            
+                            <div class="yuidoc-class-description">
+                            <p>All public avaliable methods from the Raska library</p>
+                            
+                            </div>
+                            
+                            <!-- table of contents -->
+                            
+                            <div id="class-toc" class="page-section">
+                            	<h2>Table of Contents</h2>
+                                <ul>
+                            
+                            		<li>
+                            			<strong>Properties</strong>
+                            			<ul>
+                            				<li><a href="#prop-positionTypes"><span class="ip">positionTypes</span></a></li>
+                            			</ul>
+                            		</li>
+                            
+                            
+                            		<li>
+                            			<strong>Static Methods</strong>
+                            			<ul>
+                            				<li><a href="#method-exportImage"><span class="im">_public.exportImage</span>()</a></li>
+                            				<li><a href="#method-getElements"><span class="im">_public.getElements</span>()</a></li>
+                            				<li><a href="#method-installUsing"><span class="im">_public.installUsing</span>(<span class="ia">configuration</span>)</a></li>
+                            				<li><a href="#method-newCircle"><span class="im">_public.newCircle</span>()</a></li>
+                            				<li><a href="#method-newLabel"><span class="im">_public.newLabel</span>()</a></li>
+                            				<li><a href="#method-newSquare"><span class="im">_public.newSquare</span>()</a></li>
+                            				<li><a href="#method-onElementInteraction"><span class="im">_public.onElementInteraction</span>(<span class="ia">What</span>)</a></li>
+                            				<li><a href="#method-plot"><span class="im">_public.plot</span>()</a></li>
+                            			</ul>
+                            		</li>
+                            	</ul>
+                            </div>
+                            
+                            <!-- details -->
+                            
+                            
+                            
+                                <div id="properties" class="page-section">
+                                    <h2 class="off-left">Properties</h2>
+                            
+                                    <div class="item-list">
+                                        <div id="prop-positionTypes" class="property item">
+                                            <h3 class="name"><code>positionTypes</code></h3>
+                                            <span class="type">_positionTypes</span>
+                                        
+                                        
+                                        
+                                        
+                                                <span class="flag static">static</span>
+                                        
+                                            <div class="meta">
+                                                        <p>
+                                                        Defined in
+                                                <a href="../files/src_raska.js.html#l1562"><code>src\raska.js:1562</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Retrieves all possible position types</p>
+                                        
+                                            </div>
+                                        
+                                        
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Retrieves all possible position types</p>
-                                    
-                                        </div>
-                                    
-                                    
-                                    
                                     </div>
                                 </div>
-                            </div>
-                        
-                        
-                        
-                            <div id="static-methods" class="page-section">
-                                <h2 class="off-left">Static Methods</h2>
-                                <div class="item-list">
-                            	        <div id="method-exportImage" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.exportImage</code></span>
-                            	        
-                            	        		<span class="paren">()</span>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        		<span class="flag chainable">chainable</span>
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1536"><code>src\raska.js:1536</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Exports current canvas data as an image to a new window</p>
-                            	        </div>
-                            	        
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>:
-                            	        					<p>Reference to the '_public' pointer</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-getElements" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.getElements</code></span>
-                            	        
-                            	        		<span class="paren">()</span>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type">Json</span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        		<span class="flag chainable">chainable</span>
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1550"><code>src\raska.js:1550</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Retrieves the directed graph represented by the elements in the canvas</p>
-                            	        </div>
-                            	        
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type">Json</span>:
-                            	        					<p>The JSON object that represents the current directed graph drawn to the canvas</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-installUsing" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.installUsing</code></span>
-                            	        
-                            	        		<div class="args">
-                            	        			<span class="paren">(</span><ul class="args-list inline commas">
-                            	        				<li class="arg">
-                            	        						<code>configuration</code>
-                            	        				</li>
-                            	        			</ul><span class="paren">)</span>
-                            	        		</div>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        		<span class="flag chainable">chainable</span>
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1573"><code>src\raska.js:1573</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Configures the Raska library to target a given canvas using the configuration passed
-                            	        as a parameter</p>
-                            	        </div>
-                            	        
-                            	        		<div class="params">
-                            	        			<h4>Parameters:</h4>
-                            	        
-                            	        			<ul class="params-list">
-                            	        				<li class="param">
-                            	        						<code class="param-name">configuration</code>
-                            	        						<span class="type">_defaultConfigurations.library</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>Configuration data that should be used to configure this Raska instance</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        			</ul>
-                            	        		</div>
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>:
-                            	        					<p>Reference to the '_public' pointer</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-newCircle" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.newCircle</code></span>
-                            	        
-                            	        		<span class="paren">()</span>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type">_defaultConfigurations.circle</span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1512"><code>src\raska.js:1512</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Adds a new Circle to the target canvas</p>
-                            	        </div>
-                            	        
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type">_defaultConfigurations.circle</span>:
-                            	        					<p>Copy of '_defaultConfigurations.circle' object</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-newLabel" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.newLabel</code></span>
-                            	        
-                            	        		<span class="paren">()</span>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type">_defaultConfigurations.label</span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1490"><code>src\raska.js:1490</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Adds a new Label to the target canvas</p>
-                            	        </div>
-                            	        
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type">_defaultConfigurations.label</span>:
-                            	        					<p>Copy of '_defaultConfigurations.label' object</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-newSquare" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.newSquare</code></span>
-                            	        
-                            	        		<span class="paren">()</span>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type">_defaultConfigurations.square</span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1501"><code>src\raska.js:1501</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Adds a new Square to the target canvas</p>
-                            	        </div>
-                            	        
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type">_defaultConfigurations.square</span>:
-                            	        					<p>Copy of '_defaultConfigurations.square' object</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-onElementInteraction" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.onElementInteraction</code></span>
-                            	        
-                            	        		<div class="args">
-                            	        			<span class="paren">(</span><ul class="args-list inline commas">
-                            	        				<li class="arg">
-                            	        						<code>What</code>
-                            	        				</li>
-                            	        			</ul><span class="paren">)</span>
-                            	        		</div>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        		<span class="flag chainable">chainable</span>
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1590"><code>src\raska.js:1590</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Registers a handler to be trigered by any interaction taken place against the canvas</p>
-                            	        </div>
-                            	        
-                            	        		<div class="params">
-                            	        			<h4>Parameters:</h4>
-                            	        
-                            	        			<ul class="params-list">
-                            	        				<li class="param">
-                            	        						<code class="param-name">What</code>
-                            	        						<span class="type">Function</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>to do whenever an element iteraction happens</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        			</ul>
-                            	        		</div>
-                            	        
-                            	        
-                            	        </div>
-                            	        <div id="method-plot" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_public.plot</code></span>
-                            	        
-                            	        		<span class="paren">()</span>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        		<span class="flag chainable">chainable</span>
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1523"><code>src\raska.js:1523</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Plots an element to the canvas</p>
-                            	        </div>
-                            	        
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>:
-                            	        					<p>Reference to the '_public' pointer</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
+                            
+                            
+                            
+                                <div id="static-methods" class="page-section">
+                                    <h2 class="off-left">Static Methods</h2>
+                                    <div class="item-list">
+                                	        <div id="method-exportImage" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.exportImage</code></span>
+                                	        
+                                	        		<span class="paren">()</span>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        		<span class="flag chainable">chainable</span>
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1536"><code>src\raska.js:1536</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Exports current canvas data as an image to a new window</p>
+                                	        </div>
+                                	        
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>:
+                                	        					<p>Reference to the '_public' pointer</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-getElements" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.getElements</code></span>
+                                	        
+                                	        		<span class="paren">()</span>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type">Json</span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        		<span class="flag chainable">chainable</span>
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1550"><code>src\raska.js:1550</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Retrieves the directed graph represented by the elements in the canvas</p>
+                                	        </div>
+                                	        
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type">Json</span>:
+                                	        					<p>The JSON object that represents the current directed graph drawn to the canvas</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-installUsing" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.installUsing</code></span>
+                                	        
+                                	        		<div class="args">
+                                	        			<span class="paren">(</span><ul class="args-list inline commas">
+                                	        				<li class="arg">
+                                	        						<code>configuration</code>
+                                	        				</li>
+                                	        			</ul><span class="paren">)</span>
+                                	        		</div>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        		<span class="flag chainable">chainable</span>
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1573"><code>src\raska.js:1573</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Configures the Raska library to target a given canvas using the configuration passed
+                                	        as a parameter</p>
+                                	        </div>
+                                	        
+                                	        		<div class="params">
+                                	        			<h4>Parameters:</h4>
+                                	        
+                                	        			<ul class="params-list">
+                                	        				<li class="param">
+                                	        						<code class="param-name">configuration</code>
+                                	        						<span class="type">_defaultConfigurations.library</span>
+                                	        
+                                	        
+                                	        					<div class="param-description"><p>Configuration data that should be used to configure this Raska instance</p>
+                                	        </div>
+                                	        
+                                	        				</li>
+                                	        			</ul>
+                                	        		</div>
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>:
+                                	        					<p>Reference to the '_public' pointer</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-newCircle" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.newCircle</code></span>
+                                	        
+                                	        		<span class="paren">()</span>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type">_defaultConfigurations.circle</span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1512"><code>src\raska.js:1512</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Adds a new Circle to the target canvas</p>
+                                	        </div>
+                                	        
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type">_defaultConfigurations.circle</span>:
+                                	        					<p>Copy of '_defaultConfigurations.circle' object</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-newLabel" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.newLabel</code></span>
+                                	        
+                                	        		<span class="paren">()</span>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type">_defaultConfigurations.label</span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1490"><code>src\raska.js:1490</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Adds a new Label to the target canvas</p>
+                                	        </div>
+                                	        
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type">_defaultConfigurations.label</span>:
+                                	        					<p>Copy of '_defaultConfigurations.label' object</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-newSquare" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.newSquare</code></span>
+                                	        
+                                	        		<span class="paren">()</span>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type">_defaultConfigurations.square</span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1501"><code>src\raska.js:1501</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Adds a new Square to the target canvas</p>
+                                	        </div>
+                                	        
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type">_defaultConfigurations.square</span>:
+                                	        					<p>Copy of '_defaultConfigurations.square' object</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-onElementInteraction" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.onElementInteraction</code></span>
+                                	        
+                                	        		<div class="args">
+                                	        			<span class="paren">(</span><ul class="args-list inline commas">
+                                	        				<li class="arg">
+                                	        						<code>What</code>
+                                	        				</li>
+                                	        			</ul><span class="paren">)</span>
+                                	        		</div>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        		<span class="flag chainable">chainable</span>
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1590"><code>src\raska.js:1590</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Registers a handler to be trigered by any interaction taken place against the canvas</p>
+                                	        </div>
+                                	        
+                                	        		<div class="params">
+                                	        			<h4>Parameters:</h4>
+                                	        
+                                	        			<ul class="params-list">
+                                	        				<li class="param">
+                                	        						<code class="param-name">What</code>
+                                	        						<span class="type">Function</span>
+                                	        
+                                	        
+                                	        					<div class="param-description"><p>to do whenever an element iteraction happens</p>
+                                	        </div>
+                                	        
+                                	        				</li>
+                                	        			</ul>
+                                	        		</div>
+                                	        
+                                	        
+                                	        </div>
+                                	        <div id="method-plot" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_public.plot</code></span>
+                                	        
+                                	        		<span class="paren">()</span>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        		<span class="flag chainable">chainable</span>
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1523"><code>src\raska.js:1523</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Plots an element to the canvas</p>
+                                	        </div>
+                                	        
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type"><a href="../classes/_public.html" class="crosslink">_public</a></span>:
+                                	        					<p>Reference to the '_public' pointer</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                    </div>
                                 </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script src="../assets/js/yuidoc-bootstrap.js"></script>
-<script>prettyPrint();</script>
+    <script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/yuidoc-bootstrap.js"></script>
+    <script>prettyPrint();</script>
 </body>
 </html>

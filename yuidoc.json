@@ -1,6 +1,6 @@
 {
     "name": "Raska",
-    "url": "http://felipegte.com",
+    "url": "https://github.com/felipegtx/Raska",
     "version": "0.0.1",
     "options": {
         "paths": "./src",

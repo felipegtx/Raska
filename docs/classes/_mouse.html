@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,295 +12,297 @@
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="yui3-skin-sam">
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-            Raska
-        </h1>
-	<div class="nav">
-            <li class="divider-vertical"></li>
-            <li>
-                <p class="navbar-text">
-                    API Docs for Version: <b>0.0.1</b>
-                </p>
-            </li>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+                <a href="https://github.com/felipegtx/Raska" target="_blank">
+                    Raska
+                </a>
+            </h1>
+            <div class="nav">
+                <li class="divider-vertical"></li>
+                <li>
+                    <p class="navbar-text">
+                        API Docs for Version: <b>0.0.1</b>
+                    </p>
+                </li>
+            </div>
+            <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+                <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+            </form>
         </div>
-        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
-        </form>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="span3">
-	    <div>
-	        <div id="sidebar">
-	        <div id="classes">
-	            <ul id="api-classes" class="nav nav-list">
-	                    <li><a href="../classes/$log.html">$log</a></li>
-	                    <li><a href="../classes/$obj.html">$obj</a></li>
-	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
-	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
-	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
-	                    <li><a href="../classes/_public.html">_public</a></li>
-	                    <li><a href="../classes/arrow.html">arrow</a></li>
-	                    <li><a href="../classes/circle.html">circle</a></li>
-	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
-	                    <li><a href="../classes/label.html">label</a></li>
-	                    <li><a href="../classes/square.html">square</a></li>
-	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
-	            </ul>
-	        </div>
-	        </div>
-	    </div>
-        </div>
-        <div class="span9">
-                <form id="options-form" class="form-inline pull-right">
-                    Show:
-                    <label for="api-show-inherited" class="checkbox">
-                        <input type="checkbox" id="api-show-inherited" checked>
-                        Inherited
-                    </label>
-            
-                    <label for="api-show-protected" class="checkbox">
-                        <input type="checkbox" id="api-show-protected">
-                        Protected
-                    </label>
-            
-                    <label for="api-show-private" class="checkbox">
-                        <input type="checkbox" id="api-show-private">
-                        Private
-                    </label>
-                    <label for="api-show-deprecated" class="checkbox">
-                        <input type="checkbox" id="api-show-deprecated">
-                        Deprecated
-                    </label>
-            
-                </form>
-            
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <div class="page-header">
-                            <h1>_mouse</h1>
-                        </div>
-                        
-                        
-                        
-                        	<div class="well well-small">
-                                    Module: <a href="../modules/raska.html">raska</a>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div>
+                    <div id="sidebar">
+                    <div id="classes">
+                        <ul id="api-classes" class="nav nav-list">
+                                <li><a href="../classes/$log.html">$log</a></li>
+                                <li><a href="../classes/$obj.html">$obj</a></li>
+                                <li><a href="../classes/_drawing.html">_drawing</a></li>
+                                <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
+                                <li><a href="../classes/_mouse.html">_mouse</a></li>
+                                <li><a href="../classes/_public.html">_public</a></li>
+                                <li><a href="../classes/arrow.html">arrow</a></li>
+                                <li><a href="../classes/circle.html">circle</a></li>
+                                <li><a href="../classes/htmlElement.html">htmlElement</a></li>
+                                <li><a href="../classes/label.html">label</a></li>
+                                <li><a href="../classes/square.html">square</a></li>
+                                <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span9">
+                    <form id="options-form" class="form-inline pull-right">
+                        Show:
+                        <label for="api-show-inherited" class="checkbox">
+                            <input type="checkbox" id="api-show-inherited" checked>
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected" class="checkbox">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private" class="checkbox">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated" class="checkbox">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </form>
+                
+                <div class="apidocs">
+                    <div id="docs-main">
+                        <div class="content">
+                            <div class="page-header">
+                                <h1>_mouse</h1>
                             </div>
-                        
-                        
-                        
-                        <div class="yuidoc-class-description">
-                        <p>A utility that detects mouse's relative position on the canvas</p>
-                        
-                        </div>
-                        
-                        <!-- table of contents -->
-                        
-                        <div id="class-toc" class="page-section">
-                        	<h2>Table of Contents</h2>
-                            <ul>
-                        
-                        
-                        
-                        		<li>
-                        			<strong>Static Methods</strong>
-                        			<ul>
-                        				<li><a href="#method-getX"><span class="im">_mouse.getX</span>(<span class="ia">evt</span>)</a></li>
-                        				<li><a href="#method-getXY"><span class="im">_mouse.getXY</span>()</a></li>
-                        				<li><a href="#method-getY"><span class="im">_mouse.getY</span>(<span class="ia">evt</span>)</a></li>
-                        			</ul>
-                        		</li>
-                        	</ul>
-                        </div>
-                        
-                        <!-- details -->
-                        
-                        
-                        
-                        
-                        
-                        
-                            <div id="static-methods" class="page-section">
-                                <h2 class="off-left">Static Methods</h2>
-                                <div class="item-list">
-                            	        <div id="method-getX" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_mouse.getX</code></span>
-                            	        
-                            	        		<div class="args">
-                            	        			<span class="paren">(</span><ul class="args-list inline commas">
-                            	        				<li class="arg">
-                            	        						<code>evt</code>
-                            	        				</li>
-                            	        			</ul><span class="paren">)</span>
-                            	        		</div>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type">Number</span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1042"><code>src\raska.js:1042</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Gets mouses's X position relative to the current canvas</p>
-                            	        </div>
-                            	        
-                            	        		<div class="params">
-                            	        			<h4>Parameters:</h4>
-                            	        
-                            	        			<ul class="params-list">
-                            	        				<li class="param">
-                            	        						<code class="param-name">evt</code>
-                            	        						<span class="type">Event</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>Event we're bubbling in</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        			</ul>
-                            	        		</div>
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type">Number</span>:
-                            	        					<p>X value</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-getXY" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_mouse.getXY</code></span>
-                            	        
-                            	        		<span class="paren">()</span>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type">Object</span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1086"><code>src\raska.js:1086</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Gets mouses' X and Y positions relative to the current canvas</p>
-                            	        </div>
-                            	        
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type">Object</span>:
-                            	        					<p>X and Y values</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
-                            	        <div id="method-getY" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>_mouse.getY</code></span>
-                            	        
-                            	        		<div class="args">
-                            	        			<span class="paren">(</span><ul class="args-list inline commas">
-                            	        				<li class="arg">
-                            	        						<code>evt</code>
-                            	        				</li>
-                            	        			</ul><span class="paren">)</span>
-                            	        		</div>
-                            	        		<span class="returns-inline">
-                            	        			<span class="type">Number</span>
-                            	        		</span>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l1056"><code>src\raska.js:1056</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Gets mouses's Y position relative to the current canvas</p>
-                            	        </div>
-                            	        
-                            	        		<div class="params">
-                            	        			<h4>Parameters:</h4>
-                            	        
-                            	        			<ul class="params-list">
-                            	        				<li class="param">
-                            	        						<code class="param-name">evt</code>
-                            	        						<span class="type">Event</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>Event we're bubbling in</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        			</ul>
-                            	        		</div>
-                            	        
-                            	        		<div class="returns">
-                            	        			<h4>Returns:</h4>
-                            	        
-                            	        			<div class="returns-description">
-                            	        						<span class="type">Number</span>:
-                            	        					<p>Y value</p>
-                            	        
-                            	        			</div>
-                            	        		</div>
-                            	        
-                            	        </div>
+                            
+                            
+                            
+                            	<div class="well well-small">
+                                        Module: <a href="../modules/raska.html">raska</a>
                                 </div>
+                            
+                            
+                            
+                            <div class="yuidoc-class-description">
+                            <p>A utility that detects mouse's relative position on the canvas</p>
+                            
                             </div>
+                            
+                            <!-- table of contents -->
+                            
+                            <div id="class-toc" class="page-section">
+                            	<h2>Table of Contents</h2>
+                                <ul>
+                            
+                            
+                            
+                            		<li>
+                            			<strong>Static Methods</strong>
+                            			<ul>
+                            				<li><a href="#method-getX"><span class="im">_mouse.getX</span>(<span class="ia">evt</span>)</a></li>
+                            				<li><a href="#method-getXY"><span class="im">_mouse.getXY</span>()</a></li>
+                            				<li><a href="#method-getY"><span class="im">_mouse.getY</span>(<span class="ia">evt</span>)</a></li>
+                            			</ul>
+                            		</li>
+                            	</ul>
+                            </div>
+                            
+                            <!-- details -->
+                            
+                            
+                            
+                            
+                            
+                            
+                                <div id="static-methods" class="page-section">
+                                    <h2 class="off-left">Static Methods</h2>
+                                    <div class="item-list">
+                                	        <div id="method-getX" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_mouse.getX</code></span>
+                                	        
+                                	        		<div class="args">
+                                	        			<span class="paren">(</span><ul class="args-list inline commas">
+                                	        				<li class="arg">
+                                	        						<code>evt</code>
+                                	        				</li>
+                                	        			</ul><span class="paren">)</span>
+                                	        		</div>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type">Number</span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1042"><code>src\raska.js:1042</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Gets mouses's X position relative to the current canvas</p>
+                                	        </div>
+                                	        
+                                	        		<div class="params">
+                                	        			<h4>Parameters:</h4>
+                                	        
+                                	        			<ul class="params-list">
+                                	        				<li class="param">
+                                	        						<code class="param-name">evt</code>
+                                	        						<span class="type">Event</span>
+                                	        
+                                	        
+                                	        					<div class="param-description"><p>Event we're bubbling in</p>
+                                	        </div>
+                                	        
+                                	        				</li>
+                                	        			</ul>
+                                	        		</div>
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type">Number</span>:
+                                	        					<p>X value</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-getXY" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_mouse.getXY</code></span>
+                                	        
+                                	        		<span class="paren">()</span>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type">Object</span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1086"><code>src\raska.js:1086</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Gets mouses' X and Y positions relative to the current canvas</p>
+                                	        </div>
+                                	        
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type">Object</span>:
+                                	        					<p>X and Y values</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                	        <div id="method-getY" class="method item">
+                                	        	<div class="method-signature">
+                                	        	<span class="name"><code>_mouse.getY</code></span>
+                                	        
+                                	        		<div class="args">
+                                	        			<span class="paren">(</span><ul class="args-list inline commas">
+                                	        				<li class="arg">
+                                	        						<code>evt</code>
+                                	        				</li>
+                                	        			</ul><span class="paren">)</span>
+                                	        		</div>
+                                	        		<span class="returns-inline">
+                                	        			<span class="type">Number</span>
+                                	        		</span>
+                                	        	</div>
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        
+                                	        	<div class="meta">
+                                	        				<p>
+                                	        				Defined in
+                                	        		<a href="../files/src_raska.js.html#l1056"><code>src\raska.js:1056</code></a>
+                                	        		</p>
+                                	        
+                                	        
+                                	        
+                                	        	</div>
+                                	        
+                                	        	<div class="description"><p>Gets mouses's Y position relative to the current canvas</p>
+                                	        </div>
+                                	        
+                                	        		<div class="params">
+                                	        			<h4>Parameters:</h4>
+                                	        
+                                	        			<ul class="params-list">
+                                	        				<li class="param">
+                                	        						<code class="param-name">evt</code>
+                                	        						<span class="type">Event</span>
+                                	        
+                                	        
+                                	        					<div class="param-description"><p>Event we're bubbling in</p>
+                                	        </div>
+                                	        
+                                	        				</li>
+                                	        			</ul>
+                                	        		</div>
+                                	        
+                                	        		<div class="returns">
+                                	        			<h4>Returns:</h4>
+                                	        
+                                	        			<div class="returns-description">
+                                	        						<span class="type">Number</span>:
+                                	        					<p>Y value</p>
+                                	        
+                                	        			</div>
+                                	        		</div>
+                                	        
+                                	        </div>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script src="../assets/js/yuidoc-bootstrap.js"></script>
-<script>prettyPrint();</script>
+    <script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/yuidoc-bootstrap.js"></script>
+    <script>prettyPrint();</script>
 </body>
 </html>

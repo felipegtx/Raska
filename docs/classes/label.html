@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,1453 +12,1455 @@
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="yui3-skin-sam">
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-            Raska
-        </h1>
-	<div class="nav">
-            <li class="divider-vertical"></li>
-            <li>
-                <p class="navbar-text">
-                    API Docs for Version: <b>0.0.1</b>
-                </p>
-            </li>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+                <a href="https://github.com/felipegtx/Raska" target="_blank">
+                    Raska
+                </a>
+            </h1>
+            <div class="nav">
+                <li class="divider-vertical"></li>
+                <li>
+                    <p class="navbar-text">
+                        API Docs for Version: <b>0.0.1</b>
+                    </p>
+                </li>
+            </div>
+            <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+                <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
+            </form>
         </div>
-        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/raska"]'>
-        </form>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="span3">
-	    <div>
-	        <div id="sidebar">
-	        <div id="classes">
-	            <ul id="api-classes" class="nav nav-list">
-	                    <li><a href="../classes/$log.html">$log</a></li>
-	                    <li><a href="../classes/$obj.html">$obj</a></li>
-	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
-	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
-	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
-	                    <li><a href="../classes/_public.html">_public</a></li>
-	                    <li><a href="../classes/arrow.html">arrow</a></li>
-	                    <li><a href="../classes/circle.html">circle</a></li>
-	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
-	                    <li><a href="../classes/label.html">label</a></li>
-	                    <li><a href="../classes/square.html">square</a></li>
-	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
-	            </ul>
-	        </div>
-	        </div>
-	    </div>
-        </div>
-        <div class="span9">
-                <form id="options-form" class="form-inline pull-right">
-                    Show:
-                    <label for="api-show-inherited" class="checkbox">
-                        <input type="checkbox" id="api-show-inherited" checked>
-                        Inherited
-                    </label>
-            
-                    <label for="api-show-protected" class="checkbox">
-                        <input type="checkbox" id="api-show-protected">
-                        Protected
-                    </label>
-            
-                    <label for="api-show-private" class="checkbox">
-                        <input type="checkbox" id="api-show-private">
-                        Private
-                    </label>
-                    <label for="api-show-deprecated" class="checkbox">
-                        <input type="checkbox" id="api-show-deprecated">
-                        Deprecated
-                    </label>
-            
-                </form>
-            
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <div class="page-header">
-                            <h1>label</h1>
-                        </div>
-                        
-                        
-                        	<div class="well well-small">
-                                <div class="extends">
-                                    Extends <a href="../classes/_basicElement.html" class="crosslink">_basicElement</a>
-                                </div>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <div>
+                    <div id="sidebar">
+                    <div id="classes">
+                        <ul id="api-classes" class="nav nav-list">
+                                <li><a href="../classes/$log.html">$log</a></li>
+                                <li><a href="../classes/$obj.html">$obj</a></li>
+                                <li><a href="../classes/_drawing.html">_drawing</a></li>
+                                <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
+                                <li><a href="../classes/_mouse.html">_mouse</a></li>
+                                <li><a href="../classes/_public.html">_public</a></li>
+                                <li><a href="../classes/arrow.html">arrow</a></li>
+                                <li><a href="../classes/circle.html">circle</a></li>
+                                <li><a href="../classes/htmlElement.html">htmlElement</a></li>
+                                <li><a href="../classes/label.html">label</a></li>
+                                <li><a href="../classes/square.html">square</a></li>
+                                <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span9">
+                    <form id="options-form" class="form-inline pull-right">
+                        Show:
+                        <label for="api-show-inherited" class="checkbox">
+                            <input type="checkbox" id="api-show-inherited" checked>
+                            Inherited
+                        </label>
+                
+                        <label for="api-show-protected" class="checkbox">
+                            <input type="checkbox" id="api-show-protected">
+                            Protected
+                        </label>
+                
+                        <label for="api-show-private" class="checkbox">
+                            <input type="checkbox" id="api-show-private">
+                            Private
+                        </label>
+                        <label for="api-show-deprecated" class="checkbox">
+                            <input type="checkbox" id="api-show-deprecated">
+                            Deprecated
+                        </label>
+                
+                    </form>
+                
+                <div class="apidocs">
+                    <div id="docs-main">
+                        <div class="content">
+                            <div class="page-header">
+                                <h1>label</h1>
                             </div>
-                        
-                        	<div class="well well-small">
-                                    Module: <a href="../modules/_defaultConfigurations.html">_defaultConfigurations</a><br>
-                                    Parent Module: <a href="../modules/raska.html">raska</a>
-                            </div>
-                        
-                        
-                        
-                        <div class="yuidoc-class-description">
-                        <p>Creates a label</p>
-                        
-                        </div>
-                        
-                        <!-- table of contents -->
-                        
-                        <div id="class-toc" class="page-section">
-                        	<h2>Table of Contents</h2>
-                            <ul>
-                        		<li>
-                        			<strong>Methods</strong>
-                        			<ul>
-                        				<li><a href="#method-addChild"><span class="im">addChild</span>(<span class="ia">child</span>)</a></li>
-                        				<li><a href="#method-addLinkFrom"><span class="im">addLinkFrom</span>(<span class="ia">element</span>)</a></li>
-                        				<li><a href="#method-addLinkTo"><span class="im">addLinkTo</span>(<span class="ia">element</span>)</a></li>
-                        				<li><a href="#method-adjustPosition"><span class="im">adjustPosition</span>(<span class="ia">newX</span><span class="ia">newY</span>)</a></li>
-                        				<li><a href="#method-clearAllLinks"><span class="im">clearAllLinks</span>()</a></li>
-                        				<li><a href="#method-clearLinksFrom"><span class="im">clearLinksFrom</span>(<span class="ia">source</span><span class="ia">each</span>)</a></li>
-                        				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">x</span><span class="ia">y</span>)</a></li>
-                        				<li><a href="#method-getAdjustedCoordinates"><span class="im">getAdjustedCoordinates</span>()</a></li>
-                        				<li><a href="#method-getBoundaries"><span class="im">getBoundaries</span>()</a></li>
-                        				<li><a href="#method-getChildElements"><span class="im">getChildElements</span>()</a></li>
-                        				<li><a href="#method-getHeight"><span class="im">getHeight</span>()</a></li>
-                        				<li><a href="#method-getLinksFrom"><span class="im">getLinksFrom</span>()</a></li>
-                        				<li><a href="#method-getLinksTo"><span class="im">getLinksTo</span>()</a></li>
-                        				<li><a href="#method-getParent"><span class="im">getParent</span>()</a></li>
-                        				<li><a href="#method-getWidth"><span class="im">getWidth</span>()</a></li>
-                        				<li><a href="#method-removeLinkFrom"><span class="im">removeLinkFrom</span>(<span class="ia">element</span>)</a></li>
-                        				<li><a href="#method-removeLinkTo"><span class="im">removeLinkTo</span>(<span class="ia">element</span>)</a></li>
-                        				<li><a href="#method-setParent"><span class="im">setParent</span>(<span class="ia">parent</span>)</a></li>
-                        			</ul>
-                        		</li>
-                        
-                        		<li>
-                        			<strong>Properties</strong>
-                        			<ul>
-                        				<li><a href="#prop-$childElements"><span class="ip">$childElements</span></a></li>
-                        				<li><a href="#prop-$linksFrom"><span class="ip">$linksFrom</span></a></li>
-                        				<li><a href="#prop-$linksTo"><span class="ip">$linksTo</span></a></li>
-                        				<li><a href="#prop-$parent"><span class="ip">$parent</span></a></li>
-                        				<li><a href="#prop-active"><span class="ip">active</span></a></li>
-                        				<li><a href="#prop-color"><span class="ip">color</span></a></li>
-                        				<li><a href="#prop-name"><span class="ip">name</span></a></li>
-                        				<li><a href="#prop-position"><span class="ip">position</span></a></li>
-                        				<li><a href="#prop-width"><span class="ip">width</span></a></li>
-                        				<li><a href="#prop-x"><span class="ip">x</span></a></li>
-                        				<li><a href="#prop-y"><span class="ip">y</span></a></li>
-                        			</ul>
-                        		</li>
-                        
-                        		<li>
-                        			<strong>Attributes</strong>
-                        			<ul>
-                        				<li><a href="#attr-border"><span class="iattr">border</span></a></li>
-                        			</ul>
-                        		</li>
-                        
-                        	</ul>
-                        </div>
-                        
-                        <!-- details -->
-                        
-                        
-                            <div id="methods" class="page-section">
-                                <h2 class="off-left">Methods</h2>
-                                <div class="item-list">
-                                    <div id="method-addChild" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>addChild</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>child</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_addChild">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l355"><code>src\raska.js:355</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Adds a new child element to this node</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">child</code>
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Element that will be added to the child array into this element</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Updated Raska element reference</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-addLinkFrom" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>addLinkFrom</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>element</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_addLinkFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l293"><code>src\raska.js:293</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Links this element to another Raska element as this instance being the target node</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">element</code>
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Element that will be linked as a source from this element node</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Updated Raska element reference</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-addLinkTo" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>addLinkTo</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>element</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_addLinkTo">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l254"><code>src\raska.js:254</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Creates a link between this and another element, using the later as a dependency of this instance</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">element</code>
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Element that will be linked as a destination from this element node</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Updated Raska element reference</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-adjustPosition" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>adjustPosition</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>newX</code>
-                                    				</li>
-                                    				<li class="arg">
-                                    						<code>newY</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_adjustPosition">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l486"><code>src\raska.js:486</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>[ABSTRACT] Adjusts the position of the current element taking in consideration it's parent
-                                    positioning constraints</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">newX</code>
-                                    						<span class="type">Number</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>X position</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    				<li class="param">
-                                    						<code class="param-name">newY</code>
-                                    						<span class="type">Number</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Y position</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    
-                                    </div>
-                                    <div id="method-clearAllLinks" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>clearAllLinks</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_clearAllLinks">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l332"><code>src\raska.js:332</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Removes every and each link that references this element</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Updated Raska element reference</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-clearLinksFrom" class="method item private inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>clearLinksFrom</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>source</code>
-                                    				</li>
-                                    				<li class="arg">
-                                    						<code>each</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Array</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    		<span class="flag private">private</span>
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_clearLinksFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l228"><code>src\raska.js:228</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Clears all links that point to and from this Raska element</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">source</code>
-                                    						<span class="type">Object</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Object that defines the source of the link removal (start node)</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    				<li class="param">
-                                    						<code class="param-name">each</code>
-                                    						<span class="type">Function</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Delegates that handle the process of removing the references</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Array</span>:
-                                    					<p>Empty array</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-existsIn" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>existsIn</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>x</code>
-                                    				</li>
-                                    				<li class="arg">
-                                    						<code>y</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Bool</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    			<p>Inherited from
-                                    			<a href="../classes/_basicElement.html#method_existsIn">
-                                    				_basicElement
-                                    			</a>
-                                    			but overwritten in
-                                    		<a href="../files/src_raska.js.html#l524"><code>src\raska.js:524</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>[ABSTRACT] Whether or not this element existis withing the boudaries of
-                                    the given x/y coordinates</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">x</code>
-                                    						<span class="type">Number</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>X Coordinate</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    				<li class="param">
-                                    						<code class="param-name">y</code>
-                                    						<span class="type">Number</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Y Coordinate</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Bool</span>:
-                                    					<p>If this element is contained within the X/Y coordinates</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getAdjustedCoordinates" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getAdjustedCoordinates</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type">X:Number,y:Number</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getAdjustedCoordinates">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l468"><code>src\raska.js:468</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Gathers adjusted x/y coordinates for the currente element taking into consideration
-                                    the type of positining set to it and wheter or not a parent node is present</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">X:Number,y:Number</span>:
-                                    					<p>Adjusted coordinates</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getBoundaries" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getBoundaries</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Object</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getBoundaries">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l379"><code>src\raska.js:379</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Retrieves the element boundaries information</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Object</span>:
-                                    					<p>Data regarding x, y, minX and minY from this element</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getChildElements" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getChildElements</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Array</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getChildElements">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l345"><code>src\raska.js:345</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Gathers all child elements from this node</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Array</span>:
-                                    					<p>All child elements</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getHeight" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getHeight</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Number</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getHeight">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l512"><code>src\raska.js:512</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>[ABSTRACT] Gets the current Height for this element</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Number</span>:
-                                    					<p>The Height of this element</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getLinksFrom" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getLinksFrom</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Array</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getLinksFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l309"><code>src\raska.js:309</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Gathers all dependecies/linked elements related to this instance</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Array</span>:
-                                    					<p>All elements that this node references from</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getLinksTo" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getLinksTo</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Array</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getLinksTo">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l283"><code>src\raska.js:283</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Gathers all elements that this instance depends on</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Array</span>:
-                                    					<p>All elements that this node references TO</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getParent" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getParent</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getParent">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l369"><code>src\raska.js:369</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Get the parent node to this element</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Reference to de parent node (null if none)</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-getWidth" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>getWidth</code></span>
-                                    
-                                    		<span class="paren">()</span>
-                                    		<span class="returns-inline">
-                                    			<span class="type">Number</span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_getWidth">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l500"><code>src\raska.js:500</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>[ABSTRACT] Gets the current width for this element</p>
-                                    </div>
-                                    
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type">Number</span>:
-                                    					<p>The width of this element</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-removeLinkFrom" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>removeLinkFrom</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>element</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_removeLinkFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l319"><code>src\raska.js:319</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Removes the link to this element from another Raska element</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">element</code>
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Element that will have its link from this element removed</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Updated Raska element reference</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-removeLinkTo" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>removeLinkTo</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>element</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_removeLinkTo">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l270"><code>src\raska.js:270</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Removes the dependency from this element to another Raska element</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">element</code>
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Element that will have its link to this element removed</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Updated Raska element reference</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
-                                    </div>
-                                    <div id="method-setParent" class="method item inherited">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>setParent</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>parent</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    		<span class="returns-inline">
-                                    			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    		</span>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    		<span class="flag chainable">chainable</span>
-                                    
-                                    
-                                    	<div class="meta">
-                                    				<p>Inherited from
-                                    				<a href="../classes/_basicElement.html#method_setParent">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l394"><code>src\raska.js:394</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>Sets the parent node to this element</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">parent</code>
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Element that will be added as a parent to this element</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    		<div class="returns">
-                                    			<h4>Returns:</h4>
-                                    
-                                    			<div class="returns-description">
-                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
-                                    					<p>Updated Raska element reference</p>
-                                    
-                                    			</div>
-                                    		</div>
-                                    
+                            
+                            
+                            	<div class="well well-small">
+                                    <div class="extends">
+                                        Extends <a href="../classes/_basicElement.html" class="crosslink">_basicElement</a>
                                     </div>
                                 </div>
+                            
+                            	<div class="well well-small">
+                                        Module: <a href="../modules/_defaultConfigurations.html">_defaultConfigurations</a><br>
+                                        Parent Module: <a href="../modules/raska.html">raska</a>
+                                </div>
+                            
+                            
+                            
+                            <div class="yuidoc-class-description">
+                            <p>Creates a label</p>
+                            
                             </div>
-                        
-                            <div id="properties" class="page-section">
-                                <h2 class="off-left">Properties</h2>
-                        
-                                <div class="item-list">
-                                    <div id="prop-$childElements" class="property item private inherited">
-                                        <h3 class="name"><code>$childElements</code></h3>
-                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                            <span class="flag private">private</span>
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_$childElements">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l218"><code>src\raska.js:218</code></a>
-                                            </p>
-                                    
-                                    
+                            
+                            <!-- table of contents -->
+                            
+                            <div id="class-toc" class="page-section">
+                            	<h2>Table of Contents</h2>
+                                <ul>
+                            		<li>
+                            			<strong>Methods</strong>
+                            			<ul>
+                            				<li><a href="#method-addChild"><span class="im">addChild</span>(<span class="ia">child</span>)</a></li>
+                            				<li><a href="#method-addLinkFrom"><span class="im">addLinkFrom</span>(<span class="ia">element</span>)</a></li>
+                            				<li><a href="#method-addLinkTo"><span class="im">addLinkTo</span>(<span class="ia">element</span>)</a></li>
+                            				<li><a href="#method-adjustPosition"><span class="im">adjustPosition</span>(<span class="ia">newX</span><span class="ia">newY</span>)</a></li>
+                            				<li><a href="#method-clearAllLinks"><span class="im">clearAllLinks</span>()</a></li>
+                            				<li><a href="#method-clearLinksFrom"><span class="im">clearLinksFrom</span>(<span class="ia">source</span><span class="ia">each</span>)</a></li>
+                            				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">x</span><span class="ia">y</span>)</a></li>
+                            				<li><a href="#method-getAdjustedCoordinates"><span class="im">getAdjustedCoordinates</span>()</a></li>
+                            				<li><a href="#method-getBoundaries"><span class="im">getBoundaries</span>()</a></li>
+                            				<li><a href="#method-getChildElements"><span class="im">getChildElements</span>()</a></li>
+                            				<li><a href="#method-getHeight"><span class="im">getHeight</span>()</a></li>
+                            				<li><a href="#method-getLinksFrom"><span class="im">getLinksFrom</span>()</a></li>
+                            				<li><a href="#method-getLinksTo"><span class="im">getLinksTo</span>()</a></li>
+                            				<li><a href="#method-getParent"><span class="im">getParent</span>()</a></li>
+                            				<li><a href="#method-getWidth"><span class="im">getWidth</span>()</a></li>
+                            				<li><a href="#method-removeLinkFrom"><span class="im">removeLinkFrom</span>(<span class="ia">element</span>)</a></li>
+                            				<li><a href="#method-removeLinkTo"><span class="im">removeLinkTo</span>(<span class="ia">element</span>)</a></li>
+                            				<li><a href="#method-setParent"><span class="im">setParent</span>(<span class="ia">parent</span>)</a></li>
+                            			</ul>
+                            		</li>
+                            
+                            		<li>
+                            			<strong>Properties</strong>
+                            			<ul>
+                            				<li><a href="#prop-$childElements"><span class="ip">$childElements</span></a></li>
+                            				<li><a href="#prop-$linksFrom"><span class="ip">$linksFrom</span></a></li>
+                            				<li><a href="#prop-$linksTo"><span class="ip">$linksTo</span></a></li>
+                            				<li><a href="#prop-$parent"><span class="ip">$parent</span></a></li>
+                            				<li><a href="#prop-active"><span class="ip">active</span></a></li>
+                            				<li><a href="#prop-color"><span class="ip">color</span></a></li>
+                            				<li><a href="#prop-name"><span class="ip">name</span></a></li>
+                            				<li><a href="#prop-position"><span class="ip">position</span></a></li>
+                            				<li><a href="#prop-width"><span class="ip">width</span></a></li>
+                            				<li><a href="#prop-x"><span class="ip">x</span></a></li>
+                            				<li><a href="#prop-y"><span class="ip">y</span></a></li>
+                            			</ul>
+                            		</li>
+                            
+                            		<li>
+                            			<strong>Attributes</strong>
+                            			<ul>
+                            				<li><a href="#attr-border"><span class="iattr">border</span></a></li>
+                            			</ul>
+                            		</li>
+                            
+                            	</ul>
+                            </div>
+                            
+                            <!-- details -->
+                            
+                            
+                                <div id="methods" class="page-section">
+                                    <h2 class="off-left">Methods</h2>
+                                    <div class="item-list">
+                                        <div id="method-addChild" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>addChild</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>child</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_addChild">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l355"><code>src\raska.js:355</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Adds a new child element to this node</p>
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Points to series of child Raska element (if any) that, usually, are contained inside this node</p>
-                                    
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">child</code>
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Element that will be added to the child array into this element</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> []</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-$linksFrom" class="property item private inherited">
-                                        <h3 class="name"><code>$linksFrom</code></h3>
-                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                            <span class="flag private">private</span>
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_$linksFrom">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l208"><code>src\raska.js:208</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Updated Raska element reference</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Points to a Raska element [as an arrow] (if any) that depends on this instance</p>
-                                    
+                                        <div id="method-addLinkFrom" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>addLinkFrom</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>element</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_addLinkFrom">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l293"><code>src\raska.js:293</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Links this element to another Raska element as this instance being the target node</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> []</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-$linksTo" class="property item private inherited">
-                                        <h3 class="name"><code>$linksTo</code></h3>
-                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                    
-                                    
-                                            <span class="flag private">private</span>
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_$linksTo">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l198"><code>src\raska.js:198</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">element</code>
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Element that will be linked as a source from this element node</p>
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Points to a Raska element [as an arrow] (if any) related as a dependency from this node</p>
-                                    
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Updated Raska element reference</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> []</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-$parent" class="property item private inherited">
-                                        <h3 class="name"><code>$parent</code></h3>
-                                        <span class="type">Unknown</span>
-                                    
-                                    
-                                            <span class="flag private">private</span>
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_$parent">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l189"><code>src\raska.js:189</code></a>
-                                            </p>
-                                    
-                                    
+                                        <div id="method-addLinkTo" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>addLinkTo</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>element</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_addLinkTo">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l254"><code>src\raska.js:254</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Creates a link between this and another element, using the later as a dependency of this instance</p>
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Points to a parent Raska element (if any)</p>
-                                    
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">element</code>
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Element that will be linked as a destination from this element node</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> null</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-active" class="property item inherited">
-                                        <h3 class="name"><code>active</code></h3>
-                                        <span class="type">Bool</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_active">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l422"><code>src\raska.js:422</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Updated Raska element reference</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Whether or not a border should be rendered</p>
-                                    
+                                        <div id="method-adjustPosition" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>adjustPosition</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>newX</code>
+                                        				</li>
+                                        				<li class="arg">
+                                        						<code>newY</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_adjustPosition">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l486"><code>src\raska.js:486</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>[ABSTRACT] Adjusts the position of the current element taking in consideration it's parent
+                                        positioning constraints</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> false</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-color" class="property item inherited">
-                                        <h3 class="name"><code>color</code></h3>
-                                        <span class="type">String</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_color">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l413"><code>src\raska.js:413</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">newX</code>
+                                        						<span class="type">Number</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>X position</p>
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Element border color</p>
-                                    
+                                        
+                                        				</li>
+                                        				<li class="param">
+                                        						<code class="param-name">newY</code>
+                                        						<span class="type">Number</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Y position</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> null</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-name" class="property item inherited">
-                                        <h3 class="name"><code>name</code></h3>
-                                        <span class="type">String</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_name">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l245"><code>src\raska.js:245</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>The element name</p>
-                                    
+                                        <div id="method-clearAllLinks" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>clearAllLinks</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_clearAllLinks">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l332"><code>src\raska.js:332</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Removes every and each link that references this element</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> &quot;anonymous&quot;</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-position" class="property item inherited">
-                                        <h3 class="name"><code>position</code></h3>
-                                        <span class="type">_positionTypes</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_position">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l441"><code>src\raska.js:441</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Updated Raska element reference</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Element position type</p>
-                                    
+                                        <div id="method-clearLinksFrom" class="method item private inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>clearLinksFrom</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>source</code>
+                                        				</li>
+                                        				<li class="arg">
+                                        						<code>each</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Array</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        		<span class="flag private">private</span>
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_clearLinksFrom">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l228"><code>src\raska.js:228</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Clears all links that point to and from this Raska element</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> _positionTypes.relative</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-width" class="property item inherited">
-                                        <h3 class="name"><code>width</code></h3>
-                                        <span class="type">Number</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_width">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l431"><code>src\raska.js:431</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">source</code>
+                                        						<span class="type">Object</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Object that defines the source of the link removal (start node)</p>
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Border width</p>
-                                    
+                                        
+                                        				</li>
+                                        				<li class="param">
+                                        						<code class="param-name">each</code>
+                                        						<span class="type">Function</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Delegates that handle the process of removing the references</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> 0</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-x" class="property item inherited">
-                                        <h3 class="name"><code>x</code></h3>
-                                        <span class="type">Number</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_x">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l450"><code>src\raska.js:450</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Array</span>:
+                                        					<p>Empty array</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Element x position</p>
-                                    
+                                        <div id="method-existsIn" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>existsIn</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>x</code>
+                                        				</li>
+                                        				<li class="arg">
+                                        						<code>y</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Bool</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        			<p>Inherited from
+                                        			<a href="../classes/_basicElement.html#method_existsIn">
+                                        				_basicElement
+                                        			</a>
+                                        			but overwritten in
+                                        		<a href="../files/src_raska.js.html#l524"><code>src\raska.js:524</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>[ABSTRACT] Whether or not this element existis withing the boudaries of
+                                        the given x/y coordinates</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> 50</p>
-                                    
-                                    
-                                    </div>
-                                    <div id="prop-y" class="property item inherited">
-                                        <h3 class="name"><code>y</code></h3>
-                                        <span class="type">Number</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#property_y">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l459"><code>src\raska.js:459</code></a>
-                                            </p>
-                                    
-                                    
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">x</code>
+                                        						<span class="type">Number</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>X Coordinate</p>
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Element y position</p>
-                                    
+                                        
+                                        				</li>
+                                        				<li class="param">
+                                        						<code class="param-name">y</code>
+                                        						<span class="type">Number</span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Y Coordinate</p>
                                         </div>
-                                    
-                                            <p><strong>Default:</strong> 50</p>
-                                    
-                                    
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Bool</span>:
+                                        					<p>If this element is contained within the X/Y coordinates</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getAdjustedCoordinates" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getAdjustedCoordinates</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type">X:Number,y:Number</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getAdjustedCoordinates">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l468"><code>src\raska.js:468</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Gathers adjusted x/y coordinates for the currente element taking into consideration
+                                        the type of positining set to it and wheter or not a parent node is present</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">X:Number,y:Number</span>:
+                                        					<p>Adjusted coordinates</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getBoundaries" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getBoundaries</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Object</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getBoundaries">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l379"><code>src\raska.js:379</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Retrieves the element boundaries information</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Object</span>:
+                                        					<p>Data regarding x, y, minX and minY from this element</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getChildElements" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getChildElements</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Array</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getChildElements">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l345"><code>src\raska.js:345</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Gathers all child elements from this node</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Array</span>:
+                                        					<p>All child elements</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getHeight" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getHeight</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Number</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getHeight">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l512"><code>src\raska.js:512</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>[ABSTRACT] Gets the current Height for this element</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Number</span>:
+                                        					<p>The Height of this element</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getLinksFrom" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getLinksFrom</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Array</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getLinksFrom">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l309"><code>src\raska.js:309</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Gathers all dependecies/linked elements related to this instance</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Array</span>:
+                                        					<p>All elements that this node references from</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getLinksTo" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getLinksTo</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Array</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getLinksTo">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l283"><code>src\raska.js:283</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Gathers all elements that this instance depends on</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Array</span>:
+                                        					<p>All elements that this node references TO</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getParent" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getParent</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getParent">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l369"><code>src\raska.js:369</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Get the parent node to this element</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Reference to de parent node (null if none)</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-getWidth" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>getWidth</code></span>
+                                        
+                                        		<span class="paren">()</span>
+                                        		<span class="returns-inline">
+                                        			<span class="type">Number</span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_getWidth">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l500"><code>src\raska.js:500</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>[ABSTRACT] Gets the current width for this element</p>
+                                        </div>
+                                        
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type">Number</span>:
+                                        					<p>The width of this element</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-removeLinkFrom" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>removeLinkFrom</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>element</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_removeLinkFrom">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l319"><code>src\raska.js:319</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Removes the link to this element from another Raska element</p>
+                                        </div>
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">element</code>
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Element that will have its link from this element removed</p>
+                                        </div>
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Updated Raska element reference</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-removeLinkTo" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>removeLinkTo</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>element</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_removeLinkTo">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l270"><code>src\raska.js:270</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Removes the dependency from this element to another Raska element</p>
+                                        </div>
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">element</code>
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Element that will have its link to this element removed</p>
+                                        </div>
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Updated Raska element reference</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
+                                        <div id="method-setParent" class="method item inherited">
+                                        	<div class="method-signature">
+                                        	<span class="name"><code>setParent</code></span>
+                                        
+                                        		<div class="args">
+                                        			<span class="paren">(</span><ul class="args-list inline commas">
+                                        				<li class="arg">
+                                        						<code>parent</code>
+                                        				</li>
+                                        			</ul><span class="paren">)</span>
+                                        		</div>
+                                        		<span class="returns-inline">
+                                        			<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        		</span>
+                                        	</div>
+                                        
+                                        
+                                        
+                                        
+                                        		<span class="flag chainable">chainable</span>
+                                        
+                                        
+                                        	<div class="meta">
+                                        				<p>Inherited from
+                                        				<a href="../classes/_basicElement.html#method_setParent">_basicElement</a>:
+                                        		<a href="../files/src_raska.js.html#l394"><code>src\raska.js:394</code></a>
+                                        		</p>
+                                        
+                                        
+                                        
+                                        	</div>
+                                        
+                                        	<div class="description"><p>Sets the parent node to this element</p>
+                                        </div>
+                                        
+                                        		<div class="params">
+                                        			<h4>Parameters:</h4>
+                                        
+                                        			<ul class="params-list">
+                                        				<li class="param">
+                                        						<code class="param-name">parent</code>
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                        					<div class="param-description"><p>Element that will be added as a parent to this element</p>
+                                        </div>
+                                        
+                                        				</li>
+                                        			</ul>
+                                        		</div>
+                                        
+                                        		<div class="returns">
+                                        			<h4>Returns:</h4>
+                                        
+                                        			<div class="returns-description">
+                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>:
+                                        					<p>Updated Raska element reference</p>
+                                        
+                                        			</div>
+                                        		</div>
+                                        
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        
-                            <div id="attrs" class="page-section">
-                                <h2 class="off-left">Attributes</h2>
-                        
-                                    <div id="attr-border" class="attr item inherited">
-                                        <a name="config_border"></a> 
-                                        <h3 class="name"><code>border</code></h3>
-                                        <span class="type"></span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>Inherited from
-                                                    <a href="../classes/_basicElement.html#attr_border">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l407"><code>src\raska.js:407</code></a>
-                                            </p>
-                                    
-                                    
+                            
+                                <div id="properties" class="page-section">
+                                    <h2 class="off-left">Properties</h2>
+                            
+                                    <div class="item-list">
+                                        <div id="prop-$childElements" class="property item private inherited">
+                                            <h3 class="name"><code>$childElements</code></h3>
+                                            <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                                <span class="flag private">private</span>
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_$childElements">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l218"><code>src\raska.js:218</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Points to series of child Raska element (if any) that, usually, are contained inside this node</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> []</p>
+                                        
+                                        
                                         </div>
-                                    
-                                        <div class="description">
-                                            <p>Details regarding this element' border</p>
-                                    
+                                        <div id="prop-$linksFrom" class="property item private inherited">
+                                            <h3 class="name"><code>$linksFrom</code></h3>
+                                            <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                                <span class="flag private">private</span>
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_$linksFrom">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l208"><code>src\raska.js:208</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Points to a Raska element [as an arrow] (if any) that depends on this instance</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> []</p>
+                                        
+                                        
                                         </div>
-                                    
-                                    
-                                    
+                                        <div id="prop-$linksTo" class="property item private inherited">
+                                            <h3 class="name"><code>$linksTo</code></h3>
+                                            <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                        
+                                        
+                                                <span class="flag private">private</span>
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_$linksTo">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l198"><code>src\raska.js:198</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Points to a Raska element [as an arrow] (if any) related as a dependency from this node</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> []</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-$parent" class="property item private inherited">
+                                            <h3 class="name"><code>$parent</code></h3>
+                                            <span class="type">Unknown</span>
+                                        
+                                        
+                                                <span class="flag private">private</span>
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_$parent">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l189"><code>src\raska.js:189</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Points to a parent Raska element (if any)</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> null</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-active" class="property item inherited">
+                                            <h3 class="name"><code>active</code></h3>
+                                            <span class="type">Bool</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_active">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l422"><code>src\raska.js:422</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Whether or not a border should be rendered</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> false</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-color" class="property item inherited">
+                                            <h3 class="name"><code>color</code></h3>
+                                            <span class="type">String</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_color">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l413"><code>src\raska.js:413</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Element border color</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> null</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-name" class="property item inherited">
+                                            <h3 class="name"><code>name</code></h3>
+                                            <span class="type">String</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_name">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l245"><code>src\raska.js:245</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>The element name</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> &quot;anonymous&quot;</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-position" class="property item inherited">
+                                            <h3 class="name"><code>position</code></h3>
+                                            <span class="type">_positionTypes</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_position">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l441"><code>src\raska.js:441</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Element position type</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> _positionTypes.relative</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-width" class="property item inherited">
+                                            <h3 class="name"><code>width</code></h3>
+                                            <span class="type">Number</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_width">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l431"><code>src\raska.js:431</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Border width</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> 0</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-x" class="property item inherited">
+                                            <h3 class="name"><code>x</code></h3>
+                                            <span class="type">Number</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_x">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l450"><code>src\raska.js:450</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Element x position</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> 50</p>
+                                        
+                                        
+                                        </div>
+                                        <div id="prop-y" class="property item inherited">
+                                            <h3 class="name"><code>y</code></h3>
+                                            <span class="type">Number</span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#property_y">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l459"><code>src\raska.js:459</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Element y position</p>
+                                        
+                                            </div>
+                                        
+                                                <p><strong>Default:</strong> 50</p>
+                                        
+                                        
+                                        </div>
                                     </div>
-                            </div>
-                        
-                        
+                                </div>
+                            
+                                <div id="attrs" class="page-section">
+                                    <h2 class="off-left">Attributes</h2>
+                            
+                                        <div id="attr-border" class="attr item inherited">
+                                            <a name="config_border"></a> 
+                                            <h3 class="name"><code>border</code></h3>
+                                            <span class="type"></span>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                            <div class="meta">
+                                                        <p>Inherited from
+                                                        <a href="../classes/_basicElement.html#attr_border">_basicElement</a>:
+                                                <a href="../files/src_raska.js.html#l407"><code>src\raska.js:407</code></a>
+                                                </p>
+                                        
+                                        
+                                            </div>
+                                        
+                                            <div class="description">
+                                                <p>Details regarding this element' border</p>
+                                        
+                                            </div>
+                                        
+                                        
+                                        
+                                        </div>
+                                </div>
+                            
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="../assets/vendor/prettify/prettify-min.js"></script>
-<script src="../assets/js/yuidoc-bootstrap.js"></script>
-<script>prettyPrint();</script>
+    <script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/yuidoc-bootstrap.js"></script>
+    <script>prettyPrint();</script>
 </body>
 </html>
