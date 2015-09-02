@@ -34,7 +34,7 @@
                  * @type Bool
                  * @default false
                  */
-                active: true,
+                active: false,
 
                 /**
                 * Prints an informational message to the console
