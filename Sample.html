@@ -3,9 +3,9 @@
 <head>
     <title>Raska</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
 
 <body>
@@ -15,54 +15,101 @@
                 <a class="navbar-brand" href="https://github.com/felipegtx/Raska" target="_blank">Raska!</a>
             </div>
         </nav>
-        <div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    Click on a node and press
-                    <kbd>DEL</kbd> (<em>while still holding the <kbd>mouse click</kbd> down</em>) to delete it
-                </li>
-                <li class="list-group-item">
-                    Drag a node (using either your mouse
-                    <kbd>right click</kbd> or holding down the <kbd>control</kbd> key) and move it over another to create a link
-                </li>
-                <li class="list-group-item">Dependency graph outputs the JSON to browser' console</li>
-                <li class="list-group-item">
-                    You can find the docs
-                    <a href="http://felipegtx.github.io/Raska/docs/Index.html" target="_blank">
-                        <strong>in here</strong>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="form-inline">
-            <div class="form-group">
-                <label for="elementLabel">Label:</label>
-                <input class="form-control" type="text" id="elementLabel" name="elementLabel" />
-            </div>
-            <button class="btn btn-default" onclick="addSquare();">Add square</button>
-            <button class="btn btn-default" onclick="addCircle();">Add circle</button>
-            <button class="btn btn-default" onclick="saveImage();">Save image</button>
-        </div>
-        <div class="form-inline">
-            <div class="form-group">
-                <label for="elementGraph">Element graph:</label>
-                <textarea class="form-control" id="elementGraph"></textarea>
-                <button class="btn btn-default" onclick="getGraph();">Get dependency graph</button>
-                <button class="btn btn-default" onclick="loadGraph();">Load dependency graph</button>
-            </div>
-        </div>
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#info" role="tab" data-toggle="tab">Info</a></li>
+            <li role="presentation"><a href="#addElements" aria-controls="profile" role="tab" data-toggle="tab">Add elements</a></li>
+            <li role="presentation"><a href="#importExport" aria-controls="messages" role="tab" data-toggle="tab">Import / Export</a></li>
+        </ul>
         <br />
-        <div class="row">
-            <table class="table">
-                <tr>
-                    <td>
-                        <canvas id="raskaContent" style="border: 1px solid silver" width="800" height="600"></canvas>
-                    </td>
-                </tr>
-            </table>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="info">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Lib details <em class="pull-right"><small>click here to collapse / expand the content</small></em>
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    Click on a node and press
+                                    <kbd>DEL</kbd> (<em>while still holding the <kbd>mouse click</kbd> down</em>) to delete it
+                                </li>
+                                <li class="list-group-item">
+                                    Drag a node (using either your mouse
+                                    <kbd>right click</kbd> or holding down the <kbd>control</kbd> key) and move it over another to create a link
+                                </li>
+                                <li class="list-group-item">
+                                    <strong> For this example:</strong><br />
+                                    As a sample of the filtering functionality, only <code>squares</code> can be used as target element.
+                                    You can change this as you need by changing the <code><a href="http://felipegtx.github.io/Raska/docs/classes/circle.html#method-canLink" target="_blank">canLink</a></code> method.
+                                </li>
+                                <li class="list-group-item">Dependency graph outputs the JSON to browser' console</li>
+                                <li class="list-group-item">
+                                    You can find the docs
+                                    <a href="http://felipegtx.github.io/Raska/docs/index.html" target="_blank">
+                                        <strong>in here</strong>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="addElements">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <a role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            Add elements <em class="pull-right"><small>click here to collapse / expand the content</small></em>
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <label for="elementLabel">Label:</label>
+                            <input class="form-control" type="text" id="elementLabel" name="elementLabel" />
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-default" onclick="addSquare();">Add square</button>
+                            <button class="btn btn-default" onclick="addCircle();">Add circle</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="importExport">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <a role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            Import / Export data <em class="pull-right"><small>click here to collapse / expand the content</small></em>
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <label for="elementGraph">Element graph:</label>
+                            <textarea class="form-control" id="elementGraph" rows="7">[{"name":"circle__92c940487752c2eb23cda5b6020d9d2d","border":{"color":"red","active":true,"width":4},"fillColor":"black","radius":20,"graphNode":true,"position":0,"x":50,"y":50,"linksTo":["square__da896522fcbbd62c546fdc9e171e5f96"],"childElements":["label__d7e6d41100b37942268d3ff2b0973c79"],"parent":null,"type":"circle"},{"name":"label__d7e6d41100b37942268d3ff2b0973c79","graphNode":false,"text":"circle__92c940487752c2eb23cda5b6020d9d2d","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"circle__92c940487752c2eb23cda5b6020d9d2d","type":"label"},{"name":"square__4293ddcd6e6690d9b19d674f2ecfd35e","border":{"color":"gray","active":true,"width":4},"fillColor":"silver","dimensions":{"width":30,"height":50},"globalAlpha":1,"graphNode":true,"position":0,"x":50,"y":150,"linksTo":["square__da896522fcbbd62c546fdc9e171e5f96"],"childElements":["label__9344195ec2e836aa2eabde84c18e3c3b"],"parent":null,"type":"square"},{"name":"label__9344195ec2e836aa2eabde84c18e3c3b","graphNode":false,"text":"square__4293ddcd6e6690d9b19d674f2ecfd35e","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"square__4293ddcd6e6690d9b19d674f2ecfd35e","type":"label"},{"name":"circle__389a7ebe7936fc125d14bbf1c1296952","border":{"color":"red","active":true,"width":4},"fillColor":"black","radius":20,"graphNode":true,"position":0,"x":131.1720698254364,"y":320.93023255813955,"linksTo":["square__4293ddcd6e6690d9b19d674f2ecfd35e"],"childElements":["label__e260a23988c5cf47a02253a267aa1e0e"],"parent":null,"type":"circle"},{"name":"label__e260a23988c5cf47a02253a267aa1e0e","graphNode":false,"text":"circle__389a7ebe7936fc125d14bbf1c1296952","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"circle__389a7ebe7936fc125d14bbf1c1296952","type":"label"},{"name":"square__da896522fcbbd62c546fdc9e171e5f96","border":{"color":"gray","active":true,"width":4},"fillColor":"silver","dimensions":{"width":30,"height":50},"globalAlpha":1,"graphNode":true,"position":0,"x":229.92518703241896,"y":84.71760797342192,"linksTo":["square__6eb252cdc08a8e137322ebb21228fe08"],"childElements":["label__1cd05bac73d51cbe6d82a1c438587251"],"parent":null,"type":"square"},{"name":"label__1cd05bac73d51cbe6d82a1c438587251","graphNode":false,"text":"square__da896522fcbbd62c546fdc9e171e5f96","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"square__da896522fcbbd62c546fdc9e171e5f96","type":"label"},{"name":"circle__544eacf7f3536f3f4a03bde54ac25f9a","border":{"color":"red","active":true,"width":4},"fillColor":"black","radius":20,"graphNode":true,"position":0,"x":468.3291770573566,"y":381.72757475083057,"linksTo":["square__6eb252cdc08a8e137322ebb21228fe08"],"childElements":["label__44bd5183eb33185639a903505c3d511f"],"parent":null,"type":"circle"},{"name":"label__44bd5183eb33185639a903505c3d511f","graphNode":false,"text":"circle__544eacf7f3536f3f4a03bde54ac25f9a","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"circle__544eacf7f3536f3f4a03bde54ac25f9a","type":"label"},{"name":"square__6eb252cdc08a8e137322ebb21228fe08","border":{"color":"gray","active":true,"width":4},"fillColor":"silver","dimensions":{"width":30,"height":50},"globalAlpha":1,"graphNode":true,"position":0,"x":262.8428927680798,"y":199.33554817275748,"linksTo":[],"childElements":["label__5c6e11272230d558c5370253e7ec300b"],"parent":null,"type":"square"},{"name":"label__5c6e11272230d558c5370253e7ec300b","graphNode":false,"text":"square__6eb252cdc08a8e137322ebb21228fe08","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"square__6eb252cdc08a8e137322ebb21228fe08","type":"label"},{"name":"circle__e6884ba76b2eb694091490d3ef292175","border":{"color":"red","active":true,"width":4},"fillColor":"black","radius":20,"graphNode":true,"position":0,"x":350,"y":50,"linksTo":["square__f54c5ab2e7f89583501bf6bc82d19faf"],"childElements":["label__a012bcf0fb2955989c6902aacc142953"],"parent":null,"type":"circle"},{"name":"label__a012bcf0fb2955989c6902aacc142953","graphNode":false,"text":"circle__e6884ba76b2eb694091490d3ef292175","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"circle__e6884ba76b2eb694091490d3ef292175","type":"label"},{"name":"square__abcf7850c1a42d916f947621e6e094bf","border":{"color":"gray","active":true,"width":4},"fillColor":"silver","dimensions":{"width":30,"height":50},"globalAlpha":1,"graphNode":true,"position":0,"x":668.8279301745637,"y":24.916943521594686,"linksTo":[],"childElements":["label__6396f760a6a5fcf496b0253731176c1f"],"parent":null,"type":"square"},{"name":"label__6396f760a6a5fcf496b0253731176c1f","graphNode":false,"text":"square__abcf7850c1a42d916f947621e6e094bf","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"square__abcf7850c1a42d916f947621e6e094bf","type":"label"},{"name":"circle__fcd37268de3e921df39af05e3f68f0d1","border":{"color":"red","active":true,"width":4},"fillColor":"black","radius":20,"graphNode":true,"position":0,"x":618.9526184538654,"y":197.3421926910299,"linksTo":["square__f54c5ab2e7f89583501bf6bc82d19faf"],"childElements":["label__b13fa552a5ff3b0d1b418c2d90d5a016"],"parent":null,"type":"circle"},{"name":"label__b13fa552a5ff3b0d1b418c2d90d5a016","graphNode":false,"text":"circle__fcd37268de3e921df39af05e3f68f0d1","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"circle__fcd37268de3e921df39af05e3f68f0d1","type":"label"},{"name":"square__f54c5ab2e7f89583501bf6bc82d19faf","border":{"color":"gray","active":true,"width":4},"fillColor":"silver","dimensions":{"width":30,"height":50},"globalAlpha":1,"graphNode":true,"position":0,"x":450,"y":150,"linksTo":["square__abcf7850c1a42d916f947621e6e094bf","square__6eb252cdc08a8e137322ebb21228fe08"],"childElements":["label__9b2fb4205071a81cfa29e1ddbfc85613"],"parent":null,"type":"square"},{"name":"label__9b2fb4205071a81cfa29e1ddbfc85613","graphNode":false,"text":"square__f54c5ab2e7f89583501bf6bc82d19faf","color":"white","x":0,"y":0,"border":{"color":"red","active":true,"width":4},"font":{"family":"Tahoma","size":"12px"},"position":0,"linksTo":[],"childElements":[],"parent":"square__f54c5ab2e7f89583501bf6bc82d19faf","type":"label"}]</textarea>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-primary" onclick="getGraph();">Get dependency graph</button>
+                            <button class="btn btn-info" onclick="loadGraph();">Load dependency graph</button>
+                            <button class="btn btn-success" onclick="saveImage();">Save image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <canvas id="raskaContent" style="border: 1px solid silver" width="800" height="600"></canvas>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <br /><br />
     </div>
     <script type="text/javascript" src="src/raska.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
         /// Configures raska to a given Canvas element
         raska.installUsing({ targetCanvasId: "raskaContent" });
@@ -126,11 +173,16 @@
         }
 
         function loadGraph() {
-            var elementGraph = document.getElementById("elementGraph").value;
-            if (elementGraph !== "") {
-                raska.loadElementsFrom(elementGraph);
+            try {
+                var elementGraph = document.getElementById("elementGraph").value;
+                if (elementGraph !== "") {
+                    raska.loadElementsFrom(elementGraph);
+                }
+            } catch (e) {
+                alert("It was not possible to import the graph. - " + e.message);
             }
         }
+
     </script>
 </body>
 </html>
