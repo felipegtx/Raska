@@ -68,7 +68,7 @@
         raska.installUsing({ targetCanvasId: "raskaContent" });
 
         var createCanLinkDelegate = function (base) {
-            return function(from, to) {
+            return function (from, to) {
                 return base(from, to) && to.getType() === "square";
             }
         };
@@ -117,8 +117,12 @@
         }
 
         function getGraph() {
-            document.getElementById("elementGraph").value = raska.getElementsString();
-            alert("Exported to textarea");
+            try {
+                document.getElementById("elementGraph").value = raska.getElementsString();
+                alert("Exported to textarea");
+            } catch (e) {
+                alert("It was not possible to generate the graph. - " + e.message);
+            }
         }
 
         function loadGraph() {
