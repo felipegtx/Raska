@@ -936,11 +936,11 @@
                 canLink: function () { return false; },
                 isLinkable: function () { return false; },
                 text: "",
-                color: "white",
+                color: "gray",
                 x: 0,
                 y: 0,
-                border: { color: "red", active: true, width: 4 },
-                font: { family: "Tahoma", size: "12px" },
+                border: { color: "white", active: true, width: 2 },
+                font: { family: "Arial", size: "15px" },
                 getWidth: function () {
                     return this.text.length * 5;
                 },
@@ -974,16 +974,19 @@
          * @class square
          * @extends _basicElement
          */
-        square: function () {
+        square: function (desiredDimensions) {
+
+            var _dimensions = desiredDimensions || {
+                width: 50,
+                height: 50
+            };
+
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "square" + _helpers.$obj.generateId(),
                 getType: function () { return _elementTypes.square; },
-                border: { color: "gray", active: true, width: 4 },
+                border: { color: "gray", active: true, width: 2 },
                 fillColor: "silver",
-                dimensions: {
-                    width: 30,
-                    height: 50
-                },
+                dimensions: _dimensions,
                 globalAlpha: 1,
                 getWidth: function () {
                     return this.dimensions.width;
@@ -1005,10 +1008,8 @@
                     context.stroke();
                 },
                 existsIn: function (x, y) {
-                    return ((x > this.x - this.dimensions.width)
-                        && (x < this.x + this.dimensions.width)
-                        && (y > this.y - this.dimensions.height)
-                        && (y < this.y + this.dimensions.height));
+                    return ((x >= this.x) && (x <= this.x + this.dimensions.width)
+                        && (y >= this.y) && (y <= this.y + this.dimensions.height));
                 },
                 adjustPosition: function (newX, newY) {
                     if ((this.position === _positionTypes.relative) && ($parent !== null)) {
@@ -1165,9 +1166,9 @@
         circle: function () {
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "circle" + _helpers.$obj.generateId(),
-                border: { color: "red", active: true, width: 4 },
+                border: { color: "gray", active: true, width: 2 },
                 getType: function () { return _elementTypes.circle; },
-                fillColor: "black",
+                fillColor: "silver",
                 radius: 20,
                 getWidth: function () {
                     return this.radius * 2;
@@ -1419,11 +1420,8 @@
                 */
                 staticCoordinates: (function () {
 
-                    var _evt = { clientX: 0, clientY: 0 };
-                    document.onmousemove = function (e) {
-                        _evt.clientX = e.pageX;
-                        _evt.clientY = e.pageY;
-                    }
+                    var _evt = { clientX: 0, clientY: 0 },
+                        started = false;
 
                     return {
                         /**
@@ -1434,6 +1432,13 @@
                         * @static
                         */
                         getXY: function () {
+                            if (!started) {
+                                _canvas.onmousemove = function (e) {
+                                    _evt.clientX = e.clientX;
+                                    _evt.clientY = e.clientY + 30;
+                                }
+                                started = true;
+                            }
                             return {
                                 x: _mouse.getX(_evt),
                                 y: _mouse.getY(_evt)
@@ -1724,7 +1729,7 @@
                     _2dContext = (_canvas = document.getElementById(_activeConfiguration.targetCanvasId))
                         .getContext('2d');
                     _canvas.addEventListener("mousedown", _checkClick, false);
-                    w.addEventListener("mousemove", _whenMouseMove, false);
+                    _canvas.addEventListener("mousemove", _whenMouseMove, false);
                     w.addEventListener("mouseup", _whenMouseUp, false);
                     w.addEventListener("keydown", _whenKeyDown, false);
                     w.addEventListener("keyup", _whenKeyUp, false);
@@ -2042,7 +2047,6 @@
         * @chainable
         */
         onCanvasInteraction: function (iteractionType, trigger) {
-
             _elementInteractionEventData.register(_drawing.getCanvasElement(), iteractionType, trigger);
         }
     };

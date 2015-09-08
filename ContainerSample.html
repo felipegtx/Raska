@@ -1,30 +1,31 @@
 <html>
 <head>
-    <title>Rask</title>
+    <title>Raska</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-default">
-            <div class="container">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+
                 <a class="navbar-brand" href="https://github.com/felipegtx/Raska" target="_blank">Raska!</a>
-            </div>
-        </nav>
-        <div>
-            <ul class="list-group">
-                <li class="list-group-item">
+                <p class="navbar-text  navbar-right">
                     You can find the docs
                     <a href="http://felipegtx.github.io/Raska/docs/index.html" target="_blank">
                         <strong>in here</strong>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <canvas id="raskaContent" style="border: 1px solid silver" width="800" height="600"></canvas>
+                    </a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <canvas id="raskaContent" style="border: 1px solid silver;" width="800" height="600"></canvas>
+            </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
     <script type="text/javascript" src="src/raska.min.js"></script>
@@ -84,12 +85,16 @@
 
 
         raska.plot(
+
             /// Head contains
             head.addChild(
+
                     // the left eye that contains an eyeBall
                     leftEye.addChild(leftEyeBall))
+
                 /// and
                 .addChild(
+
                     // the right eye that contains another eyeBall
                     rightEye.addChild(rightEyeBall)))
 
@@ -98,7 +103,6 @@
             function (evtData) {
                 rightEyeBall.adjustPosition(evtData.x, evtData.y);
                 leftEyeBall.adjustPosition(evtData.x, evtData.y);
-                //head.adjustPosition(evtData.x, evtData.y);
             });
 
     </script>
