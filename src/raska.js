@@ -61,16 +61,36 @@
              */
             $obj: (function () {
 
+                var _this;
+
                 function s4() {
                     return Math.floor((1 + Math.random()) * 0x10000)
                       .toString(16)
                       .substring(1);
                 }
 
-                return {
+                return _this = {
 
                     /**
-                    * Whether or not a given object type is of the type you expect
+                    * Executes a given delegate for each item in the collection
+                    * 
+                    * @method forEach
+                    * @param {Array} arr The array that need to be enumerated
+                    * @param {Delegate} what What to do to a given item
+                    * @returns Array of data acquired during array enumaration
+                    */
+                    forEach: function (arr, what) {
+                        var result = [];
+                        if (_this.isArray(arr)) {
+                            for (var i = 0; i < arr.length; i++) {
+                                result.push(what(arr[i], i));
+                            }
+                        }
+                        return result;
+                    },
+
+                    /**
+                    * Whether or not a given object type is of the type you expect (typeof)
                     * 
                     * @method is
                     * @param {Object} obj The object we whant to know about
@@ -79,6 +99,18 @@
                     */
                     is: function (obj, what) {
                         return typeof obj === what;
+                    },
+
+                    /**
+                   * Whether or not a given object type is of the type you expect (constructor call)
+                   * 
+                   * @method isType
+                   * @param {Object} obj The object we whant to know about
+                   * @param {String} typeName The string representing the name of the type
+                   * @return {Bool} Whether or not the object matches the specified type
+                   */
+                    isType: function (obj, typeName) {
+                        return Object.prototype.toString.call(obj) === "[object " + typeName + "]";
                     },
 
                     /**
@@ -96,7 +128,7 @@
                     * Whether or not a given object type is valid to be handled
                     * 
                     * @method isValid
-                    * @param {Object} obj The object we whant to know is it's valid to be handled
+                    * @param {Object} obj The object we whant to know if it's valid to be handled
                     * @return {Bool} Whether or not the object is valid to be handled
                     */
                     isValid: function (obj) {
@@ -104,14 +136,99 @@
                     },
 
                     /**
+                    * Whether or not a given object is an Array
+                    * 
+                    * @method isArray
+                    * @param {Object} obj The object we whant to know is it's valid to be handled
+                    * @return {Bool} Whether or not the object is valid to be handled
+                    */
+                    isArray: function (obj) {
+                        return this.isValid(obj) && this.isType(obj, "Array");
+                    },
+
+                    /**
                     * Whether or not a given object type is undefined
                     * 
                     * @method isUndefined
-                    * @param {Object} obj The object we whant to know is it's undefined
+                    * @param {Object} obj The object we whant to know if it's undefined
                     * @return {Bool} Whether or not the object is undefined
                     */
                     isUndefined: function (obj) {
                         return this.is(obj, 'undefined');
+                    },
+
+                    /**
+                    * Serializes a given _basicElement array to a JSON string
+                    * 
+                    * @method deconstruct
+                    * @param {_basicElement[]} basicElementArray The array of _basicElement we're going to work with
+                    * @return {string} The corresponding string
+                    */
+                    deconstruct: function (elements) {
+                        var resultFull = [];
+                        if (_helpers.$obj.isArray(elements)) {
+
+                            function normalizeChain(elementRoot) {
+                                var item, links;
+                                for (var i = 0; i < elementRoot.length; i++) {
+
+                                    item = elementRoot[i];
+                                    if ((item.graphNode === true) && (((links = item.getLinksFrom()) === null) || (links.length === 0))
+                                        && (((links = item.getLinksTo()) === null) || (links.length === 0))) {
+                                        throw new _defaultConfigurations.errors.elementDoesNotHaveALink(item.name);
+                                    }
+
+                                    if (item.isSerializable()) {
+
+                                        /// Adds the normalized item
+                                        resultFull.push(item.normalize());
+
+                                        /// Check for child elements
+                                        normalizeChain(item.getChildElements());
+                                    }
+                                }
+                            }
+
+                            normalizeChain(elements);
+                        }
+                        return JSON.stringify(resultFull);
+                    },
+
+                    /**
+                    * Tries to recreate a previously serialized object into a new raska instance
+                    * 
+                    * @method recreate
+                    * @param {JSON} jsonElement The JSON representation of a raska object
+                    * @return {_basicElement} The recreated element or null if the element type is invalid
+                    */
+                    recreate: function (jsonElement) {
+                        if (this.isValid(jsonElement.type) && (jsonElement.type in _elementTypes)) {
+
+                            var resultElement = this.extend(new _defaultConfigurations[jsonElement.type], jsonElement);
+
+                            resultElement.getType = function () { return resultElement.type; }
+
+                            return resultElement;
+
+                        }
+                        return null;
+                    },
+
+                    /**
+                    * Recreate all links of the object
+                    * 
+                    * @method recreate                                     
+                    */
+                    recreateLinks: function (targetElement, baseElement, findElementDelegate) {
+
+                        /// Copy data back as it should be
+                        this.forEach(this.forEach(baseElement.linksTo, findElementDelegate), targetElement.addLinkTo.bind(targetElement));
+                        this.forEach(this.forEach(baseElement.childElements, findElementDelegate),
+                            function (element) {
+                                targetElement.addChild(element);
+                            });
+
+                        targetElement.setParent(findElementDelegate(baseElement.parent));
                     },
 
                     /**
@@ -256,6 +373,15 @@
         absolute: 1
     },
 
+    _elementTypes = {
+        basic: "basic",
+        html: "htmlElement",
+        arrow: "arrow",
+        circle: "circle",
+        square: "square",
+        label: "label"
+    },
+
     /**
     * The basic shape of an Raska element
     *
@@ -332,6 +458,15 @@
             name: "anonymous",
 
             /**
+             * The element type
+             *
+             * @property getType
+             * @default _elementTypes.basic
+             * @type _elementTypes
+             */
+            getType: function () { return _elementTypes.basic; },
+
+            /**
              * Wheter or not this element is part of the graph as a node
              *
              * @property graphNode
@@ -341,19 +476,89 @@
             graphNode: true,
 
             /**
+            * Allows to better check whether or not a new link can be created beteen two elements
+            * 
+            * @method canLink
+            * @param {_basicElement} from Element that will be linked as a source
+            * @param {_basicElement} to Element that will be linked as a destination
+            * @return {Bool} Whether or not the link can be created
+            */
+            canLink: function (from, to) {
+                if (from === this) {
+                    return _helpers.$obj.isValid(to) && (to.canReach(this) === false);
+                }
+                return true;
+            },
+
+            /**
+            * Whether or not this element can reach another element via a linked relation
+            * 
+            * @method canReach
+            * @return {Bool} Whether or not a link exists
+            */
+            canReach: function (node) {
+                if ($linksTo.length > 0) {
+                    for (var i = 0; i < $linksTo.length; i++) {
+                        if ($linksTo[i].canReach(node)) {
+                            return true;
+                        }
+                    }
+                }
+                return (this === node);
+            },
+
+            /**
+            * Is this element passive of being linked at all?
+            * 
+            * @method isLinkable
+            * @return {Bool} Whether or not a link can be created either from or to this element
+            */
+            isLinkable: function () {
+                return true;
+            },
+
+            /**
+            * Is this element passive of being serialized at all?
+            * 
+            * @method isSerializable
+            * @return {Bool} Whether or not this element is suposed to be serialized
+            */
+            isSerializable: function () {
+                return true;
+            },
+
+            /**
             * Creates a link between this and another element, using the later as a dependency of this instance
             * 
             * @method addLinkTo
             * @param {_basicElement} element Element that will be linked as a destination from this element node
-            * @return {_basicElement} Updated Raska element reference
-            * @chainable
+            * @return {Bool} Whether or not the link was added
             */
             addLinkTo: function (element) {
-                if (($linksTo.indexOf(element) === -1) && (element !== this)) {
+                if (element.isLinkable() && this.isLinkable() && ($linksTo.indexOf(element) === -1)
+                    && (element !== this) && this.canLink(this, element)) {
                     $linksTo.push(element);
                     element.addLinkFrom(this);
+                    return true;
                 }
-                return this;
+                return false;
+            },
+
+            /**
+             * Links this element to another Raska element as this instance being the target node
+             * 
+             * @method addLinkFrom
+             * @param {_basicElement} element Element that will be linked as a source from this element node
+             * @return {Bool} Whether or not the link was added
+             */
+            addLinkFrom: function (element) {
+                if (element.isLinkable() && this.isLinkable() && ($linksFrom.indexOf(element) === -1)
+                    && (element !== this) && this.canLink(element, this)) {
+                    $linksFrom.push(element);
+                    element.addLinkTo(this);
+                    return true;
+                }
+                return false;
             },
 
             /**
@@ -365,7 +570,25 @@
             * @chainable
             */
             removeLinkTo: function (element) {
-                $linksTo.splice($linksTo.indexOf(element), 1);
+                if ($linksTo.indexOf(element) > -1) {
+                    $linksTo.splice($linksTo.indexOf(element), 1);
+                    element.removeLinkFrom(this);
+                }
+                return this;
+            },
+
+            /**
+           * Transposes the getter data to a field attached to this instance
+           * 
+           * @method normalize
+           * @chainable
+           */
+            normalize: function () {
+                var n = function (item) { return item.name; };
+                this["linksTo"] = _helpers.$obj.forEach(this.getLinksTo(), n);
+                this["childElements"] = _helpers.$obj.forEach(this.getChildElements(), n);
+                this["parent"] = _helpers.$obj.isValid($parent) ? $parent.name : null;
+                this["type"] = this.getType();
                 return this;
             },
 
@@ -377,22 +600,6 @@
             */
             getLinksTo: function () {
                 return $linksTo;
-            },
-
-            /**
-             * Links this element to another Raska element as this instance being the target node
-             * 
-             * @method addLinkFrom
-             * @param {_basicElement} element Element that will be linked as a source from this element node
-             * @return {_basicElement} Updated Raska element reference
-             * @chainable
-             */
-            addLinkFrom: function (element) {
-                if (($linksFrom.indexOf(element) === -1) && (element !== this)) {
-                    $linksFrom.push(element);
-                    element.addLinkTo(this);
-                }
-                return this;
             },
 
             /**
@@ -414,7 +621,10 @@
             * @chainable
             */
             removeLinkFrom: function (element) {
-                $linksFrom.splice($linksFrom.indexOf(element), 1);
+                if ($linksFrom.indexOf(element) > -1) {
+                    $linksFrom.splice($linksFrom.indexOf(element), 1);
+                    element.removeLinkTo(this);
+                }
                 return this;
             },
 
@@ -692,9 +902,23 @@
                     throw new this.nullParameterException("elementName");
                 }
 
-                this.message = "Element '" + elementName + "' doesn't have a valid linked sibling";
-                this.elementName = elementName;
-                this.code = 1;
+                return {
+                    message: "Element '" + elementName + "' doesn't have a valid linked sibling",
+                    elementName: elementName,
+                    code: 2
+                };
+            },
+            itemNotFoundException: function (elementName) {
+
+                if ((typeof elementName === 'undefined') || (elementName === null)) {
+                    throw new this.nullParameterException("elementName");
+                }
+
+                return {
+                    message: "Element '" + elementName + "' wasn't found",
+                    elementName: elementName,
+                    code: 3
+                };
             }
         },
 
@@ -708,6 +932,9 @@
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "label" + _helpers.$obj.generateId(),
                 graphNode: false,
+                getType: function () { return _elementTypes.label; },
+                canLink: function () { return false; },
+                isLinkable: function () { return false; },
                 text: "",
                 color: "white",
                 x: 0,
@@ -750,6 +977,7 @@
         square: function () {
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "square" + _helpers.$obj.generateId(),
+                getType: function () { return _elementTypes.square; },
                 border: { color: "gray", active: true, width: 4 },
                 fillColor: "silver",
                 dimensions: {
@@ -831,7 +1059,15 @@
 
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "arrow" + _helpers.$obj.generateId(),
+                clearAllLinks: function () {
+                    _source.removeLinkFrom(this.getParent());
+                    return this;
+                },
                 graphNode: false,
+                isSerializable: function () { return false; },
+                getType: function () { return _elementTypes.arrow; },
+                canLink: function () { return false; },
+                isLinkable: function () { return false; },
                 border: { color: "black", active: true, width: 2 },
                 fillColor: "black",
                 getWidth: function () { return 1; },
@@ -891,7 +1127,11 @@
             var targetElement = element;
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "htmlElement" + _helpers.$obj.generateId(),
+                getType: function () { return _elementTypes.html; },
                 graphNode: false,
+                isSerializable: function () { return false; },
+                canLink: function () { return false; },
+                isLinkable: function () { return false; },
                 border: { active: false },
                 fillColor: "",
                 getWidth: function () { return 0; },
@@ -926,6 +1166,7 @@
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "circle" + _helpers.$obj.generateId(),
                 border: { color: "red", active: true, width: 4 },
+                getType: function () { return _elementTypes.circle; },
                 fillColor: "black",
                 radius: 20,
                 getWidth: function () {
@@ -1299,7 +1540,7 @@
                                 var targetXY = _mouse.staticCoordinates.getXY(),
                                     arrow = new _defaultConfigurations.arrow({
                                         x: targetXY.x,
-                                        y: targetXY.y,
+                                        y: targetXY.y - 30,
                                         getHeight: function () { return 0; }
                                     });
                                 arrow.name = "_temp";
@@ -1355,12 +1596,13 @@
                         for (var i = 0; i < _elements.length; i++) {
                             if (_elements[i] !== _elementBeingDraged.reference
                                 && _elements[i].existsIn(_mouse.getX(evt), _mouse.getY(evt))) {
-                                _elements[i].addLinkFrom(_elementBeingDraged.reference);
 
-                                _elements.push(new _defaultConfigurations
-                                    .arrow(_elements[i])
-                                    .setParent(_elementBeingDraged.reference));
-                                break;
+                                if (_elementBeingDraged.reference.addLinkTo(_elements[i])) {
+                                    _elements.push(new _defaultConfigurations
+                                        .arrow(_elements[i])
+                                        .setParent(_elementBeingDraged.reference));
+                                    break;
+                                }
                             }
                         }
                     }
@@ -1448,8 +1690,11 @@
                     }
                 }
 
-                var dragType = _elementBeingDraged.holdingCTRL === true ? _elementBeingDraged.dragTypes.linking : evt.which;
                 if (_elementBeingDraged.reference !== null) {
+
+                    var dragType = _elementBeingDraged.holdingCTRL === true && _elementBeingDraged.reference.isLinkable() === true ?
+                        _elementBeingDraged.dragTypes.linking :
+                        evt.which;
                     _elementBeingDraged.originalBorder = _elementBeingDraged.reference.border;
                     _elementBeingDraged.reference.border =
                         ((_elementBeingDraged.dragType = dragType) === _elementBeingDraged.dragTypes.moving) ?
@@ -1502,11 +1747,11 @@
             /**
             * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
-            * @method  _getElements
+            * @method  _getElementsSlim
             * @returns {_graphNodeInfo} Graph node information
             * @private
             */
-            _getElements = function () {
+            _getElementsSlim = function () {
 
                 var result = {},
                     element,
@@ -1557,11 +1802,34 @@
             /**
             * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
-            * @method  getElements
+            * @method  getElementsSlim
             * @returns {_graphNodeInfo} Graph node information
             */
+            getElementsSlim: function () {
+                return _getElementsSlim();
+            },
+
+            /**
+             * Gathers all elements being ploted to the canvas
+             * 
+             * @method  getElements
+             * @returns {_basicElement[]} Graph node information
+             */
             getElements: function () {
-                return _getElements();
+                return _elements;
+            },
+
+            /**
+            * Redefines the elements that are supposed to be ploted to the canvas
+            *
+            * @method reloadUsing
+            * @param {_basicElements[]} elements The elements that are going to be ploted
+            * @static
+            * @chainable
+            */
+            reloadUsing: function (elements) {
+                _elements = elements;
+                this.initializeTimedDrawing();
             },
 
             /**
@@ -1657,13 +1925,85 @@
         /**
         * Retrieves the directed graph represented by the elements in the canvas 
         *
-        * @method getElements
+        * @method getElementsSlim
         * @return {json} The JSON object that represents the current directed graph drawn to the canvas
+        * @static
+        */
+        getElementsSlim: function () {
+            return _drawing.getElementsSlim();
+        },
+
+        /**
+        * Retrieves the ENTIRE directed graph represented by the elements in the canvas 
+        *
+        * @method getElementsData
+        * @return {String} The stringfied JSON that represents the current directed graph drawn to the canvas
+        * @static
+        */
+        getElementsString: function () {
+            return _helpers.$obj.deconstruct(_drawing.getElements());
+        },
+
+        /**
+        * Redefines the elements that are supposed to be ploted to the canvas
+        *
+        * @method loadElementsFrom
+        * @param {_basicElements[]} source The elements that are going to be ploted
         * @static
         * @chainable
         */
-        getElements: function () {
-            return _drawing.getElements();
+        loadElementsFrom: function (source) {
+            var preparsedSource = JSON.parse(source);
+            if (_helpers.$obj.isArray(preparsedSource)) {
+
+                var realSource = [], i = 0;
+                /// Create a basic element instance
+                for (i = 0; i < preparsedSource.length; i++) {
+                    realSource.push(_helpers.$obj.recreate(preparsedSource[i]));
+                }
+
+                /// Adds back the links between elements
+                var findElement = function (itemName) {
+                    if (!_helpers.$obj.isValid(itemName)) {
+                        return null;
+                    }
+                    for (var j = 0; j < realSource.length; j++) {
+                        if (realSource[j].name === itemName) {
+                            return realSource[j];
+                        }
+                    }
+                    throw _defaultConfigurations.errors.itemNotFoundException(itemName);
+                };
+                for (i = 0; i < realSource.length; i++) {
+                    _helpers.$obj.recreateLinks(realSource[i], preparsedSource[i], findElement);
+                }
+
+                /// Recriates all arrows
+                var linksTo = [], item;
+                for (i = 0; i < realSource.length; i++) {
+                    item = realSource[i];
+                    if ((item.isLinkable() === true)
+                        && ((linksTo = item.getLinksTo()).length > 0)) {
+                        for (var k = 0; k < linksTo.length; k++) {
+                            realSource.push(new _defaultConfigurations
+                                .arrow(linksTo[k])
+                                .setParent(item));
+                        }
+                    }
+                }
+
+                /// Removes all nested items that doesn't need to be part of the main array
+                /// given they are rendered via their parents
+                //for (i = 0; i < realSource.length; i++) {
+                //    item = realSource[i];
+                //    if (item.isLinkable() !== true) {
+                //        realSource.splice(realSource.indexOf(item), 1);
+                //    }
+                //}
+
+                _drawing.reloadUsing(realSource);
+            }
+            return this;
         },
 
         /**
@@ -1692,7 +2032,6 @@
             _drawing.initializeTimedDrawing();
             return _public;
         },
-
 
         /**
         * Registers a handler to be trigered by any interaction taken place against the canvas

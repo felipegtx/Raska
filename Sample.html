@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Rask</title>
+    <title>Raska</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Optional theme -->
@@ -42,7 +42,14 @@
             <button class="btn btn-default" onclick="addSquare();">Add square</button>
             <button class="btn btn-default" onclick="addCircle();">Add circle</button>
             <button class="btn btn-default" onclick="saveImage();">Save image</button>
-            <button class="btn btn-default" onclick="getGraph();">Get dependency graph</button>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+                <label for="elementGraph">Element graph:</label>
+                <textarea class="form-control" id="elementGraph"></textarea>
+                <button class="btn btn-default" onclick="getGraph();">Get dependency graph</button>
+                <button class="btn btn-default" onclick="loadGraph();">Load dependency graph</button>
+            </div>
         </div>
         <br />
         <div class="row">
@@ -60,12 +67,19 @@
         /// Configures raska to a given Canvas element
         raska.installUsing({ targetCanvasId: "raskaContent" });
 
+        var createCanLinkDelegate = function (base) {
+            return function(from, to) {
+                return base(from, to) && to.getType() === "square";
+            }
+        };
+
         /// Adds some elements so we can play with...
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 5; i++) {
 
             /// Circle
             var circle = raska.newCircle();
             circle.x += (100 * i);
+            circle.canLink = createCanLinkDelegate(circle.canLink.bind(circle));
             var label = raska.newLabel();
             label.text = circle.name;
             circle.addChild(label);
@@ -73,6 +87,7 @@
 
             /// Square
             var square = raska.newSquare();
+            square.canLink = createCanLinkDelegate(square.canLink.bind(square));
             square.y += 100;
             square.x += (100 * i);
             var label = raska.newLabel();
@@ -102,8 +117,15 @@
         }
 
         function getGraph() {
-            console.log(raska.getElements());
-            alert("Exported to the console");
+            document.getElementById("elementGraph").value = raska.getElementsString();
+            alert("Exported to textarea");
+        }
+
+        function loadGraph() {
+            var elementGraph = document.getElementById("elementGraph").value;
+            if (elementGraph !== "") {
+                raska.loadElementsFrom(elementGraph);
+            }
         }
     </script>
 </body>
