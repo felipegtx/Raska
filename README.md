@@ -13,7 +13,7 @@ You can also take a look into the commented source code
 
 ##Usage
 
-Here are the basic setup for the library. If you need/want more, please refer to the [docs](http://felipegtx.github.io/Raska/docs/index.html)
+Here are the basic setup for the library. If you need/want to learn more, please refer to the [docs](http://felipegtx.github.io/Raska/docs/index.html)
 
 ### Basic setup
 - Create a canvas element in your page
@@ -48,7 +48,7 @@ Don't forget to register it in the library in order to get it rendered. To do so
 raska.plot(circle);
 ```
 
-By changing the reference to the element you can (re)define the element properties position at any time without any further hasle. For example if you want if to move to the right you can just to the following.
+By keeping the reference to the element you can easily (re)define its properties (eg: its position) at any time without any further hassle. For example if you want it to move to the right you can just do:
 
 ```javascript
 circle.x += 10;
@@ -57,7 +57,7 @@ circle.x += 10;
 
 ### Animation
 
-By using the animations inside ```raska.animation``` you can easily set a new behaviour to your element. 
+By using ```raska.animation``` you can easily set a new behaviour to your element. 
 
 ```javascript
  //// The raska animation
