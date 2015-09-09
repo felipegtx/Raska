@@ -20,31 +20,40 @@
                 </p>
             </div>
         </nav>
-        <ul class="list-group">
-            <li class="list-group-item">
-                <kbd>Click</kbd> anywhere to add new circles
-            </li>
-            <li class="list-group-item">
-                <kbd>Drag</kbd> and move the square around - <em>the inner circle will only move within it</em>
-            </li>
-            <li class="list-group-item">
-                <!--http://pre11.deviantart.net/8a75/th/pre/i/2011/055/9/d/i_want_to_play_a_game___by_masdar_zulfikar-d3aafu4.jpg-->
-                <code>DO YOU WANNA PLAY A GAME?</code><br />
-                <strong><em>Rapidly</em></strong> <kbd>left-click</kbd> then <kbd>right-click</kbd> to create an linkable circle. Point the arrow to the main square and see what happens when <code>4</code> links are created.
-                <br /><br />
-                <label for="score">Your score</label><input type="text" class="form-control" readonly id="score" value="0">
-            </li>
-        </ul>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingI">
+                <a role="button" data-toggle="collapse" href="#collapseI" aria-expanded="true" aria-controls="collapseI">
+                    <code>DO YOU WANNA PLAY A GAME?</code>
+                </a>
+            </div>
+            <div id="collapseI" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingI">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <!--http://pre11.deviantart.net/8a75/th/pre/i/2011/055/9/d/i_want_to_play_a_game___by_masdar_zulfikar-d3aafu4.jpg-->
+                        <strong><em>Rapidly</em></strong> <kbd>left-click</kbd> then <kbd>right-click</kbd> to create an linkable circle. Point the arrow to the main square and let go.
+                    </li>
+                    <li class="list-group-item">
+                        <kbd>Click</kbd> anywhere to add new circles
+                    </li>
+                    <li class="list-group-item">
+                        <kbd>Drag</kbd> and move the square around - <em>the inner circle will only move within it</em>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <canvas id="raskaContent" style="border: 1px solid silver;" width="600" height="400"></canvas>
+                <label for="score">Your score</label><input type="text" class="form-control" readonly id="score" value="0"><br />
+                <canvas id="raskaContent" style="border: 1px solid silver;" width="700" height="400"></canvas>
             </div>
             <div class="col-md-2"></div>
         </div>
     </div>
     <script type="text/javascript" src="src/raska.min.js"></script>
     <script type="text/javascript" src="src/raska.animation.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
 
         function getRandomColor() {
@@ -58,9 +67,8 @@
 
         var currentColor = getRandomColor(),
             checkEnd = function (from, to) {
-                var links = to.getLinksFrom().length;
-                if ((to.getType() === "square") && links > 0 && ((links % 3) === 0)) {
-                    alert("WOW! Such hacker! Much color!");
+                if (to.getType() === "square") {
+                    console.log("WOW! Such hacker! Much color!");
                     currentColor = getRandomColor();
                     raska.$$.$q("#score").value = parseInt(raska.$$.$q("#score").value) + 1;
                 }
