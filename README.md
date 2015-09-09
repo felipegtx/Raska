@@ -62,6 +62,7 @@ By using ```raska.animation``` you can easily set a new behaviour to your elemen
 ```javascript
  //// The raska animation
 raska.animation
+
      /// Configures raska to save the initial state for all animations so we can loop without sidefects
      .saveInitialStates()
      
