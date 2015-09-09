@@ -12,3 +12,19 @@ There's also a [new example](http://felipegtx.github.io/Raska/ContainerSample.ht
 
 You can also take a look into the commented source code 
 **[here](http://felipegtx.github.io/Raska/docs/index.html)**
+
+##Usage
+
+Simple graph creation
+- Add raska.js library
+
+```
+<script type="text/javascript" src="src/raska.js"></script>
+```
+
+- Initialize it to a valid *Canvas*
+
+```
+raska.installUsing({ targetCanvasId: "raskaContent" });
+```
+

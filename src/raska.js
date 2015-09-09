@@ -14,253 +14,254 @@
      * @module raska
      * @submodule _helpers
      */
-    var _helpers = (function () {
-        return {
-
-            /**
-             * Outputs messages to the 'console'
-             *
-             * @class $log
-             * @module raska
-             * @submodule _helpers
-             * @static
-             */
-            $log: {
+    var $ = document.querySelector.bind(document),
+        _helpers = (function () {
+            return {
 
                 /**
-                 * Whether or not to actually log the messages (should be 'false' in production code)
+                 * Outputs messages to the 'console'
                  *
-                 * @property active
-                 * @type Bool
-                 * @default false
+                 * @class $log
+                 * @module raska
+                 * @submodule _helpers
+                 * @static
                  */
-                active: false,
+                $log: {
+
+                    /**
+                     * Whether or not to actually log the messages (should be 'false' in production code)
+                     *
+                     * @property active
+                     * @type Bool
+                     * @default false
+                     */
+                    active: false,
+
+                    /**
+                    * Prints an informational message to the console
+                    * 
+                    * @method info
+                    * @param {String} msg The message to be shown
+                    * @param {Any} o Any extra message data
+                    */
+                    info: function (msg, o) {
+                        if (this.active === true) {
+                            console.info(msg, o);
+                        }
+                    }
+
+                },
 
                 /**
-                * Prints an informational message to the console
-                * 
-                * @method info
-                * @param {String} msg The message to be shown
-                * @param {Any} o Any extra message data
-                */
-                info: function (msg, o) {
-                    if (this.active === true) {
-                        console.info(msg, o);
+                 * Handles commom prototype element' tasks
+                 *
+                 * @class $obj
+                 * @module raska
+                 * @submodule _helpers
+                 * @static
+                 */
+                $obj: (function () {
+
+                    var _this;
+
+                    function s4() {
+                        return Math.floor((1 + Math.random()) * 0x10000)
+                          .toString(16)
+                          .substring(1);
                     }
-                }
 
-            },
+                    return _this = {
 
-            /**
-             * Handles commom prototype element' tasks
-             *
-             * @class $obj
-             * @module raska
-             * @submodule _helpers
-             * @static
-             */
-            $obj: (function () {
-
-                var _this;
-
-                function s4() {
-                    return Math.floor((1 + Math.random()) * 0x10000)
-                      .toString(16)
-                      .substring(1);
-                }
-
-                return _this = {
-
-                    /**
-                    * Executes a given delegate for each item in the collection
-                    * 
-                    * @method forEach
-                    * @param {Array} arr The array that need to be enumerated
-                    * @param {Delegate} what What to do to a given item
-                    * @returns Array of data acquired during array enumaration
-                    */
-                    forEach: function (arr, what) {
-                        var result = [];
-                        if (_this.isArray(arr)) {
-                            for (var i = 0; i < arr.length; i++) {
-                                result.push(what(arr[i], i));
+                        /**
+                        * Executes a given delegate for each item in the collection
+                        * 
+                        * @method forEach
+                        * @param {Array} arr The array that need to be enumerated
+                        * @param {Delegate} what What to do to a given item
+                        * @returns Array of data acquired during array enumaration
+                        */
+                        forEach: function (arr, what) {
+                            var result = [];
+                            if (_this.isArray(arr)) {
+                                for (var i = 0; i < arr.length; i++) {
+                                    result.push(what(arr[i], i));
+                                }
                             }
-                        }
-                        return result;
-                    },
+                            return result;
+                        },
 
-                    /**
-                    * Whether or not a given object type is of the type you expect (typeof)
-                    * 
-                    * @method is
-                    * @param {Object} obj The object we whant to know about
-                    * @param {String} what The string representing the name of the type
-                    * @return {Bool} Whether or not the object matches the specified type
-                    */
-                    is: function (obj, what) {
-                        return typeof obj === what;
-                    },
+                        /**
+                        * Whether or not a given object type is of the type you expect (typeof)
+                        * 
+                        * @method is
+                        * @param {Object} obj The object we whant to know about
+                        * @param {String} what The string representing the name of the type
+                        * @return {Bool} Whether or not the object matches the specified type
+                        */
+                        is: function (obj, what) {
+                            return typeof obj === what;
+                        },
 
-                    /**
-                   * Whether or not a given object type is of the type you expect (constructor call)
-                   * 
-                   * @method isType
-                   * @param {Object} obj The object we whant to know about
-                   * @param {String} typeName The string representing the name of the type
-                   * @return {Bool} Whether or not the object matches the specified type
-                   */
-                    isType: function (obj, typeName) {
-                        return Object.prototype.toString.call(obj) === "[object " + typeName + "]";
-                    },
+                        /**
+                       * Whether or not a given object type is of the type you expect (constructor call)
+                       * 
+                       * @method isType
+                       * @param {Object} obj The object we whant to know about
+                       * @param {String} typeName The string representing the name of the type
+                       * @return {Bool} Whether or not the object matches the specified type
+                       */
+                        isType: function (obj, typeName) {
+                            return this.isValid(obj) && Object.prototype.toString.call(obj).toLowerCase() === "[object " + typeName.toLowerCase() + "]";
+                        },
 
-                    /**
-                    * Generates a pseudo-random Id
-                    * 
-                    * @method generateId
-                    * @return {String} A pseudo-random Id
-                    */
-                    generateId: function () {
+                        /**
+                        * Generates a pseudo-random Id
+                        * 
+                        * @method generateId
+                        * @return {String} A pseudo-random Id
+                        */
+                        generateId: function () {
 
-                        return "__" + s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
-                    },
+                            return "__" + s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
+                        },
 
-                    /**
-                    * Whether or not a given object type is valid to be handled
-                    * 
-                    * @method isValid
-                    * @param {Object} obj The object we whant to know if it's valid to be handled
-                    * @return {Bool} Whether or not the object is valid to be handled
-                    */
-                    isValid: function (obj) {
-                        return !this.is(obj, 'undefined') && obj !== null;
-                    },
+                        /**
+                        * Whether or not a given object type is valid to be handled
+                        * 
+                        * @method isValid
+                        * @param {Object} obj The object we whant to know if it's valid to be handled
+                        * @return {Bool} Whether or not the object is valid to be handled
+                        */
+                        isValid: function (obj) {
+                            return !this.is(obj, 'undefined') && obj !== null;
+                        },
 
-                    /**
-                    * Whether or not a given object is an Array
-                    * 
-                    * @method isArray
-                    * @param {Object} obj The object we whant to know is it's valid to be handled
-                    * @return {Bool} Whether or not the object is valid to be handled
-                    */
-                    isArray: function (obj) {
-                        return this.isValid(obj) && this.isType(obj, "Array");
-                    },
+                        /**
+                        * Whether or not a given object is an Array
+                        * 
+                        * @method isArray
+                        * @param {Object} obj The object we whant to know is it's valid to be handled
+                        * @return {Bool} Whether or not the object is valid to be handled
+                        */
+                        isArray: function (obj) {
+                            return this.isValid(obj) && this.isType(obj, "Array");
+                        },
 
-                    /**
-                    * Whether or not a given object type is undefined
-                    * 
-                    * @method isUndefined
-                    * @param {Object} obj The object we whant to know if it's undefined
-                    * @return {Bool} Whether or not the object is undefined
-                    */
-                    isUndefined: function (obj) {
-                        return this.is(obj, 'undefined');
-                    },
+                        /**
+                        * Whether or not a given object type is undefined
+                        * 
+                        * @method isUndefined
+                        * @param {Object} obj The object we whant to know if it's undefined
+                        * @return {Bool} Whether or not the object is undefined
+                        */
+                        isUndefined: function (obj) {
+                            return this.is(obj, 'undefined');
+                        },
 
-                    /**
-                    * Serializes a given _basicElement array to a JSON string
-                    * 
-                    * @method deconstruct
-                    * @param {_basicElement[]} basicElementArray The array of _basicElement we're going to work with
-                    * @return {string} The corresponding string
-                    */
-                    deconstruct: function (elements) {
-                        var resultFull = [];
-                        if (_helpers.$obj.isArray(elements)) {
+                        /**
+                        * Serializes a given _basicElement array to a JSON string
+                        * 
+                        * @method deconstruct
+                        * @param {_basicElement[]} basicElementArray The array of _basicElement we're going to work with
+                        * @return {string} The corresponding string
+                        */
+                        deconstruct: function (elements) {
+                            var resultFull = [];
+                            if (_helpers.$obj.isArray(elements)) {
 
-                            function normalizeChain(elementRoot) {
-                                var item, links;
-                                for (var i = 0; i < elementRoot.length; i++) {
+                                function normalizeChain(elementRoot) {
+                                    var item, links;
+                                    for (var i = 0; i < elementRoot.length; i++) {
 
-                                    item = elementRoot[i];
-                                    if ((item.graphNode === true) && (((links = item.getLinksFrom()) === null) || (links.length === 0))
-                                        && (((links = item.getLinksTo()) === null) || (links.length === 0))) {
-                                        throw new _defaultConfigurations.errors.elementDoesNotHaveALink(item.name);
+                                        item = elementRoot[i];
+                                        if ((item.graphNode === true) && (((links = item.getLinksFrom()) === null) || (links.length === 0))
+                                            && (((links = item.getLinksTo()) === null) || (links.length === 0))) {
+                                            throw new _defaultConfigurations.errors.elementDoesNotHaveALink(item.name);
+                                        }
+
+                                        if (item.isSerializable()) {
+
+                                            /// Adds the normalized item
+                                            resultFull.push(item.normalize());
+
+                                            /// Check for child elements
+                                            normalizeChain(item.getChildElements());
+                                        }
                                     }
+                                }
 
-                                    if (item.isSerializable()) {
+                                normalizeChain(elements);
+                            }
+                            return JSON.stringify(resultFull);
+                        },
 
-                                        /// Adds the normalized item
-                                        resultFull.push(item.normalize());
+                        /**
+                        * Tries to recreate a previously serialized object into a new raska instance
+                        * 
+                        * @method recreate
+                        * @param {JSON} jsonElement The JSON representation of a raska object
+                        * @return {_basicElement} The recreated element or null if the element type is invalid
+                        */
+                        recreate: function (jsonElement) {
+                            if (this.isValid(jsonElement.type) && (jsonElement.type in _elementTypes)) {
 
-                                        /// Check for child elements
-                                        normalizeChain(item.getChildElements());
+                                var resultElement = this.extend(new _defaultConfigurations[jsonElement.type], jsonElement);
+
+                                resultElement.getType = function () { return resultElement.type; }
+
+                                return resultElement;
+
+                            }
+                            return null;
+                        },
+
+                        /**
+                        * Recreate all links of the object
+                        * 
+                        * @method recreate                                     
+                        */
+                        recreateLinks: function (targetElement, baseElement, findElementDelegate) {
+
+                            /// Copy data back as it should be
+                            this.forEach(this.forEach(baseElement.linksTo, findElementDelegate), targetElement.addLinkTo.bind(targetElement));
+                            this.forEach(this.forEach(baseElement.childElements, findElementDelegate),
+                                function (element) {
+                                    targetElement.addChild(element);
+                                });
+
+                            targetElement.setParent(findElementDelegate(baseElement.parent));
+                        },
+
+                        /**
+                        * Extends any object using a base template object as reference
+                        * 
+                        * @method extend
+                        * @param {Object} baseObject The object we whant to copy from
+                        * @param {Object} impl The object with the data we want use 
+                        * @param {Bool} addNewMembers Whether or not we allow new members on the 'impl' object to be used in the result
+                        * @return {Object} Extended object
+                        */
+                        extend: function (baseObject, impl, addNewMembers) {
+                            var result = {}, element = null;
+                            if (this.isUndefined(impl)) {
+                                for (element in baseObject) {
+                                    result[element] = baseObject[element];
+                                }
+                            } else {
+
+                                if (addNewMembers === true) { result = impl; }
+                                for (element in baseObject) {
+                                    if (!result.hasOwnProperty(element)) {
+                                        result[element] = impl.hasOwnProperty(element) ? impl[element] : baseObject[element];
                                     }
                                 }
                             }
-
-                            normalizeChain(elements);
+                            return result;
                         }
-                        return JSON.stringify(resultFull);
-                    },
-
-                    /**
-                    * Tries to recreate a previously serialized object into a new raska instance
-                    * 
-                    * @method recreate
-                    * @param {JSON} jsonElement The JSON representation of a raska object
-                    * @return {_basicElement} The recreated element or null if the element type is invalid
-                    */
-                    recreate: function (jsonElement) {
-                        if (this.isValid(jsonElement.type) && (jsonElement.type in _elementTypes)) {
-
-                            var resultElement = this.extend(new _defaultConfigurations[jsonElement.type], jsonElement);
-
-                            resultElement.getType = function () { return resultElement.type; }
-
-                            return resultElement;
-
-                        }
-                        return null;
-                    },
-
-                    /**
-                    * Recreate all links of the object
-                    * 
-                    * @method recreate                                     
-                    */
-                    recreateLinks: function (targetElement, baseElement, findElementDelegate) {
-
-                        /// Copy data back as it should be
-                        this.forEach(this.forEach(baseElement.linksTo, findElementDelegate), targetElement.addLinkTo.bind(targetElement));
-                        this.forEach(this.forEach(baseElement.childElements, findElementDelegate),
-                            function (element) {
-                                targetElement.addChild(element);
-                            });
-
-                        targetElement.setParent(findElementDelegate(baseElement.parent));
-                    },
-
-                    /**
-                    * Extends any object using a base template object as reference
-                    * 
-                    * @method extend
-                    * @param {Object} baseObject The object we whant to copy from
-                    * @param {Object} impl The object with the data we want use 
-                    * @param {Bool} addNewMembers Whether or not we allow new members on the 'impl' object to be used in the result
-                    * @return {Object} Extended object
-                    */
-                    extend: function (baseObject, impl, addNewMembers) {
-                        var result = {}, element = null;
-                        if (this.isUndefined(impl)) {
-                            for (element in baseObject) {
-                                result[element] = baseObject[element];
-                            }
-                        } else {
-
-                            if (addNewMembers === true) { result = impl; }
-                            for (element in baseObject) {
-                                if (!result.hasOwnProperty(element)) {
-                                    result[element] = impl.hasOwnProperty(element) ? impl[element] : baseObject[element];
-                                }
-                            }
-                        }
-                        return result;
-                    }
-                };
-            })()
-        };
-    })(),
+                    };
+                })()
+            };
+        })(),
 
     /**
     * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
@@ -797,6 +798,19 @@
             },
 
             /**
+            * [ABSTRACT] Sets the current width for this element
+            * 
+            * @method setWidth
+            * @param {Number} newWidth The width for this element
+            * @chainable
+            * @throws {_defaultConfigurations.errors.notImplementedException} Not implemented
+            */
+            setWidth: function (newWidth) {
+                console.error(_defaultConfigurations.errors.notImplementedException);
+                throw _defaultConfigurations.errors.notImplementedException;
+            },
+
+            /**
            * [ABSTRACT] Gets the current width for this element
            * 
            * @method getWidth
@@ -804,6 +818,19 @@
            * @throws {_defaultConfigurations.errors.notImplementedException} Not implemented
            */
             getWidth: function () {
+                console.error(_defaultConfigurations.errors.notImplementedException);
+                throw _defaultConfigurations.errors.notImplementedException;
+            },
+
+            /**
+            * [ABSTRACT] Sets the current Height for this element
+            * 
+            * @method setHeight
+            * @param {Number} newHeight The height for this element
+            * @chainable
+            * @throws {_defaultConfigurations.errors.notImplementedException} Not implemented
+            */
+            setHeight: function (newHeight) {
                 console.error(_defaultConfigurations.errors.notImplementedException);
                 throw _defaultConfigurations.errors.notImplementedException;
             },
@@ -870,7 +897,7 @@
          */
         library: {
             readonly: false,
-            frameRefreshRate: 20,
+            frameRefreshRate: 30,
             targetCanvasId: ""
         },
 
@@ -1135,8 +1162,8 @@
                 isLinkable: function () { return false; },
                 border: { active: false },
                 fillColor: "",
-                getWidth: function () { return 0; },
-                getHeight: function () { return 0; },
+                getWidth: function () { return element.clientWidth; },
+                getHeight: function () { return element.clientHeight; },
                 drawTo: function (canvas, context) { },
                 existsIn: function (x, y) { return false; },
                 handleInteractions: true,
@@ -1170,8 +1197,16 @@
                 getType: function () { return _elementTypes.circle; },
                 fillColor: "silver",
                 radius: 20,
+                setWidth: function (r) {
+                    this.radius = r / 2;
+                    return this;
+                },
                 getWidth: function () {
                     return this.radius * 2;
+                },
+                setHeight: function (r) {
+                    this.radius = r / 2;
+                    return this;
                 },
                 getHeight: function () {
                     return this.radius * 2;
@@ -1287,16 +1322,6 @@
             _elements = [],
 
             /**
-            * Holds the reference to the timer responsible for (re)draw the elements into the canvas
-            *
-            * @private
-            * @property _timer
-            * @type timer
-            * @default null
-            */
-            _timer = null,
-
-            /**
             * Whether or not we have a timer running
             *
             * @private
@@ -1344,17 +1369,22 @@
              */
             _timedDrawing = function () {
 
-                if (_timer !== null) {
-                    w.clearTimeout(_timer);
-                }
-
                 if (_timerRunning === true) {
-                    _draw();
-                    _timer = w.setTimeout(function () {
-                        _timedDrawing();
-                    }, _activeConfiguration.frameRefreshRate);
-                }
+                    w.requestAnimationFrame = function () {
+                        var _timer = null;
+                        return w.requestAnimationFrame || w.webkitRequestAnimationFrame ||
+                            w.mozRequestAnimationFrame || w.msRequestAnimationFrame ||
+                            w.oRequestAnimationFrame || function (f) {
+                                if (_timer !== null) {
+                                    w.clearTimeout(_timer);
+                                }
+                                _timer = w.setTimeout(f, _activeConfiguration.frameRefreshRate);
+                            }
+                    }();
 
+                    _draw();
+                    w.requestAnimationFrame(_timedDrawing);
+                }
             },
 
             /**
@@ -1726,7 +1756,7 @@
             _draw = function () {
 
                 if (_canvas === null) {
-                    _2dContext = (_canvas = document.getElementById(_activeConfiguration.targetCanvasId))
+                    _2dContext = (_canvas = $("#" + _activeConfiguration.targetCanvasId))
                         .getContext('2d');
                     _canvas.addEventListener("mousedown", _checkClick, false);
                     _canvas.addEventListener("mousemove", _whenMouseMove, false);
@@ -2042,13 +2072,29 @@
         * Registers a handler to be trigered by any interaction taken place against the canvas
         *
         * @method onElementInteraction
-        * @param {Function} What to do whenever an element iteraction happens
+        * @param {string} iteractionType When to trigger the iteraction handler
+        * @param {Function} trigger What to do whenever an element iteraction happens
         * @static
         * @chainable
         */
         onCanvasInteraction: function (iteractionType, trigger) {
             _elementInteractionEventData.register(_drawing.getCanvasElement(), iteractionType, trigger);
-        }
+            return this;
+        },
+
+        /**
+        * Gathers the target canvas boundaries
+        *
+        * @method getCanvasBoundaries
+        * @static
+        * @return {maxW:number, maxH:number}
+        */
+        getCanvasBoundaries: function () {
+            var el = _drawing.getCanvasElement();
+            return { maxH: el.getHeight(), maxW: el.getWidth() };
+        },
+
+        $$: { $h: _helpers, $q: $, $c: _activeConfiguration }
     };
 
     w.raska = _public;

@@ -34,14 +34,6 @@
         /// Configures raska to a given Canvas element
         raska.installUsing({ targetCanvasId: "raskaContent" });
 
-        var square = raska.newSquare();
-        square.dimensions.width = 200;
-        square.dimensions.height = 200;
-        square.border.width = 1;
-        square.x = 100;
-        square.y = 100;
-        square.fillColor = "silver";
-
         var head = raska.newCircle();
         head.radius = 80;
         head.x = 150;
@@ -101,8 +93,10 @@
         /// Helper function to link the coordinates from two objects
         .onCanvasInteraction("mousemove",
             function (evtData) {
+
                 rightEyeBall.adjustPosition(evtData.x, evtData.y);
                 leftEyeBall.adjustPosition(evtData.x, evtData.y);
+
             });
 
     </script>

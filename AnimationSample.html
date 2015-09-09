@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Raska</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="https://github.com/felipegtx/Raska" target="_blank">Raska!</a>
+                <p class="navbar-text  navbar-right">
+                    You can find the docs
+                    <a href="http://felipegtx.github.io/Raska/docs/index.html" target="_blank">
+                        <strong>in here</strong>
+                    </a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <canvas id="raskaContent" style="border: 1px solid silver;" width="800" height="600"></canvas>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="src/raska.min.js"></script>
+    <script type="text/javascript" src="src/raska.animation.js"></script>
+    <script>
+
+        /// Configures raska to a given Canvas element
+        raska.installUsing({ targetCanvasId: "raskaContent" });
+
+        /// Creates an square that contains a circle
+        var square = raska.newSquare();
+        square.dimensions.width = 200;
+        square.dimensions.height = 200;
+        square.border.width = 1;
+        square.x = 100;
+        square.y = 100;
+        square.fillColor = "silver";
+        var circle = raska.newCircle();
+        circle.radius = 30;
+        circle.x = 150;
+        circle.y = 150;
+        circle.fillColor = "yellow";
+        circle.border.color = "black";
+
+        /// Renders the square (hence its circle child)
+        raska.plot(square.addChild(circle));
+
+        var moveIt = function(x, y) {
+            return {
+                x: x + 50,
+                y: y + 50
+            };
+        };
+
+        //// The raska animation
+        raska.animation
+
+            /// Configures raska to save the initial state for all animations so we can loop without sidefects
+            .saveInitialStates()
+
+            /// Fade in the circle
+            .fadeIn(circle)
+
+            /// then move de circle around (inside its parent boundaries)
+            .then().move(circle, moveIt)
+
+            /// then move de square around (inside its parent boundaries - the canvas itself)
+            .then().move(square, moveIt)
+
+            /// Execute the animations in loop 
+            ///     PS: here you can also provide an parameter to set the interval beteween animations
+            .loop();
+
+    </script>
+</body>
+</html>

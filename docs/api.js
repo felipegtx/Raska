@@ -3,6 +3,7 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "$log",
         "$obj",
+        "_animationChainController",
         "_basicElement",
         "_drawing",
         "_elementBeingDraged",
@@ -19,6 +20,7 @@ YUI.add("yuidoc-meta", function(Y) {
     "modules": [
         "_defaultConfigurations",
         "_helpers",
+        "animation",
         "raska"
     ],
     "allModules": [
@@ -31,6 +33,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "_helpers",
             "name": "_helpers",
             "description": "An utility that wraps the commom taks to avoid code repetition"
+        },
+        {
+            "displayName": "animation",
+            "name": "animation",
+            "description": "HTML5 canvas visual directed graph creation tool"
         },
         {
             "displayName": "raska",
