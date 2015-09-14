@@ -16,6 +16,20 @@
      */
     var $ = document.querySelector.bind(document),
         _helpers = (function () {
+
+            /// A shim to allow a better animation frame timing
+            w.requestAnimationFrame = function () {
+                var _timer = null;
+                return w.requestAnimationFrame || w.webkitRequestAnimationFrame ||
+                    w.mozRequestAnimationFrame || w.msRequestAnimationFrame ||
+                    w.oRequestAnimationFrame || function (f) {
+                        if (_timer !== null) {
+                            w.clearTimeout(_timer);
+                        }
+                        _timer = w.setTimeout(f, _activeConfiguration.frameRefreshRate);
+                    }
+            }();
+
             return {
 
                 /**
@@ -77,7 +91,7 @@
                         * 
                         * @method forEach
                         * @param {Array} arr The array that need to be enumerated
-                        * @param {Delegate} what What to do to a given item
+                        * @param {Delegate} what What to do to a given item (obj item, number index)
                         * @returns Array of data acquired during array enumaration
                         */
                         forEach: function (arr, what) {
@@ -430,7 +444,7 @@
              * @type _basicElement
              * @default []
              */
-            $childElements = [];
+            $childElements = [], $this;
 
         /**
         * Clears all links that point to and from this Raska element
@@ -448,7 +462,7 @@
             return [];
         }
 
-        return {
+        return $this = {
             /**
              * The element name
              *
@@ -784,6 +798,63 @@
             },
 
             /**
+             * Whether or not this element handle event interactions
+             * 
+             * @property canHandleEvents
+             * @type bool
+             * @default false
+             */
+            canHandleEvents: function () { return true; },
+
+            on: (function () {
+
+                var __clickDelegates = [];
+
+                function triggerDelegatesUsing(x, y, ele) {
+                    _helpers.$obj.forEach(__clickDelegates, function (el, i) {
+                        el(x, y, ele);
+                    });
+                }
+
+                return {
+
+                    /**
+                     * Triggered whenever a click iteraction occurs within the boundaries of this element.
+                     *  - This event is only supported on selected elements. Check for the *canHandleEvents*
+                     *    property value before relying on this delegate
+                     * 
+                     * @function click
+                     * @param {number} x 
+                     * @param {number} y 
+                     * @param {_basicElement} ele 
+                     * @chainable
+                     */
+                    click: function (x, y, ele) {
+                        if (_helpers.$obj.isType(x, "number") === true) {
+                            if ($childElements.length > 0) {
+                                var parentAdjustedPosition = ele.getAdjustedCoordinates();
+                                _helpers.$obj.forEach($childElements, function (el, i) {
+                                    var newPosition = {
+                                        x: x - parentAdjustedPosition.x,
+                                        y: y - parentAdjustedPosition.y
+                                    }
+                                    if (el.canHandleEvents() && el.existsIn(newPosition.x, newPosition.y)) {
+                                        el.on.click(newPosition.x, newPosition.y, el);
+                                    }
+                                });
+                            } else {
+                                triggerDelegatesUsing(x, y, ele);
+                            }
+                        } else if (_helpers.$obj.isType(x, "function") === true) {
+                            __clickDelegates.push(x);
+                        }
+
+                        return $this;
+                    }
+                };
+            })(),
+
+            /**
             * [ABSTRACT] Adjusts the position of the current element taking in consideration it's parent 
             * positioning constraints
             * 
@@ -977,8 +1048,8 @@
                 drawTo: function (canvas, context) {
                     var coordinates = this.getAdjustedCoordinates();
                     context.font = this.font.size + " " + this.font.family;
-                    context.textBaseline = "middle";
-                    context.textAlign = "center";
+                    //context.textBaseline = "middle";
+                    //context.textAlign = "center";
                     if (this.border.active === true) {
                         context.lineJoin = "round";
                         context.lineWidth = this.border.width;
@@ -1092,6 +1163,7 @@
                     return this;
                 },
                 graphNode: false,
+                canHandleEvents: function () { return false; },
                 isSerializable: function () { return false; },
                 getType: function () { return _elementTypes.arrow; },
                 canLink: function () { return false; },
@@ -1155,6 +1227,7 @@
             var targetElement = element;
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "htmlElement" + _helpers.$obj.generateId(),
+                canHandleEvents: function () { return false; },
                 getType: function () { return _elementTypes.html; },
                 graphNode: false,
                 isSerializable: function () { return false; },
@@ -1370,17 +1443,6 @@
             _timedDrawing = function () {
 
                 if (_timerRunning === true) {
-                    w.requestAnimationFrame = function () {
-                        var _timer = null;
-                        return w.requestAnimationFrame || w.webkitRequestAnimationFrame ||
-                            w.mozRequestAnimationFrame || w.msRequestAnimationFrame ||
-                            w.oRequestAnimationFrame || function (f) {
-                                if (_timer !== null) {
-                                    w.clearTimeout(_timer);
-                                }
-                                _timer = w.setTimeout(f, _activeConfiguration.frameRefreshRate);
-                            }
-                    }();
 
                     _draw();
                     w.requestAnimationFrame(_timedDrawing);
@@ -1721,7 +1783,12 @@
                 evt = evt || w.event;
                 for (var i = 0; i < _elements.length; i++) {
                     if (_elements[i].existsIn(_mouse.getX(evt), _mouse.getY(evt))) {
-                        _elementBeingDraged.reference = _elements[i];
+                        if ((_elementBeingDraged.reference = _elements[i]).canHandleEvents()) {
+                            _elementBeingDraged.reference.on.click(
+                                _mouse.getX(evt),
+                                _mouse.getY(evt),
+                                _elementBeingDraged.reference);
+                        }
                     }
                 }
 
@@ -1904,8 +1971,8 @@
         * @return {_defaultConfigurations.label} Copy of '_defaultConfigurations.label' object
         * @static
         */
-        newLabel: function () {
-            return _helpers.$obj.extend(new _defaultConfigurations.label(), {});
+        newLabel: function (defaultConfiguration) {
+            return _helpers.$obj.extend(new _defaultConfigurations.label(), defaultConfiguration);
         },
 
         /**
@@ -2037,6 +2104,8 @@
                 //}
 
                 _drawing.reloadUsing(realSource);
+
+                return realSource;
             }
             return this;
         },
@@ -2092,6 +2161,18 @@
         getCanvasBoundaries: function () {
             var el = _drawing.getCanvasElement();
             return { maxH: el.getHeight(), maxW: el.getWidth() };
+        },
+
+        /**
+        * Clears all elements from the canvas
+        *
+        * @method clear
+        * @static
+        * @chainable
+        */
+        clear: function () {
+            _drawing.reloadUsing([]);
+            return this;
         },
 
         $$: { $h: _helpers, $q: $, $c: _activeConfiguration }

@@ -71,18 +71,25 @@
         * @chainable
         * @static
         */
-        resetElement: function () { return this; }
-    };
+        resetElement: function () { return this; },
 
-    var _inLoop = false,
-
-         /**
-        * Executes a given delegate whenever possible
+        /**
+        * Stops the current animation
         *
-        * @class _animationChainController
+        * @method stop
+        * @chainable
         * @static
         */
-        _animationChainController = (function () {
+        stop: function () { return this; }
+    };
+
+      /**
+       * Executes a given delegate whenever possible
+       *
+       * @class _animationChainController
+       * @static
+       */
+    var _animationChainController = (function () {
 
             var _this,
                 _animations = [],
@@ -101,9 +108,11 @@
                 * @static
                 */
                 register: function (animation) {
-                    _animations.push(animation);
-                    if (_saveStates === true) {
-                        _animationsCopy.push(animation);
+                    if (_animations.indexOf(animation) === -1) {
+                        _animations.push(animation);
+                        if (_saveStates === true) {
+                            _animationsCopy.push(animation);
+                        }
                     }
                     return _this;
                 },
@@ -112,12 +121,22 @@
                 /**
                 * Clears all saved states from the chain
                 *
-                * @method clearSavedStates
+                * @method stop
                 * @chainable
                 * @static
                 */
-                clearSavedStates: function () {
+                stop: function () {
+
+                    _helpers.$obj.forEach(_animations, function (i, ind) { i.stop(); });
+                    _animations.length = 0;
+
+                    _helpers.$obj.forEach(_animationsCopy, function (i, ind) { i.stop(); });
                     _animationsCopy.length = 0;
+
+                    if (_timer !== null) {
+                        window.clearTimeout(_timer);
+                        _timer = null;
+                    }
                     return _this;
                 },
 
@@ -162,11 +181,12 @@
                     if (_animations.length > 0) {
                         _animations.shift().execute(function () {
                             if (_helpers.$obj.isType(interval, "number") === true) {
+                                if (_timer !== null) { window.clearTimeout(_timer); }
                                 _timer = window.setTimeout(function () {
                                     _this.execute(then, interval);
                                 }, interval);
                             } else {
-                                _this.execute(then);
+                                tooling.execute(function() { _this.execute(then); });
                             }
                         });
                     } else {
@@ -179,11 +199,43 @@
             };
         })(),
 
+        _loopTimer = null,
+        _inLoop = false,
+        _looperInterval = null,
+
+        /**
+        * Controls the execution of the animation loop
+        *
+        * @method _looper
+        * @private
+        * @static
+        */
+        _looper = function () {
+            if (_loopTimer !== null) {
+                window.clearTimeout(_loopTimer);
+                _loopTimer = null;
+            }
+            if (_inLoop === true) {
+                _animationChainController.restoreFromSavedState();
+                _animationChainController.execute(function () {
+                    if (_inLoop === true) {
+                        if (_helpers.$obj.isType(_looperInterval, "number") === true) {
+                            if (_loopTimer !== null) {
+                                window.clearTimeout(_loopTimer);
+                            }
+                            _loopTimer = w.setTimeout(_looper, _looperInterval);
+                        } else {
+                            tooling.execute(_looper);
+                        }
+                    }
+                });
+            }
+        },
+
         /**
         * The public interface for the animation module
         *
         * @class _public
-        * @private
         * @static
         */
         _public = {
@@ -204,7 +256,8 @@
                     throw new exceptions.invalidElement();
                 }
 
-                var _stepIncrement = stepIncrement || 1,
+                var _stoped = true,
+                    _stepIncrement = stepIncrement || 1,
                     _fadeIn = function (changer, then) {
                         var maxH = targetElement.getHeight(),
                         maxW = targetElement.getWidth(),
@@ -212,6 +265,9 @@
                         changed = false,
                         fader = function () {
                             tooling.execute(function () {
+                                if (_stoped === true) {
+                                    return;
+                                }
                                 changed = false;
                                 if ((currentH = targetElement.getHeight()) < maxH) {
                                     targetElement.setHeight(Math.min(changer(currentH), maxH));
@@ -224,7 +280,7 @@
                                 }
 
                                 if (changed === true) {
-                                    fader();
+                                    tooling.execute(fader);
                                 } else if (_helpers.$obj.isType(then, "function") === true) {
                                     then();
                                 }
@@ -244,7 +300,12 @@
                                 return this;
                             },
                             execute: function (then) {
+                                _stoped = false;
                                 _fadeIn(function (x) { return x + _this.step; }, then);
+                                return _this;
+                            },
+                            stop: function() {
+                                _stoped = true;
                                 return _this;
                             }
                         };
@@ -270,7 +331,8 @@
                     throw new exceptions.invalidElement();
                 }
 
-                var _stepIncrement = stepIncrement || 1,
+                var _stoped = true,
+                    _stepIncrement = stepIncrement || 1,
                     _fadeOut = function (changer, then) {
                         var minH = 0, minW = 0,
                         currentH = targetElement.getHeight(),
@@ -278,6 +340,9 @@
                         changed = false,
                         fader = function () {
                             tooling.execute(function () {
+                                if (_stoped === true) {
+                                    return;
+                                }
                                 changed = false;
                                 if ((currentH = targetElement.getHeight()) > minH) {
                                     targetElement.setHeight(Math.max(changer(currentH), minH));
@@ -290,7 +355,7 @@
                                 }
 
                                 if (changed === true) {
-                                    fader();
+                                    tooling.execute(fader);
                                 } else if (_helpers.$obj.isType(then, "function") === true) {
                                     then();
                                 }
@@ -306,10 +371,15 @@
                             step: _stepIncrement,
                             resetElement: function () {
                                 targetElement.setWidth(initialW).setHeight(initialH);
-                                return this;
+                                return _this;
                             },
                             execute: function (then) {
+                                _stoped = false;
                                 _fadeOut(function (x) { return x - _this.step; }, then);
+                                return _this;
+                            },
+                            stop: function() {
+                                _stoped = true;
                                 return _this;
                             }
                         };
@@ -335,12 +405,16 @@
                     throw new exceptions.invalidElement();
                 }
 
-                var parent = targetElement.getParent(),
+                var _stoped = true,
+                    parent = targetElement.getParent(),
                     boundaries = (parent === null) ? raska.getCanvasBoundaries() : {
                         maxW: parent.getWidth(),
                         maxH: parent.getHeight()
                     },
                     _move = function (then) {
+                        if (_stoped === true) {
+                            return;
+                        }
                         var newPosition = configuration(targetElement.x, targetElement.y);
                         if (newPosition.x >= boundaries.maxW) { newPosition.x = 0; }
                         if (newPosition.y >= boundaries.maxH) { newPosition.y = 0; }
@@ -351,9 +425,14 @@
                     },
                     _this = _helpers.$obj.extend(w.raska.baseAnimation, (function () {
                         return {
-                            resetElement: function () { return this; },
+                            resetElement: function () { return _this; },
                             execute: function (then) {
+                                _stoped = false;
                                 _move(then);
+                                return _this;
+                            },
+                            stop: function () {
+                                _stoped = true;
                                 return _this;
                             }
                         };
@@ -372,7 +451,22 @@
             * @static
             * @chainable
             */
-            then: function () {
+            then: function (what) {
+                if (_helpers.$obj.isType(what, "object") && _helpers.$obj.isType(what.execute, "function")) {
+                    _animationChainController.register(_helpers.$obj.extend(w.raska.baseAnimation,
+                        (function () {
+                            var _this = {
+                                resetElement: function () { return _this; },
+                                execute: function (then) {
+                                    if (what.execute()) {
+                                        then();
+                                    }
+                                    return _this;
+                                }
+                            };
+                            return _this;
+                        })(), true));
+                }
                 return _public;
             },
 
@@ -399,24 +493,9 @@
             * @chainable
             */
             loop: function (interval) {
-                var timer = null;
+                _looperInterval = interval;
                 _inLoop = true;
-                var looper = function () {
-                    if (timer !== null) {
-                        window.clearTimeout(timer);
-                    }
-                    if (_inLoop === true) {
-                        _animationChainController.restoreFromSavedState();
-                        _animationChainController.execute(function () {
-                            if (_helpers.$obj.isType(interval, "number") === true) {
-                                timer = w.setTimeout(looper, interval);
-                            } else {
-                                tooling.execute(looper);
-                            }
-                        }, interval);
-                    }
-                };
-                looper();
+                _looper();
                 return _public;
             },
 
@@ -443,7 +522,10 @@
             */
             stop: function () {
                 _inLoop = false;
-                _animationChainController.clearSavedStates();
+                if (_loopTimer !== null) {
+                    w.clearTimeout(_loopTimer);
+                }
+                _animationChainController.stop();
                 return _public;
             }
         };

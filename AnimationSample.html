@@ -20,17 +20,60 @@
                 </p>
             </div>
         </nav>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingI">
+                <a role="button" data-toggle="collapse" href="#collapseI" aria-expanded="true" aria-controls="collapseI">
+                    <code>DO YOU WANNA PLAY A GAME?</code>
+                </a>
+            </div>
+            <div id="collapseI" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingI">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <!--http://pre11.deviantart.net/8a75/th/pre/i/2011/055/9/d/i_want_to_play_a_game___by_masdar_zulfikar-d3aafu4.jpg-->
+                        <strong><em>Rapidly</em></strong> <kbd>left-click</kbd> then <kbd>right-click</kbd> to create an linkable circle. Point the arrow to the main square and let go.
+                    </li>
+                    <li class="list-group-item">
+                        <kbd>Click</kbd> anywhere to add new circles
+                    </li>
+                    <li class="list-group-item">
+                        <kbd>Drag</kbd> and move the square around - <em>the inner circle will only move within it</em>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <canvas id="raskaContent" style="border: 1px solid silver;" width="800" height="600"></canvas>
+                <label for="score">Your score</label><input type="text" class="form-control" readonly id="score" value="0"><br />
+                <canvas id="raskaContent" style="border: 1px solid silver;" width="700" height="400"></canvas>
             </div>
             <div class="col-md-2"></div>
         </div>
     </div>
     <script type="text/javascript" src="src/raska.min.js"></script>
     <script type="text/javascript" src="src/raska.animation.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        var currentColor = getRandomColor(),
+            checkEnd = function (from, to) {
+                if (to.getType() === "square") {
+                    console.log("WOW! Such hacker! Much color!");
+                    currentColor = getRandomColor();
+                    raska.$$.$q("#score").value = parseInt(raska.$$.$q("#score").value) + 1;
+                }
+                return true;
+            }
 
         /// Configures raska to a given Canvas element
         raska.installUsing({ targetCanvasId: "raskaContent" });
@@ -51,33 +94,50 @@
         circle.border.color = "black";
 
         /// Renders the square (hence its circle child)
-        raska.plot(square.addChild(circle));
+        raska
+            .plot(square.addChild(circle))
+            .onCanvasInteraction("click",
+                function (evtData) {
 
-        var moveIt = function(x, y) {
+                    var n_circle = raska.newCircle();
+                    n_circle.radius = 30;
+                    n_circle.x = evtData.x;
+                    n_circle.canLink = checkEnd;
+                    n_circle.y = evtData.y;
+                    n_circle.fillColor = currentColor;
+                    n_circle.border.color = "black";
+                    raska.plot(n_circle);
+                    animate(n_circle).stop().loop(300);
+
+                });
+
+        var moveIt = function (x, y) {
             return {
                 x: x + 50,
                 y: y + 50
             };
         };
 
-        //// The raska animation
-        raska.animation
+        function animate(ele) {
 
-            /// Configures raska to save the initial state for all animations so we can loop without sidefects
-            .saveInitialStates()
+            //// The raska animation
+            raska.animation
 
-            /// Fade in the circle
-            .fadeIn(circle)
+                /// Configures raska to save the initial state for all animations so we can loop without sidefects
+                .saveInitialStates()
 
-            /// then move de circle around (inside its parent boundaries)
-            .then().move(circle, moveIt)
+                /// Fade in the circle
+                .fadeIn(ele)
 
-            /// then move de square around (inside its parent boundaries - the canvas itself)
-            .then().move(square, moveIt)
+                /// then move de circle around (inside its parent boundaries)
+                .then().move(ele, moveIt)
 
-            /// Execute the animations in loop 
-            ///     PS: here you can also provide an parameter to set the interval beteween animations
-            .loop();
+                /// Execute the animations in loop
+                ///     PS: here you can also provide an parameter to set the interval beteween animations
+                .loop(300);
+        }
+
+        animate(circle);
 
     </script>
 </body>

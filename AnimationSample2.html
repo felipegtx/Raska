@@ -1,0 +1,196 @@
+<html>
+<head>
+    <title>Raska</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="https://github.com/felipegtx/Raska" target="_blank">Raska!</a>
+                <p class="navbar-text  navbar-right">
+                    You can find the docs
+                    <a href="http://felipegtx.github.io/Raska/docs/index.html" target="_blank">
+                        <strong>in here</strong>
+                    </a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </nav>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingI">
+                <a role="button" data-toggle="collapse" href="#collapseI" aria-expanded="true" aria-controls="collapseI">
+                    <code>DO YOU WANNA PLAY ANOTHER GAME?</code>
+                </a>
+            </div>
+            <div id="collapseI" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingI">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Try to <strong>only</strong> click on the yellow circle contained inside the Gray box.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group has-success">
+                        <label for="score" class="control-label">Your score</label>
+                        <input type="text" class="form-control" readonly id="score" value="0">
+                    </div>
+                    <div class="form-group has-warning">
+                        <label for="timeLeft" class="control-label">Seconds left</label>
+                        <input type="text" class="form-control" readonly id="timeLeft" value="0">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-warning" onclick="startGame();">(re)Start game!</button><br />
+                    </div>
+                </form>
+                <canvas id="raskaContent" style="border: 1px solid silver;" width="700" height="400"></canvas>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="src/raska.js"></script>
+    <script type="text/javascript" src="src/raska.animation.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+
+        /// Configures raska to a given Canvas element
+        raska.installUsing({ targetCanvasId: "raskaContent" });
+
+        var startLevel = totalLevel = 1000,
+            levelPartial = totalLevel / 20,
+            startTime = totalTime = 30,
+            totalCircles = 0,
+            timerRef = null,
+            done = true,
+            countDown = function (reset) {
+                if (timerRef !== null) {
+                    window.clearTimeout(timerRef);
+                }
+                if (reset || timerRef === null) { raska.$$.$q("#timeLeft").value = totalTime; }
+                var timeLeft = parseInt(raska.$$.$q("#timeLeft").value);
+                if (timeLeft <= 0) {
+                    done = true;
+                    timerRef = null;
+                    raska.animation.stop();
+                    var result = parseInt(raska.$$.$q("#score").value);
+                    var score = raska.clear().newLabel();
+                    score.text = result > 0 ? "Congrats! Your score was " + result : "Why so serious?!";
+                    score.x = 80;
+                    score.y = 80;
+                    score.font.size = "40px";
+                    raska.plot(score);
+                } else {
+                    raska.$$.$q("#timeLeft").value = --timeLeft;
+                    timerRef = window.setTimeout(countDown, 1000);
+                }
+            },
+            getRandomColor = function () {
+                var letters = '0123456789ABCDEF'.split('');
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            },
+            getRandomArbitrary = function () {
+                return Math.random() * 700;
+            },
+            checkClickCircle = function (x, y, c) {
+                raska.$$.$q("#score").value = parseInt(raska.$$.$q("#score").value) + 1;
+                console.log(totalLevel = Math.max(totalLevel - Math.max(levelPartial, 1), 50));
+            },
+            animate = function (ele) {
+
+                //// The raska animation
+                return raska.animation
+
+                    /// Fade in the circle
+                    .fadeIn(ele)
+
+                    /// then move de circle around (inside its parent boundaries)
+                    .then().move(ele, moveIt);
+
+            },
+            moveIt = function (x, y) {
+                return {
+                    x: x + 150,
+                    y: y + 50
+                };
+            },
+            addCircleTimer = null,
+            addCircle = function () {
+                if (done === false) {
+                    var n_circle = raska.newCircle();
+                    n_circle.radius = 30;
+                    n_circle.x = getRandomArbitrary();
+                    n_circle.y = getRandomArbitrary();
+                    n_circle.fillColor = getRandomColor();
+                    n_circle.border.color = "black";
+
+                    var n_circleLabel = raska.newLabel();
+                    n_circleLabel.text = ++totalCircles;
+                    raska.plot(n_circle.addChild(n_circleLabel));
+                    animate(n_circle).loop();
+
+                    if (addCircleTimer !== null) {
+                        window.clearTimeout(addCircleTimer);
+                    }
+                    addCircleTimer = window.setTimeout(addCircle, totalLevel);
+                }
+            },
+            startGame = function () {
+
+                totalTime = startTime;
+                done = false;
+                totalCircles = 0;
+
+                /// Creates an square that contains a circle
+                var square = raska.clear().newSquare();
+                square.dimensions.width = 200;
+                square.dimensions.height = 200;
+                square.border.width = 1;
+                square.x = 100;
+                square.y = 100;
+                square.fillColor = "silver";
+                var circle = raska.newCircle();
+                circle.on.click(checkClickCircle);
+                circle.radius = 30;
+                circle.x = 150;
+                circle.y = 150;
+                circle.fillColor = "yellow";
+                circle.border.color = "black";
+                square.addChild(circle);
+
+                /// Renders the square (hence its circle child)
+                raska.plot(square);
+
+                /// Clears any residual process
+                raska.animation.stop().saveInitialStates();
+
+                /// We, for each canvas repaint add a new circle and adjust the repainting interval
+                animate(circle).loop();
+
+                /// Start adding circles
+                totalLevel = startLevel;
+                countDown(true);
+                addCircle();
+            };
+
+        var start = raska.newLabel();
+        start.text = "Click (re)Start game!";
+        start.x = 180;
+        start.y = 200;
+        start.font.size = "40px";
+        raska.plot(start);
+
+    </script>
+</body>
+</html>
