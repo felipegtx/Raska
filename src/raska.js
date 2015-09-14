@@ -2094,15 +2094,6 @@
                     }
                 }
 
-                /// Removes all nested items that doesn't need to be part of the main array
-                /// given they are rendered via their parents
-                //for (i = 0; i < realSource.length; i++) {
-                //    item = realSource[i];
-                //    if (item.isLinkable() !== true) {
-                //        realSource.splice(realSource.indexOf(item), 1);
-                //    }
-                //}
-
                 _drawing.reloadUsing(realSource);
 
                 return realSource;
