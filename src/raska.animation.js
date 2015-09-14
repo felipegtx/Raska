@@ -11,7 +11,7 @@
 
     'use strict';
 
-    if (typeof w.raska === 'undefined') { throw new { message: "Raska was not found!" }; }
+    if (typeof w.raska === 'undefined') { throw { message: "Raska was not found!" }; }
 
     var $ = raska.$$.$q,
         _helpers = raska.$$.$h,
