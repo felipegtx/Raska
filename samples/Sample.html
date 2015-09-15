@@ -130,13 +130,17 @@
             };
         }
 
+        function notifyDeletion(element) {
+            console.log("Element was removed", element);
+        }
+
         /// Adds some elements so we can play with...
         var position;
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 1; i++) {
 
             /// Circle
             position = getRandomPosition();
-            var circle = raska.newCircle();
+            var circle = raska.newCircle().notifyDisableStateOn(notifyDeletion);
             circle.x = position.x;
             circle.y = position.y;
             circle.canLink = createCanLinkDelegate(circle.canLink.bind(circle));
@@ -147,7 +151,7 @@
 
             /// Square
             position = getRandomPosition();
-            var square = raska.newSquare();
+            var square = raska.newSquare().notifyDisableStateOn(notifyDeletion);
             square.canLink = createCanLinkDelegate(square.canLink.bind(square));
             square.y = position.y;
             square.x = position.x;
@@ -161,7 +165,7 @@
             var square = raska.newSquare();
             var label = raska.newLabel();
             label.text = document.getElementById("elementLabel").value;
-            square.addChild(label);
+            square.addChild(label).notifyDisableStateOn(notifyDeletion);
             raska.plot(square);
         }
 
@@ -169,7 +173,7 @@
             var circle = raska.newCircle();
             var label = raska.newLabel();
             label.text = document.getElementById("elementLabel").value;
-            circle.addChild(label);
+            circle.addChild(label).notifyDisableStateOn(notifyDeletion);
             raska.plot(circle);
         }
 

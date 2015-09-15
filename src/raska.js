@@ -408,6 +408,14 @@
 
         var
             /**
+             * A simple helper function to be used whenever this instance gets disable (if ever)
+             *
+             * @private
+             * @method $disabled
+             */
+            $disabled = function () { },
+
+            /**
              * Points to a parent Raska element (if any)
              *
              * @private
@@ -444,7 +452,7 @@
              * @type _basicElement
              * @default []
              */
-            $childElements = [], $this;
+            $childElements = [], $this, $disabledStateSubscribers = [];
 
         /**
         * Clears all links that point to and from this Raska element
@@ -506,6 +514,53 @@
             },
 
             /**
+            * Clears all references and child elements from this instance
+            * 
+            * @method disable
+            * @chainable
+            */
+            disable: function () {
+                this.clearAllLinks();
+                _helpers.$obj.forEach($childElements, function (ele) { ele.disable(); });
+                $childElements.length = 0;
+                _helpers.$obj.forEach($disabledStateSubscribers, function (target) {
+                    if (_helpers.$obj.is(target, "function")) {
+                        target(this);
+                    } else {
+                        target.elementDisabledNotification(this);
+                    }
+                }.bind(this));
+                $disabledStateSubscribers.length = 0; /// Let us free some space
+                this.drawTo = $disabled;
+                return this;
+            },
+
+            /**
+            * Notifies a given element whenever (if ever) this element gets disabled
+            * 
+            * @method notifyDisableStateOn
+            * @chainable
+            */
+            notifyDisableStateOn: function (target) {
+                if (($disabledStateSubscribers.indexOf(target) === -1)
+                    && (_helpers.$obj.isValid(target.elementDisabledNotification) || _helpers.$obj.is(target, "function"))) {
+
+                    $disabledStateSubscribers.push(target);
+                }
+                return this;
+            },
+
+            /**
+            * Handles element disabling notifications
+            * 
+            * @method elementDisabledNotification
+            * @chainable
+            */
+            elementDisabledNotification: function (element) {
+                return this;
+            },
+
+            /**
             * Whether or not this element can reach another element via a linked relation
             * 
             * @method canReach
@@ -550,7 +605,8 @@
             * @return {Bool} Whether or not the link was added
             */
             addLinkTo: function (element) {
-                if (element.isLinkable() && this.isLinkable() && ($linksTo.indexOf(element) === -1)
+                if (_helpers.$obj.isValid(element.isLinkable) && element.isLinkable()
+                    && this.isLinkable() && ($linksTo.indexOf(element) === -1)
                     && (element !== this) && this.canLink(this, element)) {
                     $linksTo.push(element);
                     element.addLinkFrom(this);
@@ -567,7 +623,8 @@
              * @return {Bool} Whether or not the link was added
              */
             addLinkFrom: function (element) {
-                if (element.isLinkable() && this.isLinkable() && ($linksFrom.indexOf(element) === -1)
+                if (_helpers.$obj.isValid(element.isLinkable) && element.isLinkable()
+                    && this.isLinkable() && ($linksFrom.indexOf(element) === -1)
                     && (element !== this) && this.canLink(element, this)) {
                     $linksFrom.push(element);
                     element.addLinkTo(this);
@@ -651,8 +708,8 @@
             * @chainable
             */
             clearAllLinks: function () {
-                $linksTo = clearLinksFrom($linksTo, function (e) { e.removeLinkFrom(this); });
-                $linksFrom = clearLinksFrom($linksFrom, function (e) { e.removeLinkTo(this); });
+                $linksTo = clearLinksFrom($linksTo, function (e) { e.removeLinkFrom(this); }.bind(this));
+                $linksFrom = clearLinksFrom($linksFrom, function (e) { e.removeLinkTo(this); }.bind(this));
                 return this;
             },
 
@@ -1159,8 +1216,15 @@
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "arrow" + _helpers.$obj.generateId(),
                 clearAllLinks: function () {
-                    _source.removeLinkFrom(this.getParent());
+                    if (_helpers.$obj.is(_source.removeLinkFrom, "function")) {
+                        _source.removeLinkFrom(this.getParent());
+                    }
                     return this;
+                },
+                elementDisabledNotification: function (element) {
+                    if ((element === _source) || (element === this.getParent())) {
+                        this.disable();
+                    }
                 },
                 graphNode: false,
                 canHandleEvents: function () { return false; },
@@ -1173,6 +1237,14 @@
                 getWidth: function () { return 1; },
                 getHeight: function () { return 1; },
                 drawTo: function (canvas, context) {
+
+                    if (_helpers.$obj.isValid(_source.notifyDisableStateOn)) {
+                        _source.notifyDisableStateOn(this);
+                    }
+
+                    if (_helpers.$obj.isValid(this.getParent().notifyDisableStateOn)) {
+                        this.getParent().notifyDisableStateOn(this);
+                    }
 
                     this.x = _source.x;
                     this.y = _source.y + (_source.getHeight() / 2);
@@ -1720,6 +1792,7 @@
             */
             _removeElement = function (e) {
                 _helpers.$log.info("Removing element", e);
+                e.disable();
                 _elements.splice(_elements.indexOf(e), 1);
                 return this;
             },
