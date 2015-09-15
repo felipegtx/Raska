@@ -520,9 +520,6 @@
             * @chainable
             */
             disable: function () {
-                this.clearAllLinks();
-                _helpers.$obj.forEach($childElements, function (ele) { ele.disable(); });
-                $childElements.length = 0;
                 _helpers.$obj.forEach($disabledStateSubscribers, function (target) {
                     if (_helpers.$obj.is(target, "function")) {
                         target(this);
@@ -530,7 +527,10 @@
                         target.elementDisabledNotification(this);
                     }
                 }.bind(this));
+                this.clearAllLinks();
                 $disabledStateSubscribers.length = 0; /// Let us free some space
+                _helpers.$obj.forEach($childElements, function (ele) { ele.disable(); });
+                $childElements.length = 0;
                 this.drawTo = $disabled;
                 return this;
             },
