@@ -106,7 +106,7 @@
         </div>
         <br /><br />
     </div>
-    <script type="text/javascript" src="../src/raska.min.js"></script>
+    <script type="text/javascript" src="../src/raska.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
@@ -148,6 +148,29 @@
             label.text = circle.name;
             circle.addChild(label);
             raska.plot(circle);
+
+            /// Triangle UP
+            position = getRandomPosition();
+            var triangleUP = raska.newTriangle().notifyDisableStateOn(notifyDeletion);
+            triangleUP.canLink = createCanLinkDelegate(triangleUP.canLink.bind(triangleUP));
+            triangleUP.y = position.y;
+            triangleUP.x = position.x;
+            var label = raska.newLabel();
+            label.text = triangleUP.name;
+            triangleUP.addChild(label);
+            raska.plot(triangleUP);
+
+            /// Triangle DOWN
+            position = getRandomPosition();
+            var triangleDOWN = raska.newTriangle(false).notifyDisableStateOn(notifyDeletion);
+            triangleDOWN.canLink = createCanLinkDelegate(triangleDOWN.canLink.bind(triangleDOWN));
+            triangleDOWN.y = position.y;
+            triangleDOWN.on.click = function(x, y, ele) { console.log("You've clicked the element ", ele); }
+            triangleDOWN.x = position.x;
+            var label = raska.newLabel();
+            label.text = triangleDOWN.name;
+            triangleDOWN.addChild(label);
+            raska.plot(triangleDOWN);
 
             /// Square
             position = getRandomPosition();

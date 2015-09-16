@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,332 +12,331 @@
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="yui3-skin-sam">
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-                <a href="https://github.com/felipegtx/Raska" target="_blank">
-                    Raska
-                </a>
-            </h1>
-            <div class="nav">
-                <li class="divider-vertical"></li>
-                <li>
-                    <p class="navbar-text">
-                        API Docs for Version: <b>0.0.1</b>
-                    </p>
-                </li>
-            </div>
-            <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-                <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_animationChainController", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
-            </form>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            Raska
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.0.1</b>
+                </p>
+            </li>
         </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_animationChainController", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
+        </form>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="span3">
-                <div>
-                    <div id="sidebar">
-                    <div id="classes">
-                        <ul id="api-classes" class="nav nav-list">
-                                <li><a href="../classes/$log.html">$log</a></li>
-                                <li><a href="../classes/$obj.html">$obj</a></li>
-                                <li><a href="../classes/_animationChainController.html">_animationChainController</a></li>
-                                <li><a href="../classes/_drawing.html">_drawing</a></li>
-                                <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
-                                <li><a href="../classes/_mouse.html">_mouse</a></li>
-                                <li><a href="../classes/_public.html">_public</a></li>
-                                <li><a href="../classes/arrow.html">arrow</a></li>
-                                <li><a href="../classes/circle.html">circle</a></li>
-                                <li><a href="../classes/htmlElement.html">htmlElement</a></li>
-                                <li><a href="../classes/label.html">label</a></li>
-                                <li><a href="../classes/square.html">square</a></li>
-                                <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="span9">
-                    <form id="options-form" class="form-inline pull-right">
-                        Show:
-                        <label for="api-show-inherited" class="checkbox">
-                            <input type="checkbox" id="api-show-inherited" checked>
-                            Inherited
-                        </label>
-                
-                        <label for="api-show-protected" class="checkbox">
-                            <input type="checkbox" id="api-show-protected">
-                            Protected
-                        </label>
-                
-                        <label for="api-show-private" class="checkbox">
-                            <input type="checkbox" id="api-show-private">
-                            Private
-                        </label>
-                        <label for="api-show-deprecated" class="checkbox">
-                            <input type="checkbox" id="api-show-deprecated">
-                            Deprecated
-                        </label>
-                
-                    </form>
-                
-                <div class="apidocs">
-                    <div id="docs-main">
-                        <div class="content">
-                            <div class="page-header">
-                                <h1>_graphNodeInfo</h1>
-                            </div>
-                            
-                            
-                            
-                            	<div class="well well-small">
-                                        Module: <a href="../modules/_helpers.html">_helpers</a><br>
-                                        Parent Module: <a href="../modules/raska.html">raska</a>
-                                </div>
-                            
-                            
-                            
-                            <div class="yuidoc-class-description">
-                            <p>Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON</p>
-                            
-                            </div>
-                            
-                            <!-- table of contents -->
-                            
-                            <div id="class-toc" class="page-section">
-                            	<h2>Table of Contents</h2>
-                                <ul>
-                            		<li>
-                            			<strong>Methods</strong>
-                            			<ul>
-                            				<li><a href="#method-getParentGraphNodeFor"><span class="im">getParentGraphNodeFor</span>(<span class="ia">bElement</span>)</a></li>
-                            			</ul>
-                            		</li>
-                            
-                            		<li>
-                            			<strong>Properties</strong>
-                            			<ul>
-                            				<li><a href="#prop-_positionTypes"><span class="ip">_positionTypes</span></a></li>
-                            				<li><a href="#prop-element"><span class="ip">element</span></a></li>
-                            				<li><a href="#prop-hasParent"><span class="ip">hasParent</span></a></li>
-                            				<li><a href="#prop-relative"><span class="ip">relative</span></a></li>
-                            				<li><a href="#prop-relative"><span class="ip">relative</span></a></li>
-                            			</ul>
-                            		</li>
-                            
-                            
-                            	</ul>
-                            </div>
-                            
-                            <!-- details -->
-                            
-                            
-                                <div id="methods" class="page-section">
-                                    <h2 class="off-left">Methods</h2>
-                                    <div class="item-list">
-                                        <div id="method-getParentGraphNodeFor" class="method item">
-                                        	<div class="method-signature">
-                                        	<span class="name"><code>getParentGraphNodeFor</code></span>
-                                        
-                                        		<div class="args">
-                                        			<span class="paren">(</span><ul class="args-list inline commas">
-                                        				<li class="arg">
-                                        						<code>bElement</code>
-                                        				</li>
-                                        			</ul><span class="paren">)</span>
-                                        		</div>
-                                        	</div>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        	<div class="meta">
-                                        				<p>
-                                        				Defined in
-                                        		<a href="../files/src_raska.js.html#l315"><code>src\raska.js:315</code></a>
-                                        		</p>
-                                        
-                                        
-                                        
-                                        	</div>
-                                        
-                                        	<div class="description"><p>Tries to find a parent node compatible with the element passed as parameter</p>
-                                        </div>
-                                        
-                                        		<div class="params">
-                                        			<h4>Parameters:</h4>
-                                        
-                                        			<ul class="params-list">
-                                        				<li class="param">
-                                        						<code class="param-name">bElement</code>
-                                        						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                        
-                                        
-                                        					<div class="param-description"><p>Element wraped by a parent node</p>
-                                        </div>
-                                        
-                                        				</li>
-                                        			</ul>
-                                        		</div>
-                                        
-                                        
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                                <div id="properties" class="page-section">
-                                    <h2 class="off-left">Properties</h2>
-                            
-                                    <div class="item-list">
-                                        <div id="prop-_positionTypes" class="property item private">
-                                            <h3 class="name"><code>_positionTypes</code></h3>
-                                            <span class="type">Unknown</span>
-                                        
-                                        
-                                                <span class="flag private">private</span>
-                                        
-                                                <span class="flag final">const</span>
-                                        
-                                                <span class="flag static">static</span>
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l360"><code>src\raska.js:360</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>The valid position types for a Raskel element</p>
-                                        
-                                            </div>
-                                        
-                                        
-                                        
-                                        </div>
-                                        <div id="prop-element" class="property item">
-                                            <h3 class="name"><code>element</code></h3>
-                                            <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
-                                        
-                                        
-                                        
-                                                <span class="flag final">const</span>
-                                        
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l294"><code>src\raska.js:294</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>The element wraped by this node</p>
-                                        
-                                            </div>
-                                        
-                                        
-                                        
-                                        </div>
-                                        <div id="prop-hasParent" class="property item">
-                                            <h3 class="name"><code>hasParent</code></h3>
-                                            <span class="type">Bool</span>
-                                        
-                                        
-                                        
-                                                <span class="flag final">const</span>
-                                        
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l303"><code>src\raska.js:303</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>Whether or not this node has a parent element</p>
-                                        
-                                            </div>
-                                        
-                                        
-                                        
-                                        </div>
-                                        <div id="prop-relative" class="property item">
-                                            <h3 class="name"><code>relative</code></h3>
-                                            <span class="type">Number</span>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l370"><code>src\raska.js:370</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>Element position will be relative to its parent (if any)</p>
-                                        
-                                            </div>
-                                        
-                                                <p><strong>Default:</strong> 50</p>
-                                        
-                                        
-                                        </div>
-                                        <div id="prop-relative" class="property item">
-                                            <h3 class="name"><code>relative</code></h3>
-                                            <span class="type">Number</span>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                            <div class="meta">
-                                                        <p>
-                                                        Defined in
-                                                <a href="../files/src_raska.js.html#l380"><code>src\raska.js:380</code></a>
-                                                </p>
-                                        
-                                        
-                                            </div>
-                                        
-                                            <div class="description">
-                                                <p>Element position will be absolute and will have no regard about its parent position whatsoever</p>
-                                        
-                                            </div>
-                                        
-                                                <p><strong>Default:</strong> 50</p>
-                                        
-                                        
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                            
-                            
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <div id="sidebar">
+	        <div id="classes">
+	            <ul id="api-classes" class="nav nav-list">
+	                    <li><a href="../classes/$log.html">$log</a></li>
+	                    <li><a href="../classes/$obj.html">$obj</a></li>
+	                    <li><a href="../classes/_animationChainController.html">_animationChainController</a></li>
+	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
+	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
+	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
+	                    <li><a href="../classes/_public.html">_public</a></li>
+	                    <li><a href="../classes/arrow.html">arrow</a></li>
+	                    <li><a href="../classes/circle.html">circle</a></li>
+	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
+	                    <li><a href="../classes/label.html">label</a></li>
+	                    <li><a href="../classes/square.html">square</a></li>
+	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
+	                    <li><a href="../classes/triangle.html">triangle</a></li>
+	            </ul>
+	        </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+                            <h1>_graphNodeInfo</h1>
                         </div>
+                        
+                        
+                        
+                        	<div class="well well-small">
+                                    Module: <a href="../modules/_helpers.html">_helpers</a><br>
+                                    Parent Module: <a href="../modules/raska.html">raska</a>
+                            </div>
+                        
+                        
+                        
+                        <div class="yuidoc-class-description">
+                        <p>Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON</p>
+                        
+                        </div>
+                        
+                        <!-- table of contents -->
+                        
+                        <div id="class-toc" class="page-section">
+                        	<h2>Table of Contents</h2>
+                            <ul>
+                        		<li>
+                        			<strong>Methods</strong>
+                        			<ul>
+                        				<li><a href="#method-getParentGraphNodeFor"><span class="im">getParentGraphNodeFor</span>(<span class="ia">bElement</span>)</a></li>
+                        			</ul>
+                        		</li>
+                        
+                        		<li>
+                        			<strong>Properties</strong>
+                        			<ul>
+                        				<li><a href="#prop-_positionTypes"><span class="ip">_positionTypes</span></a></li>
+                        				<li><a href="#prop-element"><span class="ip">element</span></a></li>
+                        				<li><a href="#prop-hasParent"><span class="ip">hasParent</span></a></li>
+                        				<li><a href="#prop-relative"><span class="ip">relative</span></a></li>
+                        				<li><a href="#prop-relative"><span class="ip">relative</span></a></li>
+                        			</ul>
+                        		</li>
+                        
+                        
+                        	</ul>
+                        </div>
+                        
+                        <!-- details -->
+                        
+                        
+                            <div id="methods" class="page-section">
+                                <h2 class="off-left">Methods</h2>
+                                <div class="item-list">
+                                    <div id="method-getParentGraphNodeFor" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getParentGraphNodeFor</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>bElement</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l315"><code>src\raska.js:315</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Tries to find a parent node compatible with the element passed as parameter</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">bElement</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element wraped by a parent node</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div id="properties" class="page-section">
+                                <h2 class="off-left">Properties</h2>
+                        
+                                <div class="item-list">
+                                    <div id="prop-_positionTypes" class="property item private">
+                                        <h3 class="name"><code>_positionTypes</code></h3>
+                                        <span class="type">Unknown</span>
+                                    
+                                    
+                                            <span class="flag private">private</span>
+                                    
+                                            <span class="flag final">const</span>
+                                    
+                                            <span class="flag static">static</span>
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l360"><code>src\raska.js:360</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>The valid position types for a Raskel element</p>
+                                    
+                                        </div>
+                                    
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-element" class="property item">
+                                        <h3 class="name"><code>element</code></h3>
+                                        <span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    
+                                            <span class="flag final">const</span>
+                                    
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l294"><code>src\raska.js:294</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>The element wraped by this node</p>
+                                    
+                                        </div>
+                                    
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-hasParent" class="property item">
+                                        <h3 class="name"><code>hasParent</code></h3>
+                                        <span class="type">Bool</span>
+                                    
+                                    
+                                    
+                                            <span class="flag final">const</span>
+                                    
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l303"><code>src\raska.js:303</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Whether or not this node has a parent element</p>
+                                    
+                                        </div>
+                                    
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-relative" class="property item">
+                                        <h3 class="name"><code>relative</code></h3>
+                                        <span class="type">Number</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l370"><code>src\raska.js:370</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Element position will be relative to its parent (if any)</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> 50</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-relative" class="property item">
+                                        <h3 class="name"><code>relative</code></h3>
+                                        <span class="type">Number</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l380"><code>src\raska.js:380</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Element position will be absolute and will have no regard about its parent position whatsoever</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> 50</p>
+                                    
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="../assets/vendor/prettify/prettify-min.js"></script>
-    <script src="../assets/js/yuidoc-bootstrap.js"></script>
-    <script>prettyPrint();</script>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
 </body>
 </html>

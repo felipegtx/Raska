@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,508 +12,507 @@
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="yui3-skin-sam">
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-                <a href="https://github.com/felipegtx/Raska" target="_blank">
-                    Raska
-                </a>
-            </h1>
-            <div class="nav">
-                <li class="divider-vertical"></li>
-                <li>
-                    <p class="navbar-text">
-                        API Docs for Version: <b>0.0.1</b>
-                    </p>
-                </li>
-            </div>
-            <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-                <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_animationChainController", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
-            </form>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            Raska
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.0.1</b>
+                </p>
+            </li>
         </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_animationChainController", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
+        </form>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="span3">
-                <div>
-                    <div id="sidebar">
-                    <div id="classes">
-                        <ul id="api-classes" class="nav nav-list">
-                                <li><a href="../classes/$log.html">$log</a></li>
-                                <li><a href="../classes/$obj.html">$obj</a></li>
-                                <li><a href="../classes/_animationChainController.html">_animationChainController</a></li>
-                                <li><a href="../classes/_drawing.html">_drawing</a></li>
-                                <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
-                                <li><a href="../classes/_mouse.html">_mouse</a></li>
-                                <li><a href="../classes/_public.html">_public</a></li>
-                                <li><a href="../classes/arrow.html">arrow</a></li>
-                                <li><a href="../classes/circle.html">circle</a></li>
-                                <li><a href="../classes/htmlElement.html">htmlElement</a></li>
-                                <li><a href="../classes/label.html">label</a></li>
-                                <li><a href="../classes/square.html">square</a></li>
-                                <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="span9">
-                    <form id="options-form" class="form-inline pull-right">
-                        Show:
-                        <label for="api-show-inherited" class="checkbox">
-                            <input type="checkbox" id="api-show-inherited" checked>
-                            Inherited
-                        </label>
-                
-                        <label for="api-show-protected" class="checkbox">
-                            <input type="checkbox" id="api-show-protected">
-                            Protected
-                        </label>
-                
-                        <label for="api-show-private" class="checkbox">
-                            <input type="checkbox" id="api-show-private">
-                            Private
-                        </label>
-                        <label for="api-show-deprecated" class="checkbox">
-                            <input type="checkbox" id="api-show-deprecated">
-                            Deprecated
-                        </label>
-                
-                    </form>
-                
-                <div class="apidocs">
-                    <div id="docs-main">
-                        <div class="content">
-                            <div class="page-header">
-                                <h1>_animationChainController</h1>
-                            </div>
-                            
-                            
-                            
-                            	<div class="well well-small">
-                                        Module: <a href="../modules/animation.html">animation</a><br>
-                                        Parent Module: <a href="../modules/raska.html">raska</a>
-                                </div>
-                            
-                            
-                            
-                            <div class="yuidoc-class-description">
-                            <p>Executes a given delegate whenever possible</p>
-                            
-                            </div>
-                            
-                            <!-- table of contents -->
-                            
-                            <div id="class-toc" class="page-section">
-                            	<h2>Table of Contents</h2>
-                                <ul>
-                            
-                            
-                            
-                            		<li>
-                            			<strong>Static Methods</strong>
-                            			<ul>
-                            				<li><a href="#method-_looper"><span class="im">_animationChainController._looper</span>()</a></li>
-                            				<li><a href="#method-animate"><span class="im">_animationChainController.animate</span>()</a></li>
-                            				<li><a href="#method-execute"><span class="im">_animationChainController.execute</span>(<span class="ia">what</span>)</a></li>
-                            				<li><a href="#method-execute"><span class="im">_animationChainController.execute</span>(<span class="ia">then</span><span class="ia">interval</span>)</a></li>
-                            				<li><a href="#method-register"><span class="im">_animationChainController.register</span>(<span class="ia">animation</span>)</a></li>
-                            				<li><a href="#method-resetElement"><span class="im">_animationChainController.resetElement</span>()</a></li>
-                            				<li><a href="#method-restoreFromSavedState"><span class="im">_animationChainController.restoreFromSavedState</span>()</a></li>
-                            				<li><a href="#method-saveStates"><span class="im">_animationChainController.saveStates</span>()</a></li>
-                            				<li><a href="#method-stop"><span class="im">_animationChainController.stop</span>()</a></li>
-                            				<li><a href="#method-stop"><span class="im">_animationChainController.stop</span>()</a></li>
-                            			</ul>
-                            		</li>
-                            	</ul>
-                            </div>
-                            
-                            <!-- details -->
-                            
-                            
-                            
-                            
-                            
-                            
-                                <div id="static-methods" class="page-section">
-                                    <h2 class="off-left">Static Methods</h2>
-                                    <div class="item-list">
-                                	        <div id="method-_looper" class="method item private">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController._looper</code></span>
-                                	        
-                                	        		<span class="paren">()</span>
-                                	        	</div>
-                                	        
-                                	        
-                                	        		<span class="flag private">private</span>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l206"><code>src\raska.animation.js:206</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Controls the execution of the animation loop</p>
-                                	        </div>
-                                	        
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-animate" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.animate</code></span>
-                                	        
-                                	        		<span class="paren">()</span>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l58"><code>src\raska.animation.js:58</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Handles the periodic draw of the elements in this Raska instance</p>
-                                	        </div>
-                                	        
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-execute" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.execute</code></span>
-                                	        
-                                	        		<div class="args">
-                                	        			<span class="paren">(</span><ul class="args-list inline commas">
-                                	        				<li class="arg">
-                                	        						<code>what</code>
-                                	        				</li>
-                                	        			</ul><span class="paren">)</span>
-                                	        		</div>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l41"><code>src\raska.animation.js:41</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Executes a given delegate whenever possible</p>
-                                	        </div>
-                                	        
-                                	        		<div class="params">
-                                	        			<h4>Parameters:</h4>
-                                	        
-                                	        			<ul class="params-list">
-                                	        				<li class="param">
-                                	        						<code class="param-name">what</code>
-                                	        						<span class="type">Function</span>
-                                	        
-                                	        
-                                	        					<div class="param-description"><p>The delegate whe want to execute</p>
-                                	        </div>
-                                	        
-                                	        				</li>
-                                	        			</ul>
-                                	        		</div>
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-execute" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.execute</code></span>
-                                	        
-                                	        		<div class="args">
-                                	        			<span class="paren">(</span><ul class="args-list inline commas">
-                                	        				<li class="arg">
-                                	        						<code>then</code>
-                                	        				</li>
-                                	        				<li class="arg">
-                                	        						<code>interval</code>
-                                	        				</li>
-                                	        			</ul><span class="paren">)</span>
-                                	        		</div>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l171"><code>src\raska.animation.js:171</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Executes a destructive navigation/execution on all registered animations in this chain</p>
-                                	        </div>
-                                	        
-                                	        		<div class="params">
-                                	        			<h4>Parameters:</h4>
-                                	        
-                                	        			<ul class="params-list">
-                                	        				<li class="param">
-                                	        						<code class="param-name">then</code>
-                                	        						<span class="type">Function</span>
-                                	        
-                                	        
-                                	        					<div class="param-description"><p>What to do after all animations are done</p>
-                                	        </div>
-                                	        
-                                	        				</li>
-                                	        				<li class="param">
-                                	        						<code class="param-name">interval</code>
-                                	        						<span class="type">Number</span>
-                                	        
-                                	        
-                                	        					<div class="param-description"><p>Interval between animations</p>
-                                	        </div>
-                                	        
-                                	        				</li>
-                                	        			</ul>
-                                	        		</div>
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-register" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.register</code></span>
-                                	        
-                                	        		<div class="args">
-                                	        			<span class="paren">(</span><ul class="args-list inline commas">
-                                	        				<li class="arg">
-                                	        						<code>animation</code>
-                                	        				</li>
-                                	        			</ul><span class="paren">)</span>
-                                	        		</div>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l102"><code>src\raska.animation.js:102</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Registers a given animation object to be called</p>
-                                	        </div>
-                                	        
-                                	        		<div class="params">
-                                	        			<h4>Parameters:</h4>
-                                	        
-                                	        			<ul class="params-list">
-                                	        				<li class="param">
-                                	        						<code class="param-name">animation</code>
-                                	        						<span class="type">raska.baseAnimation</span>
-                                	        
-                                	        
-                                	        					<div class="param-description"><p>Animation spec instance</p>
-                                	        </div>
-                                	        
-                                	        				</li>
-                                	        			</ul>
-                                	        		</div>
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-resetElement" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.resetElement</code></span>
-                                	        
-                                	        		<span class="paren">()</span>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l67"><code>src\raska.animation.js:67</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Resets changed element attributes to the default value</p>
-                                	        </div>
-                                	        
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-restoreFromSavedState" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.restoreFromSavedState</code></span>
-                                	        
-                                	        		<span class="paren">()</span>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l155"><code>src\raska.animation.js:155</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Restores the animations from its initial saved state</p>
-                                	        </div>
-                                	        
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-saveStates" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.saveStates</code></span>
-                                	        
-                                	        		<span class="paren">()</span>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l143"><code>src\raska.animation.js:143</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Saves the initial states for all animations handled by this chain</p>
-                                	        </div>
-                                	        
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-stop" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.stop</code></span>
-                                	        
-                                	        		<span class="paren">()</span>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l76"><code>src\raska.animation.js:76</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Stops the current animation</p>
-                                	        </div>
-                                	        
-                                	        
-                                	        
-                                	        </div>
-                                	        <div id="method-stop" class="method item">
-                                	        	<div class="method-signature">
-                                	        	<span class="name"><code>_animationChainController.stop</code></span>
-                                	        
-                                	        		<span class="paren">()</span>
-                                	        	</div>
-                                	        
-                                	        
-                                	        
-                                	        
-                                	        		<span class="flag chainable">chainable</span>
-                                	        
-                                	        
-                                	        	<div class="meta">
-                                	        				<p>
-                                	        				Defined in
-                                	        		<a href="../files/src_raska.animation.js.html#l121"><code>src\raska.animation.js:121</code></a>
-                                	        		</p>
-                                	        
-                                	        
-                                	        
-                                	        	</div>
-                                	        
-                                	        	<div class="description"><p>Clears all saved states from the chain</p>
-                                	        </div>
-                                	        
-                                	        
-                                	        
-                                	        </div>
-                                    </div>
-                                </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <div id="sidebar">
+	        <div id="classes">
+	            <ul id="api-classes" class="nav nav-list">
+	                    <li><a href="../classes/$log.html">$log</a></li>
+	                    <li><a href="../classes/$obj.html">$obj</a></li>
+	                    <li><a href="../classes/_animationChainController.html">_animationChainController</a></li>
+	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
+	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
+	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
+	                    <li><a href="../classes/_public.html">_public</a></li>
+	                    <li><a href="../classes/arrow.html">arrow</a></li>
+	                    <li><a href="../classes/circle.html">circle</a></li>
+	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
+	                    <li><a href="../classes/label.html">label</a></li>
+	                    <li><a href="../classes/square.html">square</a></li>
+	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
+	                    <li><a href="../classes/triangle.html">triangle</a></li>
+	            </ul>
+	        </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+                            <h1>_animationChainController</h1>
                         </div>
+                        
+                        
+                        
+                        	<div class="well well-small">
+                                    Module: <a href="../modules/animation.html">animation</a><br>
+                                    Parent Module: <a href="../modules/raska.html">raska</a>
+                            </div>
+                        
+                        
+                        
+                        <div class="yuidoc-class-description">
+                        <p>Executes a given delegate whenever possible</p>
+                        
+                        </div>
+                        
+                        <!-- table of contents -->
+                        
+                        <div id="class-toc" class="page-section">
+                        	<h2>Table of Contents</h2>
+                            <ul>
+                        
+                        
+                        
+                        		<li>
+                        			<strong>Static Methods</strong>
+                        			<ul>
+                        				<li><a href="#method-_looper"><span class="im">_animationChainController._looper</span>()</a></li>
+                        				<li><a href="#method-animate"><span class="im">_animationChainController.animate</span>()</a></li>
+                        				<li><a href="#method-execute"><span class="im">_animationChainController.execute</span>(<span class="ia">what</span>)</a></li>
+                        				<li><a href="#method-execute"><span class="im">_animationChainController.execute</span>(<span class="ia">then</span><span class="ia">interval</span>)</a></li>
+                        				<li><a href="#method-register"><span class="im">_animationChainController.register</span>(<span class="ia">animation</span>)</a></li>
+                        				<li><a href="#method-resetElement"><span class="im">_animationChainController.resetElement</span>()</a></li>
+                        				<li><a href="#method-restoreFromSavedState"><span class="im">_animationChainController.restoreFromSavedState</span>()</a></li>
+                        				<li><a href="#method-saveStates"><span class="im">_animationChainController.saveStates</span>()</a></li>
+                        				<li><a href="#method-stop"><span class="im">_animationChainController.stop</span>()</a></li>
+                        				<li><a href="#method-stop"><span class="im">_animationChainController.stop</span>()</a></li>
+                        			</ul>
+                        		</li>
+                        	</ul>
+                        </div>
+                        
+                        <!-- details -->
+                        
+                        
+                        
+                        
+                        
+                        
+                            <div id="static-methods" class="page-section">
+                                <h2 class="off-left">Static Methods</h2>
+                                <div class="item-list">
+                            	        <div id="method-_looper" class="method item private">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController._looper</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        		<span class="flag private">private</span>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l206"><code>src\raska.animation.js:206</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Controls the execution of the animation loop</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-animate" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.animate</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l58"><code>src\raska.animation.js:58</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Handles the periodic draw of the elements in this Raska instance</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-execute" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.execute</code></span>
+                            	        
+                            	        		<div class="args">
+                            	        			<span class="paren">(</span><ul class="args-list inline commas">
+                            	        				<li class="arg">
+                            	        						<code>what</code>
+                            	        				</li>
+                            	        			</ul><span class="paren">)</span>
+                            	        		</div>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l41"><code>src\raska.animation.js:41</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Executes a given delegate whenever possible</p>
+                            	        </div>
+                            	        
+                            	        		<div class="params">
+                            	        			<h4>Parameters:</h4>
+                            	        
+                            	        			<ul class="params-list">
+                            	        				<li class="param">
+                            	        						<code class="param-name">what</code>
+                            	        						<span class="type">Function</span>
+                            	        
+                            	        
+                            	        					<div class="param-description"><p>The delegate whe want to execute</p>
+                            	        </div>
+                            	        
+                            	        				</li>
+                            	        			</ul>
+                            	        		</div>
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-execute" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.execute</code></span>
+                            	        
+                            	        		<div class="args">
+                            	        			<span class="paren">(</span><ul class="args-list inline commas">
+                            	        				<li class="arg">
+                            	        						<code>then</code>
+                            	        				</li>
+                            	        				<li class="arg">
+                            	        						<code>interval</code>
+                            	        				</li>
+                            	        			</ul><span class="paren">)</span>
+                            	        		</div>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l171"><code>src\raska.animation.js:171</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Executes a destructive navigation/execution on all registered animations in this chain</p>
+                            	        </div>
+                            	        
+                            	        		<div class="params">
+                            	        			<h4>Parameters:</h4>
+                            	        
+                            	        			<ul class="params-list">
+                            	        				<li class="param">
+                            	        						<code class="param-name">then</code>
+                            	        						<span class="type">Function</span>
+                            	        
+                            	        
+                            	        					<div class="param-description"><p>What to do after all animations are done</p>
+                            	        </div>
+                            	        
+                            	        				</li>
+                            	        				<li class="param">
+                            	        						<code class="param-name">interval</code>
+                            	        						<span class="type">Number</span>
+                            	        
+                            	        
+                            	        					<div class="param-description"><p>Interval between animations</p>
+                            	        </div>
+                            	        
+                            	        				</li>
+                            	        			</ul>
+                            	        		</div>
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-register" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.register</code></span>
+                            	        
+                            	        		<div class="args">
+                            	        			<span class="paren">(</span><ul class="args-list inline commas">
+                            	        				<li class="arg">
+                            	        						<code>animation</code>
+                            	        				</li>
+                            	        			</ul><span class="paren">)</span>
+                            	        		</div>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l102"><code>src\raska.animation.js:102</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Registers a given animation object to be called</p>
+                            	        </div>
+                            	        
+                            	        		<div class="params">
+                            	        			<h4>Parameters:</h4>
+                            	        
+                            	        			<ul class="params-list">
+                            	        				<li class="param">
+                            	        						<code class="param-name">animation</code>
+                            	        						<span class="type">raska.baseAnimation</span>
+                            	        
+                            	        
+                            	        					<div class="param-description"><p>Animation spec instance</p>
+                            	        </div>
+                            	        
+                            	        				</li>
+                            	        			</ul>
+                            	        		</div>
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-resetElement" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.resetElement</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l67"><code>src\raska.animation.js:67</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Resets changed element attributes to the default value</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-restoreFromSavedState" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.restoreFromSavedState</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l155"><code>src\raska.animation.js:155</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Restores the animations from its initial saved state</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-saveStates" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.saveStates</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l143"><code>src\raska.animation.js:143</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Saves the initial states for all animations handled by this chain</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-stop" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.stop</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l76"><code>src\raska.animation.js:76</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Stops the current animation</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        
+                            	        </div>
+                            	        <div id="method-stop" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.stop</code></span>
+                            	        
+                            	        		<span class="paren">()</span>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l121"><code>src\raska.animation.js:121</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Clears all saved states from the chain</p>
+                            	        </div>
+                            	        
+                            	        
+                            	        
+                            	        </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="../assets/vendor/prettify/prettify-min.js"></script>
-    <script src="../assets/js/yuidoc-bootstrap.js"></script>
-    <script>prettyPrint();</script>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
 </body>
 </html>

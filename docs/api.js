@@ -15,7 +15,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "htmlElement",
         "label",
         "square",
-        "staticCoordinates"
+        "staticCoordinates",
+        "triangle"
     ],
     "modules": [
         "_defaultConfigurations",

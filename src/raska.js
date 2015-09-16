@@ -394,7 +394,8 @@
         arrow: "arrow",
         circle: "circle",
         square: "square",
-        label: "label"
+        label: "label",
+        triangle: "triangle"
     },
 
     /**
@@ -527,8 +528,8 @@
                         target.elementDisabledNotification(this);
                     }
                 }.bind(this));
-                this.clearAllLinks();
                 $disabledStateSubscribers.length = 0; /// Let us free some space
+                this.clearAllLinks();
                 _helpers.$obj.forEach($childElements, function (ele) { ele.disable(); });
                 $childElements.length = 0;
                 this.drawTo = $disabled;
@@ -1167,6 +1168,7 @@
                         && (y >= this.y) && (y <= this.y + this.dimensions.height));
                 },
                 adjustPosition: function (newX, newY) {
+                    var $parent = this.getParent();
                     if ((this.position === _positionTypes.relative) && ($parent !== null)) {
 
                         var adjustedParent = $parent.getAdjustedCoordinates();
@@ -1325,6 +1327,93 @@
                     } else {
                         targetElement['on' + iteractionType] = triggerWrapper;
                     }
+                }
+            }, true);
+        },
+
+        /**
+         * Creates a triangle.
+         * 
+         * @class triangle
+         * @extends _basicElement
+         */
+        triangle: function (pointingUp) {
+            var _trasform = pointingUp === false ? function (x, y) { return x + y; } : function (x, y) { return x - y; },
+                _dimensions = {
+                    width: 50,
+                    height: 50
+                },
+                _bcData = {
+                    p2: { x: 0, y: 0 },
+                    p3: { x: 0, y: 0 }
+                };
+
+            return _helpers.$obj.extend(new _basicElement(), {
+                name: "triangle" + _helpers.$obj.generateId(),
+                border: { color: "gray", active: true, width: 2 },
+                getType: function () { return _elementTypes.triangle; },
+                fillColor: "silver",
+                radius: 20,
+                setWidth: function (width) {
+                    _dimensions.width = width;
+                    return this;
+                },
+                getWidth: function () {
+                    return _dimensions.width;
+                },
+                setHeight: function (height) {
+                    _dimensions.height = height;
+                    return this;
+                },
+                getHeight: function () {
+                    return _dimensions.height;
+                },
+                drawTo: function (canvas, context) {
+                    var coordinates = this.getAdjustedCoordinates();
+
+                    context.beginPath();
+                    context.fillStyle = this.fillColor;
+                    context.moveTo(coordinates.x, coordinates.y);
+                    context.lineTo(_bcData.p2.x = (coordinates.x + (this.getWidth() / 2)),
+                        _bcData.p2.y = _trasform(coordinates.y, this.getHeight()));
+                    context.lineTo(_bcData.p3.x = coordinates.x + this.getWidth(),
+                        _bcData.p3.y = coordinates.y);
+                    context.closePath();
+                    if (this.border.active === true) {
+                        context.lineWidth = this.border.width;
+                        context.strokeStyle = this.border.color;
+                    }
+                    context.fill();
+                    context.stroke();
+                },
+                existsIn: function (x, y) {
+                    //https://en.wikipedia.org/wiki/Barycentric_coordinate_system_%28mathematics%29
+                    var coordinates = this.getAdjustedCoordinates();
+                    var p1 = coordinates, p2 = _bcData.p2, p3 = _bcData.p3, p = { x: x, y: y };
+
+                    var alpha = ((p2.y - p3.y) * (p.x - p3.x) + (p3.x - p2.x) * (p.y - p3.y)) / ((p2.y - p3.y) * (p1.x - p3.x) + (p3.x - p2.x) * (p1.y - p3.y)),
+                        beta = ((p3.y - p1.y) * (p.x - p3.x) + (p1.x - p3.x) * (p.y - p3.y)) / ((p2.y - p3.y) * (p1.x - p3.x) + (p3.x - p2.x) * (p1.y - p3.y)),
+                        gamma = 1 - alpha - beta;
+
+                    return alpha > 0 && beta > 0 && gamma > 0;
+                },
+                adjustPosition: function (newX, newY) {
+                    var $parent = this.getParent();
+                    if ((this.position === _positionTypes.relative) && ($parent !== null)) {
+
+                        var adjustedParent = $parent.getAdjustedCoordinates();
+                        var w = $parent.getWidth() / 2;
+                        var h = $parent.getHeight() / 2;
+                        var diffX = (newX - adjustedParent.x) - w;
+                        var diffH = (newY - adjustedParent.y) - h;
+                        this.x = diffX < 0 ? Math.max(diffX, w * -1) : Math.min(diffX, w);;
+                        this.y = diffH < 0 ? Math.max(diffH, h * -1) : Math.min(diffH, h);
+
+                    } else {
+                        this.x = newX;
+                        this.y = newY;
+                    }
+                    return this;
                 }
             }, true);
         },
@@ -2057,6 +2146,18 @@
         */
         newSquare: function () {
             return _helpers.$obj.extend(new _defaultConfigurations.square(), {});
+        },
+
+
+        /**
+        * Adds a new Triangle to the target canvas
+        *
+        * @method newTriangle
+        * @return {_defaultConfigurations.square} Copy of '_defaultConfigurations.triangle' object
+        * @static
+        */
+        newTriangle: function (pointingUp) {
+            return _helpers.$obj.extend(new _defaultConfigurations.triangle(pointingUp), {});
         },
 
         /**
