@@ -1379,7 +1379,7 @@
                     return this;
                 },
                 getAdjustedHeight: function () {
-                    return (this.pointingUp === true) ? (this.dimensions.height * 2) : (this.dimensions.height / 2);
+                    return (this.pointingUp === true) ? (this.dimensions.height * -1) : (this.dimensions.height / 2);
                 },
                 getHeight: function () {
                     return this.dimensions.height;
