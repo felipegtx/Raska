@@ -76,19 +76,7 @@ raska.animation
 
 - **Sample [here](http://felipegtx.github.io/Raska/AnimationSample.html)**
 - **Sample (game) [here](http://felipegtx.github.io/Raska/AnimationSample2.html)**
-
-### Public delegates / cutpoints
-
-Raska' public interface provides a handlfull of helper delegates to allow you to proper control/handle the elements behaviour/interaction. 
-
-The delegates are the following:
-* Any Raska element exposes
-  * The ```on``` property
-     * [```click```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-click) method
-  * [```canLink```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-canLink) delegate (customizable *via override*) allows you to control whether or not a new link can be stabilished between two elements.
-  * [```isSerializable```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-isSerializable) delegate (customizable *via override*) allows you to control whether or not a given element should be serialized as part of the JSON graph.
-  * [```notifyDisableStateOn```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-notifyDisableStateOn) method allows you to subscribe to receive a notification whenever an element **is abou to** get removed from the canvas
-
+ 
 ## Known limitations
 
 For now, only Google Chrome is supported.

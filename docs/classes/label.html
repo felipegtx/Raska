@@ -21,12 +21,12 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>0.0.1</b>
+                    API Docs for Version: <b>v1.0.0-beta-5</b>
                 </p>
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_animationChainController", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/AnimationChainController", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/PublicControllerInterface", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
         </form>
     </div>
 </div>
@@ -39,15 +39,16 @@
 	            <ul id="api-classes" class="nav nav-list">
 	                    <li><a href="../classes/$log.html">$log</a></li>
 	                    <li><a href="../classes/$obj.html">$obj</a></li>
-	                    <li><a href="../classes/_animationChainController.html">_animationChainController</a></li>
 	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
 	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
 	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
 	                    <li><a href="../classes/_public.html">_public</a></li>
+	                    <li><a href="../classes/AnimationChainController.html">AnimationChainController</a></li>
 	                    <li><a href="../classes/arrow.html">arrow</a></li>
 	                    <li><a href="../classes/circle.html">circle</a></li>
 	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
 	                    <li><a href="../classes/label.html">label</a></li>
+	                    <li><a href="../classes/PublicControllerInterface.html">PublicControllerInterface</a></li>
 	                    <li><a href="../classes/square.html">square</a></li>
 	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
 	                    <li><a href="../classes/triangle.html">triangle</a></li>
@@ -123,7 +124,7 @@
                         				<li><a href="#method-canReach"><span class="im">canReach</span>()</a></li>
                         				<li><a href="#method-clearAllLinks"><span class="im">clearAllLinks</span>()</a></li>
                         				<li><a href="#method-clearLinksFrom"><span class="im">clearLinksFrom</span>(<span class="ia">source</span><span class="ia">each</span>)</a></li>
-                        				<li><a href="#method-click"><span class="im">click</span>(<span class="ia">x</span><span class="ia">y</span><span class="ia">ele</span>)</a></li>
+                        				<li><a href="#method-click"><span class="im">click</span>(<span class="ia">x</span><span class="ia">y</span><span class="ia">ele</span><span class="ia">evt</span>)</a></li>
                         				<li><a href="#method-disable"><span class="im">disable</span>()</a></li>
                         				<li><a href="#method-elementDisabledNotification"><span class="im">elementDisabledNotification</span>()</a></li>
                         				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">x</span><span class="ia">y</span>)</a></li>
@@ -237,7 +238,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_addChild">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l727"><code>src\raska.js:727</code></a>
+                                    		<a href="../files/src_raska.js.html#l732"><code>src\raska.js:732</code></a>
                                     		</p>
                                     
                                     
@@ -298,7 +299,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_addLinkFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l619"><code>src\raska.js:619</code></a>
+                                    		<a href="../files/src_raska.js.html#l621"><code>src\raska.js:621</code></a>
                                     		</p>
                                     
                                     
@@ -359,7 +360,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_addLinkTo">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l601"><code>src\raska.js:601</code></a>
+                                    		<a href="../files/src_raska.js.html#l603"><code>src\raska.js:603</code></a>
                                     		</p>
                                     
                                     
@@ -421,7 +422,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_adjustPosition">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l915"><code>src\raska.js:915</code></a>
+                                    		<a href="../files/src_raska.js.html#l921"><code>src\raska.js:921</code></a>
                                     		</p>
                                     
                                     
@@ -486,7 +487,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_canLink">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l502"><code>src\raska.js:502</code></a>
+                                    		<a href="../files/src_raska.js.html#l503"><code>src\raska.js:503</code></a>
                                     		</p>
                                     
                                     
@@ -550,7 +551,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_canReach">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l564"><code>src\raska.js:564</code></a>
+                                    		<a href="../files/src_raska.js.html#l566"><code>src\raska.js:566</code></a>
                                     		</p>
                                     
                                     
@@ -591,7 +592,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_clearAllLinks">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l704"><code>src\raska.js:704</code></a>
+                                    		<a href="../files/src_raska.js.html#l709"><code>src\raska.js:709</code></a>
                                     		</p>
                                     
                                     
@@ -641,7 +642,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_clearLinksFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l458"><code>src\raska.js:458</code></a>
+                                    		<a href="../files/src_raska.js.html#l459"><code>src\raska.js:459</code></a>
                                     		</p>
                                     
                                     
@@ -702,6 +703,9 @@
                                     				<li class="arg">
                                     						<code>ele</code>
                                     				</li>
+                                    				<li class="arg">
+                                    						<code>evt</code>
+                                    				</li>
                                     			</ul><span class="paren">)</span>
                                     		</div>
                                     	</div>
@@ -715,7 +719,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_click">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l879"><code>src\raska.js:879</code></a>
+                                    		<a href="../files/src_raska.js.html#l884"><code>src\raska.js:884</code></a>
                                     		</p>
                                     
                                     
@@ -738,6 +742,8 @@
                                     						<span class="type">Number</span>
                                     
                                     
+                                    					<div class="param-description"><p>Element's current X position</p>
+                                    </div>
                                     
                                     				</li>
                                     				<li class="param">
@@ -745,6 +751,8 @@
                                     						<span class="type">Number</span>
                                     
                                     
+                                    					<div class="param-description"><p>Element's current Y position</p>
+                                    </div>
                                     
                                     				</li>
                                     				<li class="param">
@@ -752,6 +760,17 @@
                                     						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
                                     
                                     
+                                    					<div class="param-description"><p>The element that was clicked</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">evt</code>
+                                    						<span class="type">Event</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Event that triggered the delegate</p>
+                                    </div>
                                     
                                     				</li>
                                     			</ul>
@@ -775,7 +794,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_disable">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l517"><code>src\raska.js:517</code></a>
+                                    		<a href="../files/src_raska.js.html#l518"><code>src\raska.js:518</code></a>
                                     		</p>
                                     
                                     
@@ -804,7 +823,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_elementDisabledNotification">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l554"><code>src\raska.js:554</code></a>
+                                    		<a href="../files/src_raska.js.html#l556"><code>src\raska.js:556</code></a>
                                     		</p>
                                     
                                     
@@ -847,7 +866,7 @@
                                     				_basicElement
                                     			</a>
                                     			but overwritten in
-                                    		<a href="../files/src_raska.js.html#l979"><code>src\raska.js:979</code></a>
+                                    		<a href="../files/src_raska.js.html#l987"><code>src\raska.js:987</code></a>
                                     		</p>
                                     
                                     
@@ -912,7 +931,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getAdjustedCoordinates">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l840"><code>src\raska.js:840</code></a>
+                                    		<a href="../files/src_raska.js.html#l845"><code>src\raska.js:845</code></a>
                                     		</p>
                                     
                                     
@@ -953,7 +972,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getBoundaries">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l751"><code>src\raska.js:751</code></a>
+                                    		<a href="../files/src_raska.js.html#l756"><code>src\raska.js:756</code></a>
                                     		</p>
                                     
                                     
@@ -993,7 +1012,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getChildElements">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l717"><code>src\raska.js:717</code></a>
+                                    		<a href="../files/src_raska.js.html#l722"><code>src\raska.js:722</code></a>
                                     		</p>
                                     
                                     
@@ -1033,7 +1052,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getHeight">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l967"><code>src\raska.js:967</code></a>
+                                    		<a href="../files/src_raska.js.html#l974"><code>src\raska.js:974</code></a>
                                     		</p>
                                     
                                     
@@ -1073,7 +1092,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getLinksFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l678"><code>src\raska.js:678</code></a>
+                                    		<a href="../files/src_raska.js.html#l683"><code>src\raska.js:683</code></a>
                                     		</p>
                                     
                                     
@@ -1113,7 +1132,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getLinksTo">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l668"><code>src\raska.js:668</code></a>
+                                    		<a href="../files/src_raska.js.html#l673"><code>src\raska.js:673</code></a>
                                     		</p>
                                     
                                     
@@ -1153,7 +1172,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getParent">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l741"><code>src\raska.js:741</code></a>
+                                    		<a href="../files/src_raska.js.html#l746"><code>src\raska.js:746</code></a>
                                     		</p>
                                     
                                     
@@ -1193,7 +1212,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getWidth">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l942"><code>src\raska.js:942</code></a>
+                                    		<a href="../files/src_raska.js.html#l948"><code>src\raska.js:948</code></a>
                                     		</p>
                                     
                                     
@@ -1233,7 +1252,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_isLinkable">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l581"><code>src\raska.js:581</code></a>
+                                    		<a href="../files/src_raska.js.html#l583"><code>src\raska.js:583</code></a>
                                     		</p>
                                     
                                     
@@ -1273,7 +1292,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_isSerializable">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l591"><code>src\raska.js:591</code></a>
+                                    		<a href="../files/src_raska.js.html#l593"><code>src\raska.js:593</code></a>
                                     		</p>
                                     
                                     
@@ -1311,7 +1330,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_normalize">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l653"><code>src\raska.js:653</code></a>
+                                    		<a href="../files/src_raska.js.html#l655"><code>src\raska.js:655</code></a>
                                     		</p>
                                     
                                     
@@ -1340,7 +1359,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_notifyDisableStateOn">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l539"><code>src\raska.js:539</code></a>
+                                    		<a href="../files/src_raska.js.html#l541"><code>src\raska.js:541</code></a>
                                     		</p>
                                     
                                     
@@ -1378,7 +1397,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_removeLinkFrom">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l688"><code>src\raska.js:688</code></a>
+                                    		<a href="../files/src_raska.js.html#l693"><code>src\raska.js:693</code></a>
                                     		</p>
                                     
                                     
@@ -1440,7 +1459,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_removeLinkTo">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l637"><code>src\raska.js:637</code></a>
+                                    		<a href="../files/src_raska.js.html#l639"><code>src\raska.js:639</code></a>
                                     		</p>
                                     
                                     
@@ -1499,7 +1518,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_setHeight">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l954"><code>src\raska.js:954</code></a>
+                                    		<a href="../files/src_raska.js.html#l961"><code>src\raska.js:961</code></a>
                                     		</p>
                                     
                                     
@@ -1552,7 +1571,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_setParent">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l766"><code>src\raska.js:766</code></a>
+                                    		<a href="../files/src_raska.js.html#l771"><code>src\raska.js:771</code></a>
                                     		</p>
                                     
                                     
@@ -1611,7 +1630,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_setWidth">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l929"><code>src\raska.js:929</code></a>
+                                    		<a href="../files/src_raska.js.html#l935"><code>src\raska.js:935</code></a>
                                     		</p>
                                     
                                     
@@ -1658,7 +1677,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_$childElements">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l448"><code>src\raska.js:448</code></a>
+                                            <a href="../files/src_raska.js.html#l449"><code>src\raska.js:449</code></a>
                                             </p>
                                     
                                     
@@ -1685,7 +1704,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_$linksFrom">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l438"><code>src\raska.js:438</code></a>
+                                            <a href="../files/src_raska.js.html#l439"><code>src\raska.js:439</code></a>
                                             </p>
                                     
                                     
@@ -1712,7 +1731,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_$linksTo">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l428"><code>src\raska.js:428</code></a>
+                                            <a href="../files/src_raska.js.html#l429"><code>src\raska.js:429</code></a>
                                             </p>
                                     
                                     
@@ -1739,7 +1758,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_$parent">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l419"><code>src\raska.js:419</code></a>
+                                            <a href="../files/src_raska.js.html#l420"><code>src\raska.js:420</code></a>
                                             </p>
                                     
                                     
@@ -1765,7 +1784,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_active">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l794"><code>src\raska.js:794</code></a>
+                                            <a href="../files/src_raska.js.html#l799"><code>src\raska.js:799</code></a>
                                             </p>
                                     
                                     
@@ -1791,7 +1810,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_canHandleEvents">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l858"><code>src\raska.js:858</code></a>
+                                            <a href="../files/src_raska.js.html#l863"><code>src\raska.js:863</code></a>
                                             </p>
                                     
                                     
@@ -1817,7 +1836,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_color">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l785"><code>src\raska.js:785</code></a>
+                                            <a href="../files/src_raska.js.html#l790"><code>src\raska.js:790</code></a>
                                             </p>
                                     
                                     
@@ -1843,7 +1862,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_getType">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l484"><code>src\raska.js:484</code></a>
+                                            <a href="../files/src_raska.js.html#l485"><code>src\raska.js:485</code></a>
                                             </p>
                                     
                                     
@@ -1869,7 +1888,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_graphNode">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l493"><code>src\raska.js:493</code></a>
+                                            <a href="../files/src_raska.js.html#l494"><code>src\raska.js:494</code></a>
                                             </p>
                                     
                                     
@@ -1895,7 +1914,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_name">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l475"><code>src\raska.js:475</code></a>
+                                            <a href="../files/src_raska.js.html#l476"><code>src\raska.js:476</code></a>
                                             </p>
                                     
                                     
@@ -1921,7 +1940,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_position">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l813"><code>src\raska.js:813</code></a>
+                                            <a href="../files/src_raska.js.html#l818"><code>src\raska.js:818</code></a>
                                             </p>
                                     
                                     
@@ -1947,7 +1966,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_width">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l803"><code>src\raska.js:803</code></a>
+                                            <a href="../files/src_raska.js.html#l808"><code>src\raska.js:808</code></a>
                                             </p>
                                     
                                     
@@ -1973,7 +1992,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_x">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l822"><code>src\raska.js:822</code></a>
+                                            <a href="../files/src_raska.js.html#l827"><code>src\raska.js:827</code></a>
                                             </p>
                                     
                                     
@@ -1999,7 +2018,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#property_y">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l831"><code>src\raska.js:831</code></a>
+                                            <a href="../files/src_raska.js.html#l836"><code>src\raska.js:836</code></a>
                                             </p>
                                     
                                     
@@ -2035,7 +2054,7 @@
                                         <div class="meta">
                                                     <p>Inherited from
                                                     <a href="../classes/_basicElement.html#attr_border">_basicElement</a>:
-                                            <a href="../files/src_raska.js.html#l779"><code>src\raska.js:779</code></a>
+                                            <a href="../files/src_raska.js.html#l784"><code>src\raska.js:784</code></a>
                                             </p>
                                     
                                     

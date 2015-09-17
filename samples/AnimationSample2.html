@@ -79,7 +79,7 @@
                 if (timeLeft <= 0) {
                     done = true;
                     timerRef = null;
-                    raska.animation.stop();
+                    raska.animation.stopAll();
                     var result = parseInt(raska.$$.$q("#score").value);
                     var score = raska.clear().newLabel();
                     score.text = result > 0 ? "Congrats! Your score was " + result : "Why so serious?!";
@@ -110,13 +110,13 @@
             animate = function (ele) {
 
                 //// The raska animation
-                return raska.animation
+                return raska.animation.on(ele)
 
                     /// Fade in the circle
-                    .fadeIn(ele)
+                    .fadeIn(0.5)
 
                     /// then move de circle around (inside its parent boundaries)
-                    .then().move(ele, moveIt);
+                    .move(moveIt).loop(100);
 
             },
             moveIt = function (x, y) {
@@ -138,7 +138,7 @@
                     var n_circleLabel = raska.newLabel();
                     n_circleLabel.text = ++totalCircles;
                     raska.plot(n_circle.addChild(n_circleLabel));
-                    animate(n_circle).loop();
+                    animate(n_circle);
 
                     if (addCircleTimer !== null) {
                         window.clearTimeout(addCircleTimer);
@@ -151,6 +151,9 @@
                 totalTime = startTime;
                 done = false;
                 totalCircles = 0;
+
+                /// Clears any residual process
+                raska.animation.stopAll();
 
                 /// Creates an square that contains a circle
                 var square = raska.clear().newSquare();
@@ -167,16 +170,11 @@
                 circle.y = 150;
                 circle.fillColor = "yellow";
                 circle.border.color = "black";
-                square.addChild(circle);
 
                 /// Renders the square (hence its circle child)
+                square.addChild(circle);
                 raska.plot(square);
-
-                /// Clears any residual process
-                raska.animation.stop().saveInitialStates();
-
-                /// We, for each canvas repaint add a new circle and adjust the repainting interval
-                animate(circle).loop();
+                animate(circle);
 
                 /// Start adding circles
                 totalLevel = startLevel;

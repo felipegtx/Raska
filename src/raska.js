@@ -221,7 +221,7 @@
 
                                 var resultElement = this.extend(new _defaultConfigurations[jsonElement.type], jsonElement);
 
-                                resultElement.getType = function () { return resultElement.type; }
+                                resultElement.getType = function () { return jsonElement.type; }
 
                                 return resultElement;
 
@@ -415,6 +415,7 @@
              * @method $disabled
              */
             $disabled = function () { },
+            $wasDisabled = false,
 
             /**
              * Points to a parent Raska element (if any)
@@ -521,6 +522,7 @@
             * @chainable
             */
             disable: function () {
+                $wasDisabled = true;
                 _helpers.$obj.forEach($disabledStateSubscribers, function (target) {
                     if (_helpers.$obj.is(target, "function")) {
                         target(this);
@@ -585,7 +587,7 @@
             * @return {Bool} Whether or not a link can be created either from or to this element
             */
             isLinkable: function () {
-                return true;
+                return !$wasDisabled;
             },
 
             /**
@@ -595,7 +597,7 @@
             * @return {Bool} Whether or not this element is suposed to be serialized
             */
             isSerializable: function () {
-                return true;
+                return !$wasDisabled;
             },
 
             /**
@@ -658,11 +660,14 @@
            */
             normalize: function () {
                 var n = function (item) { return item.name; };
-                this["linksTo"] = _helpers.$obj.forEach(this.getLinksTo(), n);
-                this["childElements"] = _helpers.$obj.forEach(this.getChildElements(), n);
-                this["parent"] = _helpers.$obj.isValid($parent) ? $parent.name : null;
-                this["type"] = this.getType();
-                return this;
+                var normalized = _helpers.$obj.extend(this, {
+                    linksTo: _helpers.$obj.forEach(this.getLinksTo(), n),
+                    childElements: _helpers.$obj.forEach(this.getChildElements(), n),
+                    parent: _helpers.$obj.isValid($parent) ? $parent.name : null,
+                    type: this.getType()
+                }, true);
+                delete normalized.on; /// We don't want/need this
+                return normalized;
             },
 
             /**
@@ -882,12 +887,13 @@
                      *    property value before relying on this delegate
                      * 
                      * @function click
-                     * @param {number} x 
-                     * @param {number} y 
-                     * @param {_basicElement} ele 
+                     * @param {number} x Element's current X position
+                     * @param {number} y Element's current Y position
+                     * @param {_basicElement} ele The element that was clicked
+                     * @param {event} evt Event that triggered the delegate
                      * @chainable
                      */
-                    click: function (x, y, ele) {
+                    click: function (x, y, ele, evt) {
                         if (_helpers.$obj.isType(x, "number") === true) {
                             if ($childElements.length > 0) {
                                 var parentAdjustedPosition = ele.getAdjustedCoordinates();
@@ -897,11 +903,11 @@
                                         y: y - parentAdjustedPosition.y
                                     }
                                     if (el.canHandleEvents() && el.existsIn(newPosition.x, newPosition.y)) {
-                                        el.on.click(newPosition.x, newPosition.y, el);
+                                        el.on.click(newPosition.x, newPosition.y, el, evt);
                                     }
                                 });
                             } else {
-                                triggerDelegatesUsing(x, y, ele);
+                                triggerDelegatesUsing(x, y, ele, evt);
                             }
                         } else if (_helpers.$obj.isType(x, "function") === true) {
                             __clickDelegates.push(x);
@@ -950,6 +956,7 @@
                 console.error(_defaultConfigurations.errors.notImplementedException);
                 throw _defaultConfigurations.errors.notImplementedException;
             },
+            getAdjustedWidth: function () { return this.getWidth(); },
 
             /**
             * [ABSTRACT] Sets the current Height for this element
@@ -975,6 +982,7 @@
                 console.error(_defaultConfigurations.errors.notImplementedException);
                 throw _defaultConfigurations.errors.notImplementedException;
             },
+            getAdjustedHeight: function () { return this.getHeight(); },
 
             /**
              * [ABSTRACT] Whether or not this element existis withing the boudaries of 
@@ -1218,8 +1226,11 @@
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "arrow" + _helpers.$obj.generateId(),
                 clearAllLinks: function () {
-                    if (_helpers.$obj.is(_source.removeLinkFrom, "function")) {
-                        _source.removeLinkFrom(this.getParent());
+                    if (_helpers.$obj.isValid(this.getParent())
+                        && _helpers.$obj.is(this.getParent().removeLinkFrom, "function")
+                        && _helpers.$obj.is(_source.removeLinkTo, "function")) {
+                        this.getParent().removeLinkFrom(_source).removeLinkTo(_source);
+                        _source.removeLinkFrom(this.getParent()).removeLinkTo(this.getParent());
                     }
                     return this;
                 },
@@ -1248,8 +1259,8 @@
                         this.getParent().notifyDisableStateOn(this);
                     }
 
-                    this.x = _source.x;
-                    this.y = _source.y + (_source.getHeight() / 2);
+                    this.x = _source.x + (_source.getAdjustedWidth ? (_source.getAdjustedWidth() / 2) : 0);
+                    this.y = _source.y + (_source.getAdjustedHeight ? (_source.getAdjustedHeight() / 2) : 0);
 
                     var parent = this.getParent();
                     context.beginPath();
@@ -1338,45 +1349,48 @@
          * @extends _basicElement
          */
         triangle: function (pointingUp) {
-            var _trasform = pointingUp === false ? function (x, y) { return x + y; } : function (x, y) { return x - y; },
-                _dimensions = {
-                    width: 50,
-                    height: 50
-                },
-                _bcData = {
-                    p2: { x: 0, y: 0 },
-                    p3: { x: 0, y: 0 }
-                };
+            var _bcData = {
+                p2: { x: 0, y: 0 },
+                p3: { x: 0, y: 0 }
+            };
 
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "triangle" + _helpers.$obj.generateId(),
                 border: { color: "gray", active: true, width: 2 },
                 getType: function () { return _elementTypes.triangle; },
                 fillColor: "silver",
-                radius: 20,
+                pointingUp: (pointingUp === true),
+                dimensions: {
+                    width: 50,
+                    height: 50
+                },
                 setWidth: function (width) {
-                    _dimensions.width = width;
+                    this.dimensions.width = width;
                     return this;
                 },
                 getWidth: function () {
-                    return _dimensions.width;
+                    return this.dimensions.width;
                 },
                 setHeight: function (height) {
-                    _dimensions.height = height;
+                    this.dimensions.height = height;
                     return this;
                 },
+                getAdjustedHeight: function () {
+                    return (this.pointingUp === true) ? (this.dimensions.height * 2) : (this.dimensions.height / 2);
+                },
                 getHeight: function () {
-                    return _dimensions.height;
+                    return this.dimensions.height;
                 },
                 drawTo: function (canvas, context) {
-                    var coordinates = this.getAdjustedCoordinates();
+                    var trasform = this.pointingUp === false ? function (x, y) { return x + y; } : function (x, y) { return x - y; },
+                        coordinates = this.getAdjustedCoordinates();
 
                     context.beginPath();
                     context.fillStyle = this.fillColor;
                     context.moveTo(coordinates.x, coordinates.y);
-                    context.lineTo(_bcData.p2.x = (coordinates.x + (this.getWidth() / 2)),
-                        _bcData.p2.y = _trasform(coordinates.y, this.getHeight()));
-                    context.lineTo(_bcData.p3.x = coordinates.x + this.getWidth(),
+                    context.lineTo(_bcData.p2.x = (coordinates.x + (this.dimensions.width / 2)),
+                        _bcData.p2.y = trasform(coordinates.y, this.dimensions.height));
+                    context.lineTo(_bcData.p3.x = coordinates.x + this.dimensions.width,
                         _bcData.p3.y = coordinates.y);
                     context.closePath();
                     if (this.border.active === true) {
@@ -1438,9 +1452,15 @@
                 getWidth: function () {
                     return this.radius * 2;
                 },
+                getAdjustedWidth: function () {
+                    return this.radius / 2;
+                },
                 setHeight: function (r) {
                     this.radius = r / 2;
                     return this;
+                },
+                getAdjustedHeight: function () {
+                    return this.radius / 2;
                 },
                 getHeight: function () {
                     return this.radius * 2;
@@ -1949,7 +1969,7 @@
                             _elementBeingDraged.reference.on.click(
                                 _mouse.getX(evt),
                                 _mouse.getY(evt),
-                                _elementBeingDraged.reference);
+                                _elementBeingDraged.reference, evt);
                         }
                     }
                 }
@@ -2232,10 +2252,15 @@
             var preparsedSource = JSON.parse(source);
             if (_helpers.$obj.isArray(preparsedSource)) {
 
-                var realSource = [], i = 0;
+                var realSource = [], i = 0, parsed = null;
                 /// Create a basic element instance
                 for (i = 0; i < preparsedSource.length; i++) {
-                    realSource.push(_helpers.$obj.recreate(preparsedSource[i]));
+                    if ((parsed = _helpers.$obj.recreate(preparsedSource[i])) === null) {
+                        alert("Invalid JSON. See the console for more info");
+                        console.error("Could not deserialize this element", preparsedSource[i]);
+                        return this;
+                    }
+                    realSource.push(parsed);
                 }
 
                 /// Adds back the links between elements

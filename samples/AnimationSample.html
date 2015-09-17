@@ -107,7 +107,7 @@
                     n_circle.fillColor = currentColor;
                     n_circle.border.color = "black";
                     raska.plot(n_circle);
-                    animate(n_circle).stop().loop(300);
+                    animate(n_circle);
 
                 });
 
@@ -121,16 +121,16 @@
         function animate(ele) {
 
             //// The raska animation
-            raska.animation
+            raska.animation.on(ele)
 
                 /// Configures raska to save the initial state for all animations so we can loop without sidefects
                 .saveInitialStates()
 
                 /// Fade in the circle
-                .fadeIn(ele)
+                .fadeIn()
 
                 /// then move de circle around (inside its parent boundaries)
-                .then().move(ele, moveIt)
+                .then().move(moveIt).fadeOut()
 
                 /// Execute the animations in loop
                 ///     PS: here you can also provide an parameter to set the interval beteween animations
@@ -138,6 +138,30 @@
         }
 
         animate(circle);
+
+        /// Random positioning
+        var canvasRect = document.getElementById("raskaContent").getBoundingClientRect(),
+            padding = 50;
+        function getRandomPosition() {
+            return {
+                x: Math.abs(Math.random() * (canvasRect.width - padding)),
+                y: Math.abs(Math.random() * (canvasRect.height - padding))
+            };
+        }
+
+        /// Triangle DOWN
+        position = getRandomPosition();
+        var triangleDOWN = raska.newTriangle(false);
+        triangleDOWN.setWidth(200);
+        triangleDOWN.setHeight(200);
+        triangleDOWN.y = position.y;
+        triangleDOWN.on.click = function (x, y, ele) { console.log("You've clicked the element ", ele); }
+        triangleDOWN.x = position.x;
+        var label = raska.newLabel();
+        label.text = triangleDOWN.name;
+        triangleDOWN.addChild(label);
+        raska.plot(triangleDOWN);
+        raska.animation.on(triangleDOWN).fadeIn().fadeOut().loop();
 
     </script>
 </body>

@@ -3,7 +3,8 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "$log",
         "$obj",
-        "_animationChainController",
+        "AnimationChainController",
+        "PublicControllerInterface",
         "_basicElement",
         "_drawing",
         "_elementBeingDraged",
