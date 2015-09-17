@@ -873,9 +873,9 @@
 
                 var __clickDelegates = [];
 
-                function triggerDelegatesUsing(x, y, ele) {
+                function triggerDelegatesUsing(x, y, ele, evt) {
                     _helpers.$obj.forEach(__clickDelegates, function (el, i) {
-                        el(x, y, ele);
+                        el(x, y, ele, evt);
                     });
                 }
 
