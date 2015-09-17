@@ -47,11 +47,6 @@
                                     Drag a node (using either your mouse
                                     <kbd>right click</kbd> or holding down the <kbd>control</kbd> key) and move it over another to create a link
                                 </li>
-                                <li class="list-group-item">
-                                    <strong> For this example:</strong><br />
-                                    As a sample of the filtering functionality, only <code>squares</code> can be used as target element.
-                                    You can change this as you need by changing the <code><a href="http://felipegtx.github.io/Raska/docs/classes/circle.html#method-canLink" target="_blank">canLink</a></code> method.
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -113,13 +108,6 @@
     <script>
         /// Configures raska to a given Canvas element
         raska.installUsing({ targetCanvasId: "raskaContent" });
-
-        var createCanLinkDelegate = function (base) {
-            return function (from, to) {
-                //return base(from, to) && to.getType() === "square";
-                return base(from, to);
-            }
-        };
 
         /// Random positioning
         var canvasRect = document.getElementById("raskaContent").getBoundingClientRect(),
@@ -189,14 +177,8 @@
                 var elementGraph = document.getElementById("elementGraph").value;
                 if (elementGraph !== "") {
 
-                    // load json on graph and get elements
-                    var elements = raska.loadElementsFrom(elementGraph);
-
-                    /// apply rule inside objects
-                    for (var i = 0; i < elements.length; i++) {
-                        elements[i].canLink = createCanLinkDelegate(elements[i].canLink.bind(elements[i]));
-                    }
-
+                    // load json onto canvas
+                    raska.loadElementsFrom(elementGraph);
 
                 }
             } catch (e) {
