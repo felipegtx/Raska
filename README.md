@@ -3,7 +3,7 @@ HTML5 canvas visual directed graph creation tool.
 
 ## What's this - *exactly*?
 
-You can either go take a look at the **[live sample of a simple graph](http://felipegtx.github.io/Raska/RaskSample.html)** 
+You can either go take a look at the **[live sample of a simple graph](http://felipegtx.github.io/RaskSample.html)** 
 or **[read about it](http://felipegte.com/2015/08/20/raska-criacaoexportacao-de-grafos-direcionados-usando-html5/)** (*Pt-br*).
 
 You can also take a look into the commented source code 
@@ -51,7 +51,7 @@ By keeping the reference to the element you can easily (re)define its properties
 ```javascript
 circle.x += 10;
 ```
-- **Sample [here](felipegtx.github.io/RaskSample.html) and [here](http://felipegtx.github.io/Raska/ContainerSample.html)**
+- **Sample [here](felipegtx.github.io/RaskSample.html) and [here](http://felipegtx.github.io/Raska/samples/ContainerSample.html)**
 
 ### Animation
 
@@ -69,8 +69,8 @@ raska.animation.on(circle)
       .loop();
 ```
 
-- **Sample [here](http://felipegtx.github.io/Raska/AnimationSample.html)**
-- **Sample (game) [here](http://felipegtx.github.io/Raska/AnimationSample2.html)**
+- **Sample [here](http://felipegtx.github.io/Raska/samples/AnimationSample.html)**
+- **Sample (game) [here](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)**
 
 ### Public delegates / cutpoints
 
