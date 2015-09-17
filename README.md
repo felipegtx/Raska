@@ -1,8 +1,6 @@
 # Raska
 HTML5 canvas visual directed graph creation tool.
 
-![](https://iguessimnotcrazy.files.wordpress.com/2015/08/raska2.png)
-
 ## What's this - *exactly*?
 
 You can either go take a look at the **[live sample of a simple graph](http://felipegtx.github.io/Raska/RaskSample.html)** 
@@ -53,7 +51,7 @@ By keeping the reference to the element you can easily (re)define its properties
 ```javascript
 circle.x += 10;
 ```
-- **Sample [here](http://felipegtx.github.io/Raska/RaskSample.html) and [here](http://felipegtx.github.io/Raska/ContainerSample.html)**
+- **Sample [here](felipegtx.github.io/RaskSample.html) and [here](http://felipegtx.github.io/Raska/ContainerSample.html)**
 
 ### Animation
 
