@@ -566,6 +566,15 @@
                         
                                 return $this = {
                                     /**
+                                     * Just an empty attribute bag where you can save extra stuff that you need/want to serialize
+                                     *
+                                     * @property attr
+                                     * @default &quot;{}&quot;
+                                     * @type Object
+                                     */
+                                    attr: {},
+                        
+                                    /**
                                      * The element name
                                      *
                                      * @property name
@@ -965,9 +974,9 @@
                         
                                         var __clickDelegates = [];
                         
-                                        function triggerDelegatesUsing(x, y, ele) {
+                                        function triggerDelegatesUsing(x, y, ele, evt) {
                                             _helpers.$obj.forEach(__clickDelegates, function (el, i) {
-                                                el(x, y, ele);
+                                                el(x, y, ele, evt);
                                             });
                                         }
                         
@@ -987,6 +996,7 @@
                                              */
                                             click: function (x, y, ele, evt) {
                                                 if (_helpers.$obj.isType(x, &quot;number&quot;) === true) {
+                                                    var foundInner = false;
                                                     if ($childElements.length &gt; 0) {
                                                         var parentAdjustedPosition = ele.getAdjustedCoordinates();
                                                         _helpers.$obj.forEach($childElements, function (el, i) {
@@ -996,9 +1006,11 @@
                                                             }
                                                             if (el.canHandleEvents() &amp;&amp; el.existsIn(newPosition.x, newPosition.y)) {
                                                                 el.on.click(newPosition.x, newPosition.y, el, evt);
+                                                                foundInner = true;
                                                             }
                                                         });
-                                                    } else {
+                                                    }
+                                                    if (foundInner === false) {
                                                         triggerDelegatesUsing(x, y, ele, evt);
                                                     }
                                                 } else if (_helpers.$obj.isType(x, &quot;function&quot;) === true) {
@@ -1451,7 +1463,7 @@
                                         border: { color: &quot;gray&quot;, active: true, width: 2 },
                                         getType: function () { return _elementTypes.triangle; },
                                         fillColor: &quot;silver&quot;,
-                                        pointingUp: (pointingUp === true),
+                                        pointingUp: (pointingUp !== false),
                                         dimensions: {
                                             width: 50,
                                             height: 50
@@ -1468,7 +1480,7 @@
                                             return this;
                                         },
                                         getAdjustedHeight: function () {
-                                            return (this.pointingUp === true) ? (this.dimensions.height * 2) : (this.dimensions.height / 2);
+                                            return (this.pointingUp === true) ? (this.dimensions.height * -1) : (this.dimensions.height / 2);
                                         },
                                         getHeight: function () {
                                             return this.dimensions.height;

@@ -154,6 +154,9 @@
             var label = raska.newLabel();
             triangle.y = position.y;
             triangle.x = position.x;
+            triangle.on.click(function (x, y, e, ev) {
+                e.attr["click"] = { x: x, y: y };
+            });
             label.text = document.getElementById("elementLabel").value;
             triangle.addChild(label).notifyDisableStateOn(notifyDeletion);
             raska.plot(triangle);
@@ -187,6 +190,7 @@
         }
 
         loadGraph();
+        addTriangle();
 
     </script>
 </body>

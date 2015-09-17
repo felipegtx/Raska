@@ -474,6 +474,15 @@
 
         return $this = {
             /**
+             * Just an empty attribute bag where you can save extra stuff that you need/want to serialize
+             *
+             * @property attr
+             * @default "{}"
+             * @type Object
+             */
+            attr: {},
+
+            /**
              * The element name
              *
              * @property name
