@@ -123,14 +123,11 @@
             //// The raska animation
             raska.animation.on(ele)
 
-                /// Configures raska to save the initial state for all animations so we can loop without sidefects
-                .saveInitialStates()
-
                 /// Fade in the circle
                 .fadeIn()
 
                 /// then move de circle around (inside its parent boundaries)
-                .then().move(moveIt).fadeOut()
+                .move(moveIt).fadeOut()
 
                 /// Execute the animations in loop
                 ///     PS: here you can also provide an parameter to set the interval beteween animations

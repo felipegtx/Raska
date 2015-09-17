@@ -61,13 +61,10 @@ By using ```raska.animation``` you can easily set a new behaviour to your elemen
 
 ```javascript
  //// The raska animation
-raska.animation
+raska.animation.on(circle)
 
-     /// Configures raska to save the initial state for all animations so we can loop without sidefects
-     .saveInitialStates()
-     
     /// Fade in the circle
-     .fadeIn(circle)
+     .fadeIn()
      
     /// Execute the animations in loop 
     ///     PS: here you can also provide an parameter to set the interval beteween animations
