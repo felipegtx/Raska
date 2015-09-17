@@ -895,6 +895,7 @@
                      */
                     click: function (x, y, ele, evt) {
                         if (_helpers.$obj.isType(x, "number") === true) {
+                            var foundInner = false;
                             if ($childElements.length > 0) {
                                 var parentAdjustedPosition = ele.getAdjustedCoordinates();
                                 _helpers.$obj.forEach($childElements, function (el, i) {
@@ -904,9 +905,11 @@
                                     }
                                     if (el.canHandleEvents() && el.existsIn(newPosition.x, newPosition.y)) {
                                         el.on.click(newPosition.x, newPosition.y, el, evt);
+                                        foundInner = true;
                                     }
                                 });
-                            } else {
+                            }
+                            if (foundInner === false) {
                                 triggerDelegatesUsing(x, y, ele, evt);
                             }
                         } else if (_helpers.$obj.isType(x, "function") === true) {
@@ -1359,7 +1362,7 @@
                 border: { color: "gray", active: true, width: 2 },
                 getType: function () { return _elementTypes.triangle; },
                 fillColor: "silver",
-                pointingUp: (pointingUp === true),
+                pointingUp: (pointingUp !== false),
                 dimensions: {
                     width: 50,
                     height: 50
