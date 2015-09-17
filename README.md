@@ -51,7 +51,7 @@ By keeping the reference to the element you can easily (re)define its properties
 ```javascript
 circle.x += 10;
 ```
-- **Sample [here](felipegtx.github.io/RaskSample.html) and [here](http://felipegtx.github.io/Raska/samples/ContainerSample.html)**
+- **Sample [here](http://felipegtx.github.io/RaskSample.html) and [here](http://felipegtx.github.io/Raska/samples/ContainerSample.html)**
 
 ### Animation
 
