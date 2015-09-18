@@ -2319,8 +2319,6 @@
                     }
                 }
                 _drawing.reloadUsing(realSource);
-
-                return realSource;
             }
             return this;
         },
