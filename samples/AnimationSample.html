@@ -146,20 +146,6 @@
             };
         }
 
-        /// Triangle DOWN
-        position = getRandomPosition();
-        var triangleDOWN = raska.newTriangle(false);
-        triangleDOWN.setWidth(200);
-        triangleDOWN.setHeight(200);
-        triangleDOWN.y = position.y;
-        triangleDOWN.on.click(function (x, y, ele, evt) { console.log("You've clicked the element ", ele, evt); });
-        triangleDOWN.x = position.x;
-        var label = raska.newLabel();
-        label.text = triangleDOWN.name;
-        triangleDOWN.addChild(label);
-        raska.plot(triangleDOWN);
-        raska.animation.on(triangleDOWN).fadeIn().fadeOut().loop();
-
     </script>
 </body>
 </html>

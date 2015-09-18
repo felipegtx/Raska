@@ -84,6 +84,27 @@
                           .substring(1);
                     }
 
+                    function normalizeChain(elementRoot, resultFull) {
+                        var item, links;
+                        for (var i = 0; i < elementRoot.length; i++) {
+
+                            item = elementRoot[i];
+                            if ((item.graphNode === true) && (((links = item.getLinksFrom()) === null) || (links.length === 0))
+                                && (((links = item.getLinksTo()) === null) || (links.length === 0))) {
+                                throw new _defaultConfigurations.errors.elementDoesNotHaveALink(item.name);
+                            }
+
+                            if (item.isSerializable()) {
+
+                                /// Adds the normalized item
+                                resultFull.push(item.normalize());
+
+                                /// Check for child elements
+                                normalizeChain(item.getChildElements(), resultFull);
+                            }
+                        }
+                    }
+
                     return _this = {
 
                         /**
@@ -182,29 +203,7 @@
                         deconstruct: function (elements) {
                             var resultFull = [];
                             if (_helpers.$obj.isArray(elements)) {
-
-                                function normalizeChain(elementRoot) {
-                                    var item, links;
-                                    for (var i = 0; i < elementRoot.length; i++) {
-
-                                        item = elementRoot[i];
-                                        if ((item.graphNode === true) && (((links = item.getLinksFrom()) === null) || (links.length === 0))
-                                            && (((links = item.getLinksTo()) === null) || (links.length === 0))) {
-                                            throw new _defaultConfigurations.errors.elementDoesNotHaveALink(item.name);
-                                        }
-
-                                        if (item.isSerializable()) {
-
-                                            /// Adds the normalized item
-                                            resultFull.push(item.normalize());
-
-                                            /// Check for child elements
-                                            normalizeChain(item.getChildElements());
-                                        }
-                                    }
-                                }
-
-                                normalizeChain(elements);
+                                normalizeChain(elements, resultFull);
                             }
                             return JSON.stringify(resultFull);
                         },
@@ -237,13 +236,14 @@
                         recreateLinks: function (targetElement, baseElement, findElementDelegate) {
 
                             /// Copy data back as it should be
-                            this.forEach(this.forEach(baseElement.linksTo, findElementDelegate), targetElement.addLinkTo.bind(targetElement));
+                            this.forEach(this.forEach(baseElement.linksTo, findElementDelegate),
+                                targetElement.addLinkTo.bind(targetElement));
                             this.forEach(this.forEach(baseElement.childElements, findElementDelegate),
-                                function (element) {
-                                    targetElement.addChild(element);
-                                });
+                                    targetElement.addChild.bind(targetElement));
 
-                            targetElement.setParent(findElementDelegate(baseElement.parent));
+                            if (baseElement.parent !== null) {
+                                findElementDelegate(baseElement.parent).addChild(targetElement);
+                            }
                         },
 
                         /**
@@ -1214,13 +1214,13 @@
          * @class arrow
          * @extends _basicElement
          */
-        arrow: function (source) {
+        arrow: function (target) {
 
-            if (_helpers.$obj.isUndefined(source) || (source === null)) {
-                throw new _defaultConfigurations.errors.nullParameterException("source");
+            if (_helpers.$obj.isUndefined(target) || (target === null)) {
+                throw new _defaultConfigurations.errors.nullParameterException("target");
             }
 
-            var _source = source,
+            var _target = target,
                 _drawArrowhead = function (context, x, y, radians, sizeW, sizeH, arrowColor) {
                     context.fillStyle = arrowColor;
                     context.save();
@@ -1240,14 +1240,14 @@
                 clearAllLinks: function () {
                     if (_helpers.$obj.isValid(this.getParent())
                         && _helpers.$obj.is(this.getParent().removeLinkFrom, "function")
-                        && _helpers.$obj.is(_source.removeLinkTo, "function")) {
-                        this.getParent().removeLinkFrom(_source).removeLinkTo(_source);
-                        _source.removeLinkFrom(this.getParent()).removeLinkTo(this.getParent());
+                        && _helpers.$obj.is(_target.removeLinkTo, "function")) {
+                        this.getParent().removeLinkFrom(_target).removeLinkTo(_target);
+                        _target.removeLinkFrom(this.getParent()).removeLinkTo(this.getParent());
                     }
                     return this;
                 },
                 elementDisabledNotification: function (element) {
-                    if ((element === _source) || (element === this.getParent())) {
+                    if ((element === _target) || (element === this.getParent())) {
                         this.disable();
                     }
                 },
@@ -1263,16 +1263,16 @@
                 getHeight: function () { return 1; },
                 drawTo: function (canvas, context) {
 
-                    if (_helpers.$obj.isValid(_source.notifyDisableStateOn)) {
-                        _source.notifyDisableStateOn(this);
+                    if (_helpers.$obj.isValid(_target.notifyDisableStateOn)) {
+                        _target.notifyDisableStateOn(this);
                     }
 
                     if (_helpers.$obj.isValid(this.getParent().notifyDisableStateOn)) {
                         this.getParent().notifyDisableStateOn(this);
                     }
 
-                    this.x = _source.x + (_source.getAdjustedWidth ? (_source.getAdjustedWidth() / 2) : 0);
-                    this.y = _source.y + (_source.getAdjustedHeight ? (_source.getAdjustedHeight() / 2) : 0);
+                    this.x = _target.x + (_target.getAdjustedWidth ? (_target.getAdjustedWidth() / 2) : 0);
+                    this.y = _target.y + (_target.getAdjustedHeight ? (_target.getAdjustedHeight() / 2) : 0);
 
                     var parent = this.getParent();
                     context.beginPath();
@@ -2264,7 +2264,7 @@
             var preparsedSource = JSON.parse(source);
             if (_helpers.$obj.isArray(preparsedSource)) {
 
-                var realSource = [], i = 0, parsed = null;
+                var realSource = [], childElements = [], i = 0, parsed = null;
                 /// Create a basic element instance
                 for (i = 0; i < preparsedSource.length; i++) {
                     if ((parsed = _helpers.$obj.recreate(preparsedSource[i])) === null) {
@@ -2272,7 +2272,12 @@
                         console.error("Could not deserialize this element", preparsedSource[i]);
                         return this;
                     }
-                    realSource.push(parsed);
+                    if (preparsedSource[i].parent === null) {
+                        parsed.originalIndex = i;
+                        realSource.push(parsed);
+                    } else {
+                        childElements.push(parsed);
+                    }
                 }
 
                 /// Adds back the links between elements
@@ -2280,15 +2285,24 @@
                     if (!_helpers.$obj.isValid(itemName)) {
                         return null;
                     }
-                    for (var j = 0; j < realSource.length; j++) {
-                        if (realSource[j].name === itemName) {
-                            return realSource[j];
+
+                    function find(arr) {
+                        for (var j = 0; j < arr.length; j++) {
+                            if (arr[j].name === itemName) {
+                                return arr[j];
+                            }
                         }
                     }
-                    throw _defaultConfigurations.errors.itemNotFoundException(itemName);
+
+                    var itemFound = find(realSource) || find(childElements);
+                    if (!itemFound) {
+                        throw _defaultConfigurations.errors.itemNotFoundException(itemName);
+                    }
+                    return itemFound;
                 };
                 for (i = 0; i < realSource.length; i++) {
-                    _helpers.$obj.recreateLinks(realSource[i], preparsedSource[i], findElement);
+                    _helpers.$obj.recreateLinks(realSource[i], preparsedSource[realSource[i].originalIndex], findElement);
+                    delete realSource[i].originalIndex;
                 }
 
                 /// Recriates all arrows
@@ -2304,7 +2318,6 @@
                         }
                     }
                 }
-
                 _drawing.reloadUsing(realSource);
 
                 return realSource;
