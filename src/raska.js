@@ -33,6 +33,76 @@
             return {
 
                 /**
+                * Device related helpers
+                *
+                * @class $device
+                * @module raska
+                * @submodule _helpers
+                * @static
+                */
+                $device: (function () {
+
+                    var _isTouch = (('ontouchstart' in window)
+                             || (navigator.MaxTouchPoints > 0)
+                             || (navigator.msMaxTouchPoints > 0)),
+                        _this = {
+
+                            /**
+                            * Whether or not to the current devide is touchscreen
+                            *
+                            * @property isTouch
+                            * @type Bool
+                            */
+                            isTouch: _isTouch,
+
+                            /**
+                            * Gathers UI iteraction X/Y coordinates from an event
+                            * 
+                            * @method info
+                            * @param {HTMLElement} container The element that contains the bounding rect we'll use to gather relative positioning data
+                            * @param {event} evt The event we're extracting information from 
+                            * @returns {x,y} Values
+                            */
+                            gathersXYPositionFrom: function (container, evt) {
+
+                                if (_this.isTouch
+                                    && _helpers.$obj.is(evt.touches.length, "number")
+                                    && evt.touches.length > 0) {
+                                    evt = evt.touches[0];
+                                }
+
+                                var containerRect = container.getBoundingClientRect();
+                                return {
+                                    x: ((evt.clientX - containerRect.left) * (container.width / containerRect.width)),
+                                    y: ((evt.clientY - containerRect.top) * (container.height / containerRect.height))
+                                };
+                            },
+
+                            /**
+                           * Registers a delegate to a given element event
+                           * 
+                           * @method info
+                           * @param {HTMLElement} targetElement The element that we're interested in
+                           * @param {String} iteractionType The event name
+                           * @param {Function} triggerWrapper The delegate
+                           * @chainable
+                           */
+                            on: function (targetElement, iteractionType, triggerWrapper) {
+                                if (window.addEventListener) { // modern browsers including IE9+
+                                    targetElement.addEventListener(iteractionType, triggerWrapper, false);
+                                } else if (window.attachEvent) { // IE8 and below
+                                    targetElement.attachEvent('on' + iteractionType, triggerWrapper);
+                                } else {
+                                    targetElement['on' + iteractionType] = triggerWrapper;
+                                }
+                                return _this;
+                            }
+                        };
+
+                    return _this;
+                })(),
+
+                /**
                  * Outputs messages to the 'console'
                  *
                  * @class $log
@@ -1257,7 +1327,7 @@
                 getType: function () { return _elementTypes.arrow; },
                 canLink: function () { return false; },
                 isLinkable: function () { return false; },
-                border: { color: "black", active: true, width: 2 },
+                border: { color: "silver", active: true, width: 2 },
                 fillColor: "black",
                 getWidth: function () { return 1; },
                 getHeight: function () { return 1; },
@@ -1271,21 +1341,30 @@
                         this.getParent().notifyDisableStateOn(this);
                     }
 
-                    this.x = _target.x + (_target.getAdjustedWidth ? (_target.getAdjustedWidth() / 2) : 0);
-                    this.y = _target.y + (_target.getAdjustedHeight ? (_target.getAdjustedHeight() / 2) : 0);
+                    var adjustedTargedCoordinates = _target.getAdjustedCoordinates ? _target.getAdjustedCoordinates() : { x: _target.x, y: _target.y },
+                        parent = this.getParent(),
+                        adjustedParentCoordinates = parent.getAdjustedCoordinates(),
+                        parentX = adjustedParentCoordinates.x + (parent.getAdjustedWidth ? (parent.getAdjustedWidth() / 2) : 0),
+                        parentY = adjustedParentCoordinates.y + (parent.getAdjustedHeight ? (parent.getAdjustedHeight() / 2) : 0);
 
-                    var parent = this.getParent();
+                    this.x = adjustedTargedCoordinates.x + (_target.getAdjustedWidth ? (_target.getAdjustedWidth() / 2) : 0);
+                    this.y = adjustedTargedCoordinates.y + (_target.getAdjustedHeight ? (_target.getAdjustedHeight() / 2) : 0);
+
                     context.beginPath();
                     context.fillStyle = this.fillColor;
                     if (this.border.active === true) {
+                        var grad = context.createLinearGradient(this.x, this.y, parentX, parentY);
+                        grad.addColorStop(0, this.fillColor);
+                        grad.addColorStop(1, this.border.color);
+
                         context.lineWidth = this.border.width;
-                        context.strokeStyle = this.border.color;
+                        context.strokeStyle = grad;
                     }
                     context.moveTo(this.x, this.y);
-                    context.lineTo(parent.x, parent.y);
+                    context.lineTo(parentX, parentY);
                     context.stroke();
-                    var startRadians = Math.atan((parent.y - this.y) / (parent.x - this.x));
-                    startRadians += ((parent.x > this.x) ? -90 : 90) * Math.PI / 180;
+                    var startRadians = Math.atan((parentY - this.y) / (parentX - this.x));
+                    startRadians += ((parentX > this.x) ? -90 : 90) * Math.PI / 180;
                     _drawArrowhead(context, this.x, this.y, startRadians, 23, 10, this.fillColor);
                     _drawArrowhead(context, this.x, this.y, startRadians, 18, 6, "white");
                 },
@@ -1343,13 +1422,7 @@
                         trigger(evt, targetElement, iteractionType);
                     };
 
-                    if (window.addEventListener) { // modern browsers including IE9+
-                        targetElement.addEventListener(iteractionType, triggerWrapper, false);
-                    } else if (window.attachEvent) { // IE8 and below
-                        targetElement.attachEvent('on' + iteractionType, triggerWrapper);
-                    } else {
-                        targetElement['on' + iteractionType] = triggerWrapper;
-                    }
+                    _helpers.$device.on(targetElement, iteractionType, triggerWrapper);
                 }
             }, true);
         },
@@ -1678,8 +1751,7 @@
                 * @static
                 */
                 getX: function (evt) {
-                    var canvasRect = _canvas.getBoundingClientRect();
-                    return (evt.clientX - canvasRect.left) * (_canvas.width / canvasRect.width);
+                    return _helpers.$device.gathersXYPositionFrom(_canvas, evt).x;
                 },
 
                 /**
@@ -1692,8 +1764,7 @@
                  * @static
                  */
                 getY: function (evt) {
-                    var canvasRect = _canvas.getBoundingClientRect();
-                    return (evt.clientY - canvasRect.top) * (_canvas.height / canvasRect.height);
+                    return _helpers.$device.gathersXYPositionFrom(_canvas, evt).y;
                 },
 
                 /**
@@ -1987,10 +2058,12 @@
                 }
 
                 if (_elementBeingDraged.reference !== null) {
-
-                    var dragType = _elementBeingDraged.holdingCTRL === true && _elementBeingDraged.reference.isLinkable() === true ?
-                        _elementBeingDraged.dragTypes.linking :
-                        evt.which;
+                    var dragType = _elementBeingDraged.dragTypes.moving;
+                    if (!_helpers.$device.isTouch) {
+                        dragType = _elementBeingDraged.holdingCTRL === true && _elementBeingDraged.reference.isLinkable() === true ?
+                            _elementBeingDraged.dragTypes.linking :
+                            evt.which;
+                    }
                     _elementBeingDraged.originalBorder = _elementBeingDraged.reference.border;
                     _elementBeingDraged.reference.border =
                         ((_elementBeingDraged.dragType = dragType) === _elementBeingDraged.dragTypes.moving) ?
@@ -2019,15 +2092,25 @@
                 if (_canvas === null) {
                     _2dContext = (_canvas = $("#" + _activeConfiguration.targetCanvasId))
                         .getContext('2d');
-                    _canvas.addEventListener("mousedown", _checkClick, false);
-                    _canvas.addEventListener("mousemove", _whenMouseMove, false);
-                    w.addEventListener("mouseup", _whenMouseUp, false);
-                    w.addEventListener("keydown", _whenKeyDown, false);
-                    w.addEventListener("keyup", _whenKeyUp, false);
-                    _canvas.addEventListener("contextmenu", function (e) {
-                        e.preventDefault();
-                        return false;
-                    }, false);
+
+                    _helpers.$device
+                        .on(_canvas, "mousedown", _checkClick)
+                        .on(_canvas, "mousemove", _whenMouseMove)
+                        .on(_canvas, "contextmenu", function (e) {
+                            e.preventDefault();
+                            return false;
+                        })
+                        .on(w, "mouseup", _whenMouseUp)
+                        .on(w, "keydown", _whenKeyDown)
+                        .on(w, "keyup", _whenKeyUp);
+
+                    if (_helpers.$device.isTouch === true) {
+                        _helpers.$device
+                            .on(_canvas, "touchstart", _checkClick)
+                            .on(_canvas, "touchmove", _whenMouseMove)
+                            .on(w, "touchend", _whenMouseUp)
+                            .on(w, "touchcancel", _whenMouseUp);
+                    }
                     _canvasElement = _helpers.$obj.extend(new _defaultConfigurations.htmlElement(_canvas), {});
                 }
 
