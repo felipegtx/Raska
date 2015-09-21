@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>$log - Raska</title>
+    <title>$device - Raska</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -86,7 +86,7 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-                            <h1>$log</h1>
+                            <h1>$device</h1>
                         </div>
                         
                         
@@ -99,7 +99,7 @@
                         
                         
                         <div class="yuidoc-class-description">
-                        <p>Outputs messages to the 'console'</p>
+                        <p>Device related helpers</p>
                         
                         </div>
                         
@@ -111,14 +111,15 @@
                         		<li>
                         			<strong>Methods</strong>
                         			<ul>
-                        				<li><a href="#method-info"><span class="im">info</span>(<span class="ia">msg</span><span class="ia">o</span>)</a></li>
+                        				<li><a href="#method-info"><span class="im">info</span>(<span class="ia">container</span><span class="ia">evt</span>)</a></li>
+                        				<li><a href="#method-info"><span class="im">info</span>(<span class="ia">targetElement</span><span class="ia">iteractionType</span><span class="ia">triggerWrapper</span>)</a></li>
                         			</ul>
                         		</li>
                         
                         		<li>
                         			<strong>Properties</strong>
                         			<ul>
-                        				<li><a href="#prop-active"><span class="ip">active</span></a></li>
+                        				<li><a href="#prop-isTouch"><span class="ip">isTouch</span></a></li>
                         			</ul>
                         		</li>
                         
@@ -139,13 +140,16 @@
                                     		<div class="args">
                                     			<span class="paren">(</span><ul class="args-list inline commas">
                                     				<li class="arg">
-                                    						<code>msg</code>
+                                    						<code>container</code>
                                     				</li>
                                     				<li class="arg">
-                                    						<code>o</code>
+                                    						<code>evt</code>
                                     				</li>
                                     			</ul><span class="paren">)</span>
                                     		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type">X,y</span>
+                                    		</span>
                                     	</div>
                                     
                                     
@@ -156,14 +160,14 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l124"><code>src\raska.js:124</code></a>
+                                    		<a href="../files/src_raska.js.html#l58"><code>src\raska.js:58</code></a>
                                     		</p>
                                     
                                     
                                     
                                     	</div>
                                     
-                                    	<div class="description"><p>Prints an informational message to the console</p>
+                                    	<div class="description"><p>Gathers UI iteraction X/Y coordinates from an event</p>
                                     </div>
                                     
                                     		<div class="params">
@@ -171,20 +175,103 @@
                                     
                                     			<ul class="params-list">
                                     				<li class="param">
-                                    						<code class="param-name">msg</code>
-                                    						<span class="type">String</span>
+                                    						<code class="param-name">container</code>
+                                    						<span class="type">HTMLElement</span>
                                     
                                     
-                                    					<div class="param-description"><p>The message to be shown</p>
+                                    					<div class="param-description"><p>The element that contains the bounding rect we'll use to gather relative positioning data</p>
                                     </div>
                                     
                                     				</li>
                                     				<li class="param">
-                                    						<code class="param-name">o</code>
-                                    						<span class="type">Any</span>
+                                    						<code class="param-name">evt</code>
+                                    						<span class="type">Event</span>
                                     
                                     
-                                    					<div class="param-description"><p>Any extra message data</p>
+                                    					<div class="param-description"><p>The event we're extracting information from</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">X,y</span>:
+                                    					<p>Values</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-info" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>info</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>targetElement</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>iteractionType</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>triggerWrapper</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l81"><code>src\raska.js:81</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Registers a delegate to a given element event</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">targetElement</code>
+                                    						<span class="type">HTMLElement</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The element that we're interested in</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">iteractionType</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The event name</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">triggerWrapper</code>
+                                    						<span class="type">Function</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The delegate</p>
                                     </div>
                                     
                                     				</li>
@@ -200,8 +287,8 @@
                                 <h2 class="off-left">Properties</h2>
                         
                                 <div class="item-list">
-                                    <div id="prop-active" class="property item">
-                                        <h3 class="name"><code>active</code></h3>
+                                    <div id="prop-isTouch" class="property item">
+                                        <h3 class="name"><code>isTouch</code></h3>
                                         <span class="type">Bool</span>
                                     
                                     
@@ -211,18 +298,17 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l115"><code>src\raska.js:115</code></a>
+                                            <a href="../files/src_raska.js.html#l50"><code>src\raska.js:50</code></a>
                                             </p>
                                     
                                     
                                         </div>
                                     
                                         <div class="description">
-                                            <p>Whether or not to actually log the messages (should be 'false' in production code)</p>
+                                            <p>Whether or not to the current devide is touchscreen</p>
                                     
                                         </div>
                                     
-                                            <p><strong>Default:</strong> false</p>
                                     
                                     
                                     </div>

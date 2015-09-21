@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AnimationChainController - Raska</title>
+    <title>_animationChainController - Raska</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -21,12 +21,12 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>v1.0.0-beta-5</b>
+                    API Docs for Version: <b>0.0.1</b>
                 </p>
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$device", "classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/AnimationChainController", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/PublicControllerInterface", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_animationChainController", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
         </form>
     </div>
 </div>
@@ -37,19 +37,17 @@
 	        <div id="sidebar">
 	        <div id="classes">
 	            <ul id="api-classes" class="nav nav-list">
-	                    <li><a href="../classes/$device.html">$device</a></li>
 	                    <li><a href="../classes/$log.html">$log</a></li>
 	                    <li><a href="../classes/$obj.html">$obj</a></li>
+	                    <li><a href="../classes/_animationChainController.html">_animationChainController</a></li>
 	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
 	                    <li><a href="../classes/_elementBeingDraged.html">_elementBeingDraged</a></li>
 	                    <li><a href="../classes/_mouse.html">_mouse</a></li>
 	                    <li><a href="../classes/_public.html">_public</a></li>
-	                    <li><a href="../classes/AnimationChainController.html">AnimationChainController</a></li>
 	                    <li><a href="../classes/arrow.html">arrow</a></li>
 	                    <li><a href="../classes/circle.html">circle</a></li>
 	                    <li><a href="../classes/htmlElement.html">htmlElement</a></li>
 	                    <li><a href="../classes/label.html">label</a></li>
-	                    <li><a href="../classes/PublicControllerInterface.html">PublicControllerInterface</a></li>
 	                    <li><a href="../classes/square.html">square</a></li>
 	                    <li><a href="../classes/staticCoordinates.html">staticCoordinates</a></li>
 	                    <li><a href="../classes/triangle.html">triangle</a></li>
@@ -86,7 +84,7 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-                            <h1>AnimationChainController</h1>
+                            <h1>_animationChainController</h1>
                         </div>
                         
                         
@@ -99,7 +97,7 @@
                         
                         
                         <div class="yuidoc-class-description">
-                        <p>Controller for the animation routines</p>
+                        <p>Executes a given delegate whenever possible</p>
                         
                         </div>
                         
@@ -114,17 +112,16 @@
                         		<li>
                         			<strong>Static Methods</strong>
                         			<ul>
-                        				<li><a href="#method-_looper"><span class="im">AnimationChainController._looper</span>()</a></li>
-                        				<li><a href="#method-animate"><span class="im">AnimationChainController.animate</span>()</a></li>
-                        				<li><a href="#method-execute"><span class="im">AnimationChainController.execute</span>(<span class="ia">then</span><span class="ia">interval</span>)</a></li>
-                        				<li><a href="#method-execute"><span class="im">AnimationChainController.execute</span>(<span class="ia">then</span><span class="ia">interval</span>)</a></li>
-                        				<li><a href="#method-execute"><span class="im">AnimationChainController.execute</span>(<span class="ia">what</span>)</a></li>
-                        				<li><a href="#method-register"><span class="im">AnimationChainController.register</span>(<span class="ia">animation</span>)</a></li>
-                        				<li><a href="#method-resetElement"><span class="im">AnimationChainController.resetElement</span>()</a></li>
-                        				<li><a href="#method-restoreFromSavedState"><span class="im">AnimationChainController.restoreFromSavedState</span>()</a></li>
-                        				<li><a href="#method-saveStates"><span class="im">AnimationChainController.saveStates</span>()</a></li>
-                        				<li><a href="#method-stop"><span class="im">AnimationChainController.stop</span>()</a></li>
-                        				<li><a href="#method-stop"><span class="im">AnimationChainController.stop</span>()</a></li>
+                        				<li><a href="#method-_looper"><span class="im">_animationChainController._looper</span>()</a></li>
+                        				<li><a href="#method-animate"><span class="im">_animationChainController.animate</span>()</a></li>
+                        				<li><a href="#method-execute"><span class="im">_animationChainController.execute</span>(<span class="ia">what</span>)</a></li>
+                        				<li><a href="#method-execute"><span class="im">_animationChainController.execute</span>(<span class="ia">then</span><span class="ia">interval</span>)</a></li>
+                        				<li><a href="#method-register"><span class="im">_animationChainController.register</span>(<span class="ia">animation</span>)</a></li>
+                        				<li><a href="#method-resetElement"><span class="im">_animationChainController.resetElement</span>()</a></li>
+                        				<li><a href="#method-restoreFromSavedState"><span class="im">_animationChainController.restoreFromSavedState</span>()</a></li>
+                        				<li><a href="#method-saveStates"><span class="im">_animationChainController.saveStates</span>()</a></li>
+                        				<li><a href="#method-stop"><span class="im">_animationChainController.stop</span>()</a></li>
+                        				<li><a href="#method-stop"><span class="im">_animationChainController.stop</span>()</a></li>
                         			</ul>
                         		</li>
                         	</ul>
@@ -132,37 +129,6 @@
                         
                         <!-- details -->
                         
-                            <div class="constructor yuidoc-class-constructor page-section">
-                                <h2>Constructor</h2>
-                                <div class="item-list">
-                                <div id="method-AnimationChainController" class="method item">
-                                	<div class="method-signature">
-                                	<span class="name"><code>AnimationChainController</code></span>
-                                
-                                		<span class="paren">()</span>
-                                	</div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                	<div class="meta">
-                                				<p>
-                                				Defined in
-                                		<a href="../files/src_raska.animation.js.html#l86"><code>src\raska.animation.js:86</code></a>
-                                		</p>
-                                
-                                
-                                
-                                	</div>
-                                
-                                
-                                
-                                
-                                </div>
-                                </div>
-                            </div>
                         
                         
                         
@@ -173,7 +139,7 @@
                                 <div class="item-list">
                             	        <div id="method-_looper" class="method item private">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController._looper</code></span>
+                            	        	<span class="name"><code>_animationChainController._looper</code></span>
                             	        
                             	        		<span class="paren">()</span>
                             	        	</div>
@@ -187,7 +153,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.animation.js.html#l224"><code>src\raska.animation.js:224</code></a>
+                            	        		<a href="../files/src_raska.animation.js.html#l206"><code>src\raska.animation.js:206</code></a>
                             	        		</p>
                             	        
                             	        
@@ -202,7 +168,7 @@
                             	        </div>
                             	        <div id="method-animate" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.animate</code></span>
+                            	        	<span class="name"><code>_animationChainController.animate</code></span>
                             	        
                             	        		<span class="paren">()</span>
                             	        	</div>
@@ -231,131 +197,7 @@
                             	        </div>
                             	        <div id="method-execute" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.execute</code></span>
-                            	        
-                            	        		<div class="args">
-                            	        			<span class="paren">(</span><ul class="args-list inline commas">
-                            	        				<li class="arg">
-                            	        						<code>then</code>
-                            	        				</li>
-                            	        				<li class="arg">
-                            	        						<code>interval</code>
-                            	        				</li>
-                            	        			</ul><span class="paren">)</span>
-                            	        		</div>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        		<span class="flag chainable">chainable</span>
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.animation.js.html#l205"><code>src\raska.animation.js:205</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Executes all current animations in loop</p>
-                            	        </div>
-                            	        
-                            	        		<div class="params">
-                            	        			<h4>Parameters:</h4>
-                            	        
-                            	        			<ul class="params-list">
-                            	        				<li class="param">
-                            	        						<code class="param-name">then</code>
-                            	        						<span class="type">Function</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>What to do after all animations are done</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        				<li class="param">
-                            	        						<code class="param-name">interval</code>
-                            	        						<span class="type">Number</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>Interval between animations</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        			</ul>
-                            	        		</div>
-                            	        
-                            	        
-                            	        </div>
-                            	        <div id="method-execute" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.execute</code></span>
-                            	        
-                            	        		<div class="args">
-                            	        			<span class="paren">(</span><ul class="args-list inline commas">
-                            	        				<li class="arg">
-                            	        						<code>then</code>
-                            	        				</li>
-                            	        				<li class="arg">
-                            	        						<code>interval</code>
-                            	        				</li>
-                            	        			</ul><span class="paren">)</span>
-                            	        		</div>
-                            	        	</div>
-                            	        
-                            	        
-                            	        
-                            	        
-                            	        		<span class="flag chainable">chainable</span>
-                            	        
-                            	        
-                            	        	<div class="meta">
-                            	        				<p>
-                            	        				Defined in
-                            	        		<a href="../files/src_raska.animation.js.html#l176"><code>src\raska.animation.js:176</code></a>
-                            	        		</p>
-                            	        
-                            	        
-                            	        
-                            	        	</div>
-                            	        
-                            	        	<div class="description"><p>Executes a destructive navigation/execution on all registered animations in this chain</p>
-                            	        </div>
-                            	        
-                            	        		<div class="params">
-                            	        			<h4>Parameters:</h4>
-                            	        
-                            	        			<ul class="params-list">
-                            	        				<li class="param">
-                            	        						<code class="param-name">then</code>
-                            	        						<span class="type">Function</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>What to do after all animations are done</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        				<li class="param">
-                            	        						<code class="param-name">interval</code>
-                            	        						<span class="type">Number</span>
-                            	        
-                            	        
-                            	        					<div class="param-description"><p>Interval between animations</p>
-                            	        </div>
-                            	        
-                            	        				</li>
-                            	        			</ul>
-                            	        		</div>
-                            	        
-                            	        
-                            	        </div>
-                            	        <div id="method-execute" class="method item">
-                            	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.execute</code></span>
+                            	        	<span class="name"><code>_animationChainController.execute</code></span>
                             	        
                             	        		<div class="args">
                             	        			<span class="paren">(</span><ul class="args-list inline commas">
@@ -402,9 +244,71 @@
                             	        
                             	        
                             	        </div>
+                            	        <div id="method-execute" class="method item">
+                            	        	<div class="method-signature">
+                            	        	<span class="name"><code>_animationChainController.execute</code></span>
+                            	        
+                            	        		<div class="args">
+                            	        			<span class="paren">(</span><ul class="args-list inline commas">
+                            	        				<li class="arg">
+                            	        						<code>then</code>
+                            	        				</li>
+                            	        				<li class="arg">
+                            	        						<code>interval</code>
+                            	        				</li>
+                            	        			</ul><span class="paren">)</span>
+                            	        		</div>
+                            	        	</div>
+                            	        
+                            	        
+                            	        
+                            	        
+                            	        		<span class="flag chainable">chainable</span>
+                            	        
+                            	        
+                            	        	<div class="meta">
+                            	        				<p>
+                            	        				Defined in
+                            	        		<a href="../files/src_raska.animation.js.html#l171"><code>src\raska.animation.js:171</code></a>
+                            	        		</p>
+                            	        
+                            	        
+                            	        
+                            	        	</div>
+                            	        
+                            	        	<div class="description"><p>Executes a destructive navigation/execution on all registered animations in this chain</p>
+                            	        </div>
+                            	        
+                            	        		<div class="params">
+                            	        			<h4>Parameters:</h4>
+                            	        
+                            	        			<ul class="params-list">
+                            	        				<li class="param">
+                            	        						<code class="param-name">then</code>
+                            	        						<span class="type">Function</span>
+                            	        
+                            	        
+                            	        					<div class="param-description"><p>What to do after all animations are done</p>
+                            	        </div>
+                            	        
+                            	        				</li>
+                            	        				<li class="param">
+                            	        						<code class="param-name">interval</code>
+                            	        						<span class="type">Number</span>
+                            	        
+                            	        
+                            	        					<div class="param-description"><p>Interval between animations</p>
+                            	        </div>
+                            	        
+                            	        				</li>
+                            	        			</ul>
+                            	        		</div>
+                            	        
+                            	        
+                            	        </div>
                             	        <div id="method-register" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.register</code></span>
+                            	        	<span class="name"><code>_animationChainController.register</code></span>
                             	        
                             	        		<div class="args">
                             	        			<span class="paren">(</span><ul class="args-list inline commas">
@@ -424,7 +328,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.animation.js.html#l104"><code>src\raska.animation.js:104</code></a>
+                            	        		<a href="../files/src_raska.animation.js.html#l102"><code>src\raska.animation.js:102</code></a>
                             	        		</p>
                             	        
                             	        
@@ -454,7 +358,7 @@
                             	        </div>
                             	        <div id="method-resetElement" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.resetElement</code></span>
+                            	        	<span class="name"><code>_animationChainController.resetElement</code></span>
                             	        
                             	        		<span class="paren">()</span>
                             	        	</div>
@@ -483,7 +387,7 @@
                             	        </div>
                             	        <div id="method-restoreFromSavedState" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.restoreFromSavedState</code></span>
+                            	        	<span class="name"><code>_animationChainController.restoreFromSavedState</code></span>
                             	        
                             	        		<span class="paren">()</span>
                             	        	</div>
@@ -497,7 +401,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.animation.js.html#l160"><code>src\raska.animation.js:160</code></a>
+                            	        		<a href="../files/src_raska.animation.js.html#l155"><code>src\raska.animation.js:155</code></a>
                             	        		</p>
                             	        
                             	        
@@ -512,7 +416,7 @@
                             	        </div>
                             	        <div id="method-saveStates" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.saveStates</code></span>
+                            	        	<span class="name"><code>_animationChainController.saveStates</code></span>
                             	        
                             	        		<span class="paren">()</span>
                             	        	</div>
@@ -526,7 +430,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.animation.js.html#l148"><code>src\raska.animation.js:148</code></a>
+                            	        		<a href="../files/src_raska.animation.js.html#l143"><code>src\raska.animation.js:143</code></a>
                             	        		</p>
                             	        
                             	        
@@ -541,7 +445,7 @@
                             	        </div>
                             	        <div id="method-stop" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.stop</code></span>
+                            	        	<span class="name"><code>_animationChainController.stop</code></span>
                             	        
                             	        		<span class="paren">()</span>
                             	        	</div>
@@ -570,7 +474,7 @@
                             	        </div>
                             	        <div id="method-stop" class="method item">
                             	        	<div class="method-signature">
-                            	        	<span class="name"><code>AnimationChainController.stop</code></span>
+                            	        	<span class="name"><code>_animationChainController.stop</code></span>
                             	        
                             	        		<span class="paren">()</span>
                             	        	</div>
@@ -584,7 +488,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.animation.js.html#l123"><code>src\raska.animation.js:123</code></a>
+                            	        		<a href="../files/src_raska.animation.js.html#l121"><code>src\raska.animation.js:121</code></a>
                             	        		</p>
                             	        
                             	        

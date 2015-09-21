@@ -26,7 +26,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/AnimationChainController", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/PublicControllerInterface", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$device", "classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/AnimationChainController", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/PublicControllerInterface", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
         </form>
     </div>
 </div>
@@ -37,6 +37,7 @@
 	        <div id="sidebar">
 	        <div id="classes">
 	            <ul id="api-classes" class="nav nav-list">
+	                    <li><a href="../classes/$device.html">$device</a></li>
 	                    <li><a href="../classes/$log.html">$log</a></li>
 	                    <li><a href="../classes/$obj.html">$obj</a></li>
 	                    <li><a href="../classes/_drawing.html">_drawing</a></li>
@@ -125,6 +126,76 @@
                                     return {
                         
                                         /**
+                                        * Device related helpers
+                                        *
+                                        * @class $device
+                                        * @module raska
+                                        * @submodule _helpers
+                                        * @static
+                                        */
+                                        $device: (function () {
+                        
+                                            var _isTouch = ((&#x27;ontouchstart&#x27; in window)
+                                                     || (navigator.MaxTouchPoints &gt; 0)
+                                                     || (navigator.msMaxTouchPoints &gt; 0)),
+                                                _this = {
+                        
+                                                    /**
+                                                    * Whether or not to the current devide is touchscreen
+                                                    *
+                                                    * @property isTouch
+                                                    * @type Bool
+                                                    */
+                                                    isTouch: _isTouch,
+                        
+                                                    /**
+                                                    * Gathers UI iteraction X/Y coordinates from an event
+                                                    * 
+                                                    * @method info
+                                                    * @param {HTMLElement} container The element that contains the bounding rect we&#x27;ll use to gather relative positioning data
+                                                    * @param {event} evt The event we&#x27;re extracting information from 
+                                                    * @returns {x,y} Values
+                                                    */
+                                                    gathersXYPositionFrom: function (container, evt) {
+                        
+                                                        if (_this.isTouch
+                                                            &amp;&amp; _helpers.$obj.is(evt.touches.length, &quot;number&quot;)
+                                                            &amp;&amp; evt.touches.length &gt; 0) {
+                                                            evt = evt.touches[0];
+                                                        }
+                        
+                                                        var containerRect = container.getBoundingClientRect();
+                                                        return {
+                                                            x: ((evt.clientX - containerRect.left) * (container.width / containerRect.width)),
+                                                            y: ((evt.clientY - containerRect.top) * (container.height / containerRect.height))
+                                                        };
+                                                    },
+                        
+                                                    /**
+                                                   * Registers a delegate to a given element event
+                                                   * 
+                                                   * @method info
+                                                   * @param {HTMLElement} targetElement The element that we&#x27;re interested in
+                                                   * @param {String} iteractionType The event name
+                                                   * @param {Function} triggerWrapper The delegate
+                                                   * @chainable
+                                                   */
+                                                    on: function (targetElement, iteractionType, triggerWrapper) {
+                                                        if (window.addEventListener) { // modern browsers including IE9+
+                                                            targetElement.addEventListener(iteractionType, triggerWrapper, false);
+                                                        } else if (window.attachEvent) { // IE8 and below
+                                                            targetElement.attachEvent(&#x27;on&#x27; + iteractionType, triggerWrapper);
+                                                        } else {
+                                                            targetElement[&#x27;on&#x27; + iteractionType] = triggerWrapper;
+                                                        }
+                                                        return _this;
+                                                    }
+                                                };
+                        
+                                            return _this;
+                                        })(),
+                        
+                                        /**
                                          * Outputs messages to the &#x27;console&#x27;
                                          *
                                          * @class $log
@@ -174,6 +245,27 @@
                                                 return Math.floor((1 + Math.random()) * 0x10000)
                                                   .toString(16)
                                                   .substring(1);
+                                            }
+                        
+                                            function normalizeChain(elementRoot, resultFull) {
+                                                var item, links;
+                                                for (var i = 0; i &lt; elementRoot.length; i++) {
+                        
+                                                    item = elementRoot[i];
+                                                    if ((item.graphNode === true) &amp;&amp; (((links = item.getLinksFrom()) === null) || (links.length === 0))
+                                                        &amp;&amp; (((links = item.getLinksTo()) === null) || (links.length === 0))) {
+                                                        throw new _defaultConfigurations.errors.elementDoesNotHaveALink(item.name);
+                                                    }
+                        
+                                                    if (item.isSerializable()) {
+                        
+                                                        /// Adds the normalized item
+                                                        resultFull.push(item.normalize());
+                        
+                                                        /// Check for child elements
+                                                        normalizeChain(item.getChildElements(), resultFull);
+                                                    }
+                                                }
                                             }
                         
                                             return _this = {
@@ -274,29 +366,7 @@
                                                 deconstruct: function (elements) {
                                                     var resultFull = [];
                                                     if (_helpers.$obj.isArray(elements)) {
-                        
-                                                        function normalizeChain(elementRoot) {
-                                                            var item, links;
-                                                            for (var i = 0; i &lt; elementRoot.length; i++) {
-                        
-                                                                item = elementRoot[i];
-                                                                if ((item.graphNode === true) &amp;&amp; (((links = item.getLinksFrom()) === null) || (links.length === 0))
-                                                                    &amp;&amp; (((links = item.getLinksTo()) === null) || (links.length === 0))) {
-                                                                    throw new _defaultConfigurations.errors.elementDoesNotHaveALink(item.name);
-                                                                }
-                        
-                                                                if (item.isSerializable()) {
-                        
-                                                                    /// Adds the normalized item
-                                                                    resultFull.push(item.normalize());
-                        
-                                                                    /// Check for child elements
-                                                                    normalizeChain(item.getChildElements());
-                                                                }
-                                                            }
-                                                        }
-                        
-                                                        normalizeChain(elements);
+                                                        normalizeChain(elements, resultFull);
                                                     }
                                                     return JSON.stringify(resultFull);
                                                 },
@@ -329,13 +399,14 @@
                                                 recreateLinks: function (targetElement, baseElement, findElementDelegate) {
                         
                                                     /// Copy data back as it should be
-                                                    this.forEach(this.forEach(baseElement.linksTo, findElementDelegate), targetElement.addLinkTo.bind(targetElement));
+                                                    this.forEach(this.forEach(baseElement.linksTo, findElementDelegate),
+                                                        targetElement.addLinkTo.bind(targetElement));
                                                     this.forEach(this.forEach(baseElement.childElements, findElementDelegate),
-                                                        function (element) {
-                                                            targetElement.addChild(element);
-                                                        });
+                                                            targetElement.addChild.bind(targetElement));
                         
-                                                    targetElement.setParent(findElementDelegate(baseElement.parent));
+                                                    if (baseElement.parent !== null) {
+                                                        findElementDelegate(baseElement.parent).addChild(targetElement);
+                                                    }
                                                 },
                         
                                                 /**
@@ -1306,13 +1377,13 @@
                                  * @class arrow
                                  * @extends _basicElement
                                  */
-                                arrow: function (source) {
+                                arrow: function (target) {
                         
-                                    if (_helpers.$obj.isUndefined(source) || (source === null)) {
-                                        throw new _defaultConfigurations.errors.nullParameterException(&quot;source&quot;);
+                                    if (_helpers.$obj.isUndefined(target) || (target === null)) {
+                                        throw new _defaultConfigurations.errors.nullParameterException(&quot;target&quot;);
                                     }
                         
-                                    var _source = source,
+                                    var _target = target,
                                         _drawArrowhead = function (context, x, y, radians, sizeW, sizeH, arrowColor) {
                                             context.fillStyle = arrowColor;
                                             context.save();
@@ -1332,14 +1403,14 @@
                                         clearAllLinks: function () {
                                             if (_helpers.$obj.isValid(this.getParent())
                                                 &amp;&amp; _helpers.$obj.is(this.getParent().removeLinkFrom, &quot;function&quot;)
-                                                &amp;&amp; _helpers.$obj.is(_source.removeLinkTo, &quot;function&quot;)) {
-                                                this.getParent().removeLinkFrom(_source).removeLinkTo(_source);
-                                                _source.removeLinkFrom(this.getParent()).removeLinkTo(this.getParent());
+                                                &amp;&amp; _helpers.$obj.is(_target.removeLinkTo, &quot;function&quot;)) {
+                                                this.getParent().removeLinkFrom(_target).removeLinkTo(_target);
+                                                _target.removeLinkFrom(this.getParent()).removeLinkTo(this.getParent());
                                             }
                                             return this;
                                         },
                                         elementDisabledNotification: function (element) {
-                                            if ((element === _source) || (element === this.getParent())) {
+                                            if ((element === _target) || (element === this.getParent())) {
                                                 this.disable();
                                             }
                                         },
@@ -1349,35 +1420,44 @@
                                         getType: function () { return _elementTypes.arrow; },
                                         canLink: function () { return false; },
                                         isLinkable: function () { return false; },
-                                        border: { color: &quot;black&quot;, active: true, width: 2 },
+                                        border: { color: &quot;silver&quot;, active: true, width: 2 },
                                         fillColor: &quot;black&quot;,
                                         getWidth: function () { return 1; },
                                         getHeight: function () { return 1; },
                                         drawTo: function (canvas, context) {
                         
-                                            if (_helpers.$obj.isValid(_source.notifyDisableStateOn)) {
-                                                _source.notifyDisableStateOn(this);
+                                            if (_helpers.$obj.isValid(_target.notifyDisableStateOn)) {
+                                                _target.notifyDisableStateOn(this);
                                             }
                         
                                             if (_helpers.$obj.isValid(this.getParent().notifyDisableStateOn)) {
                                                 this.getParent().notifyDisableStateOn(this);
                                             }
                         
-                                            this.x = _source.x + (_source.getAdjustedWidth ? (_source.getAdjustedWidth() / 2) : 0);
-                                            this.y = _source.y + (_source.getAdjustedHeight ? (_source.getAdjustedHeight() / 2) : 0);
+                                            var adjustedTargedCoordinates = _target.getAdjustedCoordinates ? _target.getAdjustedCoordinates() : { x: _target.x, y: _target.y },
+                                                parent = this.getParent(),
+                                                adjustedParentCoordinates = parent.getAdjustedCoordinates(),
+                                                parentX = adjustedParentCoordinates.x + (parent.getAdjustedWidth ? (parent.getAdjustedWidth() / 2) : 0),
+                                                parentY = adjustedParentCoordinates.y + (parent.getAdjustedHeight ? (parent.getAdjustedHeight() / 2) : 0);
                         
-                                            var parent = this.getParent();
+                                            this.x = adjustedTargedCoordinates.x + (_target.getAdjustedWidth ? (_target.getAdjustedWidth() / 2) : 0);
+                                            this.y = adjustedTargedCoordinates.y + (_target.getAdjustedHeight ? (_target.getAdjustedHeight() / 2) : 0);
+                        
                                             context.beginPath();
                                             context.fillStyle = this.fillColor;
                                             if (this.border.active === true) {
+                                                var grad = context.createLinearGradient(this.x, this.y, parentX, parentY);
+                                                grad.addColorStop(0, this.fillColor);
+                                                grad.addColorStop(1, this.border.color);
+                        
                                                 context.lineWidth = this.border.width;
-                                                context.strokeStyle = this.border.color;
+                                                context.strokeStyle = grad;
                                             }
                                             context.moveTo(this.x, this.y);
-                                            context.lineTo(parent.x, parent.y);
+                                            context.lineTo(parentX, parentY);
                                             context.stroke();
-                                            var startRadians = Math.atan((parent.y - this.y) / (parent.x - this.x));
-                                            startRadians += ((parent.x &gt; this.x) ? -90 : 90) * Math.PI / 180;
+                                            var startRadians = Math.atan((parentY - this.y) / (parentX - this.x));
+                                            startRadians += ((parentX &gt; this.x) ? -90 : 90) * Math.PI / 180;
                                             _drawArrowhead(context, this.x, this.y, startRadians, 23, 10, this.fillColor);
                                             _drawArrowhead(context, this.x, this.y, startRadians, 18, 6, &quot;white&quot;);
                                         },
@@ -1435,13 +1515,7 @@
                                                 trigger(evt, targetElement, iteractionType);
                                             };
                         
-                                            if (window.addEventListener) { // modern browsers including IE9+
-                                                targetElement.addEventListener(iteractionType, triggerWrapper, false);
-                                            } else if (window.attachEvent) { // IE8 and below
-                                                targetElement.attachEvent(&#x27;on&#x27; + iteractionType, triggerWrapper);
-                                            } else {
-                                                targetElement[&#x27;on&#x27; + iteractionType] = triggerWrapper;
-                                            }
+                                            _helpers.$device.on(targetElement, iteractionType, triggerWrapper);
                                         }
                                     }, true);
                                 },
@@ -1770,8 +1844,7 @@
                                         * @static
                                         */
                                         getX: function (evt) {
-                                            var canvasRect = _canvas.getBoundingClientRect();
-                                            return (evt.clientX - canvasRect.left) * (_canvas.width / canvasRect.width);
+                                            return _helpers.$device.gathersXYPositionFrom(_canvas, evt).x;
                                         },
                         
                                         /**
@@ -1784,8 +1857,7 @@
                                          * @static
                                          */
                                         getY: function (evt) {
-                                            var canvasRect = _canvas.getBoundingClientRect();
-                                            return (evt.clientY - canvasRect.top) * (_canvas.height / canvasRect.height);
+                                            return _helpers.$device.gathersXYPositionFrom(_canvas, evt).y;
                                         },
                         
                                         /**
@@ -2079,10 +2151,12 @@
                                         }
                         
                                         if (_elementBeingDraged.reference !== null) {
-                        
-                                            var dragType = _elementBeingDraged.holdingCTRL === true &amp;&amp; _elementBeingDraged.reference.isLinkable() === true ?
-                                                _elementBeingDraged.dragTypes.linking :
-                                                evt.which;
+                                            var dragType = _elementBeingDraged.dragTypes.moving;
+                                            if (!_helpers.$device.isTouch) {
+                                                dragType = _elementBeingDraged.holdingCTRL === true &amp;&amp; _elementBeingDraged.reference.isLinkable() === true ?
+                                                    _elementBeingDraged.dragTypes.linking :
+                                                    evt.which;
+                                            }
                                             _elementBeingDraged.originalBorder = _elementBeingDraged.reference.border;
                                             _elementBeingDraged.reference.border =
                                                 ((_elementBeingDraged.dragType = dragType) === _elementBeingDraged.dragTypes.moving) ?
@@ -2111,15 +2185,25 @@
                                         if (_canvas === null) {
                                             _2dContext = (_canvas = $(&quot;#&quot; + _activeConfiguration.targetCanvasId))
                                                 .getContext(&#x27;2d&#x27;);
-                                            _canvas.addEventListener(&quot;mousedown&quot;, _checkClick, false);
-                                            _canvas.addEventListener(&quot;mousemove&quot;, _whenMouseMove, false);
-                                            w.addEventListener(&quot;mouseup&quot;, _whenMouseUp, false);
-                                            w.addEventListener(&quot;keydown&quot;, _whenKeyDown, false);
-                                            w.addEventListener(&quot;keyup&quot;, _whenKeyUp, false);
-                                            _canvas.addEventListener(&quot;contextmenu&quot;, function (e) {
-                                                e.preventDefault();
-                                                return false;
-                                            }, false);
+                        
+                                            _helpers.$device
+                                                .on(_canvas, &quot;mousedown&quot;, _checkClick)
+                                                .on(_canvas, &quot;mousemove&quot;, _whenMouseMove)
+                                                .on(_canvas, &quot;contextmenu&quot;, function (e) {
+                                                    e.preventDefault();
+                                                    return false;
+                                                })
+                                                .on(w, &quot;mouseup&quot;, _whenMouseUp)
+                                                .on(w, &quot;keydown&quot;, _whenKeyDown)
+                                                .on(w, &quot;keyup&quot;, _whenKeyUp);
+                        
+                                            if (_helpers.$device.isTouch === true) {
+                                                _helpers.$device
+                                                    .on(_canvas, &quot;touchstart&quot;, _checkClick)
+                                                    .on(_canvas, &quot;touchmove&quot;, _whenMouseMove)
+                                                    .on(w, &quot;touchend&quot;, _whenMouseUp)
+                                                    .on(w, &quot;touchcancel&quot;, _whenMouseUp);
+                                            }
                                             _canvasElement = _helpers.$obj.extend(new _defaultConfigurations.htmlElement(_canvas), {});
                                         }
                         
@@ -2356,7 +2440,7 @@
                                     var preparsedSource = JSON.parse(source);
                                     if (_helpers.$obj.isArray(preparsedSource)) {
                         
-                                        var realSource = [], i = 0, parsed = null;
+                                        var realSource = [], childElements = [], i = 0, parsed = null;
                                         /// Create a basic element instance
                                         for (i = 0; i &lt; preparsedSource.length; i++) {
                                             if ((parsed = _helpers.$obj.recreate(preparsedSource[i])) === null) {
@@ -2364,7 +2448,12 @@
                                                 console.error(&quot;Could not deserialize this element&quot;, preparsedSource[i]);
                                                 return this;
                                             }
-                                            realSource.push(parsed);
+                                            if (preparsedSource[i].parent === null) {
+                                                parsed.originalIndex = i;
+                                                realSource.push(parsed);
+                                            } else {
+                                                childElements.push(parsed);
+                                            }
                                         }
                         
                                         /// Adds back the links between elements
@@ -2372,15 +2461,24 @@
                                             if (!_helpers.$obj.isValid(itemName)) {
                                                 return null;
                                             }
-                                            for (var j = 0; j &lt; realSource.length; j++) {
-                                                if (realSource[j].name === itemName) {
-                                                    return realSource[j];
+                        
+                                            function find(arr) {
+                                                for (var j = 0; j &lt; arr.length; j++) {
+                                                    if (arr[j].name === itemName) {
+                                                        return arr[j];
+                                                    }
                                                 }
                                             }
-                                            throw _defaultConfigurations.errors.itemNotFoundException(itemName);
+                        
+                                            var itemFound = find(realSource) || find(childElements);
+                                            if (!itemFound) {
+                                                throw _defaultConfigurations.errors.itemNotFoundException(itemName);
+                                            }
+                                            return itemFound;
                                         };
                                         for (i = 0; i &lt; realSource.length; i++) {
-                                            _helpers.$obj.recreateLinks(realSource[i], preparsedSource[i], findElement);
+                                            _helpers.$obj.recreateLinks(realSource[i], preparsedSource[realSource[i].originalIndex], findElement);
+                                            delete realSource[i].originalIndex;
                                         }
                         
                                         /// Recriates all arrows
@@ -2396,10 +2494,7 @@
                                                 }
                                             }
                                         }
-                        
                                         _drawing.reloadUsing(realSource);
-                        
-                                        return realSource;
                                     }
                                     return this;
                                 },
