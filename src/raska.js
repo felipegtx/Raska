@@ -2354,6 +2354,17 @@
         },
 
         /**
+        * Retrieves the raw elements from the drawing stack
+        *
+        * @method getElementsRaw
+        * @return {json} The JSON object that represents ALL the Raska elements in the canvas
+        * @static
+        */
+        getElementsRaw: function() {
+            return _drawing.getElements();
+        },
+
+        /**
         * Retrieves the directed graph represented by the elements in the canvas 
         *
         * @method getElementsSlim

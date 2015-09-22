@@ -2531,6 +2531,20 @@
         {
             "file": "src\\raska.js",
             "line": 2356,
+            "description": "Retrieves the raw elements from the drawing stack",
+            "itemtype": "method",
+            "name": "getElementsRaw",
+            "return": {
+                "description": "The JSON object that represents ALL the Raska elements in the canvas",
+                "type": "Json"
+            },
+            "static": 1,
+            "class": "_public",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 2367,
             "description": "Retrieves the directed graph represented by the elements in the canvas",
             "itemtype": "method",
             "name": "getElementsSlim",
@@ -2544,7 +2558,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2367,
+            "line": 2378,
             "description": "Retrieves the ENTIRE directed graph represented by the elements in the canvas",
             "itemtype": "method",
             "name": "getElementsData",
@@ -2558,7 +2572,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2378,
+            "line": 2389,
             "description": "Redefines the elements that are supposed to be ploted to the canvas",
             "itemtype": "method",
             "name": "loadElementsFrom",
@@ -2576,7 +2590,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2449,
+            "line": 2460,
             "description": "Retrieves all possible position types",
             "itemtype": "property",
             "name": "positionTypes",
@@ -2587,7 +2601,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2460,
+            "line": 2471,
             "description": "Configures the Raska library to target a given canvas using the configuration passed\nas a parameter",
             "itemtype": "method",
             "name": "installUsing",
@@ -2609,7 +2623,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2476,
+            "line": 2487,
             "description": "Registers a handler to be trigered by any interaction taken place against the canvas",
             "itemtype": "method",
             "name": "onElementInteraction",
@@ -2632,7 +2646,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2490,
+            "line": 2501,
             "description": "Gathers the target canvas boundaries",
             "itemtype": "method",
             "name": "getCanvasBoundaries",
@@ -2646,7 +2660,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2502,
+            "line": 2513,
             "description": "Clears all elements from the canvas",
             "itemtype": "method",
             "name": "clear",

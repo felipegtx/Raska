@@ -30,12 +30,17 @@
                     <form class="form-inline">
                         <div class="form-group">
                             <label for="companyName" class="control-label">Company name</label>
-                            <input type="text" class="form-control" id="companyName" onkeyup="UI.update()" value="Raska">
+                            <input type="text" class="form-control" id="companyName" onkeyup="UI.update()" value="RaskaJs">
                         </div>
                         <div class="form-group">
                             <label for="companyNameFontFace" class="control-label">Font face</label>
                             <input type="text" class="form-control" id="companyNameFontFace"
                                    onkeyup="UI.update()" value="Century Gothic">
+                        </div>
+                        <div class="form-group">
+                            <label for="fontColor" class="control-label">Font color</label>
+                            <input type="text" class="form-control" id="fontColor"
+                                   onkeyup="UI.update()" value="#738494">
                         </div><br />
                         <div class="form-group">
                             <label for="icon" class="control-label">Icon (<a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">from here</a>)</label>
@@ -305,7 +310,7 @@
                                 <option value="f059">fa-question-circle</option>
                                 <option value="f10d">fa-quote-left</option>
                                 <option value="f10e">fa-quote-right</option>
-                                <option value="f074" selected>fa-random</option>
+                                <option value="f074">fa-random</option>
                                 <option value="f021">fa-refresh</option>
                                 <option value="f18b">fa-renren</option>
                                 <option value="f01e">fa-repeat</option>
@@ -325,7 +330,7 @@
                                 <option value="f045">fa-share-square-o</option>
                                 <option value="f132">fa-shield</option>
                                 <option value="f07a">fa-shopping-cart</option>
-                                <option value="f090">fa-sign-in</option>
+                                <option value="f090" selected>fa-sign-in</option>
                                 <option value="f08b">fa-sign-out</option>
                                 <option value="f012">fa-signal</option>
                                 <option value="f0e8">fa-sitemap</option>
@@ -417,7 +422,7 @@
                             <input type="number" class="form-control" id="companyNameSize"
                                    onkeyup="UI.update()"
                                    onchange="UI.update()"
-                                   value="70">
+                                   value="86">
                         </div>
                         <div class="form-group">
                             <button type="button" class="btn btn-success" onclick="UI.save();">Save as image</button>
@@ -449,8 +454,9 @@
                 _iconElement = raska.$$.$q("#icon"),
                 _companyNameSize = raska.$$.$q("#companyNameSize"),
                 _companyNameFontFace = raska.$$.$q("#companyNameFontFace"),
-                _labelPosition = { x: 150, y: 150 },
-                _iconPosition = { x: 355, y: 160 },
+                _fontColor = raska.$$.$q("#fontColor"),
+                _labelPosition = { x: 159, y: 150 },
+                _iconPosition = { x: 95, y: 150 },
                 _size;
 
             w.UI = {
@@ -465,6 +471,7 @@
                     companyLabel.text = _companyNameElement.value;
                     companyLabel.y = _size;
                     companyLabel.x = 0;
+                    companyLabel.color = _fontColor.value;
                     companyLabel.font = { size: _size + "px", family: _companyNameFontFace.value, decoration: "bold" };
                     companyLabelContent.dimensions.width = companyLabel.text.length * (_size / 2);
                     companyLabelContent.dimensions.height = _size;
@@ -484,6 +491,7 @@
                     companyIcon.text = String.fromCharCode("0x" + _iconElement.value);
                     companyIcon.y = _size;
                     companyIcon.x = 0;
+                    companyIcon.color = _fontColor.value;
                     companyIcon.font.size = _size + "px";
                     companyIcon.font.family = "FontAwesome";
                     companyIconContent.dimensions.width = 2 * (_size / 2);
