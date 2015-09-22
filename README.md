@@ -52,9 +52,7 @@ By keeping the reference to the element you can easily (re)define its properties
 ```javascript
 circle.x += 10;
 ```
-- Directed graph [example](http://felipegtx.github.io/RaskSample.html) 
-- Container [example](http://felipegtx.github.io/Raska/samples/ContainerSample.html)
-- Take a look at Raska's **[logo builder](http://felipegtx.github.io/Raska/samples/LogoBuilder.html)**!
+
 ### Animation
 
 By using ```raska.animation``` you can easily set a new behaviour to your element. 
@@ -71,8 +69,13 @@ raska.animation.on(circle)
       .loop();
 ```
 
-- **Sample [here](http://felipegtx.github.io/Raska/samples/AnimationSample.html)**
-- **Sample (game) [here](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)**
+### Examples
+
+- [Directed graph](http://felipegtx.github.io/RaskSample.html) 
+- [Container](http://felipegtx.github.io/Raska/samples/ContainerSample.html)
+- [Logo builder](http://felipegtx.github.io/Raska/samples/LogoBuilder.html)
+- [Animation](http://felipegtx.github.io/Raska/samples/AnimationSample.html)
+- [A simple game](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)
 
 ### Public delegates / cutpoints
 
