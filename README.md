@@ -72,7 +72,35 @@ raska.animation.on(circle)
 ### Examples
 
 - [Directed graph](http://felipegtx.github.io/RaskSample.html) 
+   - **Get a JSON from a canvas**
+      ```javascript
+      raska.getElementsString()
+      ```
+      
+   - **Load a JSON into the canvas**
+      ```javascript
+      /// Here we grap the JSON from a previous graph we've saved and...
+      var elementGraph = document.getElementById("elementGraph").value;
+      
+      /// load it back into the canvas
+      raska.loadElementsFrom(elementGraph);
+      ```
+   - **Adding a subscriber for click iteractions on a given element (touchscreen friendly)**
+   
+      ```javascript
+      triangle.on.click(function (x, y, e, ev) {
+        console.log("You've clicked in this triangle", e);
+      });
+      ```
 - [Container](http://felipegtx.github.io/Raska/samples/ContainerSample.html)
+   - **Tracking the mouse position**
+   
+      ```javascript
+      raska.onCanvasInteraction("mousemove", /// this could also be 'click'
+         function (evtData) {
+           console.log("The mouse is moving", evtData);
+         });
+      ```
 - [Logo builder](http://felipegtx.github.io/Raska/samples/LogoBuilder.html)
 - [Animation](http://felipegtx.github.io/Raska/samples/AnimationSample.html)
 - [A simple game](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)
