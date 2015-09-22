@@ -141,6 +141,7 @@
                         				<li><a href="#method-isSerializable"><span class="im">isSerializable</span>()</a></li>
                         				<li><a href="#method-normalize"><span class="im">normalize</span>()</a></li>
                         				<li><a href="#method-notifyDisableStateOn"><span class="im">notifyDisableStateOn</span>()</a></li>
+                        				<li><a href="#method-release"><span class="im">release</span>(<span class="ia">x</span><span class="ia">y</span><span class="ia">ele</span><span class="ia">evt</span>)</a></li>
                         				<li><a href="#method-removeLinkFrom"><span class="im">removeLinkFrom</span>(<span class="ia">element</span>)</a></li>
                         				<li><a href="#method-removeLinkTo"><span class="im">removeLinkTo</span>(<span class="ia">element</span>)</a></li>
                         				<li><a href="#method-setHeight"><span class="im">setHeight</span>(<span class="ia">newHeight</span>)</a></li>
@@ -424,7 +425,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_adjustPosition">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l1003"><code>src\raska.js:1003</code></a>
+                                    		<a href="../files/src_raska.js.html#l1042"><code>src\raska.js:1042</code></a>
                                     		</p>
                                     
                                     
@@ -721,7 +722,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_click">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l963"><code>src\raska.js:963</code></a>
+                                    		<a href="../files/src_raska.js.html#l964"><code>src\raska.js:964</code></a>
                                     		</p>
                                     
                                     
@@ -868,7 +869,7 @@
                                     				_basicElement
                                     			</a>
                                     			but overwritten in
-                                    		<a href="../files/src_raska.js.html#l1069"><code>src\raska.js:1069</code></a>
+                                    		<a href="../files/src_raska.js.html#l1108"><code>src\raska.js:1108</code></a>
                                     		</p>
                                     
                                     
@@ -1054,7 +1055,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getHeight">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l1056"><code>src\raska.js:1056</code></a>
+                                    		<a href="../files/src_raska.js.html#l1095"><code>src\raska.js:1095</code></a>
                                     		</p>
                                     
                                     
@@ -1214,7 +1215,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_getWidth">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l1030"><code>src\raska.js:1030</code></a>
+                                    		<a href="../files/src_raska.js.html#l1069"><code>src\raska.js:1069</code></a>
                                     		</p>
                                     
                                     
@@ -1374,6 +1375,96 @@
                                     
                                     
                                     </div>
+                                    <div id="method-release" class="method item inherited">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>release</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>x</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>y</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>ele</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>evt</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>Inherited from
+                                    				<a href="../classes/_basicElement.html#method_release">_basicElement</a>:
+                                    		<a href="../files/src_raska.js.html#l1002"><code>src\raska.js:1002</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Triggered whenever a 'clickUp' iteraction occurs within the boundaries of this element.</p>
+                                    <ul>
+                                    <li>This event is only supported on selected elements. Check for the <em>canHandleEvents</em>
+                                    property value before relying on this delegate</li>
+                                    </ul>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">x</code>
+                                    						<span class="type">Number</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element's current X position</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">y</code>
+                                    						<span class="type">Number</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element's current Y position</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">ele</code>
+                                    						<span class="type"><a href="../classes/_basicElement.html" class="crosslink">_basicElement</a></span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The element that was clicked</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">evt</code>
+                                    						<span class="type">Event</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Event that triggered the delegate</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
                                     <div id="method-removeLinkFrom" class="method item inherited">
                                     	<div class="method-signature">
                                     	<span class="name"><code>removeLinkFrom</code></span>
@@ -1520,7 +1611,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_setHeight">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l1043"><code>src\raska.js:1043</code></a>
+                                    		<a href="../files/src_raska.js.html#l1082"><code>src\raska.js:1082</code></a>
                                     		</p>
                                     
                                     
@@ -1632,7 +1723,7 @@
                                     	<div class="meta">
                                     				<p>Inherited from
                                     				<a href="../classes/_basicElement.html#method_setWidth">_basicElement</a>:
-                                    		<a href="../files/src_raska.js.html#l1017"><code>src\raska.js:1017</code></a>
+                                    		<a href="../files/src_raska.js.html#l1056"><code>src\raska.js:1056</code></a>
                                     		</p>
                                     
                                     

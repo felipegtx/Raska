@@ -1,6 +1,8 @@
 # Raska
 HTML5 canvas visual directed graph creation tool.
 
+![Raska](logo.png "Raska.js")
+
 ## What's this - *exactly*?
 
 You can either go take a look at the **[live sample of a simple graph](http://felipegtx.github.io/RaskSample.html)** 
@@ -80,6 +82,7 @@ The delegates are the following:
 * Any Raska element exposes
   * The ```on``` property
      * [```click```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-click) method
+     * [```release```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-release) method
   * [```canLink```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-canLink) delegate (customizable *via override*) allows you to control whether or not a new link can be stabilished between two elements.
   * [```isSerializable```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-isSerializable) delegate (customizable *via override*) allows you to control whether or not a given element should be serialized as part of the JSON graph.
   * [```notifyDisableStateOn```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-notifyDisableStateOn) method allows you to subscribe to receive a notification whenever an element **is abou to** get removed from the canvas

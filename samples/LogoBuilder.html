@@ -1,0 +1,515 @@
+<html>
+
+<head>
+    <title>Raska</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="https://github.com/felipegtx/Raska" target="_blank">Raska!</a>
+                <p class="navbar-text  navbar-right">
+                    You can find the docs
+                    <a href="http://felipegtx.github.io/Raska/docs/index.html" target="_blank">
+                        <strong>in here</strong>
+                    </a>&nbsp;&nbsp;&nbsp;
+                </p>
+            </div>
+        </nav>
+        <div role="tabpanel" class="tab-pane active" id="info">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    Logo builder
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="companyName" class="control-label">Company name</label>
+                            <input type="text" class="form-control" id="companyName" onkeyup="UI.update()" value="Raska">
+                        </div>
+                        <div class="form-group">
+                            <label for="companyNameFontFace" class="control-label">Font face</label>
+                            <input type="text" class="form-control" id="companyNameFontFace"
+                                   onkeyup="UI.update()" value="Century Gothic">
+                        </div><br />
+                        <div class="form-group">
+                            <label for="icon" class="control-label">Icon (<a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">from here</a>)</label>
+                            <!--
+                            On: http://fortawesome.github.io/Font-Awesome/cheatsheet/
+                            Run:
+                            Array.from($(".fa.fa-fw").map(function (i, e) {
+                            ele = $(e).parent().text().trim().split(" ");
+                            if (ele.length === 19) {
+                            return "<option value='" + ele[18] + "'>" + ele[6] + "</option>";
+                            }
+                            })).reduce(function (a, b) {
+                            return a.concat(b);
+                            });
+
+                            -->
+                            <select class="form-control" onchange="UI.update()" id="icon">
+                                <option value="f042">fa-adjust</option>
+                                <option value="f170">fa-adn</option>
+                                <option value="f037">fa-align-center</option>
+                                <option value="f039">fa-align-justify</option>
+                                <option value="f036">fa-align-left</option>
+                                <option value="f038">fa-align-right</option>
+                                <option value="f0f9">fa-ambulance</option>
+                                <option value="f13d">fa-anchor</option>
+                                <option value="f17b">fa-android</option>
+                                <option value="f103">fa-angle-double-down</option>
+                                <option value="f100">fa-angle-double-left</option>
+                                <option value="f101">fa-angle-double-right</option>
+                                <option value="f102">fa-angle-double-up</option>
+                                <option value="f107">fa-angle-down</option>
+                                <option value="f104">fa-angle-left</option>
+                                <option value="f105">fa-angle-right</option>
+                                <option value="f106">fa-angle-up</option>
+                                <option value="f179">fa-apple</option>
+                                <option value="f187">fa-archive</option>
+                                <option value="f0ab">fa-arrow-circle-down</option>
+                                <option value="f0a8">fa-arrow-circle-left</option>
+                                <option value="f01a">fa-arrow-circle-o-down</option>
+                                <option value="f01b">fa-arrow-circle-o-up</option>
+                                <option value="f0a9">fa-arrow-circle-right</option>
+                                <option value="f0aa">fa-arrow-circle-up</option>
+                                <option value="f063">fa-arrow-down</option>
+                                <option value="f060">fa-arrow-left</option>
+                                <option value="f061">fa-arrow-right</option>
+                                <option value="f062">fa-arrow-up</option>
+                                <option value="f047">fa-arrows</option>
+                                <option value="f0b2">fa-arrows-alt</option>
+                                <option value="f07e">fa-arrows-h</option>
+                                <option value="f07d">fa-arrows-v</option>
+                                <option value="f069">fa-asterisk</option>
+                                <option value="f04a">fa-backward</option>
+                                <option value="f05e">fa-ban</option>
+                                <option value="f080">fa-bar-chart</option>
+                                <option value="f02a">fa-barcode</option>
+                                <option value="f0c9">fa-bars</option>
+                                <option value="f0fc">fa-beer</option>
+                                <option value="f0f3">fa-bell</option>
+                                <option value="f0a2">fa-bell-o</option>
+                                <option value="f171">fa-bitbucket</option>
+                                <option value="f172">fa-bitbucket-square</option>
+                                <option value="f032">fa-bold</option>
+                                <option value="f0e7">fa-bolt</option>
+                                <option value="f02d">fa-book</option>
+                                <option value="f02e">fa-bookmark</option>
+                                <option value="f097">fa-bookmark-o</option>
+                                <option value="f0b1">fa-briefcase</option>
+                                <option value="f15a">fa-btc</option>
+                                <option value="f188">fa-bug</option>
+                                <option value="f0f7">fa-building-o</option>
+                                <option value="f0a1">fa-bullhorn</option>
+                                <option value="f140">fa-bullseye</option>
+                                <option value="f073">fa-calendar</option>
+                                <option value="f133">fa-calendar-o</option>
+                                <option value="f030">fa-camera</option>
+                                <option value="f083">fa-camera-retro</option>
+                                <option value="f0d7">fa-caret-down</option>
+                                <option value="f0d9">fa-caret-left</option>
+                                <option value="f0da">fa-caret-right</option>
+                                <option value="f150">fa-caret-square-o-down</option>
+                                <option value="f152">fa-caret-square-o-right</option>
+                                <option value="f151">fa-caret-square-o-up</option>
+                                <option value="f0d8">fa-caret-up</option>
+                                <option value="f0a3">fa-certificate</option>
+                                <option value="f127">fa-chain-broken</option>
+                                <option value="f00c">fa-check</option>
+                                <option value="f058">fa-check-circle</option>
+                                <option value="f05d">fa-check-circle-o</option>
+                                <option value="f14a">fa-check-square</option>
+                                <option value="f046">fa-check-square-o</option>
+                                <option value="f13a">fa-chevron-circle-down</option>
+                                <option value="f137">fa-chevron-circle-left</option>
+                                <option value="f138">fa-chevron-circle-right</option>
+                                <option value="f139">fa-chevron-circle-up</option>
+                                <option value="f078">fa-chevron-down</option>
+                                <option value="f053">fa-chevron-left</option>
+                                <option value="f054">fa-chevron-right</option>
+                                <option value="f077">fa-chevron-up</option>
+                                <option value="f111">fa-circle</option>
+                                <option value="f10c">fa-circle-o</option>
+                                <option value="f0ea">fa-clipboard</option>
+                                <option value="f017">fa-clock-o</option>
+                                <option value="f0c2">fa-cloud</option>
+                                <option value="f0ed">fa-cloud-download</option>
+                                <option value="f0ee">fa-cloud-upload</option>
+                                <option value="f121">fa-code</option>
+                                <option value="f126">fa-code-fork</option>
+                                <option value="f0f4">fa-coffee</option>
+                                <option value="f013">fa-cog</option>
+                                <option value="f085">fa-cogs</option>
+                                <option value="f0db">fa-columns</option>
+                                <option value="f075">fa-comment</option>
+                                <option value="f0e5">fa-comment-o</option>
+                                <option value="f086">fa-comments</option>
+                                <option value="f0e6">fa-comments-o</option>
+                                <option value="f14e">fa-compass</option>
+                                <option value="f066">fa-compress</option>
+                                <option value="f09d">fa-credit-card</option>
+                                <option value="f125">fa-crop</option>
+                                <option value="f05b">fa-crosshairs</option>
+                                <option value="f13c">fa-css3</option>
+                                <option value="f0f5">fa-cutlery</option>
+                                <option value="f108">fa-desktop</option>
+                                <option value="f019">fa-download</option>
+                                <option value="f17d">fa-dribbble</option>
+                                <option value="f16b">fa-dropbox</option>
+                                <option value="f052">fa-eject</option>
+                                <option value="f141">fa-ellipsis-h</option>
+                                <option value="f142">fa-ellipsis-v</option>
+                                <option value="f0e0">fa-envelope</option>
+                                <option value="f003">fa-envelope-o</option>
+                                <option value="f12d">fa-eraser</option>
+                                <option value="f153">fa-eur</option>
+                                <option value="f0ec">fa-exchange</option>
+                                <option value="f12a">fa-exclamation</option>
+                                <option value="f06a">fa-exclamation-circle</option>
+                                <option value="f071">fa-exclamation-triangle</option>
+                                <option value="f065">fa-expand</option>
+                                <option value="f08e">fa-external-link</option>
+                                <option value="f14c">fa-external-link-square</option>
+                                <option value="f06e">fa-eye</option>
+                                <option value="f070">fa-eye-slash</option>
+                                <option value="f09a">fa-facebook</option>
+                                <option value="f082">fa-facebook-square</option>
+                                <option value="f049">fa-fast-backward</option>
+                                <option value="f050">fa-fast-forward</option>
+                                <option value="f182">fa-female</option>
+                                <option value="f0fb">fa-fighter-jet</option>
+                                <option value="f15b">fa-file</option>
+                                <option value="f016">fa-file-o</option>
+                                <option value="f15c">fa-file-text</option>
+                                <option value="f0f6">fa-file-text-o</option>
+                                <option value="f0c5">fa-files-o</option>
+                                <option value="f008">fa-film</option>
+                                <option value="f0b0">fa-filter</option>
+                                <option value="f06d">fa-fire</option>
+                                <option value="f134">fa-fire-extinguisher</option>
+                                <option value="f024">fa-flag</option>
+                                <option value="f11e">fa-flag-checkered</option>
+                                <option value="f11d">fa-flag-o</option>
+                                <option value="f0c3">fa-flask</option>
+                                <option value="f16e">fa-flickr</option>
+                                <option value="f0c7">fa-floppy-o</option>
+                                <option value="f07b">fa-folder</option>
+                                <option value="f114">fa-folder-o</option>
+                                <option value="f07c">fa-folder-open</option>
+                                <option value="f115">fa-folder-open-o</option>
+                                <option value="f031">fa-font</option>
+                                <option value="f04e">fa-forward</option>
+                                <option value="f180">fa-foursquare</option>
+                                <option value="f119">fa-frown-o</option>
+                                <option value="f11b">fa-gamepad</option>
+                                <option value="f0e3">fa-gavel</option>
+                                <option value="f154">fa-gbp</option>
+                                <option value="f06b">fa-gift</option>
+                                <option value="f09b">fa-github</option>
+                                <option value="f113">fa-github-alt</option>
+                                <option value="f092">fa-github-square</option>
+                                <option value="f000">fa-glass</option>
+                                <option value="f0ac">fa-globe</option>
+                                <option value="f0d5">fa-google-plus</option>
+                                <option value="f0d4">fa-google-plus-square</option>
+                                <option value="f184">fa-gratipay</option>
+                                <option value="f0fd">fa-h-square</option>
+                                <option value="f0a7">fa-hand-o-down</option>
+                                <option value="f0a5">fa-hand-o-left</option>
+                                <option value="f0a4">fa-hand-o-right</option>
+                                <option value="f0a6">fa-hand-o-up</option>
+                                <option value="f0a0">fa-hdd-o</option>
+                                <option value="f025">fa-headphones</option>
+                                <option value="f004">fa-heart</option>
+                                <option value="f08a">fa-heart-o</option>
+                                <option value="f015">fa-home</option>
+                                <option value="f0f8">fa-hospital-o</option>
+                                <option value="f13b">fa-html5</option>
+                                <option value="f01c">fa-inbox</option>
+                                <option value="f03c">fa-indent</option>
+                                <option value="f129">fa-info</option>
+                                <option value="f05a">fa-info-circle</option>
+                                <option value="f156">fa-inr</option>
+                                <option value="f16d">fa-instagram</option>
+                                <option value="f033">fa-italic</option>
+                                <option value="f157">fa-jpy</option>
+                                <option value="f084">fa-key</option>
+                                <option value="f11c">fa-keyboard-o</option>
+                                <option value="f159">fa-krw</option>
+                                <option value="f109">fa-laptop</option>
+                                <option value="f06c">fa-leaf</option>
+                                <option value="f094">fa-lemon-o</option>
+                                <option value="f149">fa-level-down</option>
+                                <option value="f148">fa-level-up</option>
+                                <option value="f0eb">fa-lightbulb-o</option>
+                                <option value="f0c1">fa-link</option>
+                                <option value="f0e1">fa-linkedin</option>
+                                <option value="f08c">fa-linkedin-square</option>
+                                <option value="f17c">fa-linux</option>
+                                <option value="f03a">fa-list</option>
+                                <option value="f022">fa-list-alt</option>
+                                <option value="f0cb">fa-list-ol</option>
+                                <option value="f0ca">fa-list-ul</option>
+                                <option value="f124">fa-location-arrow</option>
+                                <option value="f023">fa-lock</option>
+                                <option value="f175">fa-long-arrow-down</option>
+                                <option value="f177">fa-long-arrow-left</option>
+                                <option value="f178">fa-long-arrow-right</option>
+                                <option value="f176">fa-long-arrow-up</option>
+                                <option value="f0d0">fa-magic</option>
+                                <option value="f076">fa-magnet</option>
+                                <option value="f183">fa-male</option>
+                                <option value="f041">fa-map-marker</option>
+                                <option value="f136">fa-maxcdn</option>
+                                <option value="f0fa">fa-medkit</option>
+                                <option value="f11a">fa-meh-o</option>
+                                <option value="f130">fa-microphone</option>
+                                <option value="f131">fa-microphone-slash</option>
+                                <option value="f068">fa-minus</option>
+                                <option value="f056">fa-minus-circle</option>
+                                <option value="f146">fa-minus-square</option>
+                                <option value="f147">fa-minus-square-o</option>
+                                <option value="f10b">fa-mobile</option>
+                                <option value="f0d6">fa-money</option>
+                                <option value="f186">fa-moon-o</option>
+                                <option value="f001">fa-music</option>
+                                <option value="f03b">fa-outdent</option>
+                                <option value="f0c6">fa-paperclip</option>
+                                <option value="f04c">fa-pause</option>
+                                <option value="f040">fa-pencil</option>
+                                <option value="f14b">fa-pencil-square</option>
+                                <option value="f044">fa-pencil-square-o</option>
+                                <option value="f095">fa-phone</option>
+                                <option value="f098">fa-phone-square</option>
+                                <option value="f03e">fa-picture-o</option>
+                                <option value="f0d2">fa-pinterest</option>
+                                <option value="f0d3">fa-pinterest-square</option>
+                                <option value="f072">fa-plane</option>
+                                <option value="f04b">fa-play</option>
+                                <option value="f144">fa-play-circle</option>
+                                <option value="f01d">fa-play-circle-o</option>
+                                <option value="f067">fa-plus</option>
+                                <option value="f055">fa-plus-circle</option>
+                                <option value="f0fe">fa-plus-square</option>
+                                <option value="f011">fa-power-off</option>
+                                <option value="f02f">fa-print</option>
+                                <option value="f12e">fa-puzzle-piece</option>
+                                <option value="f029">fa-qrcode</option>
+                                <option value="f128">fa-question</option>
+                                <option value="f059">fa-question-circle</option>
+                                <option value="f10d">fa-quote-left</option>
+                                <option value="f10e">fa-quote-right</option>
+                                <option value="f074" selected>fa-random</option>
+                                <option value="f021">fa-refresh</option>
+                                <option value="f18b">fa-renren</option>
+                                <option value="f01e">fa-repeat</option>
+                                <option value="f112">fa-reply</option>
+                                <option value="f122">fa-reply-all</option>
+                                <option value="f079">fa-retweet</option>
+                                <option value="f018">fa-road</option>
+                                <option value="f135">fa-rocket</option>
+                                <option value="f09e">fa-rss</option>
+                                <option value="f143">fa-rss-square</option>
+                                <option value="f0c4">fa-scissors</option>
+                                <option value="f002">fa-search</option>
+                                <option value="f010">fa-search-minus</option>
+                                <option value="f00e">fa-search-plus</option>
+                                <option value="f064">fa-share</option>
+                                <option value="f14d">fa-share-square</option>
+                                <option value="f045">fa-share-square-o</option>
+                                <option value="f132">fa-shield</option>
+                                <option value="f07a">fa-shopping-cart</option>
+                                <option value="f090">fa-sign-in</option>
+                                <option value="f08b">fa-sign-out</option>
+                                <option value="f012">fa-signal</option>
+                                <option value="f0e8">fa-sitemap</option>
+                                <option value="f17e">fa-skype</option>
+                                <option value="f118">fa-smile-o</option>
+                                <option value="f0dc">fa-sort</option>
+                                <option value="f15d">fa-sort-alpha-asc</option>
+                                <option value="f15e">fa-sort-alpha-desc</option>
+                                <option value="f160">fa-sort-amount-asc</option>
+                                <option value="f161">fa-sort-amount-desc</option>
+                                <option value="f0de">fa-sort-asc</option>
+                                <option value="f0dd">fa-sort-desc</option>
+                                <option value="f162">fa-sort-numeric-asc</option>
+                                <option value="f163">fa-sort-numeric-desc</option>
+                                <option value="f110">fa-spinner</option>
+                                <option value="f0c8">fa-square</option>
+                                <option value="f096">fa-square-o</option>
+                                <option value="f16c">fa-stack-overflow</option>
+                                <option value="f005">fa-star</option>
+                                <option value="f089">fa-star-half</option>
+                                <option value="f123">fa-star-half-o</option>
+                                <option value="f006">fa-star-o</option>
+                                <option value="f048">fa-step-backward</option>
+                                <option value="f051">fa-step-forward</option>
+                                <option value="f0f1">fa-stethoscope</option>
+                                <option value="f04d">fa-stop</option>
+                                <option value="f0cc">fa-strikethrough</option>
+                                <option value="f12c">fa-subscript</option>
+                                <option value="f0f2">fa-suitcase</option>
+                                <option value="f185">fa-sun-o</option>
+                                <option value="f12b">fa-superscript</option>
+                                <option value="f0ce">fa-table</option>
+                                <option value="f10a">fa-tablet</option>
+                                <option value="f0e4">fa-tachometer</option>
+                                <option value="f02b">fa-tag</option>
+                                <option value="f02c">fa-tags</option>
+                                <option value="f0ae">fa-tasks</option>
+                                <option value="f120">fa-terminal</option>
+                                <option value="f034">fa-text-height</option>
+                                <option value="f035">fa-text-width</option>
+                                <option value="f00a">fa-th</option>
+                                <option value="f009">fa-th-large</option>
+                                <option value="f00b">fa-th-list</option>
+                                <option value="f08d">fa-thumb-tack</option>
+                                <option value="f165">fa-thumbs-down</option>
+                                <option value="f088">fa-thumbs-o-down</option>
+                                <option value="f087">fa-thumbs-o-up</option>
+                                <option value="f164">fa-thumbs-up</option>
+                                <option value="f145">fa-ticket</option>
+                                <option value="f00d">fa-times</option>
+                                <option value="f057">fa-times-circle</option>
+                                <option value="f05c">fa-times-circle-o</option>
+                                <option value="f043">fa-tint</option>
+                                <option value="f014">fa-trash-o</option>
+                                <option value="f181">fa-trello</option>
+                                <option value="f091">fa-trophy</option>
+                                <option value="f0d1">fa-truck</option>
+                                <option value="f173">fa-tumblr</option>
+                                <option value="f174">fa-tumblr-square</option>
+                                <option value="f099">fa-twitter</option>
+                                <option value="f081">fa-twitter-square</option>
+                                <option value="f0e9">fa-umbrella</option>
+                                <option value="f0cd">fa-underline</option>
+                                <option value="f0e2">fa-undo</option>
+                                <option value="f09c">fa-unlock</option>
+                                <option value="f13e">fa-unlock-alt</option>
+                                <option value="f093">fa-upload</option>
+                                <option value="f155">fa-usd</option>
+                                <option value="f007">fa-user</option>
+                                <option value="f0f0">fa-user-md</option>
+                                <option value="f0c0">fa-users</option>
+                                <option value="f03d">fa-video-camera</option>
+                                <option value="f189">fa-vk</option>
+                                <option value="f027">fa-volume-down</option>
+                                <option value="f026">fa-volume-off</option>
+                                <option value="f028">fa-volume-up</option>
+                                <option value="f18a">fa-weibo</option>
+                                <option value="f17a">fa-windows</option>
+                                <option value="f0ad">fa-wrench</option>
+                                <option value="f168">fa-xing</option>
+                                <option value="f169">fa-xing-square</option>
+                                <option value="f167">fa-youtube</option>
+                                <option value="f16a">fa-youtube-play</option>
+                                <option value="f166">fa-youtube-square</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyNameSize" class="control-label">Logo size</label>
+                            <input type="number" class="form-control" id="companyNameSize"
+                                   onkeyup="UI.update()"
+                                   onchange="UI.update()"
+                                   value="50">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="UI.save();">Save as image</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <canvas id="raskaContent" style="border: 1px solid silver;" width="600" height="300"></canvas>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <br /><br />
+    </div>
+    <script type="text/javascript" src="../src/raska.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        /// Configures raska to a given Canvas element
+        raska.installUsing({ targetCanvasId: "raskaContent" });
+
+        (function (w) {
+
+            var _companyNameElement = raska.$$.$q("#companyName"),
+                _iconElement = raska.$$.$q("#icon"),
+                _companyNameSize = raska.$$.$q("#companyNameSize"),
+                _companyNameFontFace = raska.$$.$q("#companyNameFontFace"),
+                _labelPosition = { x: 218, y: 199 },
+                _iconPosition = { x: 362, y: 205 },
+                _size;
+
+            w.UI = {
+                update: function () {
+
+                    raska.clear();
+                    _size = parseInt(_companyNameSize.value);
+
+                    /// The company name
+                    var companyLabel = raska.newLabel(),
+                        companyLabelContent = raska.newSquare();
+                    companyLabel.text = _companyNameElement.value;
+                    companyLabel.y = _size;
+                    companyLabel.x = 0;
+                    companyLabel.font = { size: _size + "px", family: _companyNameFontFace.value, decoration: "bold" };
+                    companyLabelContent.dimensions.width = companyLabel.text.length * (_size / 2);
+                    companyLabelContent.dimensions.height = _size;
+                    companyLabelContent.border.color = "rgba(255, 255, 255, 0)";
+                    companyLabelContent.fillColor = "rgba(255, 255, 255, 0)";
+                    companyLabelContent.addChild(companyLabel);
+                    companyLabelContent.y = _labelPosition.y;
+                    companyLabelContent.x = _labelPosition.x;
+                    companyLabelContent.on.release(function (x, y) {
+                        _labelPosition.x = x;
+                        _labelPosition.y = y;
+                    });
+
+                    /// The company icon
+                    var companyIcon = raska.newLabel(),
+                        companyIconContent = raska.newSquare();
+                    companyIcon.text = String.fromCharCode("0x" + _iconElement.value);
+                    companyIcon.y = _size;
+                    companyIcon.x = 0;
+                    companyIcon.font.size = _size + "px";
+                    companyIcon.font.family = "FontAwesome";
+                    companyIconContent.dimensions.width = 2 * (_size / 2);
+                    companyIconContent.dimensions.height = _size;
+                    companyIconContent.border.color = "rgba(255, 255, 255, 0)";
+                    companyIconContent.fillColor = "rgba(255, 255, 255, 0)";
+                    companyIconContent.addChild(companyIcon);
+                    companyIconContent.y = _iconPosition.y;
+                    companyIconContent.x = _iconPosition.x;
+                    companyIconContent.on.release(function (x, y) {
+                        _iconPosition.x = x;
+                        _iconPosition.y = y;
+                    });
+
+                    raska.plot(companyLabelContent).plot(companyIconContent);
+
+                },
+                save: function () {
+                    raska.exportImage();
+                }
+            };
+
+        })(window);
+
+        UI.update();
+
+    </script>
+</body>
+</html>

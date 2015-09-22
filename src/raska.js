@@ -58,7 +58,7 @@
                             /**
                             * Gathers UI iteraction X/Y coordinates from an event
                             * 
-                            * @method info
+                            * @method gathersXYPositionFrom
                             * @param {HTMLElement} container The element that contains the bounding rect we'll use to gather relative positioning data
                             * @param {event} evt The event we're extracting information from 
                             * @returns {x,y} Values
@@ -81,7 +81,7 @@
                             /**
                            * Registers a delegate to a given element event
                            * 
-                           * @method info
+                           * @method on
                            * @param {HTMLElement} targetElement The element that we're interested in
                            * @param {String} iteractionType The event name
                            * @param {Function} triggerWrapper The delegate
@@ -950,10 +950,11 @@
 
             on: (function () {
 
-                var __clickDelegates = [];
+                var __clickDelegates = [],
+                    __releaseDelegates = [];
 
-                function triggerDelegatesUsing(x, y, ele, evt) {
-                    _helpers.$obj.forEach(__clickDelegates, function (el, i) {
+                function triggerDelegatesUsing(x, y, ele, evt, arr) {
+                    _helpers.$obj.forEach(arr, function (el) {
                         el(x, y, ele, evt);
                     });
                 }
@@ -977,7 +978,7 @@
                             var foundInner = false;
                             if ($childElements.length > 0) {
                                 var parentAdjustedPosition = ele.getAdjustedCoordinates();
-                                _helpers.$obj.forEach($childElements, function (el, i) {
+                                _helpers.$obj.forEach($childElements, function (el) {
                                     var newPosition = {
                                         x: x - parentAdjustedPosition.x,
                                         y: y - parentAdjustedPosition.y
@@ -989,10 +990,48 @@
                                 });
                             }
                             if (foundInner === false) {
-                                triggerDelegatesUsing(x, y, ele, evt);
+                                triggerDelegatesUsing(x, y, ele, evt, __clickDelegates);
                             }
                         } else if (_helpers.$obj.isType(x, "function") === true) {
                             __clickDelegates.push(x);
+                        }
+
+                        return $this;
+                    },
+
+                    /**
+                     * Triggered whenever a 'clickUp' iteraction occurs within the boundaries of this element.
+                     *  - This event is only supported on selected elements. Check for the *canHandleEvents*
+                     *    property value before relying on this delegate
+                     * 
+                     * @function release
+                     * @param {number} x Element's current X position
+                     * @param {number} y Element's current Y position
+                     * @param {_basicElement} ele The element that was clicked
+                     * @param {event} evt Event that triggered the delegate
+                     * @chainable
+                     */
+                    release: function (x, y, ele, evt) {
+                        if (_helpers.$obj.isType(x, "number") === true) {
+                            var foundInner = false;
+                            if ($childElements.length > 0) {
+                                var parentAdjustedPosition = ele.getAdjustedCoordinates();
+                                _helpers.$obj.forEach($childElements, function (el) {
+                                    var newPosition = {
+                                        x: x - parentAdjustedPosition.x,
+                                        y: y - parentAdjustedPosition.y
+                                    }
+                                    if (el.canHandleEvents() && el.existsIn(newPosition.x, newPosition.y)) {
+                                        el.on.release(newPosition.x, newPosition.y, el, evt);
+                                        foundInner = true;
+                                    }
+                                });
+                            }
+                            if (foundInner === false) {
+                                triggerDelegatesUsing(x, y, ele, evt, __releaseDelegates);
+                            }
+                        } else if (_helpers.$obj.isType(x, "function") === true) {
+                            __releaseDelegates.push(x);
                         }
 
                         return $this;
@@ -1186,7 +1225,7 @@
                 x: 0,
                 y: 0,
                 border: { color: "white", active: true, width: 2 },
-                font: { family: "Arial", size: "15px" },
+                font: { family: "Arial", size: "15px", decoration: "" },
                 getWidth: function () {
                     return this.text.length * 5;
                 },
@@ -1195,9 +1234,7 @@
                 },
                 drawTo: function (canvas, context) {
                     var coordinates = this.getAdjustedCoordinates();
-                    context.font = this.font.size + " " + this.font.family;
-                    //context.textBaseline = "middle";
-                    //context.textAlign = "center";
+                    context.font = this.font.decoration + " " + this.font.size + " " + this.font.family;
                     if (this.border.active === true) {
                         context.lineJoin = "round";
                         context.lineWidth = this.border.width;
@@ -1967,6 +2004,9 @@
                             }
                         }
                     }
+
+                    _elementBeingDraged.reference.on.release(_mouse.getX(evt), _mouse.getY(evt),
+                               _elementBeingDraged.reference, evt);
 
                     _elementBeingDraged.reference.border = _elementBeingDraged.originalBorder;
                     _elementBeingDraged.reference = null;
