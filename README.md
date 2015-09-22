@@ -1,7 +1,6 @@
-# Raska
-HTML5 canvas visual directed graph creation tool.
-
 ![Raska](logo.png "Raska.js")
+
+HTML5 canvas visual directed graph creation tool.
 
 ## What's this - *exactly*?
 
