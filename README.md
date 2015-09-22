@@ -53,8 +53,9 @@ By keeping the reference to the element you can easily (re)define its properties
 ```javascript
 circle.x += 10;
 ```
-- **Sample [here](http://felipegtx.github.io/RaskSample.html) and [here](http://felipegtx.github.io/Raska/samples/ContainerSample.html)**
-
+- Directed graph [example](http://felipegtx.github.io/RaskSample.html) 
+- Container [example](http://felipegtx.github.io/Raska/samples/ContainerSample.html)
+- Take a look at Raska's **[logo builder](http://felipegtx.github.io/Raska/samples/LogoBuilder.html)**!
 ### Animation
 
 By using ```raska.animation``` you can easily set a new behaviour to your element. 
