@@ -42,47 +42,172 @@
                 */
                 $dom: (function () {
 
-                    var _defaultParent = d,
-                        DOMElementHelper = function (ele) {
-                            return {
-                                setAttr: function (name, value) {
-                                    ele.setAttribute(name, value);
-                                    return DOMElementHelper(ele);
-                                },
-                                raw: function () {
-                                    return ele;
-                                },
-                                attr: function (name) {
-                                    return ele.getAttribute(name);
-                                }
-                            };
-                        },
-                        $thisDOM = {
+                    var DOMElementHelper = function (ele) {
+                        return {
 
                             /**
-                            * Creates and returns an element
+                            * Sets the styling of a given element
                             * 
-                            * @method create
-                            * @param {string} type Element node type
-                            * @param {HTMLElement} parent Element's parent node
-                            * @returns {DOMElementHelper} The element wraped in a helper object
+                            * @method css
+                            * @param {string} name Style attribute
+                            * @param {string} value Style value
+                            * @chainable
                             */
-                            create: function (type, parent) {
-                                return DOMElementHelper((parent || _defaultParent).createElement(type));
+                            css: function (name, value) {
+                                if (_helpers.$obj.isType(name, "string")) {
+                                    ele.style[name] = value;
+                                } else {
+                                    for (var attr in name) {
+                                        DOMElementHelper(ele).css(attr, name[attr]);
+                                    }
+                                }
+                                return DOMElementHelper(ele);
                             },
 
                             /**
-                            * Gathers an element using a given selector query
+                            * Gets/Sets the value for a given attribute of an HTML element
                             * 
-                            * @method get
-                            * @param {string} selector Element's selector
-                            * @returns {DOMElementHelper} The element wraped in a helper object
+                            * @method attr
+                            * @param {string} name Attribute name
+                            * @param {string} value Attribute value
+                            * @chainable
                             */
-                            get: function (selector) {
-                                var element = _helpers.$obj.isType(selector, "string") ? $(selector) : selector;
-                                return DOMElementHelper(element);
+                            attr: function (name, value) {
+                                if (_helpers.$obj.isType(name, "string")) {
+                                    if (_helpers.$obj.isUndefined(value)) {
+                                        return ele.getAttribute(name);
+                                    }
+                                    ele.setAttribute(name, value);
+
+                                } else {
+                                    for (var attr in name) {
+                                        DOMElementHelper(ele).attr(attr, name[attr]);
+                                    }
+                                }
+                                return DOMElementHelper(ele);
+                            },
+
+                            /**
+                            * Retrieves the raw HTML element wraped by this helper
+                            * 
+                            * @method raw
+                            * @returns {HTMLElement} The element itself
+                            */
+                            raw: function () {
+                                return ele;
+                            },
+
+
+                            /**
+                            * Gathers UI iteraction X/Y coordinates from an event
+                            * 
+                            * @method getXYPositionFrom
+                            * @param {HTMLElement} container The element that contains the bounding rect we'll use to gather relative positioning data
+                            * @param {event} evt The event we're extracting information from 
+                            * @returns {x,y} Values
+                            */
+                            getXYPositionFrom: function (evt) {
+                                if (_helpers.$device.isTouch
+                                    && _helpers.$obj.is(evt.touches.length, "number")
+                                    && evt.touches.length > 0) {
+                                    evt = evt.touches[0];
+                                }
+
+                                var eleRect = ele.getBoundingClientRect();
+                                return {
+                                    x: ((evt.clientX - eleRect.left) * (ele.width / eleRect.width)),
+                                    y: ((evt.clientY - eleRect.top) * (ele.height / eleRect.height))
+                                };
+                            },
+
+                            /**
+                            * Creates a new child element relative to this HTML element
+                            * 
+                            * @method addChild
+                            * @param {string} type Element node type
+                            * @chainable
+                            */
+                            addChild: function (type) {
+                                var childElement = $thisDOM.create(type);
+                                ele.appendChild(childElement.raw());
+                                return childElement;
+                            },
+
+                            /**
+                            * Adds a sibling element
+                            * 
+                            * @method addSibling
+                            * @param {string} type Element node type
+                            * @chainable
+                            */
+                            addSibling: function (type) {
+
+                                return DOMElementHelper((ele.parentElement) ? ele.parentElement : ele.parentNode)
+                                    .addChild(type);
+                            },
+
+                            /**
+                            * Sets the innerHTML content for the HTML element
+                            * 
+                            * @method html
+                            * @param {string} content 
+                            * @chainable
+                            */
+                            html: function (content) {
+                                ele.innerHTML = content;
+                                return DOMElementHelper(ele);
+                            },
+
+                            /**
+                            * Registers a delegate to a given element event
+                            * 
+                            * @method on
+                            * @param {HTMLElement} targetElement The element that we're interested in
+                            * @param {String} iteractionType The event name
+                            * @param {Function} triggerWrapper The delegate
+                            * @chainable
+                            */
+                            on: function (iteractionType, triggerWrapper) {
+                                // modern browsers including IE9+
+                                if (w.addEventListener) { ele.addEventListener(iteractionType, triggerWrapper, false); }
+                                    // IE8 and below
+                                else if (w.attachEvent) { ele.attachEvent("on" + iteractionType, triggerWrapper); }
+                                else { ele["on" + iteractionType] = triggerWrapper; }
+                                return DOMElementHelper(ele);
                             }
                         };
+                    },
+                    $thisDOM = {
+
+                        /**
+                        * Creates and returns an element
+                        * 
+                        * @method create
+                        * @param {string} type Element node type
+                        * @param {HTMLElement} parent Element's parent node
+                        * @returns {DOMElementHelper} The element wraped in a helper object
+                        */
+                        create: function (type, parent) {
+                            var newElement = d.createElement(type);
+                            newElement.id = _helpers.$obj.generateId();
+                            if (_helpers.$obj.isValid(parent)) {
+                                DOMElementHelper(parent).addChild(newElement);
+                            }
+                            return DOMElementHelper(newElement);
+                        },
+
+                        /**
+                        * Gathers an element using a given selector query
+                        * 
+                        * @method get
+                        * @param {string} selector Element's selector
+                        * @returns {DOMElementHelper} The element wraped in a helper object
+                        */
+                        get: function (selector) {
+                            var element = _helpers.$obj.isType(selector, "string") ? $(selector) : selector;
+                            return DOMElementHelper(element);
+                        }
+                    };
 
                     return $thisDOM;
                 })(),
@@ -97,7 +222,7 @@
                 */
                 $device: (function () {
 
-                    var _isTouch = (('ontouchstart' in window)
+                    var _isTouch = (('ontouchstart' in w)
                              || (navigator.MaxTouchPoints > 0)
                              || (navigator.msMaxTouchPoints > 0)),
                         _this = {
@@ -120,17 +245,7 @@
                             */
                             gathersXYPositionFrom: function (container, evt) {
 
-                                if (_this.isTouch
-                                    && _helpers.$obj.is(evt.touches.length, "number")
-                                    && evt.touches.length > 0) {
-                                    evt = evt.touches[0];
-                                }
-
-                                var containerRect = container.getBoundingClientRect();
-                                return {
-                                    x: ((evt.clientX - containerRect.left) * (container.width / containerRect.width)),
-                                    y: ((evt.clientY - containerRect.top) * (container.height / containerRect.height))
-                                };
+                                return _helpers.$dom.get(container).getXYPositionFrom(evt);
                             },
 
                             /**
@@ -143,13 +258,8 @@
                            * @chainable
                            */
                             on: function (targetElement, iteractionType, triggerWrapper) {
-                                if (window.addEventListener) { // modern browsers including IE9+
-                                    targetElement.addEventListener(iteractionType, triggerWrapper, false);
-                                } else if (window.attachEvent) { // IE8 and below
-                                    targetElement.attachEvent('on' + iteractionType, triggerWrapper);
-                                } else {
-                                    targetElement['on' + iteractionType] = triggerWrapper;
-                                }
+
+                                _helpers.$dom.get(targetElement).on(iteractionType, triggerWrapper);
                                 return _this;
                             }
                         };
@@ -540,7 +650,7 @@
              * @type {CanvasRenderingContext2D}
 	         * @protected
              */
-            $hitTestCanvas = _helpers.$dom.create("canvas").setAttr("width", "1").setAttr("height", "1"),
+            $hitTestCanvas = _helpers.$dom.create("canvas").attr({ "width": "1", "height": "1" }),
             $hitTestContext = $hitTestCanvas.raw().getContext("2d"),
 
             /**
@@ -1226,7 +1336,20 @@
         library: {
             readonly: false,
             frameRefreshRate: 30,
-            targetCanvasId: ""
+            targetCanvasId: "",
+            toolboxSize: { height: "20px", width: "100%" },
+            toolboxButtons: [
+                {
+                    name: "fullscreen",
+                    enabled: true,
+                    onclick: function (canvas) {
+                        _helpers.$dom.get(canvas)
+                            .attr({ "width": d.body.clientWidth, "height": d.body.clientHeight })
+                            .css({ "position": "absolute", "z-index": 10 });
+                    },
+                    template: "<button>fullscreen</button>"
+                }
+            ]
         },
 
         /**
@@ -2186,25 +2309,58 @@
 
                 if (_canvas === null) {
                     _2dContext = (_canvas = $("#" + _activeConfiguration.targetCanvasId))
-                        .getContext('2d');
+                        .getContext("2d");
 
-                    _helpers.$device
-                        .on(_canvas, "mousedown", _checkClick)
-                        .on(_canvas, "mousemove", _whenMouseMove)
-                        .on(_canvas, "contextmenu", function (e) {
+                    /// Canvas related events
+                    _helpers.$dom.get(_canvas)
+                        .on("mousedown", _checkClick)
+                        .on("mousemove", _whenMouseMove)
+                        .on("contextmenu", function (e) {
                             e.preventDefault();
                             return false;
-                        })
-                        .on(w, "mouseup", _whenMouseUp)
-                        .on(w, "keydown", _whenKeyDown)
-                        .on(w, "keyup", _whenKeyUp);
+                        });
+
+                    if (_helpers.$obj.isArray(_activeConfiguration.toolboxButtons)) {
+                        var wCanvas = _helpers.$dom.get(_canvas);
+                        _helpers.$obj.forEach(_activeConfiguration.toolboxButtons, function (buttom) {
+                            wCanvas
+                                .addSibling("div")
+                                .html(buttom.template)
+                                .on("click", function() {
+                                    buttom.onclick(_canvas);
+                                });
+                        });
+                    }
+                    /**
+                          toolboxButtons: [
+                {
+                    name: "fullscreen",
+                    enabled: true,
+                    onclick: function (canvas) {
+                        _helpers.$dom.get(canvas)
+                            .attr({ "width": d.body.clientWidth, "height": d.body.clientHeight })
+                            .css({ "position": "absolute", "z-index": 10 });
+                    },
+                    template: "<button>fullscreen</button>"
+                }
+            ]
+                         */
+
+                    /// Window events
+                    _helpers.$dom.get(w)
+                        .on("mouseup", _whenMouseUp)
+                        .on("keydown", _whenKeyDown)
+                        .on("keyup", _whenKeyUp);
 
                     if (_helpers.$device.isTouch === true) {
-                        _helpers.$device
-                            .on(_canvas, "touchstart", _checkClick)
-                            .on(_canvas, "touchmove", _whenMouseMove)
-                            .on(w, "touchend", _whenMouseUp)
-                            .on(w, "touchcancel", _whenMouseUp);
+                        /// If we're in a touch device
+
+                        _helpers.$dom.get(_canvas)
+                            .on("touchstart", _checkClick)
+                            .on("touchmove", _whenMouseMove);
+                        _helpers.$dom.get(w)
+                            .on("touchend", _whenMouseUp)
+                            .on("touchcancel", _whenMouseUp);
                     }
                     _canvasElement = _helpers.$obj.extend(new _defaultConfigurations.htmlElement(_canvas), {});
                 }
@@ -2403,7 +2559,7 @@
         * @static
         */
         exportImage: function () {
-            var nw = window.open();
+            var nw = w.open();
             nw.document.write("<img src='" + _drawing.getDataUrl() + "'>");
             return _public;
         },
