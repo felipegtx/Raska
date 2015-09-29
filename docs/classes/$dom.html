@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>$device - Raska</title>
+    <title>$dom - Raska</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -87,7 +87,7 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-                            <h1>$device</h1>
+                            <h1>$dom</h1>
                         </div>
                         
                         
@@ -100,7 +100,7 @@
                         
                         
                         <div class="yuidoc-class-description">
-                        <p>Device related helpers</p>
+                        <p>DOM manipulation related helpers</p>
                         
                         </div>
                         
@@ -112,17 +112,11 @@
                         		<li>
                         			<strong>Methods</strong>
                         			<ul>
-                        				<li><a href="#method-gathersXYPositionFrom"><span class="im">gathersXYPositionFrom</span>(<span class="ia">container</span><span class="ia">evt</span>)</a></li>
-                        				<li><a href="#method-on"><span class="im">on</span>(<span class="ia">targetElement</span><span class="ia">iteractionType</span><span class="ia">triggerWrapper</span>)</a></li>
+                        				<li><a href="#method-create"><span class="im">create</span>(<span class="ia">type</span><span class="ia">parent</span>)</a></li>
+                        				<li><a href="#method-get"><span class="im">get</span>(<span class="ia">selector</span>)</a></li>
                         			</ul>
                         		</li>
                         
-                        		<li>
-                        			<strong>Properties</strong>
-                        			<ul>
-                        				<li><a href="#prop-isTouch"><span class="ip">isTouch</span></a></li>
-                        			</ul>
-                        		</li>
                         
                         
                         	</ul>
@@ -134,22 +128,22 @@
                             <div id="methods" class="page-section">
                                 <h2 class="off-left">Methods</h2>
                                 <div class="item-list">
-                                    <div id="method-gathersXYPositionFrom" class="method item">
+                                    <div id="method-create" class="method item">
                                     	<div class="method-signature">
-                                    	<span class="name"><code>gathersXYPositionFrom</code></span>
+                                    	<span class="name"><code>create</code></span>
                                     
                                     		<div class="args">
                                     			<span class="paren">(</span><ul class="args-list inline commas">
                                     				<li class="arg">
-                                    						<code>container</code>
+                                    						<code>type</code>
                                     				</li>
                                     				<li class="arg">
-                                    						<code>evt</code>
+                                    						<code>parent</code>
                                     				</li>
                                     			</ul><span class="paren">)</span>
                                     		</div>
                                     		<span class="returns-inline">
-                                    			<span class="type">X,y</span>
+                                    			<span class="type">DOMElementHelper</span>
                                     		</span>
                                     	</div>
                                     
@@ -161,14 +155,14 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l113"><code>src\raska.js:113</code></a>
+                                    		<a href="../files/src_raska.js.html#l62"><code>src\raska.js:62</code></a>
                                     		</p>
                                     
                                     
                                     
                                     	</div>
                                     
-                                    	<div class="description"><p>Gathers UI iteraction X/Y coordinates from an event</p>
+                                    	<div class="description"><p>Creates and returns an element</p>
                                     </div>
                                     
                                     		<div class="params">
@@ -176,20 +170,20 @@
                                     
                                     			<ul class="params-list">
                                     				<li class="param">
-                                    						<code class="param-name">container</code>
-                                    						<span class="type">HTMLElement</span>
+                                    						<code class="param-name">type</code>
+                                    						<span class="type">String</span>
                                     
                                     
-                                    					<div class="param-description"><p>The element that contains the bounding rect we'll use to gather relative positioning data</p>
+                                    					<div class="param-description"><p>Element node type</p>
                                     </div>
                                     
                                     				</li>
                                     				<li class="param">
-                                    						<code class="param-name">evt</code>
-                                    						<span class="type">Event</span>
+                                    						<code class="param-name">parent</code>
+                                    						<span class="type">HTMLElement</span>
                                     
                                     
-                                    					<div class="param-description"><p>The event we're extracting information from</p>
+                                    					<div class="param-description"><p>Element's parent node</p>
                                     </div>
                                     
                                     				</li>
@@ -200,49 +194,45 @@
                                     			<h4>Returns:</h4>
                                     
                                     			<div class="returns-description">
-                                    						<span class="type">X,y</span>:
-                                    					<p>Values</p>
+                                    						<span class="type">DOMElementHelper</span>:
+                                    					<p>The element wraped in a helper object</p>
                                     
                                     			</div>
                                     		</div>
                                     
                                     </div>
-                                    <div id="method-on" class="method item">
+                                    <div id="method-get" class="method item">
                                     	<div class="method-signature">
-                                    	<span class="name"><code>on</code></span>
+                                    	<span class="name"><code>get</code></span>
                                     
                                     		<div class="args">
                                     			<span class="paren">(</span><ul class="args-list inline commas">
                                     				<li class="arg">
-                                    						<code>targetElement</code>
-                                    				</li>
-                                    				<li class="arg">
-                                    						<code>iteractionType</code>
-                                    				</li>
-                                    				<li class="arg">
-                                    						<code>triggerWrapper</code>
+                                    						<code>selector</code>
                                     				</li>
                                     			</ul><span class="paren">)</span>
                                     		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type">DOMElementHelper</span>
+                                    		</span>
                                     	</div>
                                     
                                     
                                     
                                     
-                                    		<span class="flag chainable">chainable</span>
                                     
                                     
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l136"><code>src\raska.js:136</code></a>
+                                    		<a href="../files/src_raska.js.html#l74"><code>src\raska.js:74</code></a>
                                     		</p>
                                     
                                     
                                     
                                     	</div>
                                     
-                                    	<div class="description"><p>Registers a delegate to a given element event</p>
+                                    	<div class="description"><p>Gathers an element using a given selector query</p>
                                     </div>
                                     
                                     		<div class="params">
@@ -250,71 +240,31 @@
                                     
                                     			<ul class="params-list">
                                     				<li class="param">
-                                    						<code class="param-name">targetElement</code>
-                                    						<span class="type">HTMLElement</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>The element that we're interested in</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    				<li class="param">
-                                    						<code class="param-name">iteractionType</code>
+                                    						<code class="param-name">selector</code>
                                     						<span class="type">String</span>
                                     
                                     
-                                    					<div class="param-description"><p>The event name</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    				<li class="param">
-                                    						<code class="param-name">triggerWrapper</code>
-                                    						<span class="type">Function</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>The delegate</p>
+                                    					<div class="param-description"><p>Element's selector</p>
                                     </div>
                                     
                                     				</li>
                                     			</ul>
                                     		</div>
                                     
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">DOMElementHelper</span>:
+                                    					<p>The element wraped in a helper object</p>
+                                    
+                                    			</div>
+                                    		</div>
                                     
                                     </div>
                                 </div>
                             </div>
                         
-                            <div id="properties" class="page-section">
-                                <h2 class="off-left">Properties</h2>
-                        
-                                <div class="item-list">
-                                    <div id="prop-isTouch" class="property item">
-                                        <h3 class="name"><code>isTouch</code></h3>
-                                        <span class="type">Bool</span>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <div class="meta">
-                                                    <p>
-                                                    Defined in
-                                            <a href="../files/src_raska.js.html#l105"><code>src\raska.js:105</code></a>
-                                            </p>
-                                    
-                                    
-                                        </div>
-                                    
-                                        <div class="description">
-                                            <p>Whether or not to the current devide is touchscreen</p>
-                                    
-                                        </div>
-                                    
-                                    
-                                    
-                                    </div>
-                                </div>
-                            </div>
                         
                         
                         
