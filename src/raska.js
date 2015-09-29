@@ -4,7 +4,7 @@
 * @module raska
 * @main installUsing
 */
-(function (w) {
+(function (w, d) {
 
     'use strict';
 
@@ -14,7 +14,7 @@
      * @module raska
      * @submodule _helpers
      */
-    var $ = document.querySelector.bind(document),
+    var $ = d.querySelector.bind(d),
         _helpers = (function () {
 
             /// A shim to allow a better animation frame timing
@@ -31,6 +31,61 @@
             }();
 
             return {
+
+                /**
+                * DOM manipulation related helpers
+                *
+                * @class $dom
+                * @module raska
+                * @submodule _helpers
+                * @static
+                */
+                $dom: (function () {
+
+                    var _defaultParent = d,
+                        DOMElementHelper = function (ele) {
+                            return {
+                                setAttr: function (name, value) {
+                                    ele.setAttribute(name, value);
+                                    return DOMElementHelper(ele);
+                                },
+                                raw: function () {
+                                    return ele;
+                                },
+                                attr: function (name) {
+                                    return ele.getAttribute(name);
+                                }
+                            };
+                        },
+                        $thisDOM = {
+
+                            /**
+                            * Creates and returns an element
+                            * 
+                            * @method create
+                            * @param {string} type Element node type
+                            * @param {HTMLElement} parent Element's parent node
+                            * @returns {DOMElementHelper} The element wraped in a helper object
+                            */
+                            create: function (type, parent) {
+                                return DOMElementHelper((parent || _defaultParent).createElement(type));
+                            },
+
+                            /**
+                            * Gathers an element using a given selector query
+                            * 
+                            * @method get
+                            * @param {string} selector Element's selector
+                            * @returns {DOMElementHelper} The element wraped in a helper object
+                            */
+                            get: function (selector) {
+                                var element = _helpers.$obj.isType(selector, "string") ? $(selector) : selector;
+                                return DOMElementHelper(element);
+                            }
+                        };
+
+                    return $thisDOM;
+                })(),
 
                 /**
                 * Device related helpers
@@ -478,6 +533,16 @@
     _basicElement = function () {
 
         var
+            /**
+             * A simple canvas used to perform a pixel model hit test agains this element
+             *
+             * @property $hitTestCanvas
+             * @type {CanvasRenderingContext2D}
+	         * @protected
+             */
+            $hitTestCanvas = _helpers.$dom.create("canvas").setAttr("width", "1").setAttr("height", "1"),
+            $hitTestContext = $hitTestCanvas.raw().getContext("2d"),
+
             /**
              * A simple helper function to be used whenever this instance gets disable (if ever)
              *
@@ -1040,6 +1105,26 @@
             })(),
 
             /**
+             * Whether or not this element existis withing the boudaries of 
+             * the given x/y coordinates
+             * 
+             * @method existsIn
+             * @param {Number} x X Coordinate
+             * @param {Number} y Y Coordinate
+             * @return {Bool} If this element is contained within the X/Y coordinates
+             */
+            existsIn: function (x, y) {
+                $hitTestContext.setTransform(1, 0, 0, 1, -x, -y);
+                this.drawTo($hitTestCanvas, $hitTestContext);
+                var hit = false;
+                try { hit = $hitTestContext.getImageData(0, 0, 1, 1).data[3] > 1; }
+                catch (e) { }
+                $hitTestContext.setTransform(1, 0, 0, 1, 0, 0);
+                $hitTestContext.clearRect(0, 0, 2, 2);
+                return hit;
+            },
+
+            /**
             * [ABSTRACT] Adjusts the position of the current element taking in consideration it's parent 
             * positioning constraints
             * 
@@ -1104,21 +1189,6 @@
                 throw _defaultConfigurations.errors.notImplementedException;
             },
             getAdjustedHeight: function () { return this.getHeight(); },
-
-            /**
-             * [ABSTRACT] Whether or not this element existis withing the boudaries of 
-             * the given x/y coordinates
-             * 
-             * @method existsIn
-             * @param {Number} x X Coordinate
-             * @param {Number} y Y Coordinate
-             * @return {Bool} If this element is contained within the X/Y coordinates
-             * @throws {_defaultConfigurations.errors.notImplementedException} Not implemented
-             */
-            existsIn: function (x, y) {
-                console.error(_defaultConfigurations.errors.notImplementedException);
-                throw _defaultConfigurations.errors.notImplementedException;
-            },
 
             /**
              * [ABSTRACT] Whether or not this element existis withing the boudaries of 
@@ -1262,7 +1332,7 @@
             var _dimensions = desiredDimensions || {
                 width: 50,
                 height: 50
-            };
+            }, ctx = null;
 
             return _helpers.$obj.extend(new _basicElement(), {
                 name: "square" + _helpers.$obj.generateId(),
@@ -1404,21 +1474,6 @@
                     startRadians += ((parentX > this.x) ? -90 : 90) * Math.PI / 180;
                     _drawArrowhead(context, this.x, this.y, startRadians, 23, 10, this.fillColor);
                     _drawArrowhead(context, this.x, this.y, startRadians, 18, 6, "white");
-                },
-                existsIn: function (x0, y0) {
-                    /// https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line#Line_defined_by_two_points
-                    var x1 = this.x, y1 = this.y, parent = this.getParent(),
-                        x2 = parent.x, y2 = parent.y, Dx = x2 - x1, Dy = y2 - y1,
-                        padding = 2;
-                    var distance = Math.floor(
-                                Math.abs(Dy * x0 - Dx * y0 - x1 * y2 + x2 * y1) /
-                                    Math.sqrt(Math.pow(Dx, 2) + Math.pow(Dy, 2)));
-
-                    if (this.border.active === true) {
-                        padding = this.border.width;
-                    }
-
-                    return (distance <= padding);
                 }
             }, true);
         },
@@ -2360,7 +2415,7 @@
         * @return {json} The JSON object that represents ALL the Raska elements in the canvas
         * @static
         */
-        getElementsRaw: function() {
+        getElementsRaw: function () {
             return _drawing.getElements();
         },
 
@@ -2526,4 +2581,4 @@
     };
 
     w.raska = _public;
-})(window);
+})(window, document);
