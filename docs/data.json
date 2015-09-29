@@ -2,7 +2,7 @@
     "project": {
         "name": "Raska",
         "url": "https://github.com/felipegtx/Raska",
-        "version": "v1.0.0-beta-5"
+        "version": "v1.0.0-beta-6"
     },
     "files": {
         "src\\raska.animation.js": {
