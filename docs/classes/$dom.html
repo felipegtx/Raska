@@ -112,8 +112,16 @@
                         		<li>
                         			<strong>Methods</strong>
                         			<ul>
+                        				<li><a href="#method-addChild"><span class="im">addChild</span>(<span class="ia">type</span>)</a></li>
+                        				<li><a href="#method-addSibling"><span class="im">addSibling</span>(<span class="ia">type</span>)</a></li>
+                        				<li><a href="#method-attr"><span class="im">attr</span>(<span class="ia">name</span><span class="ia">value</span>)</a></li>
                         				<li><a href="#method-create"><span class="im">create</span>(<span class="ia">type</span><span class="ia">parent</span>)</a></li>
+                        				<li><a href="#method-css"><span class="im">css</span>(<span class="ia">name</span><span class="ia">value</span>)</a></li>
                         				<li><a href="#method-get"><span class="im">get</span>(<span class="ia">selector</span>)</a></li>
+                        				<li><a href="#method-getXYPositionFrom"><span class="im">getXYPositionFrom</span>(<span class="ia">container</span><span class="ia">evt</span>)</a></li>
+                        				<li><a href="#method-html"><span class="im">html</span>(<span class="ia">content</span>)</a></li>
+                        				<li><a href="#method-on"><span class="im">on</span>(<span class="ia">targetElement</span><span class="ia">iteractionType</span><span class="ia">triggerWrapper</span>)</a></li>
+                        				<li><a href="#method-raw"><span class="im">raw</span>()</a></li>
                         			</ul>
                         		</li>
                         
@@ -128,6 +136,168 @@
                             <div id="methods" class="page-section">
                                 <h2 class="off-left">Methods</h2>
                                 <div class="item-list">
+                                    <div id="method-addChild" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>addChild</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>type</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l123"><code>src\raska.js:123</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Creates a new child element relative to this HTML element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">type</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element node type</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                    <div id="method-addSibling" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>addSibling</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>type</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l136"><code>src\raska.js:136</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Adds a sibling element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">type</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Element node type</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                    <div id="method-attr" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>attr</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>name</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>value</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l67"><code>src\raska.js:67</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Gets/Sets the value for a given attribute of an HTML element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">name</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Attribute name</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">value</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Attribute value</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
                                     <div id="method-create" class="method item">
                                     	<div class="method-signature">
                                     	<span class="name"><code>create</code></span>
@@ -155,7 +325,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l62"><code>src\raska.js:62</code></a>
+                                    		<a href="../files/src_raska.js.html#l182"><code>src\raska.js:182</code></a>
                                     		</p>
                                     
                                     
@@ -201,6 +371,68 @@
                                     		</div>
                                     
                                     </div>
+                                    <div id="method-css" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>css</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>name</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>value</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l48"><code>src\raska.js:48</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Sets the styling of a given element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">name</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Style attribute</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">value</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Style value</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
                                     <div id="method-get" class="method item">
                                     	<div class="method-signature">
                                     	<span class="name"><code>get</code></span>
@@ -225,7 +457,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l74"><code>src\raska.js:74</code></a>
+                                    		<a href="../files/src_raska.js.html#l199"><code>src\raska.js:199</code></a>
                                     		</p>
                                     
                                     
@@ -257,6 +489,241 @@
                                     			<div class="returns-description">
                                     						<span class="type">DOMElementHelper</span>:
                                     					<p>The element wraped in a helper object</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-getXYPositionFrom" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>getXYPositionFrom</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>container</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>evt</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    		<span class="returns-inline">
+                                    			<span class="type">X,y</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l101"><code>src\raska.js:101</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Gathers UI iteraction X/Y coordinates from an event</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">container</code>
+                                    						<span class="type">HTMLElement</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The element that contains the bounding rect we'll use to gather relative positioning data</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">evt</code>
+                                    						<span class="type">Event</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The event we're extracting information from</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">X,y</span>:
+                                    					<p>Values</p>
+                                    
+                                    			</div>
+                                    		</div>
+                                    
+                                    </div>
+                                    <div id="method-html" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>html</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>content</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l149"><code>src\raska.js:149</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Sets the innerHTML content for the HTML element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">content</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                    <div id="method-on" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>on</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>targetElement</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>iteractionType</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>triggerWrapper</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l161"><code>src\raska.js:161</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Registers a delegate to a given element event</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">targetElement</code>
+                                    						<span class="type">HTMLElement</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The element that we're interested in</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">iteractionType</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The event name</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">triggerWrapper</code>
+                                    						<span class="type">Function</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The delegate</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                    <div id="method-raw" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>raw</code></span>
+                                    
+                                    		<span class="paren">()</span>
+                                    		<span class="returns-inline">
+                                    			<span class="type">HTMLElement</span>
+                                    		</span>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l90"><code>src\raska.js:90</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Retrieves the raw HTML element wraped by this helper</p>
+                                    </div>
+                                    
+                                    
+                                    		<div class="returns">
+                                    			<h4>Returns:</h4>
+                                    
+                                    			<div class="returns-description">
+                                    						<span class="type">HTMLElement</span>:
+                                    					<p>The element itself</p>
                                     
                                     			</div>
                                     		</div>
