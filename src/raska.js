@@ -43,10 +43,15 @@
                 $dom: (function () {
 
                     var DOMElementHelper = function (ele) {
+
+                        if (_helpers.$obj.is(ele.raw, "function")) {
+                            ele = ele.raw();
+                        }
+
                         return {
 
                             /**
-                            * Sets the styling of a given element
+                            * Get/Sets the styling of a given element
                             * 
                             * @method css
                             * @param {string} name Style attribute
@@ -55,11 +60,33 @@
                             */
                             css: function (name, value) {
                                 if (_helpers.$obj.isType(name, "string")) {
+                                    if (_helpers.$obj.isUndefined(value)) {
+                                        return ele.style[name];
+                                    }
+                                    if (value === "") {
+                                        return DOMElementHelper(ele).removeCss(name);
+                                    }
                                     ele.style[name] = value;
                                 } else {
                                     for (var attr in name) {
                                         DOMElementHelper(ele).css(attr, name[attr]);
                                     }
+                                }
+                                return DOMElementHelper(ele);
+                            },
+
+                            /**
+                            * Removes the styling attrribute of a given element
+                            * 
+                            * @method css
+                            * @param {string} name Style attribute
+                            * @chainable
+                            */
+                            removeCss: function (name) {
+                                if (ele.style.removeProperty) {
+                                    ele.style.removeProperty(name);
+                                } else {
+                                    ele.style[name] = "";
                                 }
                                 return DOMElementHelper(ele);
                             },
@@ -91,7 +118,7 @@
                             * Retrieves the raw HTML element wraped by this helper
                             * 
                             * @method raw
-                            * @returns {HTMLElement} The element itself
+                            * @return {HTMLElement} The element itself
                             */
                             raw: function () {
                                 return ele;
@@ -104,7 +131,7 @@
                             * @method getXYPositionFrom
                             * @param {HTMLElement} container The element that contains the bounding rect we'll use to gather relative positioning data
                             * @param {event} evt The event we're extracting information from 
-                            * @returns {x,y} Values
+                            * @return {x,y} Values
                             */
                             getXYPositionFrom: function (evt) {
                                 if (_helpers.$device.isTouch
@@ -128,9 +155,34 @@
                             * @chainable
                             */
                             addChild: function (type) {
-                                var childElement = $thisDOM.create(type);
-                                ele.appendChild(childElement.raw());
-                                return childElement;
+                                if (_helpers.$obj.isType(type, "string")) {
+                                    var childElement = $thisDOM.create(type);
+                                    ele.appendChild(childElement.raw());
+                                    return childElement;
+                                } else {
+                                    ele.appendChild(type);
+                                    return DOMElementHelper(type);
+                                }
+                            },
+
+                            /**
+                            * Get the node name for this element
+                            * 
+                            * @method type
+                            * @return {string} The node name for this element
+                            */
+                            type: function () {
+                                return ele.nodeName;
+                            },
+
+                            /**
+                            * Gets the parent node for this element
+                            * 
+                            * @method getParent
+                            * @chainable
+                            */
+                            getParent: function () {
+                                return DOMElementHelper((ele.parentElement) ? ele.parentElement : ele.parentNode);
                             },
 
                             /**
@@ -141,21 +193,37 @@
                             * @chainable
                             */
                             addSibling: function (type) {
-
-                                return DOMElementHelper((ele.parentElement) ? ele.parentElement : ele.parentNode)
-                                    .addChild(type);
+                                return DOMElementHelper(ele).getParent().addChild(type);
                             },
 
                             /**
-                            * Sets the innerHTML content for the HTML element
+                            * Gets\Sets the innerHTML content for the HTML element
                             * 
                             * @method html
                             * @param {string} content 
                             * @chainable
                             */
                             html: function (content) {
-                                ele.innerHTML = content;
-                                return DOMElementHelper(ele);
+                                if (_helpers.$obj.isType(content, "string")) {
+                                    ele.innerHTML = content;
+                                    return DOMElementHelper(ele);
+                                }
+                                return ele.innerHTML;
+                            },
+
+                            /**
+                            * Gets\Sets the innerText content for the HTML element
+                            * 
+                            * @method html
+                            * @param {string} content 
+                            * @chainable
+                            */
+                            text: function (content) {
+                                if (_helpers.$obj.isType(content, "string")) {
+                                    ele.innerText = content;
+                                    return DOMElementHelper(ele);
+                                }
+                                return ele.innerText;
                             },
 
                             /**
@@ -174,6 +242,23 @@
                                 else if (w.attachEvent) { ele.attachEvent("on" + iteractionType, triggerWrapper); }
                                 else { ele["on" + iteractionType] = triggerWrapper; }
                                 return DOMElementHelper(ele);
+                            },
+
+                            /**
+                            * Selects the first occurent of child elements that matches the selector
+                            * 
+                            * @method child
+                            * @param {string} selector Element's selector
+                            * @return {DOMElementHelper} The element wraped in a helper object
+                            */
+                            first: function (selector) {
+
+                                //https://developer.mozilla.org/en-US/docs/Web/CSS/:scope#Browser_compatibility
+                                var result = ele.querySelectorAll(":scope > " + selector);
+                                if (_helpers.$obj.isType(result, "nodelist")) {
+                                    return DOMElementHelper(result[0]);
+                                }
+                                return null;
                             }
                         };
                     },
@@ -185,7 +270,7 @@
                         * @method create
                         * @param {string} type Element node type
                         * @param {HTMLElement} parent Element's parent node
-                        * @returns {DOMElementHelper} The element wraped in a helper object
+                        * @return {DOMElementHelper} The element wraped in a helper object
                         */
                         create: function (type, parent) {
                             var newElement = d.createElement(type);
@@ -201,11 +286,22 @@
                         * 
                         * @method get
                         * @param {string} selector Element's selector
-                        * @returns {DOMElementHelper} The element wraped in a helper object
+                        * @return {DOMElementHelper} The element wraped in a helper object
                         */
                         get: function (selector) {
                             var element = _helpers.$obj.isType(selector, "string") ? $(selector) : selector;
                             return DOMElementHelper(element);
+                        },
+
+                        /**
+                        * Gathers an element using a given id
+                        * 
+                        * @method getById
+                        * @param {string} id Element's id
+                        * @return {DOMElementHelper} The element wraped in a helper object
+                        */
+                        getById: function (id) {
+                            return DOMElementHelper($("#" + id));
                         }
                     };
 
@@ -241,7 +337,7 @@
                             * @method gathersXYPositionFrom
                             * @param {HTMLElement} container The element that contains the bounding rect we'll use to gather relative positioning data
                             * @param {event} evt The event we're extracting information from 
-                            * @returns {x,y} Values
+                            * @return {x,y} Values
                             */
                             gathersXYPositionFrom: function (container, evt) {
 
@@ -348,7 +444,7 @@
                         * @method forEach
                         * @param {Array} arr The array that need to be enumerated
                         * @param {Delegate} what What to do to a given item (obj item, number index)
-                        * @returns Array of data acquired during array enumaration
+                        * @return Array of data acquired during array enumaration
                         */
                         forEach: function (arr, what) {
                             var result = [];
@@ -1337,18 +1433,85 @@
             readonly: false,
             frameRefreshRate: 30,
             targetCanvasId: "",
-            toolboxSize: { height: "20px", width: "100%" },
+            targetCanvasContainerId: "____raska" + _helpers.$obj.generateId(),
             toolboxButtons: [
-                {
-                    name: "fullscreen",
-                    enabled: true,
-                    onclick: function (canvas) {
-                        _helpers.$dom.get(canvas)
-                            .attr({ "width": d.body.clientWidth, "height": d.body.clientHeight })
-                            .css({ "position": "absolute", "z-index": 10 });
-                    },
-                    template: "<button>fullscreen</button>"
-                }
+
+                (function () {
+
+                    var _inFullscreen = false,
+                        _defaultValues = {
+                            container: {
+                                "width": 0,
+                                "height": 0,
+                                "position": 0,
+                                "z-index": 0,
+                                "left": 0,
+                                "top": 0
+                            },
+                            canvas: {
+                                "width": 0,
+                                "height": 0
+                            }
+                        };
+
+                    return {
+                        name: "fullscreen",
+                        enabled: true,
+                        onclick: function (canvas) {
+
+                            var canvasElementContainer = _helpers.$dom.getById(_activeConfiguration.targetCanvasContainerId);
+                            var canvasElement = _helpers.$dom.get(canvas);
+
+                            if (_inFullscreen === false) {
+
+                                /// Recovery mode for the container
+                                for (var attr in _defaultValues.container) {
+                                    _defaultValues.container[attr] = canvasElementContainer.css(attr);
+                                }
+                                canvasElementContainer.css({
+                                    "width": d.body.clientWidth,
+                                    "height": d.body.clientHeight - 40 /*the estimated Height size for the toolbox*/,
+                                    "position": "fixed",
+                                    "z-index": 1000,
+                                    "background-color": "white",
+                                    "left": 0,
+                                    "top": 0
+                                });
+
+                                /// Recovery mode for the canvas
+                                for (var attr in _defaultValues.canvas) {
+                                    _defaultValues.canvas[attr] = canvasElement.attr(attr);
+                                }
+                                canvasElement.attr({
+                                    "width": d.body.clientWidth,
+                                    "height": d.body.clientHeight - 40/*the estimated Height size for the toolbox*/
+                                });
+
+                                _helpers.$dom.getById(this.id)
+                                    .first("button")
+                                    .html("<span class='glyphicon glyphicon-resize-small'></span>&nbsp;Back to normal");
+                                _inFullscreen = true;
+                            } else {
+                                for (var attr in _defaultValues.container) {
+                                    canvasElementContainer.css(attr, _defaultValues.container[attr]);
+                                }
+                                for (var attr in _defaultValues.canvas) {
+                                    canvasElement.attr(attr, _defaultValues.canvas[attr]);
+                                }
+                                _helpers.$dom.getById(this.id)
+                                    .first("button")
+                                    .html("<span class='glyphicon glyphicon-resize-full'></span>&nbsp;Fullscreen");
+                                _inFullscreen = false;
+                            }
+                        },
+
+                        /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
+                        id: "", /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
+                        /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
+
+                        template: "<button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-resize-full'></span>&nbsp;Fullscreen</button>"
+                    };
+                })()
             ]
         },
 
@@ -2322,12 +2485,20 @@
 
                     if (_helpers.$obj.isArray(_activeConfiguration.toolboxButtons)) {
                         var wCanvas = _helpers.$dom.get(_canvas);
-                        _helpers.$obj.forEach(_activeConfiguration.toolboxButtons, function (buttom) {
+
+                        if (wCanvas.getParent().attr("id") !== _activeConfiguration.targetCanvasContainerId) {
                             wCanvas
-                                .addSibling("div")
-                                .html(buttom.template)
-                                .on("click", function() {
-                                    buttom.onclick(_canvas);
+                                .getParent()
+                                .addChild("div")
+                                .attr("id", _activeConfiguration.targetCanvasContainerId)
+                                .addChild(wCanvas.raw());
+                        }
+                        _helpers.$obj.forEach(_activeConfiguration.toolboxButtons, function (button) {
+                            wCanvas
+                                .addSibling("div").attr("id", button.id = _helpers.$obj.generateId())
+                                .html(button.template)
+                                .on("click", function () {
+                                    button.onclick(_canvas);
                                 });
                         });
                     }
@@ -2378,7 +2549,7 @@
             * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
             * @method  _getElementsSlim
-            * @returns {_graphNodeInfo} Graph node information
+            * @return {_graphNodeInfo} Graph node information
             * @private
             */
             _getElementsSlim = function () {
@@ -2433,7 +2604,7 @@
             * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
             * @method  getElementsSlim
-            * @returns {_graphNodeInfo} Graph node information
+            * @return {_graphNodeInfo} Graph node information
             */
             getElementsSlim: function () {
                 return _getElementsSlim();
@@ -2443,7 +2614,7 @@
              * Gathers all elements being ploted to the canvas
              * 
              * @method  getElements
-             * @returns {_basicElement[]} Graph node information
+             * @return {_basicElement[]} Graph node information
              */
             getElements: function () {
                 return _elements;
