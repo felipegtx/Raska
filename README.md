@@ -10,6 +10,26 @@ or **[read about it](http://felipegte.com/2015/08/20/raska-criacaoexportacao-de-
 You can also take a look into the commented source code 
 **[here](http://felipegtx.github.io/Raska/docs/index.html)**
 
+### Roadmap
+- [ ] Visual tool to create Directed graphs
+  - [x] Square
+  - [x] Triangle
+  - [x] Circle
+  - [x] Arrow
+  - [ ] Custom shape drawing tool
+- [x] Add/Remove elements programatically
+- [x] Add/Remove elements and links programatically
+- [x] Generic collision check algorithm
+- [x] Animation library
+- [x] Save to image
+- [x] Export to JSON
+- [x] Import from JSON
+- [x] Fullscreen mode
+ - [x] Go/back from fullscreen
+ - [ ] Automatically adapt to screen size changes (when in fullscreen)
+- [ ] Element properties panel
+- [ ] Unity tests
+
 ##Usage
 
 Here are the basic setup for the library. If you need/want to learn more, please refer to the [docs](http://felipegtx.github.io/Raska/docs/index.html)
