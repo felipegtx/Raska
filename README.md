@@ -18,9 +18,12 @@ You can also take a look into the commented source code
   - [x] Arrow
   - [ ] Custom shape drawing tool
 - [x] Add/Remove elements programatically
-- [x] Add/Remove elements and links programatically
-- [x] Generic collision check algorithm
+- [x] Add/Remove elements' links programatically
+- [x] Generic collision/click check algorithm
 - [x] Animation library
+    - [x] FadeIn effect
+    - [x] FadeOut effect
+    - [x] Move effect
 - [x] Save to image
 - [x] Export to JSON
 - [x] Import from JSON
