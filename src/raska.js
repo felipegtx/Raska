@@ -1743,7 +1743,7 @@
                 canLink: function () { return false; },
                 isLinkable: function () { return false; },
                 border: { color: "gray", active: true, width: 2 },
-                fillColor: "black",
+                fillColor: "rgba(0,0,0,0.3)",
                 getWidth: function () { return 1; },
                 getHeight: function () { return 1; },
                 drawTo: function (canvas, context) {
@@ -1764,7 +1764,6 @@
 
                     this.x = (adjustedTargedCoordinates.x + (_target.getAdjustedWidth ? (_target.getAdjustedWidth() / 2) : 0));
                     this.y = (adjustedTargedCoordinates.y + (_target.getAdjustedHeight ? (_target.getAdjustedHeight() / 2) : 0));
-
                     context.beginPath();
                     context.fillStyle = this.fillColor;
                     if (this.border.active === true) {
@@ -1781,11 +1780,11 @@
                     context.stroke();
                     var startRadians = Math.atan((parentY - this.y) / (parentX - this.x));
                     startRadians += ((parentX > this.x) ? -90 : 90) * Math.PI / 180;
-                    _drawArrowhead(context, this.x, this.y, startRadians, 9, 10, this.fillColor);
+                    _drawArrowhead(context, this.x, this.y, startRadians, 5, 8, this.fillColor);
                     if (this.border.active === true) {
-                        _drawArrowhead(context, this.x, this.y, startRadians, 6, 6, this.border.color);
+                        _drawArrowhead(context, this.x, this.y, startRadians, 3, 5, this.border.color);
                     } else {
-                        _drawArrowhead(context, this.x, this.y, startRadians, 6, 6, "white");
+                        _drawArrowhead(context, this.x, this.y, startRadians, 3, 5, "white");
                     }
                 }
             }, true);
