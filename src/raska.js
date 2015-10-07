@@ -1963,8 +1963,8 @@
                     if (this.border.active === true) {
                         context.lineWidth = this.border.width;
                         context.strokeStyle = this.border.color;
+                        context.stroke();
                     }
-                    context.stroke();
                 },
                 existsIn: function (x, y) {
                     var dx = this.x - x;
@@ -2614,6 +2614,19 @@
             },
 
             /**
+             * Removes a given element from the canvas
+             *
+             * @method remove
+             * @param {_basicElement} element Element that is to be removed
+             * @private
+             * @chainable
+             */
+            remove: function (element) {
+                _removeElement(element);
+                return this;
+            },
+
+            /**
             * Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON
             * 
             * @method  getElementsSlim
@@ -2925,13 +2938,39 @@
         * @static
         */
         checkCollisionOn: function (x, y) {
+            return _public.tryGetElementOn(x, y) !== null;
+        },
+
+        /**
+        * Tries to get the element that exists at a given coordinate
+        *
+        * @method tryGetElementOn
+        * @param {number} x X position
+        * @param {number} y Y position
+        * @return {_basicElement} Raska basic element (if any) or null
+        * @static
+        */
+        tryGetElementOn: function (x, y) {
             var elements = _drawing.getElements();
             for (var i = 0; i < elements.length; i++) {
                 if (elements[i].existsIn(x, y) === true) {
-                    return true;
+                    return elements[i];
                 }
             }
-            return false;
+            return null;
+        },
+
+        /**
+        * Removes a given element from the canvas
+        *
+        * @method remove
+        * @param {_basicElement} element Element that is to be removed
+        * @private
+        * @chainable
+        */
+        remove: function (element) {
+            _drawing.remove(element);
+            return this;
         },
 
         /**
