@@ -2301,7 +2301,8 @@
                         */
                         tryRender: function () {
                             if ((_elementBeingDraged.reference !== null)
-                                && (_elementBeingDraged.dragType === _elementBeingDraged.dragTypes.linking)) {
+                                && (_elementBeingDraged.dragType === _elementBeingDraged.dragTypes.linking)
+                                && _elementBeingDraged.reference.canLink() === true) {
 
                                 var targetXY = _mouse.staticCoordinates.getXY(),
                                     arrow = new _defaultConfigurations.arrow({
