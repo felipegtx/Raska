@@ -22,12 +22,18 @@ YUI.add("yuidoc-meta", function(Y) {
         "triangle"
     ],
     "modules": [
+        "_canvasController",
         "_defaultConfigurations",
         "_helpers",
         "animation",
         "raska"
     ],
     "allModules": [
+        {
+            "displayName": "_canvasController",
+            "name": "_canvasController",
+            "description": "A utility module to control complex canvas' (HTML) iteraction"
+        },
         {
             "displayName": "_defaultConfigurations",
             "name": "_defaultConfigurations",

@@ -21,12 +21,12 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>v1.0.0-beta-7</b>
+                    API Docs for Version: <b>v1.0.1-beta-7</b>
                 </p>
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$device", "classes/$dom", "classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/AnimationChainController", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/PublicControllerInterface", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/$device", "classes/$dom", "classes/$log", "classes/$obj", "classes/_basicElement", "classes/_drawing", "classes/_elementBeingDraged", "classes/_graphNodeInfo", "classes/_mouse", "classes/_public", "classes/AnimationChainController", "classes/arrow", "classes/circle", "classes/htmlElement", "classes/label", "classes/PublicControllerInterface", "classes/square", "classes/staticCoordinates", "classes/triangle", "modules/_canvasController", "modules/_defaultConfigurations", "modules/_helpers", "modules/animation", "modules/raska"]'>
         </form>
     </div>
 </div>
@@ -148,6 +148,7 @@
                         				<li><a href="#method-setHeight"><span class="im">setHeight</span>(<span class="ia">newHeight</span>)</a></li>
                         				<li><a href="#method-setParent"><span class="im">setParent</span>(<span class="ia">parent</span>)</a></li>
                         				<li><a href="#method-setWidth"><span class="im">setWidth</span>(<span class="ia">newWidth</span>)</a></li>
+                        				<li><a href="#method-toggleFullScreen"><span class="im">toggleFullScreen</span>(<span class="ia">The</span><span class="ia">strContainerId</span>)</a></li>
                         			</ul>
                         		</li>
                         
@@ -1745,6 +1746,67 @@
                                     
                                     
                                     					<div class="param-description"><p>The width for this element</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                    <div id="method-toggleFullScreen" class="method item inherited">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>toggleFullScreen</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>The</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>strContainerId</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    				<p>Inherited from
+                                    				<a href="../classes/_basicElement.html#method_toggleFullScreen">_basicElement</a>:
+                                    		<a href="../files/src_raska.js.html#l1443"><code>src\raska.js:1443</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Toggles canvas in/out fullscreen mode</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">The</code>
+                                    						<span class="type">HTMLElement  |  Node</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Canvas element</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">strContainerId</code>
+                                    						<span class="type">String</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>The id for the canvas toolbar (or undefined if nothing needs to be done there)</p>
                                     </div>
                                     
                                     				</li>
