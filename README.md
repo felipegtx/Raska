@@ -4,11 +4,45 @@ HTML5 canvas visual directed graph creation tool.
 
 ## What's this - *exactly*?
 
-You can either go take a look at the **[live sample of a simple graph](http://felipegtx.github.io/RaskSample.html)** 
-or **[read about it](http://felipegte.com/2015/08/20/raska-criacaoexportacao-de-grafos-direcionados-usando-html5/)** (*Pt-br*).
+You can read about it **[here](http://felipegte.com/2015/08/20/raska-criacaoexportacao-de-grafos-direcionados-usando-html5/)** (*Pt-br*), take a look into the commented source code 
+**[here](http://felipegtx.github.io/Raska/docs/index.html)** and go through the examples bellow.
 
-You can also take a look into the commented source code 
-**[here](http://felipegtx.github.io/Raska/docs/index.html)**
+### Examples
+
+- [Directed graph](http://felipegtx.github.io/RaskSample.html) 
+   - **Get a JSON from a canvas**
+      ```javascript
+      raska.getElementsString()
+      ```
+      
+   - **Load a JSON into the canvas**
+      ```javascript
+      /// Here we grap the JSON from a previous graph we've saved and...
+      var elementGraph = document.getElementById("elementGraph").value;
+      
+      /// load it back into the canvas
+      raska.loadElementsFrom(elementGraph);
+      ```
+   - **Adding a subscriber for click iteractions on a given element (touchscreen friendly)**
+   
+      ```javascript
+      triangle.on.click(function (x, y, e, ev) {
+        console.log("You've clicked in this triangle", e);
+      });
+      ```
+- [Container](http://felipegtx.github.io/Raska/samples/ContainerSample.html)
+   - **Tracking the mouse position**
+   
+      ```javascript
+      raska.onCanvasInteraction("mousemove", /// this could also be 'click'
+         function (evtData) {
+           console.log("The mouse is moving", evtData);
+         });
+      ```
+- [Logo builder](http://felipegtx.github.io/Raska/samples/LogoBuilder.html)
+- [Animation](http://felipegtx.github.io/Raska/samples/AnimationSample.html)
+- [A simple game](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)
+
 
 ### Roadmap
 - [ ] Visual tool to create Directed graphs
@@ -91,42 +125,6 @@ raska.animation.on(circle)
     ///     PS: here you can also provide an parameter to set the interval beteween animations
       .loop();
 ```
-
-### Examples
-
-- [Directed graph](http://felipegtx.github.io/RaskSample.html) 
-   - **Get a JSON from a canvas**
-      ```javascript
-      raska.getElementsString()
-      ```
-      
-   - **Load a JSON into the canvas**
-      ```javascript
-      /// Here we grap the JSON from a previous graph we've saved and...
-      var elementGraph = document.getElementById("elementGraph").value;
-      
-      /// load it back into the canvas
-      raska.loadElementsFrom(elementGraph);
-      ```
-   - **Adding a subscriber for click iteractions on a given element (touchscreen friendly)**
-   
-      ```javascript
-      triangle.on.click(function (x, y, e, ev) {
-        console.log("You've clicked in this triangle", e);
-      });
-      ```
-- [Container](http://felipegtx.github.io/Raska/samples/ContainerSample.html)
-   - **Tracking the mouse position**
-   
-      ```javascript
-      raska.onCanvasInteraction("mousemove", /// this could also be 'click'
-         function (evtData) {
-           console.log("The mouse is moving", evtData);
-         });
-      ```
-- [Logo builder](http://felipegtx.github.io/Raska/samples/LogoBuilder.html)
-- [Animation](http://felipegtx.github.io/Raska/samples/AnimationSample.html)
-- [A simple game](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)
 
 ### Public delegates / cutpoints
 
