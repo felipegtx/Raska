@@ -1413,6 +1413,92 @@
     },
 
      /**
+     * A utility module to control complex canvas' (HTML) iteraction
+     *
+     * @private
+     * @module raska
+     * @submodule _canvasController
+     * @readOnly
+     */
+    _canvasController = (function () {
+
+        var _inFullscreen = false,
+            _defaultValues = {
+                container: {
+                    "width": 0,
+                    "height": 0,
+                    "position": 0,
+                    "z-index": 0,
+                    "left": 0,
+                    "top": 0
+                },
+                canvas: {
+                    "width": 0,
+                    "height": 0
+                }
+            };
+
+        return {
+
+            /**
+             * Toggles canvas in/out fullscreen mode
+             * 
+             * @method toggleFullScreen
+             * @param {HTMLElement|Node} The Canvas element
+             * @param {string} strContainerId The id for the canvas toolbar (or undefined if nothing needs to be done there)
+             */
+            toggleFullScreen: function (canvas, strContainerId) {
+                var canvasElementContainer = _helpers.$dom.getById(_activeConfiguration.targetCanvasContainerId),
+                    canvasElement = _helpers.$dom.get(canvas),
+                    bottomPadding = strContainerId ? 40/*the estimated Height size for the toolbox*/ : 0;
+
+                if (_inFullscreen === false) {
+
+                    /// Recovery mode for the container
+                    for (var attr in _defaultValues.container) {
+                        _defaultValues.container[attr] = canvasElementContainer.css(attr);
+                    }
+                    canvasElementContainer.css({
+                        "width": d.body.clientWidth,
+                        "height": d.body.clientHeight - bottomPadding,
+                        "position": "fixed",
+                        "z-index": 1000,
+                        "background-color": "white",
+                        "left": 0,
+                        "top": 0
+                    });
+
+                    /// Recovery mode for the canvas
+                    for (var attr in _defaultValues.canvas) {
+                        _defaultValues.canvas[attr] = canvasElement.attr(attr);
+                    }
+                    canvasElement.attr({ "width": d.body.clientWidth, "height": d.body.clientHeight - bottomPadding });
+
+                    if (_helpers.$obj.isValid(strContainerId)) {
+                        _helpers.$dom.getById(strContainerId)
+                            .first("button")
+                            .html("<span class='glyphicon glyphicon-resize-small'></span>&nbsp;Back to normal");
+                    }
+                    _inFullscreen = true;
+                } else {
+                    for (var attr in _defaultValues.container) {
+                        canvasElementContainer.css(attr, _defaultValues.container[attr]);
+                    }
+                    for (var attr in _defaultValues.canvas) {
+                        canvasElement.attr(attr, _defaultValues.canvas[attr]);
+                    }
+                    if (_helpers.$obj.isValid(strContainerId)) {
+                        _helpers.$dom.getById(strContainerId)
+                            .first("button")
+                            .html("<span class='glyphicon glyphicon-resize-full'></span>&nbsp;Fullscreen");
+                    }
+                    _inFullscreen = false;
+                }
+            }
+        };
+    })(),
+
+     /**
      * A utility container that holds default instance information for the Raska library
      *
      * @private
@@ -1435,83 +1521,17 @@
             targetCanvasId: "",
             targetCanvasContainerId: "____raska" + _helpers.$obj.generateId(),
             toolboxButtons: [
-
-                (function () {
-
-                    var _inFullscreen = false,
-                        _defaultValues = {
-                            container: {
-                                "width": 0,
-                                "height": 0,
-                                "position": 0,
-                                "z-index": 0,
-                                "left": 0,
-                                "top": 0
-                            },
-                            canvas: {
-                                "width": 0,
-                                "height": 0
-                            }
-                        };
-
-                    return {
-                        name: "fullscreen",
-                        enabled: true,
-                        onclick: function (canvas) {
-
-                            var canvasElementContainer = _helpers.$dom.getById(_activeConfiguration.targetCanvasContainerId);
-                            var canvasElement = _helpers.$dom.get(canvas);
-
-                            if (_inFullscreen === false) {
-
-                                /// Recovery mode for the container
-                                for (var attr in _defaultValues.container) {
-                                    _defaultValues.container[attr] = canvasElementContainer.css(attr);
-                                }
-                                canvasElementContainer.css({
-                                    "width": d.body.clientWidth,
-                                    "height": d.body.clientHeight - 40 /*the estimated Height size for the toolbox*/,
-                                    "position": "fixed",
-                                    "z-index": 1000,
-                                    "background-color": "white",
-                                    "left": 0,
-                                    "top": 0
-                                });
-
-                                /// Recovery mode for the canvas
-                                for (var attr in _defaultValues.canvas) {
-                                    _defaultValues.canvas[attr] = canvasElement.attr(attr);
-                                }
-                                canvasElement.attr({
-                                    "width": d.body.clientWidth,
-                                    "height": d.body.clientHeight - 40/*the estimated Height size for the toolbox*/
-                                });
-
-                                _helpers.$dom.getById(this.id)
-                                    .first("button")
-                                    .html("<span class='glyphicon glyphicon-resize-small'></span>&nbsp;Back to normal");
-                                _inFullscreen = true;
-                            } else {
-                                for (var attr in _defaultValues.container) {
-                                    canvasElementContainer.css(attr, _defaultValues.container[attr]);
-                                }
-                                for (var attr in _defaultValues.canvas) {
-                                    canvasElement.attr(attr, _defaultValues.canvas[attr]);
-                                }
-                                _helpers.$dom.getById(this.id)
-                                    .first("button")
-                                    .html("<span class='glyphicon glyphicon-resize-full'></span>&nbsp;Fullscreen");
-                                _inFullscreen = false;
-                            }
-                        },
-
-                        /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
-                        id: "", /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
-                        /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
-
-                        template: "<button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-resize-full'></span>&nbsp;Fullscreen</button>"
-                    };
-                })()
+                {
+                    /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
+                    id: "", /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
+                    /// THIS WILL BE SET AUTOMATICALLY WHEN THE BUTTON GETS RENDERED
+                    name: "fullscreen",
+                    enabled: true,
+                    onclick: function (canvas) {
+                        _canvasController.toggleFullScreen(canvas, this.id);
+                    },
+                    template: "<button class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-resize-full'></span>&nbsp;Fullscreen</button>"
+                }
             ]
         },
 
@@ -1581,7 +1601,7 @@
                 x: 0,
                 y: 0,
                 border: { color: "white", active: true, width: 2 },
-                font: { family: "Arial", size: "15px", decoration: "" },
+                font: { family: "Arial", size: "12px", decoration: "" },
                 getWidth: function () {
                     return this.text.length * 5;
                 },
@@ -1590,7 +1610,8 @@
                 },
                 drawTo: function (canvas, context) {
                     var coordinates = this.getAdjustedCoordinates();
-                    context.font = this.font.decoration + " " + this.font.size + " " + this.font.family;
+                    context.save();
+                    context.font = (this.font.decoration || "") + " " + this.font.size + " " + this.font.family;
                     if (this.border.active === true) {
                         context.lineJoin = "round";
                         context.lineWidth = this.border.width;
@@ -1599,6 +1620,7 @@
                     }
                     context.fillStyle = this.color;
                     context.fillText(this.text, coordinates.x, coordinates.y);
+                    context.restore();
                 },
                 existsIn: function (x, y) {
                     /// Efective as a non-draggable element
@@ -1720,7 +1742,7 @@
                 getType: function () { return _elementTypes.arrow; },
                 canLink: function () { return false; },
                 isLinkable: function () { return false; },
-                border: { color: "silver", active: true, width: 2 },
+                border: { color: "gray", active: true, width: 2 },
                 fillColor: "black",
                 getWidth: function () { return 1; },
                 getHeight: function () { return 1; },
@@ -1737,17 +1759,18 @@
                     var adjustedTargedCoordinates = _target.getAdjustedCoordinates ? _target.getAdjustedCoordinates() : { x: _target.x, y: _target.y },
                         parent = this.getParent(),
                         adjustedParentCoordinates = parent.getAdjustedCoordinates(),
-                        parentX = adjustedParentCoordinates.x + (parent.getAdjustedWidth ? (parent.getAdjustedWidth() / 2) : 0),
-                        parentY = adjustedParentCoordinates.y + (parent.getAdjustedHeight ? (parent.getAdjustedHeight() / 2) : 0);
+                        parentX = (adjustedParentCoordinates.x + (parent.getAdjustedWidth ? (parent.getAdjustedWidth() / 2) : 0)),
+                        parentY = (adjustedParentCoordinates.y + (parent.getAdjustedHeight ? (parent.getAdjustedHeight() / 2) : 0));
 
-                    this.x = adjustedTargedCoordinates.x + (_target.getAdjustedWidth ? (_target.getAdjustedWidth() / 2) : 0);
-                    this.y = adjustedTargedCoordinates.y + (_target.getAdjustedHeight ? (_target.getAdjustedHeight() / 2) : 0);
+                    this.x = (adjustedTargedCoordinates.x + (_target.getAdjustedWidth ? (_target.getAdjustedWidth() / 2) : 0));
+                    this.y = (adjustedTargedCoordinates.y + (_target.getAdjustedHeight ? (_target.getAdjustedHeight() / 2) : 0));
 
                     context.beginPath();
                     context.fillStyle = this.fillColor;
                     if (this.border.active === true) {
                         var grad = context.createLinearGradient(this.x, this.y, parentX, parentY);
-                        grad.addColorStop(0, this.fillColor);
+                        grad.addColorStop(0, this.border.color);
+                        grad.addColorStop(0.5, this.fillColor);
                         grad.addColorStop(1, this.border.color);
 
                         context.lineWidth = this.border.width;
@@ -1758,8 +1781,12 @@
                     context.stroke();
                     var startRadians = Math.atan((parentY - this.y) / (parentX - this.x));
                     startRadians += ((parentX > this.x) ? -90 : 90) * Math.PI / 180;
-                    _drawArrowhead(context, this.x, this.y, startRadians, 23, 10, this.fillColor);
-                    _drawArrowhead(context, this.x, this.y, startRadians, 18, 6, "white");
+                    _drawArrowhead(context, this.x, this.y, startRadians, 9, 10, this.fillColor);
+                    if (this.border.active === true) {
+                        _drawArrowhead(context, this.x, this.y, startRadians, 6, 6, this.border.color);
+                    } else {
+                        _drawArrowhead(context, this.x, this.y, startRadians, 6, 6, "white");
+                    }
                 }
             }, true);
         },
@@ -2502,20 +2529,6 @@
                                 });
                         });
                     }
-                    /**
-                          toolboxButtons: [
-                {
-                    name: "fullscreen",
-                    enabled: true,
-                    onclick: function (canvas) {
-                        _helpers.$dom.get(canvas)
-                            .attr({ "width": d.body.clientWidth, "height": d.body.clientHeight })
-                            .css({ "position": "absolute", "z-index": 10 });
-                    },
-                    template: "<button>fullscreen</button>"
-                }
-            ]
-                         */
 
                     /// Window events
                     _helpers.$dom.get(w)
@@ -2640,6 +2653,16 @@
             */
             getCanvasElement: function () {
                 return _canvasElement;
+            },
+
+            /**
+            * Returns the corresponding Raska Canvas element
+            * 
+            * @method  getCanvasElement
+            * @return {HTMLElement} Canvas
+            */
+            getCanvas: function () {
+                return _canvas;
             },
 
             /**
@@ -2840,6 +2863,18 @@
         },
 
         /**
+        * Toggles fullscreen mode on/off
+        *
+        * @property toggleFullScreen
+        * @static
+        * @chainable
+        */
+        toggleFullScreen: function () {
+            _canvasController.toggleFullScreen(_drawing.getCanvas());
+            return _public;
+        },
+
+        /**
         * Retrieves all possible position types
         *
         * @property positionTypes
@@ -2878,6 +2913,25 @@
         onCanvasInteraction: function (iteractionType, trigger) {
             _elementInteractionEventData.register(_drawing.getCanvasElement(), iteractionType, trigger);
             return this;
+        },
+
+        /**
+        * Checks whether or not an element does exists at a given coordinate
+        *
+        * @method checkCollisionOn
+        * @param {number} x X position
+        * @param {number} y Y position
+        * @return {bool} Wheter or not an element can be found at these coordinates
+        * @static
+        */
+        checkCollisionOn: function (x, y) {
+            var elements = _drawing.getElements();
+            for (var i = 0; i < elements.length; i++) {
+                if (elements[i].existsIn(x, y) === true) {
+                    return true;
+                }
+            }
+            return false;
         },
 
         /**
