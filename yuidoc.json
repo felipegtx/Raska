@@ -1,7 +1,7 @@
 {
     "name": "Raska",
     "url": "https://github.com/felipegtx/Raska",
-    "version": "v1.0.2-beta-7",
+    "version": "v1.0.3-beta-7",
     "options": {
         "paths": "./src",
         "outdir": "./docs",

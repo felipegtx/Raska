@@ -2,7 +2,7 @@
     "project": {
         "name": "Raska",
         "url": "https://github.com/felipegtx/Raska",
-        "version": "v1.0.2-beta-7"
+        "version": "v1.0.3-beta-7"
     },
     "files": {
         "src\\raska.animation.js": {
@@ -96,7 +96,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src\\raska.js",
-            "line": 2719,
+            "line": 2743,
             "description": "The basic shape of an Raska element",
             "itemtype": "main",
             "access": "private",
@@ -155,7 +155,7 @@
             "module": "raska",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1439,
+            "line": 1463,
             "description": "A utility module to control complex canvas' (HTML) iteraction",
             "access": "private",
             "tagname": "",
@@ -180,7 +180,7 @@
             "module": "raska",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1948,
+            "line": 1972,
             "description": "A utility container that holds default instance information for the Raska library",
             "access": "private",
             "tagname": "",
@@ -354,7 +354,7 @@
             "submodule": "_defaultConfigurations",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1610,
+            "line": 1634,
             "description": "Creates a label",
             "extends": "_basicElement"
         },
@@ -370,7 +370,7 @@
             "submodule": "_defaultConfigurations",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1656,
+            "line": 1680,
             "description": "Creates a square",
             "extends": "_basicElement"
         },
@@ -386,7 +386,7 @@
             "submodule": "_defaultConfigurations",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1720,
+            "line": 1744,
             "description": "Creates an arrow",
             "extends": "_basicElement"
         },
@@ -402,7 +402,7 @@
             "submodule": "_defaultConfigurations",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1817,
+            "line": 1841,
             "description": "Wraps any HTML element as a Raska element",
             "is_constructor": 1,
             "extends": "_basicElement"
@@ -419,7 +419,7 @@
             "submodule": "_defaultConfigurations",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1858,
+            "line": 1882,
             "description": "Creates a triangle.",
             "extends": "_basicElement"
         },
@@ -435,7 +435,7 @@
             "submodule": "_defaultConfigurations",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 1948,
+            "line": 1972,
             "description": "Creates a cricle.",
             "extends": "_basicElement"
         },
@@ -450,7 +450,7 @@
             "module": "raska",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 2069,
+            "line": 2093,
             "description": "An utility container that holds all the drawing related implementations",
             "readonly": "",
             "static": 1
@@ -466,7 +466,7 @@
             "module": "raska",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 2163,
+            "line": 2187,
             "description": "A utility that detects mouse's relative position on the canvas",
             "static": 1
         },
@@ -481,7 +481,7 @@
             "module": "raska",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 2198,
+            "line": 2222,
             "description": "Gathers the mouse coordinates without the need of an event bubble",
             "static": 1
         },
@@ -496,7 +496,7 @@
             "module": "raska",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 2235,
+            "line": 2259,
             "description": "A utility that tracks the state of the element being draged (if any)"
         },
         "_public": {
@@ -510,7 +510,7 @@
             "module": "raska",
             "namespace": "",
             "file": "src\\raska.js",
-            "line": 2719,
+            "line": 2743,
             "description": "All public avaliable methods from the Raska library"
         }
     },
@@ -520,7 +520,7 @@
             "attributes": [],
             "module": "raska",
             "file": "src\\raska.js",
-            "line": 2287,
+            "line": 2311,
             "description": "The element is being moved",
             "parents": "dragTypes"
         }
@@ -1620,7 +1620,7 @@
         {
             "file": "src\\raska.js",
             "line": 790,
-            "description": "Holds the reference to the delegate triggered before a link gets removed grom an element",
+            "description": "Holds the reference to the delegate triggered before a link gets removed from an element",
             "itemtype": "property",
             "name": "$beforeRemoveLinkFrom",
             "type": "function",
@@ -1631,6 +1631,17 @@
         {
             "file": "src\\raska.js",
             "line": 798,
+            "description": "Holds the reference to the delegate triggered before a link gets removed to an element",
+            "itemtype": "property",
+            "name": "$beforeRemoveLinkTo",
+            "type": "function",
+            "default": "null",
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 806,
             "description": "Points to series of child Raska element (if any) that, usually, are contained inside this node",
             "access": "private",
             "tagname": "",
@@ -1643,7 +1654,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 808,
+            "line": 816,
             "description": "Clears all links that point to and from this Raska element",
             "access": "private",
             "tagname": "",
@@ -1670,7 +1681,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 825,
+            "line": 833,
             "description": "Just an empty attribute bag where you can save extra stuff that you need/want to serialize",
             "itemtype": "property",
             "name": "attr",
@@ -1681,7 +1692,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 834,
+            "line": 842,
             "description": "The element name",
             "itemtype": "property",
             "name": "name",
@@ -1692,7 +1703,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 843,
+            "line": 851,
             "description": "The element type",
             "itemtype": "property",
             "name": "getType",
@@ -1703,7 +1714,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 852,
+            "line": 860,
             "description": "Wheter or not this element is part of the graph as a node",
             "itemtype": "property",
             "name": "graphNode",
@@ -1714,7 +1725,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 861,
+            "line": 869,
             "description": "Allows to better check whether or not a new link can be created beteen two elements",
             "itemtype": "method",
             "name": "canLink",
@@ -1739,7 +1750,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 876,
+            "line": 884,
             "description": "Clears all references and child elements from this instance",
             "itemtype": "method",
             "name": "disable",
@@ -1749,7 +1760,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 899,
+            "line": 907,
             "description": "Notifies a given element whenever (if ever) this element gets disabled",
             "itemtype": "method",
             "name": "notifyDisableStateOn",
@@ -1759,7 +1770,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 914,
+            "line": 922,
             "description": "Handles element disabling notifications",
             "itemtype": "method",
             "name": "elementDisabledNotification",
@@ -1769,7 +1780,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 924,
+            "line": 932,
             "description": "Whether or not this element can reach another element via a linked relation",
             "itemtype": "method",
             "name": "canReach",
@@ -1782,7 +1793,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 941,
+            "line": 949,
             "description": "Is this element passive of being linked at all?",
             "itemtype": "method",
             "name": "isLinkable",
@@ -1795,7 +1806,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 951,
+            "line": 959,
             "description": "Is this element passive of being serialized at all?",
             "itemtype": "method",
             "name": "isSerializable",
@@ -1808,7 +1819,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 961,
+            "line": 969,
             "description": "Creates a link between this and another element, using the later as a dependency of this instance",
             "itemtype": "method",
             "name": "addLinkTo",
@@ -1828,7 +1839,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 979,
+            "line": 987,
             "description": "Links this element to another Raska element as this instance being the target node",
             "itemtype": "method",
             "name": "addLinkFrom",
@@ -1848,7 +1859,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 997,
+            "line": 1005,
             "description": "Removes the dependency from this element to another Raska element",
             "itemtype": "method",
             "name": "removeLinkTo",
@@ -1869,7 +1880,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1016,
+            "line": 1024,
             "description": "Event triggered before a link gets removed from this element",
             "itemtype": "method",
             "name": "beforeRemoveLinkFrom",
@@ -1886,7 +1897,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1029,
+            "line": 1037,
             "description": "Transposes the getter data to a field attached to this instance",
             "itemtype": "method",
             "name": "normalize",
@@ -1896,7 +1907,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1047,
+            "line": 1055,
             "description": "Gathers all elements that this instance depends on",
             "itemtype": "method",
             "name": "getLinksTo",
@@ -1909,7 +1920,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1057,
+            "line": 1065,
             "description": "Gathers all dependecies/linked elements related to this instance",
             "itemtype": "method",
             "name": "getLinksFrom",
@@ -1922,7 +1933,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1067,
+            "line": 1075,
             "description": "Removes the link to this element from another Raska element",
             "itemtype": "method",
             "name": "removeLinkFrom",
@@ -1943,7 +1954,24 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1083,
+            "line": 1094,
+            "description": "Event triggered before a link gets removed to this element",
+            "itemtype": "method",
+            "name": "beforeRemoveLinkTo",
+            "params": [
+                {
+                    "name": "doWhat",
+                    "description": "A delegate with the 'this' poiting to this instance and the first \n                          paramenter being the reference to the element which is being remove as a link from this instance",
+                    "type": "Function"
+                }
+            ],
+            "chainable": 1,
+            "class": "_basicElement",
+            "module": "raska"
+        },
+        {
+            "file": "src\\raska.js",
+            "line": 1107,
             "description": "Removes every and each link that references this element",
             "itemtype": "method",
             "name": "clearAllLinks",
@@ -1957,7 +1985,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1096,
+            "line": 1120,
             "description": "Gathers all child elements from this node",
             "itemtype": "method",
             "name": "getChildElements",
@@ -1970,7 +1998,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1106,
+            "line": 1130,
             "description": "Adds a new child element to this node",
             "itemtype": "method",
             "name": "addChild",
@@ -1991,7 +2019,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1120,
+            "line": 1144,
             "description": "Get the parent node to this element",
             "itemtype": "method",
             "name": "getParent",
@@ -2004,7 +2032,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1130,
+            "line": 1154,
             "description": "Retrieves the element boundaries information",
             "itemtype": "method",
             "name": "getBoundaries",
@@ -2017,7 +2045,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1145,
+            "line": 1169,
             "description": "Sets the parent node to this element",
             "itemtype": "method",
             "name": "setParent",
@@ -2038,7 +2066,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1158,
+            "line": 1182,
             "description": "Details regarding this element' border",
             "itemtype": "attribute",
             "name": "border",
@@ -2047,7 +2075,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1164,
+            "line": 1188,
             "description": "Element border color",
             "itemtype": "property",
             "name": "color",
@@ -2058,7 +2086,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1173,
+            "line": 1197,
             "description": "Whether or not a border should be rendered",
             "itemtype": "property",
             "name": "active",
@@ -2069,7 +2097,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1182,
+            "line": 1206,
             "description": "Border width",
             "itemtype": "property",
             "name": "width",
@@ -2080,7 +2108,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1192,
+            "line": 1216,
             "description": "Element position type",
             "itemtype": "property",
             "name": "position",
@@ -2091,7 +2119,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1201,
+            "line": 1225,
             "description": "Element x position",
             "itemtype": "property",
             "name": "x",
@@ -2102,7 +2130,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1210,
+            "line": 1234,
             "description": "Element y position",
             "itemtype": "property",
             "name": "y",
@@ -2113,7 +2141,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1219,
+            "line": 1243,
             "description": "Gathers adjusted x/y coordinates for the currente element taking into consideration \nthe type of positining set to it and wheter or not a parent node is present",
             "itemtype": "method",
             "name": "getAdjustedCoordinates",
@@ -2126,7 +2154,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1237,
+            "line": 1261,
             "description": "Whether or not this element handle event interactions",
             "itemtype": "property",
             "name": "canHandleEvents",
@@ -2137,7 +2165,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1259,
+            "line": 1283,
             "description": "Triggered whenever a click iteraction occurs within the boundaries of this element.\n - This event is only supported on selected elements. Check for the *canHandleEvents*\n   property value before relying on this delegate",
             "itemtype": "method",
             "name": "click",
@@ -2169,7 +2197,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1297,
+            "line": 1321,
             "description": "Triggered whenever a 'clickUp' iteraction occurs within the boundaries of this element.\n - This event is only supported on selected elements. Check for the *canHandleEvents*\n   property value before relying on this delegate",
             "itemtype": "method",
             "name": "release",
@@ -2201,7 +2229,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1337,
+            "line": 1361,
             "description": "Whether or not this element existis withing the boudaries of \nthe given x/y coordinates",
             "itemtype": "method",
             "name": "existsIn",
@@ -2226,7 +2254,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1357,
+            "line": 1381,
             "description": "[ABSTRACT] Adjusts the position of the current element taking in consideration it's parent \npositioning constraints",
             "itemtype": "method",
             "name": "adjustPosition",
@@ -2248,7 +2276,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1371,
+            "line": 1395,
             "description": "[ABSTRACT] Sets the current width for this element",
             "itemtype": "method",
             "name": "setWidth",
@@ -2269,7 +2297,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1384,
+            "line": 1408,
             "description": "[ABSTRACT] Gets the current width for this element",
             "itemtype": "method",
             "name": "getWidth",
@@ -2286,7 +2314,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1397,
+            "line": 1421,
             "description": "[ABSTRACT] Sets the current Height for this element",
             "itemtype": "method",
             "name": "setHeight",
@@ -2307,7 +2335,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1410,
+            "line": 1434,
             "description": "[ABSTRACT] Gets the current Height for this element",
             "itemtype": "method",
             "name": "getHeight",
@@ -2324,7 +2352,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1423,
+            "line": 1447,
             "description": "[ABSTRACT] Whether or not this element existis withing the boudaries of \nthe given x/y coordinates",
             "itemtype": "method",
             "name": "existsIn",
@@ -2349,7 +2377,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1467,
+            "line": 1491,
             "description": "Toggles canvas in/out fullscreen mode",
             "itemtype": "method",
             "name": "toggleFullScreen",
@@ -2371,7 +2399,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1535,
+            "line": 1559,
             "description": "Raska's default configuration data",
             "itemtype": "property",
             "name": "library",
@@ -2383,7 +2411,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 1562,
+            "line": 1586,
             "description": "Raska's exception types",
             "itemtype": "property",
             "name": "errors",
@@ -2395,7 +2423,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2081,
+            "line": 2105,
             "description": "Holds the elements that are to be drawn to the target canvas",
             "access": "private",
             "tagname": "",
@@ -2408,7 +2436,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2091,
+            "line": 2115,
             "description": "Whether or not we have a timer running",
             "access": "private",
             "tagname": "",
@@ -2421,7 +2449,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2101,
+            "line": 2125,
             "description": "The Canvas element we're targeting",
             "access": "private",
             "tagname": "",
@@ -2434,7 +2462,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2111,
+            "line": 2135,
             "description": "The Canvas element (wraped by a Raska _basicElement)",
             "access": "private",
             "tagname": "",
@@ -2447,7 +2475,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2121,
+            "line": 2145,
             "description": "The 2dContext from the canvas element we're targeting",
             "access": "private",
             "tagname": "",
@@ -2460,7 +2488,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2131,
+            "line": 2155,
             "description": "Handles the periodic draw of the elements in this Raska instance",
             "itemtype": "method",
             "name": "_timedDrawing",
@@ -2471,7 +2499,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2146,
+            "line": 2170,
             "description": "Plots the element itself and all its related nodes into the canvas",
             "itemtype": "method",
             "name": "_drawAllIn",
@@ -2489,7 +2517,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2172,
+            "line": 2196,
             "description": "Gets mouses's X position relative to the current canvas",
             "itemtype": "method",
             "name": "getX",
@@ -2510,7 +2538,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2185,
+            "line": 2209,
             "description": "Gets mouses's Y position relative to the current canvas",
             "itemtype": "method",
             "name": "getY",
@@ -2531,7 +2559,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2211,
+            "line": 2235,
             "description": "Gets mouses' X and Y positions relative to the current canvas",
             "itemtype": "method",
             "name": "getXY",
@@ -2545,7 +2573,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2243,
+            "line": 2267,
             "description": "The element being draged",
             "itemtype": "property",
             "name": "reference",
@@ -2557,7 +2585,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2254,
+            "line": 2278,
             "description": "Whether or not the user is holding the CTRL key",
             "itemtype": "property",
             "name": "holdingCTRL",
@@ -2569,7 +2597,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2265,
+            "line": 2289,
             "description": "A copy from the original border specification for the element being draged",
             "itemtype": "property",
             "name": "originalBorder",
@@ -2581,7 +2609,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2276,
+            "line": 2300,
             "description": "The types of drag that can be applied to an element\n\nIt can be either: \n     1 - moving\n     3 - linking",
             "itemtype": "attribute",
             "name": "dragTypes",
@@ -2590,7 +2618,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2304,
+            "line": 2328,
             "description": "Default drag type",
             "itemtype": "property",
             "name": "dragType",
@@ -2602,7 +2630,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2319,
+            "line": 2343,
             "description": "Whenever possible/necessary it plots the linking arrow to the canvas",
             "itemtype": "method",
             "name": "tryRender",
@@ -2613,7 +2641,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2357,
+            "line": 2381,
             "description": "Handles de mouse move envent",
             "itemtype": "method",
             "name": "_whenMouseMove",
@@ -2631,7 +2659,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2375,
+            "line": 2399,
             "description": "Handles de mouse up envent",
             "itemtype": "method",
             "name": "_whenMouseUp",
@@ -2649,7 +2677,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2409,
+            "line": 2433,
             "description": "Removes a given element from the canvas",
             "itemtype": "method",
             "name": "_removeElement",
@@ -2668,7 +2696,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2424,
+            "line": 2448,
             "description": "Adds a given element from the canvas",
             "itemtype": "method",
             "name": "_addElement",
@@ -2687,7 +2715,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2438,
+            "line": 2462,
             "description": "Handles de key up envent",
             "itemtype": "method",
             "name": "_whenKeyUp",
@@ -2706,7 +2734,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2451,
+            "line": 2475,
             "description": "Handles de key down envent",
             "itemtype": "method",
             "name": "_whenKeyDown",
@@ -2725,7 +2753,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2471,
+            "line": 2495,
             "description": "Handles the click event",
             "itemtype": "method",
             "name": "_checkClick",
@@ -2743,7 +2771,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2515,
+            "line": 2539,
             "description": "Plots each and every element to the canvas and registers all the event handlers delegates",
             "itemtype": "method",
             "name": "_draw",
@@ -2755,7 +2783,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2585,
+            "line": 2609,
             "description": "Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON",
             "itemtype": "method",
             "name": "_getElementsSlim",
@@ -2770,7 +2798,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2619,
+            "line": 2643,
             "description": "Add a given element to the drawing elements array",
             "itemtype": "method",
             "name": "addElement",
@@ -2787,7 +2815,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2631,
+            "line": 2655,
             "description": "Gets the canvas' dataURL",
             "itemtype": "method",
             "name": "getDataUrl",
@@ -2796,7 +2824,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2640,
+            "line": 2664,
             "description": "Removes a given element from the canvas",
             "itemtype": "method",
             "name": "remove",
@@ -2815,7 +2843,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2653,
+            "line": 2677,
             "description": "Gathers all elements being ploted to the canvas and organizes it as a directed graph JSON",
             "itemtype": "method",
             "name": "getElementsSlim",
@@ -2828,7 +2856,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2663,
+            "line": 2687,
             "description": "Gathers all elements being ploted to the canvas",
             "itemtype": "method",
             "name": "getElements",
@@ -2841,7 +2869,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2673,
+            "line": 2697,
             "description": "Redefines the elements that are supposed to be ploted to the canvas",
             "itemtype": "method",
             "name": "reloadUsing",
@@ -2859,7 +2887,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2686,
+            "line": 2710,
             "description": "Returns the corresponding Raska Canvas element",
             "itemtype": "method",
             "name": "getCanvasElement",
@@ -2868,7 +2896,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2695,
+            "line": 2719,
             "description": "Returns the corresponding Raska Canvas element",
             "itemtype": "method",
             "name": "getCanvasElement",
@@ -2881,7 +2909,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2705,
+            "line": 2729,
             "description": "Initializes the drawing process",
             "itemtype": "method",
             "name": "initializeTimedDrawing",
@@ -2890,7 +2918,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2726,
+            "line": 2750,
             "description": "Adds a new Label to the target canvas",
             "itemtype": "method",
             "name": "newLabel",
@@ -2904,7 +2932,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2737,
+            "line": 2761,
             "description": "Adds a new Square to the target canvas",
             "itemtype": "method",
             "name": "newSquare",
@@ -2918,7 +2946,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2749,
+            "line": 2773,
             "description": "Adds a new Triangle to the target canvas",
             "itemtype": "method",
             "name": "newTriangle",
@@ -2932,7 +2960,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2760,
+            "line": 2784,
             "description": "Adds a new Circle to the target canvas",
             "itemtype": "method",
             "name": "newCircle",
@@ -2946,7 +2974,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2771,
+            "line": 2795,
             "description": "Plots an element to the canvas",
             "itemtype": "method",
             "name": "plot",
@@ -2961,7 +2989,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2784,
+            "line": 2808,
             "description": "Exports current canvas data as an image to a new window",
             "itemtype": "method",
             "name": "exportImage",
@@ -2976,7 +3004,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2798,
+            "line": 2822,
             "description": "Retrieves the raw elements from the drawing stack",
             "itemtype": "method",
             "name": "getElementsRaw",
@@ -2990,7 +3018,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2809,
+            "line": 2833,
             "description": "Retrieves the directed graph represented by the elements in the canvas",
             "itemtype": "method",
             "name": "getElementsSlim",
@@ -3004,7 +3032,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2820,
+            "line": 2844,
             "description": "Retrieves the ENTIRE directed graph represented by the elements in the canvas",
             "itemtype": "method",
             "name": "getElementsData",
@@ -3018,7 +3046,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2831,
+            "line": 2855,
             "description": "Redefines the elements that are supposed to be ploted to the canvas",
             "itemtype": "method",
             "name": "loadElementsFrom",
@@ -3036,7 +3064,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2902,
+            "line": 2926,
             "description": "Toggles fullscreen mode on/off",
             "itemtype": "property",
             "name": "toggleFullScreen",
@@ -3047,7 +3075,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2914,
+            "line": 2938,
             "description": "Retrieves all possible position types",
             "itemtype": "property",
             "name": "positionTypes",
@@ -3058,7 +3086,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2925,
+            "line": 2949,
             "description": "Configures the Raska library to target a given canvas using the configuration passed\nas a parameter",
             "itemtype": "method",
             "name": "installUsing",
@@ -3080,7 +3108,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2941,
+            "line": 2965,
             "description": "Registers a handler to be trigered by any interaction taken place against the canvas",
             "itemtype": "method",
             "name": "onElementInteraction",
@@ -3103,7 +3131,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2955,
+            "line": 2979,
             "description": "Checks whether or not an element does exists at a given coordinate",
             "itemtype": "method",
             "name": "checkCollisionOn",
@@ -3129,7 +3157,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2968,
+            "line": 2992,
             "description": "Tries to get the element that exists at a given coordinate",
             "itemtype": "method",
             "name": "tryGetElementOn",
@@ -3155,7 +3183,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 2987,
+            "line": 3011,
             "description": "Removes a given element from the canvas",
             "itemtype": "method",
             "name": "remove",
@@ -3174,7 +3202,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 3000,
+            "line": 3024,
             "description": "Gathers the target canvas boundaries",
             "itemtype": "method",
             "name": "getCanvasBoundaries",
@@ -3188,7 +3216,7 @@
         },
         {
             "file": "src\\raska.js",
-            "line": 3012,
+            "line": 3036,
             "description": "Clears all elements from the canvas",
             "itemtype": "method",
             "name": "clear",
@@ -3201,11 +3229,11 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src\\raska.js:1259"
+            "line": " src\\raska.js:1283"
         },
         {
             "message": "replacing incorrect tag: function with method",
-            "line": " src\\raska.js:1297"
+            "line": " src\\raska.js:1321"
         }
     ]
 }

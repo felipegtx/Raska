@@ -139,6 +139,7 @@ The delegates are the following:
   * [```isSerializable```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-isSerializable) delegate (customizable *via override*) allows you to control whether or not a given element should be serialized as part of the JSON graph.
   * [```notifyDisableStateOn```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-notifyDisableStateOn) method allows you to subscribe to receive a notification whenever an element **is about to** get removed from the canvas
   * [```beforeRemoveLinkFrom```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-beforeRemoveLinkFrom) method allows you to subscribe to receive a notification whenever an element **is about to** get a link removed from it
+  * [```beforeRemoveLinkTo```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-beforeRemoveLinkFrom) method allows you to subscribe to receive a notification whenever an element **is about to** get a link pointing to it
 
 ## Known limitations
 

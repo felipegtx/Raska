@@ -21,7 +21,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>v1.0.2-beta-7</b>
+                    API Docs for Version: <b>v1.0.3-beta-7</b>
                 </p>
             </li>
         </div>
@@ -118,6 +118,7 @@
                         				<li><a href="#method-addLinkTo"><span class="im">addLinkTo</span>(<span class="ia">element</span>)</a></li>
                         				<li><a href="#method-adjustPosition"><span class="im">adjustPosition</span>(<span class="ia">newX</span><span class="ia">newY</span>)</a></li>
                         				<li><a href="#method-beforeRemoveLinkFrom"><span class="im">beforeRemoveLinkFrom</span>(<span class="ia">doWhat</span>)</a></li>
+                        				<li><a href="#method-beforeRemoveLinkTo"><span class="im">beforeRemoveLinkTo</span>(<span class="ia">doWhat</span>)</a></li>
                         				<li><a href="#method-canLink"><span class="im">canLink</span>(<span class="ia">from</span><span class="ia">to</span>)</a></li>
                         				<li><a href="#method-canReach"><span class="im">canReach</span>()</a></li>
                         				<li><a href="#method-clearAllLinks"><span class="im">clearAllLinks</span>()</a></li>
@@ -125,8 +126,8 @@
                         				<li><a href="#method-click"><span class="im">click</span>(<span class="ia">x</span><span class="ia">y</span><span class="ia">ele</span><span class="ia">evt</span>)</a></li>
                         				<li><a href="#method-disable"><span class="im">disable</span>()</a></li>
                         				<li><a href="#method-elementDisabledNotification"><span class="im">elementDisabledNotification</span>()</a></li>
-                        				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">x</span><span class="ia">y</span>)</a></li>
                         				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">The</span><span class="ia">tdContext</span>)</a></li>
+                        				<li><a href="#method-existsIn"><span class="im">existsIn</span>(<span class="ia">x</span><span class="ia">y</span>)</a></li>
                         				<li><a href="#method-getAdjustedCoordinates"><span class="im">getAdjustedCoordinates</span>()</a></li>
                         				<li><a href="#method-getBoundaries"><span class="im">getBoundaries</span>()</a></li>
                         				<li><a href="#method-getChildElements"><span class="im">getChildElements</span>()</a></li>
@@ -153,6 +154,7 @@
                         			<strong>Properties</strong>
                         			<ul>
                         				<li><a href="#prop-$beforeRemoveLinkFrom"><span class="ip">$beforeRemoveLinkFrom</span></a></li>
+                        				<li><a href="#prop-$beforeRemoveLinkTo"><span class="ip">$beforeRemoveLinkTo</span></a></li>
                         				<li><a href="#prop-$childElements"><span class="ip">$childElements</span></a></li>
                         				<li><a href="#prop-$hitTestCanvas"><span class="ip">$hitTestCanvas</span></a></li>
                         				<li><a href="#prop-$linksFrom"><span class="ip">$linksFrom</span></a></li>
@@ -246,7 +248,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1106"><code>src\raska.js:1106</code></a>
+                                    		<a href="../files/src_raska.js.html#l1130"><code>src\raska.js:1130</code></a>
                                     		</p>
                                     
                                     
@@ -308,7 +310,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l979"><code>src\raska.js:979</code></a>
+                                    		<a href="../files/src_raska.js.html#l987"><code>src\raska.js:987</code></a>
                                     		</p>
                                     
                                     
@@ -370,7 +372,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l961"><code>src\raska.js:961</code></a>
+                                    		<a href="../files/src_raska.js.html#l969"><code>src\raska.js:969</code></a>
                                     		</p>
                                     
                                     
@@ -433,7 +435,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1357"><code>src\raska.js:1357</code></a>
+                                    		<a href="../files/src_raska.js.html#l1381"><code>src\raska.js:1381</code></a>
                                     		</p>
                                     
                                     
@@ -494,7 +496,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1016"><code>src\raska.js:1016</code></a>
+                                    		<a href="../files/src_raska.js.html#l1024"><code>src\raska.js:1024</code></a>
                                     		</p>
                                     
                                     
@@ -515,6 +517,58 @@
                                     
                                     					<div class="param-description"><p>A delegate with the 'this' poiting to this instance and the first
                                     paramenter being the reference to the element which is being remove as a link to this instance</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
+                                    
+                                    
+                                    </div>
+                                    <div id="method-beforeRemoveLinkTo" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>beforeRemoveLinkTo</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>doWhat</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    		<span class="flag chainable">chainable</span>
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l1094"><code>src\raska.js:1094</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>Event triggered before a link gets removed to this element</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">doWhat</code>
+                                    						<span class="type">Function</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>A delegate with the 'this' poiting to this instance and the first
+                                    paramenter being the reference to the element which is being remove as a link from this instance</p>
                                     </div>
                                     
                                     				</li>
@@ -551,7 +605,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l861"><code>src\raska.js:861</code></a>
+                                    		<a href="../files/src_raska.js.html#l869"><code>src\raska.js:869</code></a>
                                     		</p>
                                     
                                     
@@ -616,7 +670,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l924"><code>src\raska.js:924</code></a>
+                                    		<a href="../files/src_raska.js.html#l932"><code>src\raska.js:932</code></a>
                                     		</p>
                                     
                                     
@@ -658,7 +712,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1083"><code>src\raska.js:1083</code></a>
+                                    		<a href="../files/src_raska.js.html#l1107"><code>src\raska.js:1107</code></a>
                                     		</p>
                                     
                                     
@@ -709,7 +763,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l808"><code>src\raska.js:808</code></a>
+                                    		<a href="../files/src_raska.js.html#l816"><code>src\raska.js:816</code></a>
                                     		</p>
                                     
                                     
@@ -787,7 +841,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1259"><code>src\raska.js:1259</code></a>
+                                    		<a href="../files/src_raska.js.html#l1283"><code>src\raska.js:1283</code></a>
                                     		</p>
                                     
                                     
@@ -863,7 +917,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l876"><code>src\raska.js:876</code></a>
+                                    		<a href="../files/src_raska.js.html#l884"><code>src\raska.js:884</code></a>
                                     		</p>
                                     
                                     
@@ -893,7 +947,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l914"><code>src\raska.js:914</code></a>
+                                    		<a href="../files/src_raska.js.html#l922"><code>src\raska.js:922</code></a>
                                     		</p>
                                     
                                     
@@ -903,6 +957,69 @@
                                     	<div class="description"><p>Handles element disabling notifications</p>
                                     </div>
                                     
+                                    
+                                    
+                                    </div>
+                                    <div id="method-existsIn" class="method item">
+                                    	<div class="method-signature">
+                                    	<span class="name"><code>existsIn</code></span>
+                                    
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>The</code>
+                                    				</li>
+                                    				<li class="arg">
+                                    						<code>tdContext</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
+                                    	</div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    	<div class="meta">
+                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                    				<p>
+                                    				Defined in
+                                    		<a href="../files/src_raska.js.html#l1447"><code>src\raska.js:1447</code></a>
+                                    		</p>
+                                    
+                                    
+                                    
+                                    	</div>
+                                    
+                                    	<div class="description"><p>[ABSTRACT] Whether or not this element existis withing the boudaries of
+                                    the given x/y coordinates</p>
+                                    </div>
+                                    
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">The</code>
+                                    						<span class="type">HTMLElement  |  Node</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Canvas element</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    				<li class="param">
+                                    						<code class="param-name">tdContext</code>
+                                    						<span class="type">Node</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Canvas' 2d context</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
                                     
                                     
                                     </div>
@@ -934,7 +1051,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1337"><code>src\raska.js:1337</code></a>
+                                    		<a href="../files/src_raska.js.html#l1361"><code>src\raska.js:1361</code></a>
                                     		</p>
                                     
                                     
@@ -981,69 +1098,6 @@
                                     		</div>
                                     
                                     </div>
-                                    <div id="method-existsIn" class="method item">
-                                    	<div class="method-signature">
-                                    	<span class="name"><code>existsIn</code></span>
-                                    
-                                    		<div class="args">
-                                    			<span class="paren">(</span><ul class="args-list inline commas">
-                                    				<li class="arg">
-                                    						<code>The</code>
-                                    				</li>
-                                    				<li class="arg">
-                                    						<code>tdContext</code>
-                                    				</li>
-                                    			</ul><span class="paren">)</span>
-                                    		</div>
-                                    	</div>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    	<div class="meta">
-                                    					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
-                                    				<p>
-                                    				Defined in
-                                    		<a href="../files/src_raska.js.html#l1423"><code>src\raska.js:1423</code></a>
-                                    		</p>
-                                    
-                                    
-                                    
-                                    	</div>
-                                    
-                                    	<div class="description"><p>[ABSTRACT] Whether or not this element existis withing the boudaries of
-                                    the given x/y coordinates</p>
-                                    </div>
-                                    
-                                    		<div class="params">
-                                    			<h4>Parameters:</h4>
-                                    
-                                    			<ul class="params-list">
-                                    				<li class="param">
-                                    						<code class="param-name">The</code>
-                                    						<span class="type">HTMLElement  |  Node</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Canvas element</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    				<li class="param">
-                                    						<code class="param-name">tdContext</code>
-                                    						<span class="type">Node</span>
-                                    
-                                    
-                                    					<div class="param-description"><p>Canvas' 2d context</p>
-                                    </div>
-                                    
-                                    				</li>
-                                    			</ul>
-                                    		</div>
-                                    
-                                    
-                                    </div>
                                     <div id="method-getAdjustedCoordinates" class="method item">
                                     	<div class="method-signature">
                                     	<span class="name"><code>getAdjustedCoordinates</code></span>
@@ -1063,7 +1117,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1219"><code>src\raska.js:1219</code></a>
+                                    		<a href="../files/src_raska.js.html#l1243"><code>src\raska.js:1243</code></a>
                                     		</p>
                                     
                                     
@@ -1105,7 +1159,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1130"><code>src\raska.js:1130</code></a>
+                                    		<a href="../files/src_raska.js.html#l1154"><code>src\raska.js:1154</code></a>
                                     		</p>
                                     
                                     
@@ -1146,7 +1200,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1096"><code>src\raska.js:1096</code></a>
+                                    		<a href="../files/src_raska.js.html#l1120"><code>src\raska.js:1120</code></a>
                                     		</p>
                                     
                                     
@@ -1187,7 +1241,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1410"><code>src\raska.js:1410</code></a>
+                                    		<a href="../files/src_raska.js.html#l1434"><code>src\raska.js:1434</code></a>
                                     		</p>
                                     
                                     
@@ -1228,7 +1282,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1057"><code>src\raska.js:1057</code></a>
+                                    		<a href="../files/src_raska.js.html#l1065"><code>src\raska.js:1065</code></a>
                                     		</p>
                                     
                                     
@@ -1269,7 +1323,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1047"><code>src\raska.js:1047</code></a>
+                                    		<a href="../files/src_raska.js.html#l1055"><code>src\raska.js:1055</code></a>
                                     		</p>
                                     
                                     
@@ -1310,7 +1364,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1120"><code>src\raska.js:1120</code></a>
+                                    		<a href="../files/src_raska.js.html#l1144"><code>src\raska.js:1144</code></a>
                                     		</p>
                                     
                                     
@@ -1351,7 +1405,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1384"><code>src\raska.js:1384</code></a>
+                                    		<a href="../files/src_raska.js.html#l1408"><code>src\raska.js:1408</code></a>
                                     		</p>
                                     
                                     
@@ -1392,7 +1446,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l941"><code>src\raska.js:941</code></a>
+                                    		<a href="../files/src_raska.js.html#l949"><code>src\raska.js:949</code></a>
                                     		</p>
                                     
                                     
@@ -1433,7 +1487,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l951"><code>src\raska.js:951</code></a>
+                                    		<a href="../files/src_raska.js.html#l959"><code>src\raska.js:959</code></a>
                                     		</p>
                                     
                                     
@@ -1472,7 +1526,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1029"><code>src\raska.js:1029</code></a>
+                                    		<a href="../files/src_raska.js.html#l1037"><code>src\raska.js:1037</code></a>
                                     		</p>
                                     
                                     
@@ -1502,7 +1556,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l899"><code>src\raska.js:899</code></a>
+                                    		<a href="../files/src_raska.js.html#l907"><code>src\raska.js:907</code></a>
                                     		</p>
                                     
                                     
@@ -1547,7 +1601,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1297"><code>src\raska.js:1297</code></a>
+                                    		<a href="../files/src_raska.js.html#l1321"><code>src\raska.js:1321</code></a>
                                     		</p>
                                     
                                     
@@ -1632,7 +1686,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1067"><code>src\raska.js:1067</code></a>
+                                    		<a href="../files/src_raska.js.html#l1075"><code>src\raska.js:1075</code></a>
                                     		</p>
                                     
                                     
@@ -1695,7 +1749,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l997"><code>src\raska.js:997</code></a>
+                                    		<a href="../files/src_raska.js.html#l1005"><code>src\raska.js:1005</code></a>
                                     		</p>
                                     
                                     
@@ -1755,7 +1809,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1397"><code>src\raska.js:1397</code></a>
+                                    		<a href="../files/src_raska.js.html#l1421"><code>src\raska.js:1421</code></a>
                                     		</p>
                                     
                                     
@@ -1809,7 +1863,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1145"><code>src\raska.js:1145</code></a>
+                                    		<a href="../files/src_raska.js.html#l1169"><code>src\raska.js:1169</code></a>
                                     		</p>
                                     
                                     
@@ -1869,7 +1923,7 @@
                                     					<p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1371"><code>src\raska.js:1371</code></a>
+                                    		<a href="../files/src_raska.js.html#l1395"><code>src\raska.js:1395</code></a>
                                     		</p>
                                     
                                     
@@ -1922,7 +1976,7 @@
                                     					<p>Provided by the <a href="../modules/_canvasController.html">_canvasController</a> module.</p>
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l1467"><code>src\raska.js:1467</code></a>
+                                    		<a href="../files/src_raska.js.html#l1491"><code>src\raska.js:1491</code></a>
                                     		</p>
                                     
                                     
@@ -1985,7 +2039,34 @@
                                         </div>
                                     
                                         <div class="description">
-                                            <p>Holds the reference to the delegate triggered before a link gets removed grom an element</p>
+                                            <p>Holds the reference to the delegate triggered before a link gets removed from an element</p>
+                                    
+                                        </div>
+                                    
+                                            <p><strong>Default:</strong> null</p>
+                                    
+                                    
+                                    </div>
+                                    <div id="prop-$beforeRemoveLinkTo" class="property item">
+                                        <h3 class="name"><code>$beforeRemoveLinkTo</code></h3>
+                                        <span class="type">Function</span>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                        <div class="meta">
+                                                        <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
+                                                    <p>
+                                                    Defined in
+                                            <a href="../files/src_raska.js.html#l798"><code>src\raska.js:798</code></a>
+                                            </p>
+                                    
+                                    
+                                        </div>
+                                    
+                                        <div class="description">
+                                            <p>Holds the reference to the delegate triggered before a link gets removed to an element</p>
                                     
                                         </div>
                                     
@@ -2006,7 +2087,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l798"><code>src\raska.js:798</code></a>
+                                            <a href="../files/src_raska.js.html#l806"><code>src\raska.js:806</code></a>
                                             </p>
                                     
                                     
@@ -2144,7 +2225,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1173"><code>src\raska.js:1173</code></a>
+                                            <a href="../files/src_raska.js.html#l1197"><code>src\raska.js:1197</code></a>
                                             </p>
                                     
                                     
@@ -2171,7 +2252,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l825"><code>src\raska.js:825</code></a>
+                                            <a href="../files/src_raska.js.html#l833"><code>src\raska.js:833</code></a>
                                             </p>
                                     
                                     
@@ -2198,7 +2279,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1237"><code>src\raska.js:1237</code></a>
+                                            <a href="../files/src_raska.js.html#l1261"><code>src\raska.js:1261</code></a>
                                             </p>
                                     
                                     
@@ -2225,7 +2306,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1164"><code>src\raska.js:1164</code></a>
+                                            <a href="../files/src_raska.js.html#l1188"><code>src\raska.js:1188</code></a>
                                             </p>
                                     
                                     
@@ -2253,7 +2334,7 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1562"><code>src\raska.js:1562</code></a>
+                                            <a href="../files/src_raska.js.html#l1586"><code>src\raska.js:1586</code></a>
                                             </p>
                                     
                                     
@@ -2279,7 +2360,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l843"><code>src\raska.js:843</code></a>
+                                            <a href="../files/src_raska.js.html#l851"><code>src\raska.js:851</code></a>
                                             </p>
                                     
                                     
@@ -2306,7 +2387,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l852"><code>src\raska.js:852</code></a>
+                                            <a href="../files/src_raska.js.html#l860"><code>src\raska.js:860</code></a>
                                             </p>
                                     
                                     
@@ -2334,7 +2415,7 @@
                                         <div class="meta">
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1535"><code>src\raska.js:1535</code></a>
+                                            <a href="../files/src_raska.js.html#l1559"><code>src\raska.js:1559</code></a>
                                             </p>
                                     
                                     
@@ -2360,7 +2441,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l834"><code>src\raska.js:834</code></a>
+                                            <a href="../files/src_raska.js.html#l842"><code>src\raska.js:842</code></a>
                                             </p>
                                     
                                     
@@ -2387,7 +2468,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1192"><code>src\raska.js:1192</code></a>
+                                            <a href="../files/src_raska.js.html#l1216"><code>src\raska.js:1216</code></a>
                                             </p>
                                     
                                     
@@ -2414,7 +2495,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1182"><code>src\raska.js:1182</code></a>
+                                            <a href="../files/src_raska.js.html#l1206"><code>src\raska.js:1206</code></a>
                                             </p>
                                     
                                     
@@ -2441,7 +2522,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1201"><code>src\raska.js:1201</code></a>
+                                            <a href="../files/src_raska.js.html#l1225"><code>src\raska.js:1225</code></a>
                                             </p>
                                     
                                     
@@ -2468,7 +2549,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1210"><code>src\raska.js:1210</code></a>
+                                            <a href="../files/src_raska.js.html#l1234"><code>src\raska.js:1234</code></a>
                                             </p>
                                     
                                     
@@ -2505,7 +2586,7 @@
                                                         <p>Provided by the <a href="../modules/raska.html">raska</a> module.</p>
                                                     <p>
                                                     Defined in
-                                            <a href="../files/src_raska.js.html#l1158"><code>src\raska.js:1158</code></a>
+                                            <a href="../files/src_raska.js.html#l1182"><code>src\raska.js:1182</code></a>
                                             </p>
                                     
                                     
