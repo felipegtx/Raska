@@ -21,7 +21,7 @@
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>v1.0.1-beta-7</b>
+                    API Docs for Version: <b>v1.0.2-beta-7</b>
                 </p>
             </li>
         </div>
@@ -882,6 +882,14 @@
                                     $linksFrom = [],
                         
                                     /**
+                                     * Holds the reference to the delegate triggered before a link gets removed grom an element
+                                     * @property $beforeRemoveLinkFrom
+                                     * @type function
+                                     * @default null
+                                     */
+                                    $beforeRemoveLinkFrom = null,
+                        
+                                    /**
                                      * Points to series of child Raska element (if any) that, usually, are contained inside this node
                                      *
                                      * @private
@@ -1091,8 +1099,24 @@
                                     removeLinkTo: function (element) {
                                         if ($linksTo.indexOf(element) &gt; -1) {
                                             $linksTo.splice($linksTo.indexOf(element), 1);
+                                            if (_helpers.$obj.isType($beforeRemoveLinkFrom, &quot;function&quot;) === true) {
+                                                $beforeRemoveLinkFrom.call(this, element);
+                                            }
                                             element.removeLinkFrom(this);
                                         }
+                                        return this;
+                                    },
+                        
+                                    /**
+                                    * Event triggered before a link gets removed from this element
+                                    * 
+                                    * @method beforeRemoveLinkFrom
+                                    * @param {function} doWhat A delegate with the &#x27;this&#x27; poiting to this instance and the first 
+                                    *                           paramenter being the reference to the element which is being remove as a link to this instance
+                                    * @chainable
+                                    */
+                                    beforeRemoveLinkFrom: function (doWhat) {
+                                        $beforeRemoveLinkFrom = doWhat;
                                         return this;
                                     },
                         
@@ -2024,7 +2048,7 @@
                                 circle: function () {
                                     return _helpers.$obj.extend(new _basicElement(), {
                                         name: &quot;circle&quot; + _helpers.$obj.generateId(),
-                                        border: { color: &quot;gray&quot;, active: false, width: 2 },
+                                        border: { color: &quot;gray&quot;, active: true, width: 2 },
                                         getType: function () { return _elementTypes.circle; },
                                         fillColor: &quot;silver&quot;,
                                         radius: 20,
