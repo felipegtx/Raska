@@ -43,6 +43,92 @@ You can read about it **[here](http://felipegte.com/2015/08/20/raska-criacaoexpo
 - [Animation](http://felipegtx.github.io/Raska/samples/AnimationSample.html)
 - [A simple game](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)
 
+### Sample JSON graph data
+```json
+[{
+    "linksTo": ["circle__ff5e8210892115f6d96e874eb35571bf"],
+    "childElements": ["label__6db884d155fd45405928523d1cbd1dd6"],
+    "parent": null,
+    "type": "circle",
+    "name": "circle__28123e80e6068bc52bee1ab8d726ddad",
+    "border": {
+        "color": "gray",
+        "active": true,
+        "width": 2
+    },
+    "fillColor": "silver",
+    "radius": 20,
+    "attr": {},
+    "graphNode": true,
+    "position": 0,
+    "x": 85.22943037974683,
+    "y": 102.58964143426294
+}, {
+    "linksTo": [],
+    "childElements": [],
+    "parent": "circle__28123e80e6068bc52bee1ab8d726ddad",
+    "type": "label",
+    "name": "label__6db884d155fd45405928523d1cbd1dd6",
+    "graphNode": false,
+    "text": "Start",
+    "color": "gray",
+    "x": 0,
+    "y": 0,
+    "border": {
+        "color": "white",
+        "active": true,
+        "width": 2
+    },
+    "font": {
+        "family": "Arial",
+        "size": "12px",
+        "decoration": ""
+    },
+    "attr": {},
+    "position": 0
+}, {
+    "linksTo": [],
+    "childElements": ["label__f22ea400baa01ddebcbc88ffcb7e09d4"],
+    "parent": null,
+    "type": "circle",
+    "name": "circle__ff5e8210892115f6d96e874eb35571bf",
+    "border": {
+        "color": "gray",
+        "active": true,
+        "width": 2
+    },
+    "fillColor": "silver",
+    "radius": 20,
+    "attr": {},
+    "graphNode": true,
+    "position": 0,
+    "x": 309.0189873417722,
+    "y": 107.56972111553785
+}, {
+    "linksTo": [],
+    "childElements": [],
+    "parent": "circle__ff5e8210892115f6d96e874eb35571bf",
+    "type": "label",
+    "name": "label__f22ea400baa01ddebcbc88ffcb7e09d4",
+    "graphNode": false,
+    "text": "Done!",
+    "color": "gray",
+    "x": 0,
+    "y": 0,
+    "border": {
+        "color": "white",
+        "active": true,
+        "width": 2
+    },
+    "font": {
+        "family": "Arial",
+        "size": "12px",
+        "decoration": ""
+    },
+    "attr": {},
+    "position": 0
+}]
+```
 
 ### Roadmap
 - [ ] Visual tool to create Directed graphs
