@@ -144,3 +144,6 @@ The delegates are the following:
 ## Known limitations
 
 For now, only Google Chrome is supported.
+
+## License
+See [LICENSE](https://github.com/felipegtx/Raska/blob/master/LICENSE) file
