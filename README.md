@@ -42,7 +42,7 @@ You can read about it **[here](http://felipegte.com/2015/08/20/raska-criacaoexpo
 - [Logo builder](http://felipegtx.github.io/Raska/samples/LogoBuilder.html)
 - [Animation](http://felipegtx.github.io/Raska/samples/AnimationSample.html)
 - [A simple game](http://felipegtx.github.io/Raska/samples/AnimationSample2.html)
-- [Heatmap for *calienteJs*](https://github.com/felipegtx/calienteJs)
+- [Heatmap for *calienteJS*](https://github.com/felipegtx/calienteJs)
 
 ### Sample JSON graph data
 ```json
