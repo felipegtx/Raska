@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -30,12 +31,12 @@
                     <form class="form-inline">
                         <div class="form-group">
                             <label for="companyName" class="control-label">Company name</label>
-                            <input type="text" class="form-control" id="companyName" onkeyup="UI.update()" value="RaskaJs">
+                            <input type="text" class="form-control" id="companyName" onkeyup="UI.update()" value="RaskaJS">
                         </div>
                         <div class="form-group">
                             <label for="companyNameFontFace" class="control-label">Font face</label>
                             <input type="text" class="form-control" id="companyNameFontFace"
-                                   onkeyup="UI.update()" value="Century Gothic">
+                                   onkeyup="UI.update()" value="Droid Sans">
                         </div>
                         <div class="form-group">
                             <label for="fontColor" class="control-label">Font color</label>
@@ -425,6 +426,11 @@
                                    value="86">
                         </div>
                         <div class="form-group">
+                            <label for="decoration" class="control-label">Decoration</label>
+                            <input type="text" class="form-control" id="decoration" placeholder="bold, italic, etc"
+                                   onkeyup="UI.update()">
+                        </div>
+                        <div class="form-group">
                             <button type="button" class="btn btn-success" onclick="UI.save();">Save as image</button>
                         </div>
                     </form>
@@ -444,80 +450,6 @@
     <script type="text/javascript" src="../src/raska.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script>
-        /// Configures raska to a given Canvas element
-        raska.installUsing({ targetCanvasId: "raskaContent" });
-
-        (function (w) {
-
-            var _companyNameElement = raska.$$.$q("#companyName"),
-                _iconElement = raska.$$.$q("#icon"),
-                _companyNameSize = raska.$$.$q("#companyNameSize"),
-                _companyNameFontFace = raska.$$.$q("#companyNameFontFace"),
-                _fontColor = raska.$$.$q("#fontColor"),
-                _labelPosition = { x: 159, y: 150 },
-                _iconPosition = { x: 95, y: 150 },
-                _size;
-
-            w.UI = {
-                update: function () {
-
-                    raska.clear();
-                    _size = parseInt(_companyNameSize.value);
-
-                    /// The company name
-                    var companyLabel = raska.newLabel(),
-                        companyLabelContent = raska.newSquare();
-                    companyLabel.text = _companyNameElement.value;
-                    companyLabel.y = _size;
-                    companyLabel.x = 0;
-                    companyLabel.color = _fontColor.value;
-                    companyLabel.font = { size: _size + "px", family: _companyNameFontFace.value, decoration: "bold" };
-                    companyLabelContent.dimensions.width = companyLabel.text.length * (_size / 2);
-                    companyLabelContent.dimensions.height = _size;
-                    companyLabelContent.border.color = "rgba(255, 255, 255, 0)";
-                    companyLabelContent.fillColor = "rgba(255, 255, 255, 0)";
-                    companyLabelContent.addChild(companyLabel);
-                    companyLabelContent.y = _labelPosition.y;
-                    companyLabelContent.x = _labelPosition.x;
-                    companyLabelContent.on.release(function (x, y) {
-                        _labelPosition.x = x;
-                        _labelPosition.y = y;
-                    });
-
-                    /// The company icon
-                    var companyIcon = raska.newLabel(),
-                        companyIconContent = raska.newSquare();
-                    companyIcon.text = String.fromCharCode("0x" + _iconElement.value);
-                    companyIcon.y = _size;
-                    companyIcon.x = 0;
-                    companyIcon.color = _fontColor.value;
-                    companyIcon.font.size = _size + "px";
-                    companyIcon.font.family = "FontAwesome";
-                    companyIconContent.dimensions.width = 2 * (_size / 2);
-                    companyIconContent.dimensions.height = _size;
-                    companyIconContent.border.color = "rgba(255, 255, 255, 0)";
-                    companyIconContent.fillColor = "rgba(255, 255, 255, 0)";
-                    companyIconContent.addChild(companyIcon);
-                    companyIconContent.y = _iconPosition.y;
-                    companyIconContent.x = _iconPosition.x;
-                    companyIconContent.on.release(function (x, y) {
-                        _iconPosition.x = x;
-                        _iconPosition.y = y;
-                    });
-
-                    raska.plot(companyLabelContent).plot(companyIconContent);
-
-                },
-                save: function () {
-                    raska.exportImage();
-                }
-            };
-
-        })(window);
-
-        UI.update();
-
-    </script>
+    <script src="js/logo-builder.js"></script>
 </body>
 </html>

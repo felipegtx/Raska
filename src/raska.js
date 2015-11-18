@@ -2656,8 +2656,44 @@
             * Gets the canvas' dataURL
             * 
             * @method  getDataUrl
+            * @param {bool} cropImage Whether or not to crop the exported image
             */
-            getDataUrl: function () {
+            getDataUrl: function (cropImage) {
+                if (cropImage === true) {
+
+                    var silkCanvas = _helpers.$dom.create("canvas").raw(),
+                        silkCanvasContext = silkCanvas.getContext("2d"),
+                        sorter = function (a, b) { return a - b },
+                        sourceCanvasWidth = _canvas.width,
+                        sourceCanvasHeight = _canvas.height,
+                        pix = { x: [], y: [] },
+                        imageData = _2dContext.getImageData(0, 0, sourceCanvasWidth, sourceCanvasHeight),
+                        index = 0;
+
+                    for (var y = 0; y < sourceCanvasHeight; y++) {
+                        for (var x = 0; x < sourceCanvasWidth; x++) {
+                            index = (y * sourceCanvasWidth + x) * 4;
+                            if (imageData.data[index + 3] > 0) {
+                                pix.x.push(x);
+                                pix.y.push(y);
+                            }
+                        }
+                    }
+
+                    pix.x.sort(sorter);
+                    pix.y.sort(sorter);
+
+                    var n = pix.x.length - 1;
+                    sourceCanvasWidth = pix.x[n] - pix.x[0];
+                    sourceCanvasHeight = pix.y[n] - pix.y[0];
+
+                    var cut = _2dContext.getImageData(pix.x[0], pix.y[0], sourceCanvasWidth, sourceCanvasHeight);
+
+                    silkCanvas.width = sourceCanvasWidth;
+                    silkCanvas.height = sourceCanvasHeight;
+                    silkCanvasContext.putImageData(cut, 0, 0);
+                    return silkCanvas.toDataURL();
+                }
                 return _canvas.toDataURL();
             },
 
@@ -2809,13 +2845,13 @@
         * Exports current canvas data as an image to a new window
         *
         * @method exportImage
+        * @param {bool} cropImage Whether or not to crop the exported image
         * @return {_public} Reference to the '_public' pointer
         * @chainable
         * @static
         */
-        exportImage: function () {
-            var nw = w.open();
-            nw.document.write("<img src='" + _drawing.getDataUrl() + "'>");
+        exportImage: function (cropImage) {
+            w.open(_drawing.getDataUrl(cropImage), '_blank');
             return _public;
         },
 

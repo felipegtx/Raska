@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>_drawing - Raska</title>
+    <title>_drawing - RaskaJS</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -15,13 +15,13 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-            Raska
+            RaskaJS
         </h1>
 	<div class="nav">
             <li class="divider-vertical"></li>
             <li>
                 <p class="navbar-text">
-                    API Docs for Version: <b>v1.0.3-beta-7</b>
+                    API Docs for Version: <b>v1.0.0</b>
                 </p>
             </li>
         </div>
@@ -125,7 +125,7 @@
                         				<li><a href="#method-addElement"><span class="im">addElement</span>(<span class="ia">element</span>)</a></li>
                         				<li><a href="#method-getCanvasElement"><span class="im">getCanvasElement</span>()</a></li>
                         				<li><a href="#method-getCanvasElement"><span class="im">getCanvasElement</span>()</a></li>
-                        				<li><a href="#method-getDataUrl"><span class="im">getDataUrl</span>()</a></li>
+                        				<li><a href="#method-getDataUrl"><span class="im">getDataUrl</span>(<span class="ia">cropImage</span>)</a></li>
                         				<li><a href="#method-getElements"><span class="im">getElements</span>()</a></li>
                         				<li><a href="#method-getElementsSlim"><span class="im">getElementsSlim</span>()</a></li>
                         				<li><a href="#method-initializeTimedDrawing"><span class="im">initializeTimedDrawing</span>()</a></li>
@@ -732,7 +732,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l2719"><code>src\raska.js:2719</code></a>
+                                    		<a href="../files/src_raska.js.html#l2755"><code>src\raska.js:2755</code></a>
                                     		</p>
                                     
                                     
@@ -769,7 +769,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l2710"><code>src\raska.js:2710</code></a>
+                                    		<a href="../files/src_raska.js.html#l2746"><code>src\raska.js:2746</code></a>
                                     		</p>
                                     
                                     
@@ -786,7 +786,13 @@
                                     	<div class="method-signature">
                                     	<span class="name"><code>getDataUrl</code></span>
                                     
-                                    		<span class="paren">()</span>
+                                    		<div class="args">
+                                    			<span class="paren">(</span><ul class="args-list inline commas">
+                                    				<li class="arg">
+                                    						<code>cropImage</code>
+                                    				</li>
+                                    			</ul><span class="paren">)</span>
+                                    		</div>
                                     	</div>
                                     
                                     
@@ -807,6 +813,21 @@
                                     	<div class="description"><p>Gets the canvas' dataURL</p>
                                     </div>
                                     
+                                    		<div class="params">
+                                    			<h4>Parameters:</h4>
+                                    
+                                    			<ul class="params-list">
+                                    				<li class="param">
+                                    						<code class="param-name">cropImage</code>
+                                    						<span class="type">Bool</span>
+                                    
+                                    
+                                    					<div class="param-description"><p>Whether or not to crop the exported image</p>
+                                    </div>
+                                    
+                                    				</li>
+                                    			</ul>
+                                    		</div>
                                     
                                     
                                     </div>
@@ -828,7 +849,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l2687"><code>src\raska.js:2687</code></a>
+                                    		<a href="../files/src_raska.js.html#l2723"><code>src\raska.js:2723</code></a>
                                     		</p>
                                     
                                     
@@ -868,7 +889,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l2677"><code>src\raska.js:2677</code></a>
+                                    		<a href="../files/src_raska.js.html#l2713"><code>src\raska.js:2713</code></a>
                                     		</p>
                                     
                                     
@@ -905,7 +926,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l2729"><code>src\raska.js:2729</code></a>
+                                    		<a href="../files/src_raska.js.html#l2765"><code>src\raska.js:2765</code></a>
                                     		</p>
                                     
                                     
@@ -941,7 +962,7 @@
                                     	<div class="meta">
                                     				<p>
                                     				Defined in
-                                    		<a href="../files/src_raska.js.html#l2664"><code>src\raska.js:2664</code></a>
+                                    		<a href="../files/src_raska.js.html#l2700"><code>src\raska.js:2700</code></a>
                                     		</p>
                                     
                                     
@@ -1141,7 +1162,7 @@
                             	        	<div class="meta">
                             	        				<p>
                             	        				Defined in
-                            	        		<a href="../files/src_raska.js.html#l2697"><code>src\raska.js:2697</code></a>
+                            	        		<a href="../files/src_raska.js.html#l2733"><code>src\raska.js:2733</code></a>
                             	        		</p>
                             	        
                             	        
