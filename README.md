@@ -228,9 +228,5 @@ The delegates are the following:
   * [```beforeRemoveLinkFrom```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-beforeRemoveLinkFrom) method allows you to subscribe to receive a notification whenever an element **is about to** get a link removed from it
   * [```beforeRemoveLinkTo```](http://felipegtx.github.io/Raska/docs/classes/_basicElement.html#method-beforeRemoveLinkFrom) method allows you to subscribe to receive a notification whenever an element **is about to** get a link pointing to it
 
-## Known limitations
-
-For now, only Google Chrome is supported.
-
 ## License
 See [LICENSE](https://github.com/felipegtx/Raska/blob/master/LICENSE) file
