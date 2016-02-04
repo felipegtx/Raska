@@ -91,11 +91,8 @@ The delegates are the following:
       
    - **Load a JSON into the canvas**
       ```javascript
-      /// Here we grap the JSON from a previous graph we've saved and...
-      var elementGraph = document.getElementById("elementGraph").value;
-      
       /// load it back into the canvas
-      raska.loadElementsFrom(elementGraph);
+      raska.loadElementsFrom(yourJSONString);
       ```
    - **Adding a subscriber for click iteractions on a given element (touchscreen friendly)**
    
