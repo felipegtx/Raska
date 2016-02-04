@@ -86,13 +86,13 @@ The delegates are the following:
 - [Directed graph](http://felipegtx.github.io/RaskSample.html) 
    - **Get a JSON from a canvas**
       ```javascript
-      raska.getElementsString()
+      var stringJson = raska.getElementsString()
       ```
       
    - **Load a JSON into the canvas**
       ```javascript
       /// load it back into the canvas
-      raska.loadElementsFrom(yourJSONString);
+      raska.loadElementsFrom(stringJson);
       ```
    - **Adding a subscriber for click iteractions on a given element (touchscreen friendly)**
    
