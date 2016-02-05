@@ -882,6 +882,16 @@
             },
 
             /**
+            * Defines whether or not a given element position can be changed by user screen interaction
+            * 
+            * @method canBeMoved
+            * @return {Bool} Whether or not the element can be moved
+            */
+            canBeMoved: function() {
+                return true;
+            },
+
+            /**
             * Clears all references and child elements from this instance
             * 
             * @method disable
@@ -1195,6 +1205,22 @@
                 color: null,
 
                 /**
+                * Element border definition for when being moved around
+                *
+                * @property whenMoving
+                * @type Object
+                */
+                whenMoving: null,
+
+                /**
+                * Element border definition for when being linked to another element
+                *
+                * @property whenMoving
+                * @type Object
+                */
+                whenLinking: null,
+
+                /**
                 * Whether or not a border should be rendered
                 *
                 * @property active
@@ -1506,9 +1532,11 @@
                     for (var attr in _defaultValues.container) {
                         _defaultValues.container[attr] = canvasElementContainer.css(attr);
                     }
+
+                    var clientHeight = document.body.clientHeight - bottomPadding;
                     canvasElementContainer.css({
                         "width": d.body.clientWidth,
-                        "height": d.body.clientHeight - bottomPadding,
+                        "height": clientHeight,
                         "position": "fixed",
                         "z-index": 1000,
                         "background-color": "white",
@@ -1520,7 +1548,7 @@
                     for (var attr in _defaultValues.canvas) {
                         _defaultValues.canvas[attr] = canvasElement.attr(attr);
                     }
-                    canvasElement.attr({ "width": d.body.clientWidth, "height": d.body.clientHeight - bottomPadding });
+                    canvasElement.attr({ "width": d.body.clientWidth, "height": clientHeight });
 
                     if (_helpers.$obj.isValid(strContainerId)) {
                         _helpers.$dom.getById(strContainerId)
@@ -2371,7 +2399,7 @@
                         color: "yellow",
                         active: true
                     },
-                    whenLiking: {
+                    whenLinking: {
                         color: "green",
                         active: true
                     }
@@ -2388,6 +2416,7 @@
             */
             _whenMouseMove = function (evt) {
                 if ((_elementBeingDraged.reference !== null)
+                    && (_elementBeingDraged.reference.canBeMoved() === true)
                     && (_elementBeingDraged.dragType === _elementBeingDraged.dragTypes.moving)) {
 
                     _helpers.$log.info("Moving element", _elementBeingDraged);
@@ -2523,8 +2552,8 @@
                     _elementBeingDraged.originalBorder = _elementBeingDraged.reference.border;
                     _elementBeingDraged.reference.border =
                         ((_elementBeingDraged.dragType = dragType) === _elementBeingDraged.dragTypes.moving) ?
-                        _elementBeingDraged.border.whenMoving :
-                        _elementBeingDraged.border.whenLiking;
+                        (_elementBeingDraged.reference.border.whenMoving || _elementBeingDraged.border.whenMoving) :
+                        (_elementBeingDraged.reference.border.whenLinking || _elementBeingDraged.border.whenLinking);
                     _helpers.$log.info("Dragging element", { r: _elementBeingDraged.reference, d: dragType });
                 }
 
