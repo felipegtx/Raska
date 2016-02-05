@@ -1,3 +1,8 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// THIS FILE IS JUST FOR REFERENCE WHEN WRITING/COMPILING TYPESCRIPT CODE
+/// DO NOT DEPLOY IT TO PRODUCTION!
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 interface raskaNodeEvents {
     click(x: number, y: number, ele: raskaNode, evt: string): raskaNodeEvents;
     release(x: number, y: number, ele: raskaNode, evt: string): raskaNodeEvents;
