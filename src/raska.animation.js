@@ -1,4 +1,4 @@
-﻿/// <reference path="raska.js" />
+/// <reference path="raska.js" />
 
 /**
 * HTML5 canvas visual directed graph creation tool 
@@ -266,25 +266,43 @@
                 _thisPublicControllerInterface = {
 
                     /**
+                   * Executes a fadein effect on a given element
+                   *
+                   * @method fadeInWithBoudaries
+                   * @for PublicControllerInterface
+                   * @param {object} maxValues The values for maxHeight and maxWidth
+                   * @static
+                   * @chainable
+                   */
+                    fadeInWithBoudaries: function (maxValues) {
+                        if (!_helpers.$obj.isValid(maxValues)) {
+                            throw new exceptions.invalidElement();
+                        }
+                        return _thisPublicControllerInterface.fadeIn(_defaultStep, maxValues);
+                    },
+
+                    /**
                     * Executes a fadein effect on a given element
                     *
                     * @method fadeIn
                     * @for PublicControllerInterface
                     * @param {number} stepIncrement The speed the animation executes
+                    * @param {object} maxValues The values for maxHeight and maxWidth
                     * @static
                     * @chainable
                     */
-                    fadeIn: function (stepIncrement) {
+                    fadeIn: function (stepIncrement, maxValues) {
 
                         if (!_helpers.$obj.isValid(targetElement)) {
                             throw new exceptions.invalidElement();
                         }
 
                         var _stoped = true,
+                            _maxValues = maxValues || {},
                             _stepIncrement = stepIncrement || _defaultStep,
                             _fadeIn = function (changer, then) {
-                                var maxH = targetElement.getHeight(),
-                                    maxW = targetElement.getWidth(),
+                                var maxH = _maxValues.maxHeight || targetElement.getHeight(),
+                                    maxW = _maxValues.maxWidth || targetElement.getWidth(),
                                     currentH = 0,
                                     currentW = 0,
                                     changed = false,
