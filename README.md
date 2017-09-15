@@ -7,7 +7,7 @@ HTML5 canvas visual directed graph creation tool.
 You can read about it **[here](http://felipegte.com/2015/08/20/raska-criacaoexportacao-de-grafos-direcionados-usando-html5/)** (*Pt-br*), take a look into the commented source code 
 **[here](http://felipegtx.github.io/Raska/docs/index.html)** and go through the examples bellow.
 
-##Usage
+## Usage
 
 Here are the basic setup for the library. If you need/want to learn more, please refer to the [docs](http://felipegtx.github.io/Raska/docs/index.html)
 
