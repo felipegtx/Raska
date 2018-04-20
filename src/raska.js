@@ -318,7 +318,7 @@
                 */
                 $device: (function () {
 
-                    var _isTouch = (('ontouchstart' in w)
+                    var _isTouch = ((('ontouchstart' in w) && (w.ontouchstart !== null))
                              || (navigator.MaxTouchPoints > 0)
                              || (navigator.msMaxTouchPoints > 0)),
                         _this = {
